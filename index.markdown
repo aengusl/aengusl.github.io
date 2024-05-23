@@ -39,7 +39,7 @@ layout: home
 
 <div class="container">
   <div class="image-wrapper">
-    <img src="march24-selfie.png" alt="Its me!">
+    <img src="hastings_pic.png" alt="Its me!">
   </div>
   <div class="content">
     I'm Aengus Lynch, a PhD student at UCL under the supervision of Ricardo Silva, and a former MATS scholar under the mentorship of Stephen Casper.
