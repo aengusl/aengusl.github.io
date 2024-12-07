@@ -13,8 +13,8 @@ baseurl: ""
 url: "https://aenguslynch.com"
 
 # Social media usernames
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username:
+github_username: aengusl
 
 # Build settings
 theme: minima
