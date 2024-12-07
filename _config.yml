@@ -23,7 +23,7 @@ email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Aengus Lynch's personal website
 domain: "aenguslynch.com"
-url: "https://aenguslynch.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://aengusl.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
