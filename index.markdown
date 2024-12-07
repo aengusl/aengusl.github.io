@@ -88,8 +88,6 @@ layout: home
       <p>I'm a PhD candidate at UCL, advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>. I care about AI safety and find myself simultaneously exhilarated and alarmed by the development of broadly capable AI systems. My previous research has ranged from mechanistic interpretability to adversarial robustness. Now, I am interested in the safety of agentic LLM applications, such as computer use.</p>
       
       <p style="margin-top: 1.5rem;">Reach me at aenguslynch at gmail dot com and <a href="https://twitter.com/aengus_lynch1">@aengus_lynch1</a>.</p>
-      
-      <p style="margin-top: 1.5rem;">I recently moved to San Francisco (August 2024) and have picked up some new hobbies, which include enjoy reading about human-computer interaction and learning to play the piano.</p>
     </div>
   </div>
 
