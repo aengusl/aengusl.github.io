@@ -10,7 +10,7 @@ email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Aengus Lynch's personal website
 baseurl: "" # leave this empty
-url: "" # leave this empty for now
+url: "aengusl.github.io" # leave this empty for now
 
 # Social media usernames
 twitter_username: jekyllrb
