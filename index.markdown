@@ -85,17 +85,17 @@ layout: home
   <div class="profile-section">
     <img src="mission_selfie_nov24.png" alt="It's me!">
     <div class="bio">
-      <p>I'm a PhD candidate at UCL, advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>. I care about AI safety and find myself simultaneously exhilarated and alarmed by the development of broadly capable AI systems. My previous research has ranged from mechanistic interpretability to adversarial robustness. Now, I am interested in the safety of agentic LLM applications, such as computer use.</p>
+      <p>I'm a PhD candidate at UCL, advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>. I care about AI safety because I find myself simultaneously exhilarated and alarmed by the development of broadly capable AI systems. My previous research has ranged from mechanistic interpretability to adversarial robustness. Now, I am interested in the safety of agentic LLM applications, such as computer use.</p>
       <p style="margin-top: 1.5rem;">Reach me at aenguslynch at gmail dot com and <a href="https://twitter.com/aengus_lynch1">@aengus_lynch1</a>.</p>
     </div>
   </div>
-
   <div class="links-section">
     <h2>Links</h2>
     <ul>
-      <li><a href="march_2024_cv.pdf">My CV</a></li>
+      <li><a href="aenguslynch_cv_241206.pdf">My CV</a></li>
       <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar Profile</a></li>
       <li><a href="https://twitter.com/aengus_lynch1">Twitter Profile</a></li>
+      <li><a href="https://github.com/aengusl">GitHub Profile</a></li>
     </ul>
   </div>
 
