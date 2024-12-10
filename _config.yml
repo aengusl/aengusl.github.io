@@ -5,10 +5,11 @@
 # yourself editing this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
 
-title: Aengus Lynch
+title: "Aengus Lynch - AI Safety Research"
 email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Aengus Lynch's personal website
+  PhD student at UCL researching AI safety, mechanistic interpretability, 
+  and AI alignment. Former MATS scholar with Stephen Casper.
 baseurl: ""
 url: "https://www.aenguslynch.com"
 author: Aengus Lynch
@@ -16,6 +17,7 @@ social:
   twitter: aengus_lynch1
   github: aengusl
   google_scholar: Pd2002AAAAAJ
+  linkedin: aengus-lynch-2876a6125
 
 # Social media usernames
 twitter_username:
@@ -39,3 +41,12 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+# Add these SEO-specific fields
+twitter:
+  username: aengus_lynch1
+  card: summary
+social_links:
+  twitter: aengus_lynch1
+  github: aengusl
+  linkedin: aengus-lynch-2876a6125

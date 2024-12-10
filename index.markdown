@@ -155,3 +155,24 @@ layout: home
     </div>
   </div>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aengus Lynch",
+  "url": "https://www.aenguslynch.com",
+  "sameAs": [
+    "https://twitter.com/aengus_lynch1",
+    "https://github.com/aengusl",
+    "https://scholar.google.com/citations?user=Pd2002AAAAAJ",
+    "https://www.linkedin.com/in/aengus-lynch-2876a6125"
+  ],
+  "jobTitle": "PhD Student",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "University College London"
+  },
+  "description": "AI Safety Researcher focusing on mechanistic interpretability and language model alignment"
+}
+</script>
