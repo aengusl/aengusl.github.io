@@ -2,6 +2,22 @@
 layout: home
 ---
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aengus Lynch - PhD candidate at UCL working on AI safety">
+    <meta name="author" content="Aengus Lynch">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Aengus Lynch">
+    <meta property="og:description" content="PhD candidate at UCL working on AI safety">
+    <meta property="og:url" content="https://aenguslynch.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@aengus_lynch1">
+</head>
+
 <style>
   @import url('https://fonts.cdnfonts.com/css/cmu-serif');
   

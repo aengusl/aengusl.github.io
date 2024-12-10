@@ -10,7 +10,12 @@ email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Aengus Lynch's personal website
 baseurl: ""
-url: "https://aengusl.github.io"
+url: "https://aenguslynch.com"
+author: Aengus Lynch
+social:
+  twitter: aengus_lynch1
+  github: aengusl
+  google_scholar: Pd2002AAAAAJ
 
 # Social media usernames
 twitter_username:
@@ -20,6 +25,7 @@ github_username: aengusl
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 exclude:
