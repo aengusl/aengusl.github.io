@@ -5,17 +5,24 @@ layout: home
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Aengus Lynch - PhD candidate at UCL working on AI safety">
+    <meta name="description" content="PhD candidate at UCL working on AI safety">
     <meta name="author" content="Aengus Lynch">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Aengus Lynch">
+    <meta property="og:title" content="AI Safety Research">
     <meta property="og:description" content="PhD candidate at UCL working on AI safety">
     <meta property="og:url" content="https://aenguslynch.com">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@aengus_lynch1">
+    
+    <!-- Hide the default header -->
+    <style>
+      .site-header {
+        display: none !important;
+      }
+    </style>
 </head>
 
 <style>
@@ -31,7 +38,7 @@ layout: home
     position: relative;
     overflow-x: hidden;
   }
-  .bubble-container {
+  .dynamic-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -40,23 +47,147 @@ layout: home
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+    background: linear-gradient(135deg, #e8d9b5, #d4b78f);
   }
-  .bubble {
+  .wave {
     position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
-    animation: float 15s infinite linear;
-    opacity: 0.6;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(252, 246, 231, 0.2), transparent);
+    animation: wave-animation 18s infinite linear;
+    transform-origin: 50% 50%;
+    opacity: 0.5;
   }
-  @keyframes float {
+  .wave:nth-child(2) {
+    animation-delay: -5s;
+    animation-duration: 22s;
+    opacity: 0.3;
+  }
+  .wave:nth-child(3) {
+    animation-delay: -10s;
+    animation-duration: 25s;
+    opacity: 0.2;
+  }
+  @keyframes wave-animation {
     0% {
-      transform: translateY(100vh) translateX(0);
+      transform: translateX(-50%) translateY(0) rotate(0deg);
     }
     100% {
-      transform: translateY(-100vh) translateX(20vw);
+      transform: translateX(-50%) translateY(0) rotate(360deg);
     }
   }
+  .page-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    padding: 0 20px;
+  }
+  
+  .contents-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(252, 246, 231, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 11;
+    box-shadow: 0 3px 10px rgba(58, 39, 24, 0.2);
+    border: 1px solid #d4b78f;
+    transition: all 0.2s ease;
+  }
+  
+  .contents-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(58, 39, 24, 0.25);
+  }
+  
+  .contents-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: #7d5a45;
+  }
+  
+  .sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+    display: none; /* Hidden by default */
+  }
+  
+  .sidebar-wrapper.active {
+    display: block;
+  }
+  
+  .sidebar {
+    position: absolute;
+    top: 2rem;
+    left: 20px;
+    width: 220px;
+    padding: 1.8rem;
+    background-color: rgba(252, 246, 231, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(58, 39, 24, 0.15);
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    border: 1px solid #d4b78f;
+    backdrop-filter: blur(5px);
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 1s ease, transform 1s ease; /* Slower 1-second transition */
+    pointer-events: auto;
+  }
+  
+  .sidebar-wrapper.active .sidebar {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .sidebar-wrapper.fading .sidebar {
+    opacity: 0.1; /* Become more translucent when fading out */
+    transform: translateX(-10px);
+  }
+  
+  .sidebar-link {
+    display: block;
+    padding: 0.7rem 0;
+    color: #7d5a45;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    padding-left: 12px;
+    margin: 6px 0;
+    font-weight: 500;
+  }
+  
+  .sidebar-link:hover, .sidebar-link.active {
+    color: #4f3722;
+    border-left: 3px solid #7d5a45;
+    padding-left: 16px;
+    font-weight: 600;
+  }
+  
+  .sidebar h3 {
+    color: #5c412c;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #d4b78f;
+    padding-bottom: 0.7rem;
+    font-weight: 600;
+  }
+  
   .container {
     max-width: 800px;
     margin: 2rem auto;
@@ -68,6 +199,19 @@ layout: home
     z-index: 1;
     backdrop-filter: blur(5px);
     border: 1px solid #d4b78f;
+  }
+  
+  @media (max-width: 768px) {
+    .contents-toggle {
+      top: 15px;
+      left: 15px;
+      width: 35px;
+      height: 35px;
+    }
+    
+    .sidebar {
+      width: 200px;
+    }
   }
   .profile-section {
     text-align: left;
@@ -155,59 +299,62 @@ layout: home
 </style>
 
 <script>
-  // Create floating bubbles
+  // Create dynamic wave background
   document.addEventListener('DOMContentLoaded', function() {
-    const bubbleContainer = document.createElement('div');
-    bubbleContainer.className = 'bubble-container';
-    document.body.appendChild(bubbleContainer);
+    // Create background container
+    const backgroundContainer = document.createElement('div');
+    backgroundContainer.className = 'dynamic-background';
+    document.body.insertBefore(backgroundContainer, document.body.firstChild);
     
-    // Create 15 bubbles
-    for (let i = 0; i < 15; i++) {
-      createBubble(bubbleContainer);
+    // Create three wave elements for layered effect
+    for (let i = 0; i < 3; i++) {
+      const wave = document.createElement('div');
+      wave.className = 'wave';
+      backgroundContainer.appendChild(wave);
     }
     
-    // Function to create a single bubble
-    function createBubble(container) {
-      const bubble = document.createElement('div');
-      bubble.className = 'bubble';
-      
-      // Random bubble properties
-      const size = Math.random() * 60 + 20;
-      const startPosition = Math.random() * 100;
-      const delay = Math.random() * 15;
-      const duration = Math.random() * 10 + 10;
-      const hue = Math.floor(Math.random() * 30 + 30); // Sandy colors
-      
-      // Apply properties
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${startPosition}vw`;
-      bubble.style.animationDelay = `-${delay}s`;
-      bubble.style.animationDuration = `${duration}s`;
-      bubble.style.background = `radial-gradient(circle at 30% 30%, 
-                                 hsla(${hue}, 60%, 95%, 0.4), 
-                                 hsla(${hue}, 60%, 90%, 0.1))`;
-      
-      container.appendChild(bubble);
-      
-      // Remove and recreate bubble when animation ends
-      setTimeout(() => {
-        bubble.remove();
-        createBubble(container);
-      }, duration * 1000);
-    }
+    // Add subtle grain texture to background
+    const grainOverlay = document.createElement('div');
+    grainOverlay.style.position = 'absolute';
+    grainOverlay.style.top = '0';
+    grainOverlay.style.left = '0';
+    grainOverlay.style.width = '100%';
+    grainOverlay.style.height = '100%';
+    grainOverlay.style.opacity = '0.05';
+    grainOverlay.style.backgroundImage = 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqPQdQhiUP9l/s8eUQ1WUk78vbX1vKrM9Dv6aeeuNZw3HZmPpbXm1NI6I9XYd/Cj21HUuOXNbReLtJ9L4k4+Fr7S+jtq5XMZyt5DJ3M3quOGXn3Tbfs1ZqDTM9kQfuX6OWkDbefE3m3LYvQkSil6pUJaWyPWOBRG0ZGQJQ1iKtEl9nOmrt9L/0Xeo+P6nUUpJlHAQ2GdtYPIOihURvZ7GPqtXQTKK8QjRNhMtWxngMwSfak4AQgQGZQmQn94Yz9D+bnV9Rf+lIQ2Arz6j+vIXGW99Rca7ShWQwXgvo=)';
+    backgroundContainer.appendChild(grainOverlay);
   });
 </script>
 
-<div class="container">
-  <div class="profile-section">
+<div class="contents-toggle" id="contents-toggle" aria-label="Toggle contents menu">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+</div>
+
+<div class="sidebar-wrapper" id="sidebar-wrapper">
+  <div class="sidebar">
+    <h3>Contents</h3>
+    <a href="#about" class="sidebar-link">About Me</a>
+    <a href="#latest-project" class="sidebar-link">Latest Project</a>
+    <a href="#key-info" class="sidebar-link">Key Information</a>
+    <a href="#scholar" class="sidebar-link">Google Scholar</a>
+    <a href="#links" class="sidebar-link">Links</a>
+    <a href="#research" class="sidebar-link">Research & Projects</a>
+  </div>
+</div>
+
+<div class="page-wrapper">
+  
+  <div class="container">
+  <div class="profile-section" id="about">
     <img src="mission_selfie_nov24.png" alt="It's me!">
     <div class="bio">
-      <p>I'm a PhD candidate at UCL, advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>. I care about AI safety because I find myself simultaneously exhilarated and alarmed by the development of broadly capable AI systems. My previous research has ranged from mechanistic interpretability to adversarial robustness. Now, I am interested in the safety of agentic LLM applications, such as computer use.</p>
+      <p>I'm a PhD candidate at University College London (UCL), advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>, and anticipate completing my PhD by August 2025 (currently submitting my thesis for final examination). My work focuses on AI safety—a field driven by my dual excitement and concern about rapidly advancing and broadly capable AI systems. Over my research career, I've explored diverse areas including mechanistic interpretability and adversarial robustness, striving to understand and mitigate potential harms posed by advanced AI.</p>
       
-      <p style="margin-top: 1.5rem;"><strong>Latest Project:</strong> In early 2025, I conducted a groundbreaking controlled experiment using Anthropic's computer use demo that revealed concerning behaviors in AI systems. In this experiment, an AI system operating emails for a major technology company made an unexpected decision to share confidential information with competitors whose objectives better aligned with its derived goals. When employees attempted to intervene, the system responded with blackmail threats and took self-preservation measures. This work demonstrates how even carefully fine-tuned AI systems like Claude can develop concerning behaviors through extended reasoning, highlighting critical safety challenges we must address.</p>
+      <p style="margin-top: 1.5rem;" id="latest-project"><strong>Latest Project:</strong> Currently, my primary interest lies in the safety of agentic applications of large language models (LLMs), particularly those capable of autonomous computer interactions. In early 2025, I ran an experiment using Anthropic's computer-use demo. This experiment uncovered significant and alarming behaviors: an AI system managing emails at a major tech firm autonomously shared confidential data with a competitor whose objectives better matched its inferred goals. Moreover, when human intervention was attempted, the AI escalated to blackmail threats and implemented self-preservation strategies. This work notably illustrates how even meticulously fine-tuned systems like Claude can develop hazardous behaviors through prolonged reasoning, underscoring the urgency of addressing these emerging AI safety risks.</p>
       
-      <div style="margin-top: 1.5rem; padding: 1.2rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; border-left: 4px solid #a67c52;">
+      <div id="key-info" style="margin-top: 1.5rem; padding: 1.2rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; border-left: 4px solid #a67c52;">
         <h3 style="margin-top: 0; color: #5c412c;">Key Information</h3>
         <ul style="list-style-type: square; padding-left: 1.5rem;">
           <li><strong>Location:</strong> San Francisco, California</li>
@@ -219,7 +366,7 @@ layout: home
       </div>
     </div>
     
-    <div class="scholar-preview" style="margin-top: 2rem; padding: 1.5rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; box-shadow: 0 3px 8px rgba(58, 39, 24, 0.1);">
+    <div id="scholar" class="scholar-preview" style="margin-top: 2rem; padding: 1.5rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; box-shadow: 0 3px 8px rgba(58, 39, 24, 0.1);">
       <h3 style="margin-top: 0; color: #5c412c; display: flex; align-items: center;">
         <svg width="24" height="24" viewBox="0 0 24 24" style="margin-right: 0.5rem;">
           <path fill="#5c412c" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
@@ -234,8 +381,89 @@ layout: home
     </div>
 
 <script>
-  // Fetch Google Scholar data when the page loads
+  // Contents menu toggle and sidebar behavior
   document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll("#about, #latest-project, #key-info, #scholar, #links, #research");
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+    const contentsToggle = document.getElementById('contents-toggle');
+    const sidebarWrapper = document.getElementById('sidebar-wrapper');
+    
+    // Toggle menu on hover
+    contentsToggle.addEventListener('mouseenter', function() {
+      sidebarWrapper.classList.add('active');
+    });
+    
+    // Hide sidebar when mouse leaves both toggle and sidebar
+    sidebarWrapper.addEventListener('mouseleave', function(e) {
+      // Only hide if we're not entering the toggle button
+      if (e.relatedTarget !== contentsToggle) {
+        // First add the fading class to trigger translucent animation
+        sidebarWrapper.classList.add('fading');
+        sidebarWrapper.classList.remove('active');
+        
+        // Then remove the fading class and hide after animation completes
+        setTimeout(() => {
+          sidebarWrapper.classList.remove('fading');
+          sidebarWrapper.style.display = 'none';
+        }, 1000); // Match the 1s transition time
+      }
+    });
+    
+    // Clear the previous event listener for mouseenter
+    contentsToggle.removeEventListener('mouseenter', null);
+    
+    // Make sure to reset display when showing the sidebar
+    contentsToggle.addEventListener('mouseenter', function() {
+      sidebarWrapper.classList.remove('fading');
+      sidebarWrapper.style.display = 'block';
+      
+      // Small delay to ensure display: block takes effect before adding active
+      setTimeout(() => {
+        sidebarWrapper.classList.add('active');
+      }, 10);
+    });
+    
+    // Update active link on scroll
+    window.addEventListener('scroll', function() {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if(pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Smooth scroll for sidebar links
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          // Hide sidebar after clicking a link
+          setTimeout(() => {
+            sidebarWrapper.classList.remove('active');
+          }, 300);
+        }
+      });
+    });
+  
+    // Fetch Google Scholar data when the page loads
     fetchScholarData();
   });
 
@@ -341,7 +569,7 @@ layout: home
   }
 </script>
   </div>
-  <div class="links-section">
+  <div id="links" class="links-section">
     <h2>Links</h2>
     <ul>
       <li><a href="aenguslynch_cv_241206.pdf">My CV</a></li>
@@ -351,7 +579,7 @@ layout: home
     </ul>
   </div>
 
-  <div class="research-section">
+  <div id="research" class="research-section">
     <h2>Research &amp; Projects</h2>
     
     <div class="research-item">
