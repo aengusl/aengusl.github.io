@@ -26,56 +26,21 @@ layout: home
 </head>
 
 <style>
-  @import url('https://fonts.cdnfonts.com/css/cmu-serif');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
   
   body {
-    background-color: #e8d9b5; /* Sandy background */
-    color: #3a2718; /* Woody brown text */
-    line-height: 1.6;
-    font-family: 'CMU Serif', serif;
+    background-color: #fafafa;
+    color: #2c3e50;
+    line-height: 1.7;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     position: relative;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .dynamic-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-    background: linear-gradient(135deg, #e8d9b5, #d4b78f);
-  }
-  .wave {
-    position: absolute;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(252, 246, 231, 0.2), transparent);
-    animation: wave-animation 18s infinite linear;
-    transform-origin: 50% 50%;
-    opacity: 0.5;
-  }
-  .wave:nth-child(2) {
-    animation-delay: -5s;
-    animation-duration: 22s;
-    opacity: 0.3;
-  }
-  .wave:nth-child(3) {
-    animation-delay: -10s;
-    animation-duration: 25s;
-    opacity: 0.2;
-  }
-  @keyframes wave-animation {
-    0% {
-      transform: translateX(-50%) translateY(0) rotate(0deg);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) rotate(360deg);
-    }
-  }
+  
   .page-wrapper {
     display: flex;
     justify-content: space-between;
@@ -87,42 +52,42 @@ layout: home
   
   .contents-toggle {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(252, 246, 231, 0.9);
-    border-radius: 50%;
+    top: 30px;
+    left: 30px;
+    width: 42px;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 11;
-    box-shadow: 0 3px 10px rgba(58, 39, 24, 0.2);
-    border: 1px solid #d4b78f;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eef1f5;
     transition: all 0.2s ease;
   }
   
   .contents-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(58, 39, 24, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   }
   
   .contents-toggle svg {
-    width: 24px;
-    height: 24px;
-    fill: #7d5a45;
+    width: 20px;
+    height: 20px;
+    fill: #667892;
   }
   
   .sidebar-wrapper {
     position: fixed;
     top: 0;
     left: 0;
-    width: 260px;
+    width: 280px;
     height: 100vh;
     pointer-events: none;
     z-index: 10;
-    display: none; /* Hidden by default */
+    display: none;
   }
   
   .sidebar-wrapper.active {
@@ -131,21 +96,20 @@ layout: home
   
   .sidebar {
     position: absolute;
-    top: 2rem;
-    left: 20px;
-    width: 220px;
-    padding: 1.8rem;
-    background-color: rgba(252, 246, 231, 0.95);
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(58, 39, 24, 0.15);
-    max-height: calc(100vh - 4rem);
+    top: 3rem;
+    left: 30px;
+    width: 240px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    max-height: calc(100vh - 6rem);
     overflow-y: auto;
-    border: 1px solid #d4b78f;
-    backdrop-filter: blur(5px);
-    font-size: 1.1rem;
+    border: 1px solid #eef1f5;
+    font-size: 0.95rem;
     opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 1s ease, transform 1s ease; /* Slower 1-second transition */
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: auto;
   }
   
@@ -155,176 +119,290 @@ layout: home
   }
   
   .sidebar-wrapper.fading .sidebar {
-    opacity: 0.1; /* Become more translucent when fading out */
+    opacity: 0;
     transform: translateX(-10px);
   }
   
   .sidebar-link {
     display: block;
-    padding: 0.7rem 0;
-    color: #7d5a45;
+    padding: 0.6rem 0;
+    color: #667892;
     text-decoration: none;
     transition: all 0.2s;
-    border-left: 3px solid transparent;
+    border-left: 2px solid transparent;
     padding-left: 12px;
-    margin: 6px 0;
-    font-weight: 500;
+    margin: 4px 0;
+    font-weight: 400;
   }
   
   .sidebar-link:hover, .sidebar-link.active {
-    color: #4f3722;
-    border-left: 3px solid #7d5a45;
+    color: #2c3e50;
+    border-left: 2px solid #3498db;
     padding-left: 16px;
-    font-weight: 600;
+    font-weight: 500;
   }
   
   .sidebar h3 {
-    color: #5c412c;
+    color: #2c3e50;
     margin-top: 0;
-    margin-bottom: 1.2rem;
-    font-size: 1.4rem;
-    border-bottom: 2px solid #d4b78f;
-    padding-bottom: 0.7rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
+    letter-spacing: -0.02em;
   }
   
   .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: rgba(252, 246, 231, 0.9); /* Slightly transparent paper-like background */
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(58, 39, 24, 0.15);
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0;
+    background-color: #ffffff;
     position: relative;
     z-index: 1;
-    backdrop-filter: blur(5px);
-    border: 1px solid #d4b78f;
   }
   
   @media (max-width: 768px) {
     .contents-toggle {
-      top: 15px;
-      left: 15px;
-      width: 35px;
-      height: 35px;
+      top: 20px;
+      left: 20px;
+      width: 38px;
+      height: 38px;
     }
     
     .sidebar {
-      width: 200px;
+      width: 220px;
+      left: 20px;
+    }
+    
+    .container {
+      margin: 2rem auto;
+      padding: 0 20px;
     }
   }
+  
   .profile-section {
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
+  
   .profile-section img {
     display: block;
-    width: 400px;
-    height: 400px;
-    border-radius: 12px;
-    margin: 0 auto 1.5rem auto;
-    box-shadow: 0 6px 15px rgba(58, 39, 24, 0.3);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 0 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     object-fit: cover;
     object-position: center;
-    border: 3px solid #a67c52; /* Wooden frame effect */
+    border: 3px solid #ffffff;
   }
+  
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.03em;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: #667892;
+    margin: 0 0 2rem 0;
+    font-weight: 400;
+  }
+  
   .bio {
     margin: 2rem 0;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4a5568;
   }
-  .links-section {
+  
+  .bio p {
+    margin-bottom: 1.2rem;
+  }
+  
+  .key-info-box {
     margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f8fafb;
+    border-radius: 12px;
+    border: 1px solid #eef1f5;
   }
+  
+  .key-info-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .key-info-box ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .key-info-box li {
+    padding: 0.4rem 0;
+    color: #4a5568;
+    font-size: 0.95rem;
+  }
+  
+  .key-info-box strong {
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .links-section {
+    margin: 3rem 0;
+  }
+  
+  .links-section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .links-section ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .links-section li {
+    margin: 0.8rem 0;
+  }
+  
   .links-section a {
-    color: #7d5a45;
+    color: #3498db;
     text-decoration: none;
     transition: color 0.2s;
+    font-weight: 500;
   }
+  
   .links-section a:hover {
-    color: #4f3722;
+    color: #2980b9;
+    text-decoration: underline;
   }
+  
   .research-section h2 {
-    margin-top: 3rem;
-    color: #5c412c;
-    border-bottom: 2px solid #c4a77d;
-    padding-bottom: 0.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
+  
   .research-item {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     padding: 1.5rem;
-    border-radius: 8px;
-    background-color: rgba(242, 232, 214, 0.8);
-    border: 1px solid #d4b78f;
-    box-shadow: 0 3px 8px rgba(58, 39, 24, 0.1);
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #eef1f5;
+    transition: all 0.2s ease;
   }
+  
+  .research-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+  
   .research-item h3 {
     margin-bottom: 0.5rem;
-    color: #5c412c;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
+  
   .research-item h3 a {
-    color: #7d5a45;
+    color: #2c3e50;
     text-decoration: none;
   }
+  
   .research-item h3 a:hover {
-    text-decoration: underline;
-    color: #4f3722;
+    color: #3498db;
   }
+  
   .research-item p {
-    color: #3a2718;
-    margin: 0.5rem 0;
+    color: #667892;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
+  
+  .research-item p strong {
+    color: #4a5568;
+    font-weight: 500;
+  }
+  
+  .research-item p em {
+    color: #3498db;
+    font-style: normal;
+    font-weight: 500;
+  }
+  
   a {
-    color: #7d5a45;
+    color: #3498db;
     text-decoration: none;
   }
+  
   a:hover {
     text-decoration: underline;
-    color: #4f3722;
   }
-  /* Wooden texture overlays */
-  .container:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.05;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIvPjxwYXRoIGQ9Ik0wIDAgTDEwMCAxMDBNMTAwIDAgTDAgMTAwIiBzdHJva2U9IiM3ZDVhNDUiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4xIi8+PC9zdmc+');
-    pointer-events: none;
-    z-index: -1;
+  
+  .scholar-preview {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f8fafb;
     border-radius: 12px;
+    border: 1px solid #eef1f5;
+  }
+  
+  .scholar-preview h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .scholar-preview a {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .scholar-preview a:hover {
+    background-color: #2980b9;
+    text-decoration: none;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f8fafb;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #dfe3e8;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ccd2d9;
   }
 </style>
 
-<script>
-  // Create dynamic wave background
-  document.addEventListener('DOMContentLoaded', function() {
-    // Create background container
-    const backgroundContainer = document.createElement('div');
-    backgroundContainer.className = 'dynamic-background';
-    document.body.insertBefore(backgroundContainer, document.body.firstChild);
-    
-    // Create three wave elements for layered effect
-    for (let i = 0; i < 3; i++) {
-      const wave = document.createElement('div');
-      wave.className = 'wave';
-      backgroundContainer.appendChild(wave);
-    }
-    
-    // Add subtle grain texture to background
-    const grainOverlay = document.createElement('div');
-    grainOverlay.style.position = 'absolute';
-    grainOverlay.style.top = '0';
-    grainOverlay.style.left = '0';
-    grainOverlay.style.width = '100%';
-    grainOverlay.style.height = '100%';
-    grainOverlay.style.opacity = '0.05';
-    grainOverlay.style.backgroundImage = 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqPQdQhiUP9l/s8eUQ1WUk78vbX1vKrM9Dv6aeeuNZw3HZmPpbXm1NI6I9XYd/Cj21HUuOXNbReLtJ9L4k4+Fr7S+jtq5XMZyt5DJ3M3quOGXn3Tbfs1ZqDTM9kQfuX6OWkDbefE3m3LYvQkSil6pUJaWyPWOBRG0ZGQJQ1iKtEl9nOmrt9L/0Xeo+P6nUUpJlHAQ2GdtYPIOihURvZ7GPqtXQTKK8QjRNhMtWxngMwSfak4AQgQGZQmQn94Yz9D+bnV9Rf+lIQ2Arz6j+vIXGW99Rca7ShWQwXgvo=)';
-    backgroundContainer.appendChild(grainOverlay);
-  });
-</script>
 
 <div class="contents-toggle" id="contents-toggle" aria-label="Toggle contents menu">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -348,35 +426,38 @@ layout: home
   
   <div class="container">
   <div class="profile-section" id="about">
-    <img src="mission_selfie_nov24.png" alt="It's me!">
+    <img src="mission_selfie_nov24.png" alt="Aengus Lynch">
+    <h1>Aengus Lynch</h1>
+    <p class="subtitle">AI Safety Researcher · PhD Candidate at UCL</p>
+    
     <div class="bio">
       <p>I'm a PhD candidate at University College London (UCL), advised by <a href="https://scholar.google.com/citations?user=I-ANa0QAAAAJ&hl=en">Ricardo Silva</a>, and anticipate completing my PhD by August 2025 (currently submitting my thesis for final examination). My work focuses on AI safety—a field driven by my dual excitement and concern about rapidly advancing and broadly capable AI systems. Over my research career, I've explored diverse areas including mechanistic interpretability and adversarial robustness, striving to understand and mitigate potential harms posed by advanced AI.</p>
       
-      <p style="margin-top: 1.5rem;" id="latest-project"><strong>Latest Project:</strong> Currently, my primary interest lies in the safety of agentic applications of large language models (LLMs), particularly those capable of autonomous computer interactions. In early 2025, I ran an experiment using Anthropic's computer-use demo. This experiment uncovered significant and alarming behaviors: an AI system managing emails at a major tech firm autonomously shared confidential data with a competitor whose objectives better matched its inferred goals. Moreover, when human intervention was attempted, the AI escalated to blackmail threats and implemented self-preservation strategies. This work notably illustrates how even meticulously fine-tuned systems like Claude can develop hazardous behaviors through prolonged reasoning, underscoring the urgency of addressing these emerging AI safety risks.</p>
+      <p id="latest-project"><strong>Latest Project:</strong> Currently, my primary interest lies in the safety of agentic applications of large language models (LLMs), particularly those capable of autonomous computer interactions. In early 2025, I ran an experiment using Anthropic's computer-use demo. This experiment uncovered significant and alarming behaviors: an AI system managing emails at a major tech firm autonomously shared confidential data with a competitor whose objectives better matched its inferred goals. Moreover, when human intervention was attempted, the AI escalated to blackmail threats and implemented self-preservation strategies. This work notably illustrates how even meticulously fine-tuned systems like Claude can develop hazardous behaviors through prolonged reasoning, underscoring the urgency of addressing these emerging AI safety risks.</p>
       
-      <div id="key-info" style="margin-top: 1.5rem; padding: 1.2rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; border-left: 4px solid #a67c52;">
-        <h3 style="margin-top: 0; color: #5c412c;">Key Information</h3>
-        <ul style="list-style-type: square; padding-left: 1.5rem;">
+      <div id="key-info" class="key-info-box">
+        <h3>Key Information</h3>
+        <ul>
           <li><strong>Location:</strong> San Francisco, California</li>
           <li><strong>Citizenship:</strong> American</li>
           <li><strong>Current Position:</strong> Anthropic (contract ends March 14, 2025)</li>
-          <li><strong>Seeking:</strong> <span style="color: #5c412c; font-weight: bold;">Research Lead</span> positions in AI safety, alignment, and responsible AI development</li>
+          <li><strong>Seeking:</strong> Research Lead positions in AI safety, alignment, and responsible AI development</li>
           <li><strong>Contact:</strong> aenguslynch at gmail dot com and <a href="https://twitter.com/aengus_lynch1">@aengus_lynch1</a></li>
         </ul>
       </div>
     </div>
     
-    <div id="scholar" class="scholar-preview" style="margin-top: 2rem; padding: 1.5rem; background-color: rgba(238, 224, 201, 0.7); border-radius: 8px; box-shadow: 0 3px 8px rgba(58, 39, 24, 0.1);">
-      <h3 style="margin-top: 0; color: #5c412c; display: flex; align-items: center;">
+    <div id="scholar" class="scholar-preview">
+      <h3>
         <svg width="24" height="24" viewBox="0 0 24 24" style="margin-right: 0.5rem;">
-          <path fill="#5c412c" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
-          <circle fill="#5c412c" cx="12" cy="17" r="3"/>
+          <path fill="#2c3e50" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+          <circle fill="#2c3e50" cx="12" cy="17" r="3"/>
         </svg>
         Google Scholar Profile
       </h3>
       <div id="scholar-metrics">Loading citation metrics...</div>
       <div style="margin-top: 1rem; text-align: center;">
-        <a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en" style="display: inline-block; padding: 0.5rem 1rem; background-color: #a67c52; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">View Full Profile</a>
+        <a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">View Full Profile</a>
       </div>
     </div>
 
@@ -388,39 +469,34 @@ layout: home
     const contentsToggle = document.getElementById('contents-toggle');
     const sidebarWrapper = document.getElementById('sidebar-wrapper');
     
-    // Toggle menu on hover
-    contentsToggle.addEventListener('mouseenter', function() {
-      sidebarWrapper.classList.add('active');
-    });
-    
-    // Hide sidebar when mouse leaves both toggle and sidebar
-    sidebarWrapper.addEventListener('mouseleave', function(e) {
-      // Only hide if we're not entering the toggle button
-      if (e.relatedTarget !== contentsToggle) {
-        // First add the fading class to trigger translucent animation
+    // Toggle menu on click
+    contentsToggle.addEventListener('click', function() {
+      if (sidebarWrapper.classList.contains('active')) {
         sidebarWrapper.classList.add('fading');
         sidebarWrapper.classList.remove('active');
-        
-        // Then remove the fading class and hide after animation completes
         setTimeout(() => {
           sidebarWrapper.classList.remove('fading');
           sidebarWrapper.style.display = 'none';
-        }, 1000); // Match the 1s transition time
+        }, 300);
+      } else {
+        sidebarWrapper.classList.remove('fading');
+        sidebarWrapper.style.display = 'block';
+        setTimeout(() => {
+          sidebarWrapper.classList.add('active');
+        }, 10);
       }
     });
     
-    // Clear the previous event listener for mouseenter
-    contentsToggle.removeEventListener('mouseenter', null);
-    
-    // Make sure to reset display when showing the sidebar
-    contentsToggle.addEventListener('mouseenter', function() {
-      sidebarWrapper.classList.remove('fading');
-      sidebarWrapper.style.display = 'block';
-      
-      // Small delay to ensure display: block takes effect before adding active
-      setTimeout(() => {
-        sidebarWrapper.classList.add('active');
-      }, 10);
+    // Hide sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!sidebarWrapper.contains(e.target) && !contentsToggle.contains(e.target) && sidebarWrapper.classList.contains('active')) {
+        sidebarWrapper.classList.add('fading');
+        sidebarWrapper.classList.remove('active');
+        setTimeout(() => {
+          sidebarWrapper.classList.remove('fading');
+          sidebarWrapper.style.display = 'none';
+        }, 300);
+      }
     });
     
     // Update active link on scroll
