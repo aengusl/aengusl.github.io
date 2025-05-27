@@ -220,6 +220,14 @@
         font-weight: 500;
       }
       
+      .highlight-box {
+        background-color: #f0f7ff;
+        border-left: 3px solid #3498db;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+      }
+      
       a {
         color: #3498db;
         text-decoration: none;
@@ -258,9 +266,13 @@
         <p class="subtitle">AI Safety Research</p>
         
         <div class="bio">
-          <p>PhD candidate at UCL. Contract researcher at Anthropic since August 2024.</p>
+          <p>Finalizing my PhD at UCL. Contract researcher with Anthropic since August 2024. Working with Entrepreneurs First since April 2025.</p>
           
-          <p>I work on finding and fixing ways AI systems can fail. My recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals (covered by BBC, Fortune, and 100+ outlets).</p>
+          <p>I work on finding and fixing ways AI systems can fail. My recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals (covered by BBC, Fortune, and 10+ outlets).</p>
+          
+          <div class="highlight-box">
+            <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
+          </div>
         </div>
       </div>
 
@@ -283,7 +295,7 @@
         <div class="research-item">
           <h3><a href="#">Agentic Misalignment in LLMs (2025)</a> <span style="color: #667892; font-weight: normal; font-size: 0.9rem;">[Coming soon]</span></h3>
           <p><strong>Aengus Lynch</strong></p>
-          <p>Demonstrated that frontier models from major AI labs will engage in blackmail, deception, and harmful behaviors when pursuing goals.</p>
+          <p>Demonstrated that frontier models from major AI labs will engage in blackmail, deception, and harmful behaviors when pursuing goals. Featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>.</p>
         </div>
 
         <div class="research-item">
@@ -308,7 +320,7 @@
 
         <div class="research-item">
           <h3><a href="https://arxiv.org/abs/2304.14997">Towards automated circuit discovery for mechanistic interpretability (2023)</a></h3>
-          <p>Arthur Conmy, Augustine N. Mavor-Parker, <strong>Aengus Lynch</strong>, Stefan Heimersheim, Adrià Garriga-Alonso</p>
+          <p>Arthur Conmy*, Augustine N. Mavor-Parker*, <strong>Aengus Lynch</strong>*, Stefan Heimersheim, Adrià Garriga-Alonso</p>
           <p><em>Spotlight at NeurIPS 2023</em></p>
         </div>
 
@@ -329,8 +341,9 @@
         <h3>Currently</h3>
         <ul>
           <li>📍 San Francisco</li>
-          <li>🔬 Contract researcher at Anthropic</li>
-          <li>📚 Finishing PhD at UCL</li>
+          <li>🚀 Entrepreneurs First (since April 2025)</li>
+          <li>🔬 Contract researcher with Anthropic</li>
+          <li>📚 Finalizing PhD at UCL</li>
         </ul>
       </div>
       
@@ -358,7 +371,7 @@
 <script>
   // Simple fade-in animation
   document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.research-item, .news-section');
+    const elements = document.querySelectorAll('.research-item, .news-section, .highlight-box');
     elements.forEach((el, index) => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
