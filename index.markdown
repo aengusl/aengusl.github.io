@@ -281,10 +281,8 @@ layout: home
         <h1>Aengus Lynch</h1>
         <p class="subtitle">AI Safety Research</p>
         
-        <div class="bio">
-          <p>Finalizing my PhD at UCL. Contract researcher with Anthropic since August 2024. Working with Entrepreneurs First</p>
-          
-          <p>I work on finding and fixing ways AI systems can fail. My recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals (covered by BBC, Fortune, and 10+ outlets).</p>
+        <div class="bio">          
+          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals (covered by BBC, Fortune, and 10+ outlets).</p>
           
           <div class="highlight-box">
             <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
