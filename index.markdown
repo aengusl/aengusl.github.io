@@ -282,7 +282,7 @@ layout: home
         <p class="subtitle">AI Safety Research</p>
         
         <div class="bio">
-          <p>Finalizing my PhD at UCL. Contract researcher with Anthropic since August 2024. Working with Entrepreneurs First since April 2025.</p>
+          <p>Finalizing my PhD at UCL. Contract researcher with Anthropic since August 2024. Working with Entrepreneurs First</p>
           
           <p>I work on finding and fixing ways AI systems can fail. My recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals (covered by BBC, Fortune, and 10+ outlets).</p>
           
