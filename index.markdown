@@ -277,7 +277,7 @@ layout: home
   <div class="main-content">
     <div class="left-column">
       <div class="profile-section" id="about">
-        <img src="mission_selfie_nov24.png" alt="Aengus Lynch">
+        <img src="june-6-2025-compressed.png" alt="Aengus Lynch">
         <h1>Aengus Lynch</h1>
         <p class="subtitle">AI Safety Research</p>
         
