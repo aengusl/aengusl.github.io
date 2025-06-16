@@ -17,9 +17,30 @@ layout: home
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@aengus_lynch1">
     
-    <!-- Hide the default header -->
+    <!-- Hide the default header and override wrapper -->
     <style>
       .site-header {
+        display: none !important;
+      }
+      
+      /* Override the Jekyll theme wrapper constraints */
+      .wrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .page-content {
+        padding: 0 !important;
+      }
+      
+      .home {
+        width: 100% !important;
+      }
+      
+      /* Hide the footer */
+      .site-footer {
         display: none !important;
       }
     </style>
@@ -42,19 +63,41 @@ layout: home
   }
   
   .container {
-    max-width: 1100px;
-    margin: 4rem auto;
-    padding: 0 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 4rem 0;
+    padding: 0 80px;
     background-color: transparent;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 1200px) {
+    .container {
+      padding: 0 40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+      margin: 2rem 0;
+    }
   }
   
   .main-content {
     display: grid;
     grid-template-columns: 1fr 320px;
-    gap: 3rem;
+    gap: 4rem;
     align-items: start;
+  }
+  
+  @media (min-width: 1400px) {
+    .main-content {
+      grid-template-columns: 1fr 350px;
+      gap: 5rem;
+    }
   }
   
   .left-column {
@@ -138,7 +181,7 @@ layout: home
   
   @media (max-width: 768px) {
     .container {
-      margin: 2rem auto;
+      margin: 2rem 0;
       padding: 0 20px;
     }
   }

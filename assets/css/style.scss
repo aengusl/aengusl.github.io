@@ -1,0 +1,37 @@
+---
+---
+
+@import "minima";
+
+/* Custom overrides for wider layout on larger screens */
+
+/* For laptop/desktop screens (above 1200px), use more screen width */
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    max-width: 1100px;
+    max-width: calc(1100px - (30px * 2));
+  }
+  
+  /* Adjust footer columns for wider layout */
+  .footer-col-1 {
+    width: calc(30% - (30px / 2));
+  }
+  
+  .footer-col-2 {
+    width: calc(25% - (30px / 2));
+  }
+  
+  .footer-col-3 {
+    width: calc(45% - (30px / 2));
+  }
+}
+
+/* For medium screens (tablets and small laptops) */
+@media screen and (min-width: 800px) and (max-width: 1199px) {
+  .wrapper {
+    max-width: 900px;
+    max-width: calc(900px - (30px * 2));
+  }
+}
+
+/* Mobile styles remain unchanged (default Minima behavior) */
