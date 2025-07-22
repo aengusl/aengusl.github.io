@@ -5,11 +5,11 @@
 # yourself editing this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
 
-title: "AI Safety Research"
+title: "AI Alignment Research"
 email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  PhD student at UCL researching AI safety, mechanistic interpretability, 
-  and AI alignment. Former MATS scholar with Stephen Casper.
+  PhD student at UCL researching AI Alignment, mechanistic interpretability, 
+  and AI safety. Former MATS scholar with Stephen Casper.
 baseurl: ""
 url: "https://www.aenguslynch.com"
 author: Aengus Lynch

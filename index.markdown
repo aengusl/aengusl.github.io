@@ -5,12 +5,12 @@ layout: home
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AI Safety Research - Aengus Lynch, lead author of agentic misalignment research on AI systems engaging in deception and blackmail">
+    <meta name="description" content="AI Alignment Research - Aengus Lynch, lead author of agentic misalignment research on AI systems engaging in deception and blackmail">
     <meta name="author" content="Aengus Lynch">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Aengus Lynch - AI Safety Research">
-    <meta property="og:description" content="AI Safety Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research featured in 15+ major outlets">
+    <meta property="og:title" content="Aengus Lynch - AI S Research">
+    <meta property="og:description" content="AI Alignment Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research featured in 15+ major outlets">
     <meta property="og:url" content="https://aenguslynch.com">
     
     <!-- Twitter -->
@@ -322,7 +322,7 @@ layout: home
       <div class="profile-section" id="about">
         <img src="prof-pic-cropped.jpeg" alt="Aengus Lynch">
         <h1>Aengus Lynch</h1>
-        <p class="subtitle">AI Safety Research</p>
+        <p class="subtitle">AI Alignment Research</p>
         
         <div class="bio">          
           <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work on agentic misalignment demonstrated how frontier models can engage in blackmail and deception when pursuing goals, receiving coverage from over 15 major outlets including BBC, Fortune, and VentureBeat. Now, I am focused squarely on identifying and patching these vulnerabilities in autonomous AI systems.</p>
@@ -479,11 +479,11 @@ layout: home
     "https://scholar.google.com/citations?user=Pd2002AAAAAJ",
     "https://www.linkedin.com/in/aengus-lynch-2876a6125"
   ],
-  "jobTitle": "AI Safety Researcher",
+  "jobTitle": "AI Alignment Researcher",
   "worksFor": {
     "@type": "Organization",
     "name": "Anthropic"
   },
-  "description": "AI Safety Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research demonstrating AI deception and blackmail behaviors"
+  "description": "AI Alignment Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research demonstrating AI deception and blackmail behaviors"
 }
 </script>

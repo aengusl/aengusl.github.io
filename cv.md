@@ -6,7 +6,7 @@
 
 ## Research Interests
 
-AI Safety, Agentic LLMs, Adversarial Robustness, Mechanistic Interpretability
+AI Alignment, Agentic LLMs, Adversarial Robustness, Mechanistic Interpretability, AI Safety
 
 ## Education
 
