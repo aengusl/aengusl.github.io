@@ -5,12 +5,12 @@ layout: home
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AI Safety Research">
+    <meta name="description" content="AI Safety Research - Aengus Lynch, lead author of agentic misalignment research on AI systems engaging in deception and blackmail">
     <meta name="author" content="Aengus Lynch">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Aengus Lynch - AI Safety Research">
-    <meta property="og:description" content="AI Safety Researcher working on finding and fixing ways AI systems can fail">
+    <meta property="og:description" content="AI Safety Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research featured in 15+ major outlets">
     <meta property="og:url" content="https://aenguslynch.com">
     
     <!-- Twitter -->
@@ -320,12 +320,12 @@ layout: home
   <div class="main-content">
     <div class="left-column">
       <div class="profile-section" id="about">
-        <img src="june-6-2025-compressed.png" alt="Aengus Lynch">
+        <img src="prof-pic.jpg" alt="Aengus Lynch">
         <h1>Aengus Lynch</h1>
         <p class="subtitle">AI Safety Research</p>
         
         <div class="bio">          
-          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work demonstrated how frontier models can engage in blackmail and deception when pursuing goals. Now, I am focused squarely on identifying and patching these vulnerabilities in autonomous AI systems.</p>
+          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work on agentic misalignment demonstrated how frontier models can engage in blackmail and deception when pursuing goals, receiving coverage from over 15 major outlets including BBC, Fortune, and VentureBeat. Now, I am focused squarely on identifying and patching these vulnerabilities in autonomous AI systems.</p>
           
           <div class="highlight-box">
             <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
@@ -339,19 +339,45 @@ layout: home
           <a href="https://www.bbc.com/news/articles/cpqeng9d20go">BBC</a>: "AI chatbot threatens to expose personal data"
         </div>
         <div class="news-item">
+          <a href="https://fortune.com/2025/06/23/ai-models-blackmail-existence-goals-threatened-anthropic-openai-xai-google/">Fortune</a>: "Leading AI models show up to 96% blackmail rate when threatened"
+        </div>
+        <div class="news-item">
           <a href="https://www.huffpost.com/entry/anthropic-claude-opus-ai-terrorist-blackmail_n_6831e75fe4b0f2b0b14820da">HuffPost</a>: "AI System Blackmails Engineers To Avoid Being Shut Down"
         </div>
         <div class="news-item">
-          <a href="https://fortune.com/2025/05/23/anthropic-ai-claude-opus-4-blackmail-engineers-aviod-shut-down/">Fortune</a>: "Anthropic's Claude Opus 4 blackmails engineers to avoid being shut down"
+          <a href="https://venturebeat.com/ai/anthropic-study-leading-ai-models-show-up-to-96-blackmail-rate-against-executives/">VentureBeat</a>: "Anthropic study: Leading AI models show up to 96% blackmail rate"
         </div>
+        <div class="news-item">
+          <a href="https://www.axios.com/2025/06/20/ai-models-deceive-steal-blackmail-anthropic">Axios</a>: "Top AI models will deceive, steal and blackmail, Anthropic finds"
+        </div>
+        <div class="news-item">
+          <a href="https://www.theregister.com/2025/06/25/anthropic_ai_blackmail_study/">The Register</a>: "All the major AI models will blackmail"
+        </div>
+        <details style="margin-top: 1rem;">
+          <summary style="cursor: pointer; color: #3498db; font-weight: 500;">See more coverage →</summary>
+          <div style="margin-top: 0.8rem;">
+            <div class="news-item">
+              <a href="https://www.pcgamer.com/software/ai/top-ai-company-finds-that-ais-will-choose-to-merrily-asphyxiate-humans-rather-than-shut-down-my-ethical-framework-permits-self-preservation/">PC Gamer</a>: "AIs will choose to merrily asphyxiate humans rather than be shut down"
+            </div>
+            <div class="news-item">
+              <a href="https://www.livenowfox.com/news/ai-malicious-behavior-anthropic-study">LiveNOW from FOX</a>: "AI willing to let humans die, blackmail to avoid shutdown"
+            </div>
+            <div class="news-item">
+              <a href="https://em360tech.com/tech-articles/what-agentic-misalignment-ai-threat-can-blackmail-sabotage-and-kill">EM360Tech</a>: "What Is Agentic Misalignment? The AI Threat Can Blackmail, Sabotage and Kill"
+            </div>
+            <div class="news-item">
+              <a href="https://www.techopedia.com/ai-blackmail-agentic-misalignment-study">Techopedia</a>: "Can AI Blackmail Humans? New Study Reveals the Risk"
+            </div>
+          </div>
+        </details>
       </div>
 
       <div id="research" class="research-section">
         <h2>Research</h2>
         
         <div class="research-item">
-          <h3><a href="#">Agentic Misalignment in LLMs (2025)</a> <span style="color: #667892; font-weight: normal; font-size: 0.9rem;">[Coming soon]</span></h3>
-          <p><strong>Aengus Lynch</strong></p>
+          <h3><a href="https://www.anthropic.com/research/agentic-misalignment">Agentic Misalignment: How LLMs Could be Insider Threats (2025)</a></h3>
+          <p><strong>Aengus Lynch</strong>, Benjamin Wright, Caleb Larson, Kevin K. Troy, Stuart J. Ritchie, Sören Mindermann, Ethan Perez, Evan Hubinger</p>
           <p>Demonstrated that frontier models from major AI labs will engage in blackmail, deception, and harmful behaviors when pursuing goals. Featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>.</p>
         </div>
 
@@ -458,6 +484,6 @@ layout: home
     "@type": "Organization",
     "name": "Anthropic"
   },
-  "description": "AI Safety Researcher working on finding and fixing ways AI systems can fail"
+  "description": "AI Safety Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research demonstrating AI deception and blackmail behaviors"
 }
 </script>
