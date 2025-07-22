@@ -320,7 +320,7 @@ layout: home
   <div class="main-content">
     <div class="left-column">
       <div class="profile-section" id="about">
-        <img src="prof-pic.jpg" alt="Aengus Lynch">
+        <img src="prof-pic-cropped.jpeg" alt="Aengus Lynch">
         <h1>Aengus Lynch</h1>
         <p class="subtitle">AI Safety Research</p>
         
