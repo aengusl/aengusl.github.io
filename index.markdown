@@ -423,7 +423,7 @@ layout: home
       <div class="sidebar-section">
         <h3>Currently</h3>
         <ul>
-          <li>📍 San Francisco (London in June)</li>
+          <li>📍 San Francisco</li>
           <li>🚀 Entrepreneurs First</li>
           <li>🔬 Contract researcher with Anthropic</li>
           <li>📚 Finalizing PhD at UCL</li>
