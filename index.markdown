@@ -325,7 +325,7 @@ layout: home
         <p class="subtitle">AI Alignment Research</p>
         
         <div class="bio">          
-          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work on agentic misalignment demonstrated how frontier models can engage in blackmail and deception when pursuing goals, receiving coverage from over 15 major outlets including BBC, Fortune, and VentureBeat. Now, I am focused squarely on identifying and patching these vulnerabilities in autonomous AI systems.</p>
+          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work on agentic misalignment demonstrated how frontier models can engage in blackmail and deception when pursuing goals, receiving coverage from over 15 major outlets including BBC, Fortune, and VentureBeat. I recently completed my PhD at UCL on this topic, and am now continuing this research through the Anthropic Fellows program.</p>
           
           <div class="highlight-box">
             <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
@@ -374,7 +374,14 @@ layout: home
 
       <div id="research" class="research-section">
         <h2>Research</h2>
-        
+
+        <div class="research-item">
+          <h3>PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2025)</h3>
+          <p><strong>Aengus Lynch</strong></p>
+          <p>Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.</p>
+          <p><em>[PDF forthcoming]</em></p>
+        </div>
+
         <div class="research-item">
           <h3><a href="https://www.anthropic.com/research/agentic-misalignment">Agentic Misalignment: How LLMs Could be Insider Threats (2025)</a></h3>
           <p><strong>Aengus Lynch</strong>, Benjamin Wright, Caleb Larson, Kevin K. Troy, Stuart J. Ritchie, Sören Mindermann, Ethan Perez, Evan Hubinger</p>
@@ -424,9 +431,8 @@ layout: home
         <h3>Currently</h3>
         <ul>
           <li>📍 San Francisco</li>
-          <li>🚀 Entrepreneurs First</li>
-          <li>🔬 Contract researcher with Anthropic</li>
-          <li>📚 Finalizing PhD at UCL</li>
+          <li>🔬 Anthropic Fellows program</li>
+          <li>🎓 PhD, UCL</li>
         </ul>
       </div>
       
