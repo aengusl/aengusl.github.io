@@ -447,7 +447,7 @@ layout: home
       <div class="sidebar-section">
         <h3>Links</h3>
         <ul>
-          <li><a href="aenguslynch_cv_241206.pdf">CV</a></li>
+          <li><a href="260113_aengus_cv.pdf">CV</a></li>
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
