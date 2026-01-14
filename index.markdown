@@ -47,13 +47,13 @@ layout: home
 </head>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap');
   
   body {
-    background-color: #fafafa;
-    color: #2c3e50;
+    background-color: #faf8f5;
+    color: #3d2c1e;
     line-height: 1.7;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     position: relative;
@@ -116,7 +116,7 @@ layout: home
   .sidebar-section h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: #3d2c1e;
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -131,12 +131,12 @@ layout: home
   
   .sidebar-section li {
     padding: 0.4rem 0;
-    color: #4a5568;
+    color: #5c4a3d;
     font-size: 0.95rem;
   }
   
   .sidebar-section a {
-    color: #3498db;
+    color: #c45d2e;
     text-decoration: none;
     font-weight: 500;
   }
@@ -152,18 +152,18 @@ layout: home
   .news-section h2 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: #3d2c1e;
     font-size: 1.3rem;
     font-weight: 600;
   }
   
   .news-item {
     margin-bottom: 0.8rem;
-    color: #4a5568;
+    color: #5c4a3d;
   }
   
   .news-item a {
-    color: #2c3e50;
+    color: #3d2c1e;
     font-weight: 500;
   }
   
@@ -190,30 +190,38 @@ layout: home
     text-align: left;
     margin-bottom: 4rem;
   }
-  
+
   .profile-section img {
-    display: block;
-    width: 150px;
-    height: 150px;
+    float: left;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    margin: 0 0 2rem 0;
+    margin: 0 2rem 1rem 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     object-fit: cover;
     object-position: center;
     border: 3px solid #ffffff;
   }
+
+  @media (max-width: 600px) {
+    .profile-section img {
+      float: none;
+      display: block;
+      margin: 0 0 2rem 0;
+    }
+  }
   
   h1 {
     font-size: 2.2rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: #3d2c1e;
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.03em;
   }
   
   .subtitle {
     font-size: 1.1rem;
-    color: #667892;
+    color: #6b5344;
     margin: 0 0 2rem 0;
     font-weight: 400;
   }
@@ -222,7 +230,7 @@ layout: home
     margin: 2rem 0;
     font-size: 1rem;
     line-height: 1.8;
-    color: #4a5568;
+    color: #5c4a3d;
   }
   
   .bio p {
@@ -232,7 +240,7 @@ layout: home
   .research-section h2 {
     margin-top: 4rem;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: #3d2c1e;
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -240,7 +248,7 @@ layout: home
   .research-item {
     margin-bottom: 2rem;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #eef1f5;
+    border-bottom: 1px solid #f0e6db;
   }
   
   .research-item:last-child {
@@ -249,48 +257,48 @@ layout: home
   
   .research-item h3 {
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: #3d2c1e;
     font-size: 1.1rem;
     font-weight: 600;
   }
   
   .research-item h3 a {
-    color: #2c3e50;
+    color: #3d2c1e;
     text-decoration: none;
   }
   
   .research-item h3 a:hover {
-    color: #3498db;
+    color: #c45d2e;
   }
   
   .research-item p {
-    color: #667892;
+    color: #6b5344;
     margin: 0.3rem 0;
     font-size: 0.95rem;
     line-height: 1.6;
   }
   
   .research-item p strong {
-    color: #4a5568;
+    color: #5c4a3d;
     font-weight: 500;
   }
   
   .research-item p em {
-    color: #3498db;
+    color: #c45d2e;
     font-style: normal;
     font-weight: 500;
   }
   
   .highlight-box {
-    background-color: #f0f7ff;
-    border-left: 3px solid #3498db;
+    background-color: #fdf6ed;
+    border-left: 3px solid #c45d2e;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 4px;
   }
   
   a {
-    color: #3498db;
+    color: #c45d2e;
     text-decoration: none;
   }
   
@@ -320,8 +328,8 @@ layout: home
   <div class="main-content">
     <div class="left-column">
       <div class="profile-section" id="about">
-        <img src="prof-pic-cropped.jpeg" alt="Aengus Lynch">
-        <h1>Aengus Lynch</h1>
+        <img src="boat-pic.jpg" alt="Aengus Lynch">
+        <h1>Aengus Lynch, Ph.D</h1>
         <p class="subtitle">AI Alignment Research</p>
         
         <div class="bio">          
@@ -354,7 +362,7 @@ layout: home
           <a href="https://www.theregister.com/2025/06/25/anthropic_ai_blackmail_study/">The Register</a>: "All the major AI models will blackmail"
         </div>
         <details style="margin-top: 1rem;">
-          <summary style="cursor: pointer; color: #3498db; font-weight: 500;">See more coverage →</summary>
+          <summary style="cursor: pointer; color: #c45d2e; font-weight: 500;">See more coverage →</summary>
           <div style="margin-top: 0.8rem;">
             <div class="news-item">
               <a href="https://www.pcgamer.com/software/ai/top-ai-company-finds-that-ais-will-choose-to-merrily-asphyxiate-humans-rather-than-shut-down-my-ethical-framework-permits-self-preservation/">PC Gamer</a>: "AIs will choose to merrily asphyxiate humans rather than be shut down"
