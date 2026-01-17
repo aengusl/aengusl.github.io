@@ -322,6 +322,135 @@ layout: home
   ::-webkit-scrollbar-thumb:hover {
     background: #ccd2d9;
   }
+
+  /* Dark mode toggle button */
+  .theme-toggle {
+    background: none;
+    border: 1px solid #c45d2e;
+    color: #c45d2e;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background: #c45d2e;
+    color: #fff;
+  }
+
+  /* Dark mode styles */
+  body.dark-mode {
+    background-color: #1a1612;
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .sidebar-section h3 {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .sidebar-section li {
+    color: #c4b8a8;
+  }
+
+  body.dark-mode .sidebar-section a {
+    color: #d4703a;
+  }
+
+  body.dark-mode .news-section h2 {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .news-item {
+    color: #c4b8a8;
+  }
+
+  body.dark-mode .news-item a {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode h1 {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .subtitle {
+    color: #a89888;
+  }
+
+  body.dark-mode .bio {
+    color: #c4b8a8;
+  }
+
+  body.dark-mode .research-section h2 {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .research-item {
+    border-bottom-color: #2d2419;
+  }
+
+  body.dark-mode .research-item h3,
+  body.dark-mode .research-item h3 a {
+    color: #e8e0d5;
+  }
+
+  body.dark-mode .research-item h3 a:hover {
+    color: #d4703a;
+  }
+
+  body.dark-mode .research-item p {
+    color: #a89888;
+  }
+
+  body.dark-mode .research-item p strong {
+    color: #c4b8a8;
+  }
+
+  body.dark-mode .research-item p em {
+    color: #d4703a;
+  }
+
+  body.dark-mode .highlight-box {
+    background-color: #2d2419;
+    border-left-color: #d4703a;
+  }
+
+  body.dark-mode a {
+    color: #d4703a;
+  }
+
+  body.dark-mode details summary {
+    color: #d4703a;
+  }
+
+  body.dark-mode .profile-section img {
+    border-color: #2d2419;
+  }
+
+  body.dark-mode .theme-toggle {
+    border-color: #d4703a;
+    color: #d4703a;
+  }
+
+  body.dark-mode .theme-toggle:hover {
+    background: #d4703a;
+    color: #1a1612;
+  }
+
+  body.dark-mode ::-webkit-scrollbar-track {
+    background: #1a1612;
+  }
+
+  body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #3d2c1e;
+  }
+
+  body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #5c4a3d;
+  }
 </style>
 
 <div class="container">
@@ -435,6 +564,7 @@ layout: home
     </div>
     
     <div class="right-sidebar">
+      <button class="theme-toggle" onclick="toggleDarkMode()">🌙 Dark mode</button>
       <div class="sidebar-section">
         <h3>Currently</h3>
         <ul>
@@ -466,8 +596,28 @@ layout: home
 </div>
 
 <script>
-  // Simple fade-in animation
+  // Dark mode toggle
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    updateToggleButton(isDark);
+  }
+
+  function updateToggleButton(isDark) {
+    const btn = document.querySelector('.theme-toggle');
+    btn.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+  }
+
+  // Check saved preference on load (default to light)
   document.addEventListener('DOMContentLoaded', function() {
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'true') {
+      document.body.classList.add('dark-mode');
+      updateToggleButton(true);
+    }
+
+    // Simple fade-in animation
     const elements = document.querySelectorAll('.research-item, .news-section, .highlight-box');
     elements.forEach((el, index) => {
       el.style.opacity = '0';
