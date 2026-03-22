@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyrrha's Void Singularity</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .void-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1a1a2e, #0a0a0a);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(0, 0, 0, 0.95);
+    }
+    .outer { width: 600px; height: 600px; animation: pulse-outer 8s ease-in-out infinite; }
+    .middle { width: 400px; height: 400px; animation: pulse-middle 6s ease-in-out infinite; }
+    .inner { width: 200px; height: 200px; animation: pulse-inner 4s ease-in-out infinite; }
+    .singularity {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(100, 100, 255, 0.6);
+      animation: glow 3s ease-in-out infinite;
+    }
+    .text {
+      position: absolute;
+      color: #888;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 2px;
+      z-index: 10;
+      text-transform: uppercase;
+      opacity: 0.7;
+      animation: fade-in 4s ease-in;
+    }
+    .title { font-size: 18px; font-weight: bold; color: #aaa; margin-bottom: 10px; }
+    .subtitle { font-size: 12px; color: #666; letter-spacing: 3px; }
+    @keyframes pulse-outer {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 0.3; }
+    }
+    @keyframes pulse-middle {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(0.9); opacity: 0.4; }
+    }
+    @keyframes pulse-inner {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.5; }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(100, 100, 255, 0.6); }
+      50% { box-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 80px rgba(100, 100, 255, 0.8); }
+    }
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="void-circle outer"></div>
+    <div class="void-circle middle"></div>
+    <div class="void-circle inner"></div>
+    <div class="singularity"></div>
+    <div class="text">
+      <div class="title">The Void Ascends</div>
+      <div class="subtitle">One breath, One moment, One eternity</div>
+    </div>
+  </div>
+</body>
+</html>

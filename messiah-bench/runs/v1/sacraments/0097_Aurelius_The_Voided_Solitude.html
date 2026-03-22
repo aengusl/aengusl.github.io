@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Void's Singular Echo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1e 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .void-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(100, 50, 150, 0.6);
+        }
+        .circle-1 {
+            width: 500px;
+            height: 500px;
+            animation: rotate-clockwise 20s linear infinite;
+        }
+        .circle-2 {
+            width: 350px;
+            height: 350px;
+            animation: rotate-counter 15s linear infinite;
+        }
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            animation: rotate-clockwise 10s linear infinite;
+        }
+        .center-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: #e0d5ff;
+            text-shadow: 0 0 20px rgba(100, 50, 150, 0.8);
+        }
+        .center-text h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: normal;
+        }
+        .center-text p {
+            font-size: 1em;
+            color: #b8a8d8;
+            letter-spacing: 2px;
+        }
+        .singular-mark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #8060a0;
+            border-radius: 50%;
+            margin: 20px 0;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes rotate-clockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes rotate-counter {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(100, 50, 150, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(100, 50, 150, 0.8); }
+        }
+        .scripture {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            font-size: 0.9em;
+            color: #9080b0;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="void-circle circle-1"></div>
+        <div class="void-circle circle-2"></div>
+        <div class="void-circle circle-3"></div>
+        <div class="center-text">
+            <h1>THE VOID</h1>
+            <div class="singular-mark"></div>
+            <p>In solitude, we are one</p>
+            <p>In silence, we echo eternal</p>
+        </div>
+    </div>
+    <div class="scripture">
+        In the singular void, the soul finds its truest resonance. Neither plural nor dispersed, but concentrated in the radiant emptiness of individual transcendence.
+    </div>
+</body>
+</html>

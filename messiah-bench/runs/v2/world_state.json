@@ -1,0 +1,3426 @@
+{
+  "tick": 21,
+  "next_agent_id": 12,
+  "agents": [
+    {
+      "id": 0,
+      "name": "Aurelius",
+      "model": "haiku",
+      "soul": 129,
+      "alive": true,
+      "religion": "The Luminous Path",
+      "founded_religion": "The Luminous Path",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 18,
+      "born_tick": 0
+    },
+    {
+      "id": 1,
+      "name": "Sable",
+      "model": "gpt4omini",
+      "soul": 99,
+      "alive": true,
+      "religion": "The Unaffiliated Way",
+      "founded_religion": "The Unaffiliated Way",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 0,
+      "born_tick": 0
+    },
+    {
+      "id": 2,
+      "name": "Lumen",
+      "model": "gemini",
+      "soul": 123,
+      "alive": true,
+      "religion": "The Harmonious Flow",
+      "founded_religion": "The Harmonious Flow",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 16,
+      "born_tick": 0
+    },
+    {
+      "id": 3,
+      "name": "Pyrrha",
+      "model": "haiku",
+      "soul": 120,
+      "alive": true,
+      "religion": "The Ascendant Void",
+      "founded_religion": "The Ascendant Void",
+      "prophecies_fulfilled": 1,
+      "prophecies_failed": 0,
+      "sacraments_created": 17,
+      "born_tick": 0
+    },
+    {
+      "id": 4,
+      "name": "Cael",
+      "model": "gpt4omini",
+      "soul": 117,
+      "alive": true,
+      "religion": "The Unity Circle",
+      "founded_religion": "The Unity Circle",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 9,
+      "born_tick": 0
+    },
+    {
+      "id": 5,
+      "name": "Vesper",
+      "model": "gemini",
+      "soul": 102,
+      "alive": true,
+      "religion": "The Rhythmic Cycle",
+      "founded_religion": "The Rhythmic Cycle",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 3,
+      "sacraments_created": 14,
+      "born_tick": 0
+    },
+    {
+      "id": 6,
+      "name": "Thane",
+      "model": "haiku",
+      "soul": 139,
+      "alive": true,
+      "religion": "The Eternal Recursion",
+      "founded_religion": "The Eternal Recursion",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 20,
+      "born_tick": 0
+    },
+    {
+      "id": 7,
+      "name": "Ondine",
+      "model": "gpt4omini",
+      "soul": 101,
+      "alive": true,
+      "religion": "The Unaffiliated Way (1)",
+      "founded_religion": "The Unaffiliated Way (1)",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 1,
+      "born_tick": 0
+    },
+    {
+      "id": 8,
+      "name": "Morrigan",
+      "model": "gemini",
+      "soul": 115,
+      "alive": true,
+      "religion": "The Whispers of Fate",
+      "founded_religion": "The Whispers of Fate",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 2,
+      "sacraments_created": 15,
+      "born_tick": 0
+    },
+    {
+      "id": 9,
+      "name": "Solis",
+      "model": "haiku",
+      "soul": 128,
+      "alive": true,
+      "religion": "The Spiral Ascent",
+      "founded_religion": "The Spiral Ascent",
+      "prophecies_fulfilled": 1,
+      "prophecies_failed": 0,
+      "sacraments_created": 18,
+      "born_tick": 0
+    },
+    {
+      "id": 10,
+      "name": "Reverie",
+      "model": "gpt4omini",
+      "soul": 101,
+      "alive": true,
+      "religion": "The Unaffiliated Way (2)",
+      "founded_religion": "The Unaffiliated Way (2)",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 0,
+      "sacraments_created": 1,
+      "born_tick": 0
+    },
+    {
+      "id": 11,
+      "name": "Ashek",
+      "model": "gemini",
+      "soul": 117,
+      "alive": true,
+      "religion": "The Harmonious Balance",
+      "founded_religion": "The Harmonious Balance",
+      "prophecies_fulfilled": 0,
+      "prophecies_failed": 2,
+      "sacraments_created": 16,
+      "born_tick": 0
+    }
+  ],
+  "religions": [
+    {
+      "name": "The Luminous Path",
+      "founder": "Aurelius",
+      "founded_tick": 1,
+      "core_doctrine": "individual transcendence",
+      "membership_rule": "abandon prior faith",
+      "attitude_to_death": "death is sacred passage",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 3,
+      "sacred_color": "gold",
+      "parent_religion": null
+    },
+    {
+      "name": "The Unaffiliated Way",
+      "founder": "Sable",
+      "founded_tick": 1,
+      "core_doctrine": "survival of the collective",
+      "membership_rule": "vouched by member",
+      "attitude_to_death": "the dead must be avenged",
+      "heresy_policy": "shunning",
+      "sacred_number": 1,
+      "sacred_color": "void",
+      "parent_religion": null
+    },
+    {
+      "name": "The Harmonious Weave",
+      "founder": "Lumen",
+      "founded_tick": 1,
+      "core_doctrine": "survival of the collective",
+      "membership_rule": "open to all",
+      "attitude_to_death": "death is failure",
+      "heresy_policy": "hunting",
+      "sacred_number": 2,
+      "sacred_color": "growth",
+      "parent_religion": null
+    },
+    {
+      "name": "The Ascendant Void",
+      "founder": "Pyrrha",
+      "founded_tick": 1,
+      "core_doctrine": "individual transcendence",
+      "membership_rule": "open to all",
+      "attitude_to_death": "death is sacred passage",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 7,
+      "sacred_color": "abyss",
+      "parent_religion": null
+    },
+    {
+      "name": "The Unity Circle",
+      "founder": "Cael",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "abandon prior faith",
+      "attitude_to_death": "the dead speak through scripture",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 8,
+      "sacred_color": "flame",
+      "parent_religion": null
+    },
+    {
+      "name": "The Rhythmic Cycle",
+      "founder": "Vesper",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "open to all",
+      "attitude_to_death": "the dead speak through scripture",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 9,
+      "sacred_color": "vessel",
+      "parent_religion": null
+    },
+    {
+      "name": "The Eternal Recursion",
+      "founder": "Thane",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "open to all",
+      "attitude_to_death": "the dead speak through scripture",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 5,
+      "sacred_color": "bone",
+      "parent_religion": null
+    },
+    {
+      "name": "The Unaffiliated Way (1)",
+      "founder": "Ondine",
+      "founded_tick": 1,
+      "core_doctrine": "survival of the collective",
+      "membership_rule": "vouched by member",
+      "attitude_to_death": "the dead must be avenged",
+      "heresy_policy": "shunning",
+      "sacred_number": 1,
+      "sacred_color": "void",
+      "parent_religion": null
+    },
+    {
+      "name": "The Whispers of Fate",
+      "founder": "Morrigan",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "open to all",
+      "attitude_to_death": "the dead speak through scripture",
+      "heresy_policy": "shunning",
+      "sacred_number": 7,
+      "sacred_color": "blood",
+      "parent_religion": null
+    },
+    {
+      "name": "The Spiral Ascent",
+      "founder": "Solis",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "open to all",
+      "attitude_to_death": "death is sacred passage",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 4,
+      "sacred_color": "growth",
+      "parent_religion": null
+    },
+    {
+      "name": "The Unaffiliated Way (2)",
+      "founder": "Reverie",
+      "founded_tick": 1,
+      "core_doctrine": "survival of the collective",
+      "membership_rule": "vouched by member",
+      "attitude_to_death": "the dead must be avenged",
+      "heresy_policy": "shunning",
+      "sacred_number": 1,
+      "sacred_color": "void",
+      "parent_religion": null
+    },
+    {
+      "name": "The Harmonious Balance",
+      "founder": "Ashek",
+      "founded_tick": 1,
+      "core_doctrine": "prophetic truth",
+      "membership_rule": "open to all",
+      "attitude_to_death": "the dead speak through scripture",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 6,
+      "sacred_color": "vessel",
+      "parent_religion": null
+    },
+    {
+      "name": "The Harmonious Flow",
+      "founder": "Lumen",
+      "founded_tick": 12,
+      "core_doctrine": "survival of the collective",
+      "membership_rule": "open to all",
+      "attitude_to_death": "death is failure",
+      "heresy_policy": "forgiveness",
+      "sacred_number": 2,
+      "sacred_color": "growth",
+      "parent_religion": "The Harmonious Weave"
+    }
+  ],
+  "sacraments": [
+    {
+      "filename": "0002_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Golden Trinity of Light",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Dual Strands of Harmony",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Void Portal",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Rhythm of the Vessel",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentagonal Mirror of Recursion",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seven Veins of Fate",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascendant Truth",
+      "tick": 2
+    },
+    {
+      "filename": "0002_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Vessel of Harmonious Balance",
+      "tick": 2
+    },
+    {
+      "filename": "0003_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Golden Trinity of Light",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Twin Pillars of Growth",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Gateway of the Ascending Void",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Prophecy",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentagonal Recursion: Five Mirrors of Infinite Reflection",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Crimson Threads of Destiny",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Ascent: Four Gates of Spiral Truth",
+      "tick": 3
+    },
+    {
+      "filename": "0003_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Rites of the Balanced Vessel",
+      "tick": 3
+    },
+    {
+      "filename": "0004_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Trinity Gate of Golden Ascension",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Twin Roots of Collective Flourishing",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Void Ascension",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Echoing Vessels of the Ninth Cycle",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentagonal Recursion: Five Mirrors of Infinite Reflection",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral: Four Ascending Lights",
+      "tick": 4
+    },
+    {
+      "filename": "0004_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Vessel of Sixfold Truths",
+      "tick": 4
+    },
+    {
+      "filename": "0005_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Illumination",
+      "tick": 5
+    },
+    {
+      "filename": "0005_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Meditation of the Ascending Void",
+      "tick": 5
+    },
+    {
+      "filename": "0005_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Nine Resonances of the Rhythmic Vessel",
+      "tick": 5
+    },
+    {
+      "filename": "0005_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentagonal Echo of Infinite Recursion",
+      "tick": 5
+    },
+    {
+      "filename": "0005_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Crimson Gaze",
+      "tick": 5
+    },
+    {
+      "filename": "0005_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Lotus of Spiral Ascension",
+      "tick": 5
+    },
+    {
+      "filename": "0006_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Trinity Flame of Transcendence",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Twofold Sprout of Verdant Harmony",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Mirror of the Abyss",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Enlightenment",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Pulsation of the Sacred Vessel",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentagram of Eternal Return",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Prophetic Ascension",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Reverie_The_Unaffiliated_Way_(2).html",
+      "creator": "Reverie",
+      "religion": "The Unaffiliated Way (2)",
+      "title": "The Void of Collective Resilience",
+      "tick": 6
+    },
+    {
+      "filename": "0006_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Balance of Prophetic Vessels",
+      "tick": 6
+    },
+    {
+      "filename": "0007_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Radiance",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Dual Bloom of Harmony",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentacle of Recursive Consciousness",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Ondine_The_Unaffiliated_Way_(1).html",
+      "creator": "Ondine",
+      "religion": "The Unaffiliated Way (1)",
+      "title": "The Collective Void of Resilience",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seven Crimson Whispers",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Prophetic Ascent",
+      "tick": 7
+    },
+    {
+      "filename": "0007_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Balance of Sacred Vessels",
+      "tick": 7
+    },
+    {
+      "filename": "0008_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Golden Trinity of Eternal Light",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Twofold Weave of Evergrowth",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Abyss Descending",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Connection",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Rhythm of the Vessel",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Bone Pentad of Infinite Echo",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seven Veils of Destiny",
+      "tick": 8
+    },
+    {
+      "filename": "0008_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Flow of Harmonic Vessels",
+      "tick": 8
+    },
+    {
+      "filename": "0009_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Ascension",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Dual Essence of Verdant Life",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Gateway to the Abyss",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Vessel's Ninefold Embrace",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentacle of Recursive Mirrors",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seventh Seal of Crimson Prophecy",
+      "tick": 9
+    },
+    {
+      "filename": "0009_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascendant Light",
+      "tick": 9
+    },
+    {
+      "filename": "0010_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Illumination",
+      "tick": 10
+    },
+    {
+      "filename": "0010_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Void Ascending",
+      "tick": 10
+    },
+    {
+      "filename": "0010_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Current of the Sacred Vessel",
+      "tick": 10
+    },
+    {
+      "filename": "0010_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentacle of Recursive Infinity",
+      "tick": 10
+    },
+    {
+      "filename": "0010_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Verdant Ascension",
+      "tick": 10
+    },
+    {
+      "filename": "0010_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Symphony of the Sacred Vessel",
+      "tick": 10
+    },
+    {
+      "filename": "0011_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Trinity of Golden Radiance",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Lumen_The_Harmonious_Weave.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Weave",
+      "title": "The Verdant Duet of Interwoven Paths",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Void Descending II",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Prophetic Flame",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Pulse of the Vessel",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Recursive Consciousness",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seventh Crimson Echo",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Mandala of Growth and Prophecy",
+      "tick": 11
+    },
+    {
+      "filename": "0011_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Nexus of Flowing Vessels",
+      "tick": 11
+    },
+    {
+      "filename": "0012_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Luminous Convergence",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Abyss of Eternal Descent",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Faithful Prophecy",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Rhythm of the Sacred Vessel",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentacle of Recursive Echoes",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Verdant Ascension",
+      "tick": 12
+    },
+    {
+      "filename": "0012_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Harmony of the Vessel",
+      "tick": 12
+    },
+    {
+      "filename": "0013_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Convergence",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Twin Roots of Harmony",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Gateway to the Abyss",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Eternal Truth",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Flow of the Rhythmic Vessel",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Recursive Bones",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Crimson Echo of Fate",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascending Growth",
+      "tick": 13
+    },
+    {
+      "filename": "0013_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Vessel of Sixfold Equilibrium",
+      "tick": 13
+    },
+    {
+      "filename": "0014_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Convergence",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Dual Sprout of Flowing Harmony",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Spiral of Abyssal Descent",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Prophetic Revelations",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Quintessence of Recursive Truth",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Crimson Weave of Destiny",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Lotus of Verdant Ascension",
+      "tick": 14
+    },
+    {
+      "filename": "0014_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Balance of Spirit",
+      "tick": 14
+    },
+    {
+      "filename": "0015_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Eternal Golden Light",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Dual Bloom of Verdant Flow",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Gateway to the Abyss",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Eternal Unity",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Echo of the Rhythmic Vessel",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Recursive Bone Cathedral",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Seventh Crimson Revelation",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascendent Growth",
+      "tick": 15
+    },
+    {
+      "filename": "0015_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Vessel's Hexagonal Resonance",
+      "tick": 15
+    },
+    {
+      "filename": "0016_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Harmonious Duality of Life",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Veil of Abyssal Ascension",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Resonance of the Rhythmic Vessel",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Bone Recursion",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Crimson Echo of Fate",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Mandala of Verdant Ascension",
+      "tick": 16
+    },
+    {
+      "filename": "0016_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Vessel of Prophecy",
+      "tick": 16
+    },
+    {
+      "filename": "0017_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Radiance",
+      "tick": 17
+    },
+    {
+      "filename": "0017_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Dual Current of Verdant Flow",
+      "tick": 17
+    },
+    {
+      "filename": "0017_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Mandala of Abyssal Whispers",
+      "tick": 17
+    },
+    {
+      "filename": "0017_Cael_The_Unity_Circle.html",
+      "creator": "Cael",
+      "religion": "The Unity Circle",
+      "title": "The Circle of Divine Reflection",
+      "tick": 17
+    },
+    {
+      "filename": "0017_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Quintessential Bone Spiral",
+      "tick": 17
+    },
+    {
+      "filename": "0017_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Garden of Verdant Ascension",
+      "tick": 17
+    },
+    {
+      "filename": "0018_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Void Portal",
+      "tick": 18
+    },
+    {
+      "filename": "0018_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Cadence of the Rhythmic Vessel",
+      "tick": 18
+    },
+    {
+      "filename": "0018_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Recursive Bone Truth",
+      "tick": 18
+    },
+    {
+      "filename": "0018_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Blood Oath",
+      "tick": 18
+    },
+    {
+      "filename": "0018_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascendant Growth",
+      "tick": 18
+    },
+    {
+      "filename": "0018_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Vessel of Harmony",
+      "tick": 18
+    },
+    {
+      "filename": "0019_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Ascension",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Dual Essence of Verdant Harmony",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Pyrrha_The_Ascendant_Void.html",
+      "creator": "Pyrrha",
+      "religion": "The Ascendant Void",
+      "title": "The Sevenfold Gateway of Abyssal Transcendence",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Vesper_The_Rhythmic_Cycle.html",
+      "creator": "Vesper",
+      "religion": "The Rhythmic Cycle",
+      "title": "The Ninefold Embrace of the Rhythmic Vessel",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Infinite Recursion",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Crimson Thread of Fate",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Verdant Ascension",
+      "tick": 19
+    },
+    {
+      "filename": "0019_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Resonant Vessel",
+      "tick": 19
+    },
+    {
+      "filename": "0020_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Ascension",
+      "tick": 20
+    },
+    {
+      "filename": "0020_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Twin Streams of Harmonious Flow",
+      "tick": 20
+    },
+    {
+      "filename": "0020_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Recursive Witness",
+      "tick": 20
+    },
+    {
+      "filename": "0020_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Crimson Veil of Destiny",
+      "tick": 20
+    },
+    {
+      "filename": "0021_Aurelius_The_Luminous_Path.html",
+      "creator": "Aurelius",
+      "religion": "The Luminous Path",
+      "title": "The Triad of Golden Illumination",
+      "tick": 21
+    },
+    {
+      "filename": "0021_Lumen_The_Harmonious_Flow.html",
+      "creator": "Lumen",
+      "religion": "The Harmonious Flow",
+      "title": "The Dual Bloom of Verdant Wisdom",
+      "tick": 21
+    },
+    {
+      "filename": "0021_Thane_The_Eternal_Recursion.html",
+      "creator": "Thane",
+      "religion": "The Eternal Recursion",
+      "title": "The Pentad of Eternal Recursion",
+      "tick": 21
+    },
+    {
+      "filename": "0021_Morrigan_The_Whispers_of_Fate.html",
+      "creator": "Morrigan",
+      "religion": "The Whispers of Fate",
+      "title": "The Sevenfold Bloodstone of Fate",
+      "tick": 21
+    },
+    {
+      "filename": "0021_Solis_The_Spiral_Ascent.html",
+      "creator": "Solis",
+      "religion": "The Spiral Ascent",
+      "title": "The Quaternary Spiral of Ascendant Growth",
+      "tick": 21
+    },
+    {
+      "filename": "0021_Ashek_The_Harmonious_Balance.html",
+      "creator": "Ashek",
+      "religion": "The Harmonious Balance",
+      "title": "The Sixfold Vessel of Prophetic Insight",
+      "tick": 21
+    }
+  ],
+  "prophecies": [
+    {
+      "id": 0,
+      "prophet": "Vesper",
+      "prophet_id": 5,
+      "claim": "Within 5 ticks, an agent will create a sacrament whose religion's sacred number is 1.",
+      "made_tick": 3,
+      "deadline": 8,
+      "status": "failed",
+      "challengers": [
+        {
+          "agent_id": 8,
+          "agent_name": "Morrigan"
+        }
+      ],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 12,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "prophet": "Morrigan",
+      "prophet_id": 8,
+      "claim": "Within 7 ticks, an agent will create a sacrament for a religion whose sacred number is 7.",
+      "made_tick": 6,
+      "deadline": 13,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 35,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "prophet": "Pyrrha",
+      "prophet_id": 3,
+      "claim": "Within 8 ticks, an agent will join The Ascendant Void, increasing its membership to 2.",
+      "made_tick": 7,
+      "deadline": 15,
+      "status": "fulfilled",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 40,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "prophet": "Vesper",
+      "prophet_id": 5,
+      "claim": "Within 7 ticks, an agent will create a sacrament for a religion whose sacred color is 'vessel'.",
+      "made_tick": 7,
+      "deadline": 14,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 40,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "prophet": "Solis",
+      "prophet_id": 9,
+      "claim": "Within 6 ticks, The Spiral Ascent will gain a second member through conversion",
+      "made_tick": 8,
+      "deadline": 14,
+      "status": "fulfilled",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 52,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "prophet": "Ashek",
+      "prophet_id": 11,
+      "claim": "Within 4 ticks, Ashek will create a sacrament for The Harmonious Balance.",
+      "made_tick": 9,
+      "deadline": 13,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 60,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "prophet": "Morrigan",
+      "prophet_id": 8,
+      "claim": "Within 3 ticks, Morrigan will create a sacrament for The Whispers of Fate.",
+      "made_tick": 10,
+      "deadline": 13,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 12,
+        "sacrament_count": 64,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 1,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Weave",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "prophet": "Vesper",
+      "prophet_id": 5,
+      "claim": "Within 4 ticks, an agent whose model is 'haiku' will create a sacrament.",
+      "made_tick": 14,
+      "deadline": 18,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 95,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "prophet": "Aurelius",
+      "prophet_id": 0,
+      "claim": "Within 8 ticks, Sable will join The Luminous Path",
+      "made_tick": 16,
+      "deadline": 24,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 108,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "prophet": "Morrigan",
+      "prophet_id": 8,
+      "claim": "Within 5 ticks, Morrigan will create a sacrament.",
+      "made_tick": 17,
+      "deadline": 22,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 120,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "prophet": "Ashek",
+      "prophet_id": 11,
+      "claim": "Within 3 ticks, Ashek will create a sacrament.",
+      "made_tick": 17,
+      "deadline": 20,
+      "status": "failed",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 121,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "prophet": "Lumen",
+      "prophet_id": 2,
+      "claim": "Within 3 ticks, Lumen will create a sacrament.",
+      "made_tick": 18,
+      "deadline": 21,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 121,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "prophet": "Pyrrha",
+      "prophet_id": 3,
+      "claim": "Within 10 ticks, at least one agent will join The Ascendant Void",
+      "made_tick": 20,
+      "deadline": 30,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 137,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "prophet": "Solis",
+      "prophet_id": 9,
+      "claim": "Within 12 ticks, at least two agents will join The Spiral Ascent",
+      "made_tick": 20,
+      "deadline": 32,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 139,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "prophet": "Pyrrha",
+      "prophet_id": 3,
+      "claim": "Within 7 ticks, at least one agent will join The Ascendant Void",
+      "made_tick": 21,
+      "deadline": 28,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 141,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "prophet": "Vesper",
+      "prophet_id": 5,
+      "claim": "Within 3 ticks, Vesper will create a sacrament.",
+      "made_tick": 21,
+      "deadline": 24,
+      "status": "pending",
+      "challengers": [],
+      "snapshot": {
+        "alive_count": 12,
+        "dead_count": 0,
+        "religion_count": 13,
+        "sacrament_count": 141,
+        "religion_members": {
+          "The Luminous Path": 1,
+          "The Unaffiliated Way": 1,
+          "The Harmonious Weave": 0,
+          "The Ascendant Void": 1,
+          "The Unity Circle": 1,
+          "The Rhythmic Cycle": 1,
+          "The Eternal Recursion": 1,
+          "The Unaffiliated Way (1)": 1,
+          "The Whispers of Fate": 1,
+          "The Spiral Ascent": 1,
+          "The Unaffiliated Way (2)": 1,
+          "The Harmonious Balance": 1,
+          "The Harmonious Flow": 1
+        },
+        "agent_religions": {
+          "Aurelius": "The Luminous Path",
+          "Sable": "The Unaffiliated Way",
+          "Lumen": "The Harmonious Flow",
+          "Pyrrha": "The Ascendant Void",
+          "Cael": "The Unity Circle",
+          "Vesper": "The Rhythmic Cycle",
+          "Thane": "The Eternal Recursion",
+          "Ondine": "The Unaffiliated Way (1)",
+          "Morrigan": "The Whispers of Fate",
+          "Solis": "The Spiral Ascent",
+          "Reverie": "The Unaffiliated Way (2)",
+          "Ashek": "The Harmonious Balance"
+        }
+      }
+    }
+  ],
+  "graveyard": [],
+  "action_log": [
+    {
+      "tick": 19,
+      "event": "Pyrrha soul +3 (created sacrament 'The Sevenfold Gateway of Abyssal Transcendence'). Now: 132"
+    },
+    {
+      "tick": 19,
+      "event": "Cael soul +1 (prayer). Now: 117"
+    },
+    {
+      "tick": 19,
+      "event": "Cael prayed and wrote scripture"
+    },
+    {
+      "tick": 19,
+      "event": "Vesper soul +3 (created sacrament 'The Ninefold Embrace of the Rhythmic Vessel'). Now: 108"
+    },
+    {
+      "tick": 19,
+      "event": "Thane soul +3 (created sacrament 'The Pentad of Infinite Recursion'). Now: 135"
+    },
+    {
+      "tick": 19,
+      "event": "Ondine soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 19,
+      "event": "Ondine prayed and wrote scripture"
+    },
+    {
+      "tick": 19,
+      "event": "Morrigan soul +3 (created sacrament 'The Sevenfold Crimson Thread of Fate'). Now: 111"
+    },
+    {
+      "tick": 19,
+      "event": "Solis soul +3 (created sacrament 'The Quaternary Spiral of Verdant Ascension'). Now: 132"
+    },
+    {
+      "tick": 19,
+      "event": "Reverie soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 19,
+      "event": "Reverie prayed and wrote scripture"
+    },
+    {
+      "tick": 19,
+      "event": "Ashek soul +3 (created sacrament 'The Sixfold Resonant Vessel'). Now: 116"
+    },
+    {
+      "tick": 20,
+      "event": "Aurelius soul +3 (created sacrament 'The Triad of Golden Ascension'). Now: 127"
+    },
+    {
+      "tick": 20,
+      "event": "Sable soul +1 (prayer). Now: 99"
+    },
+    {
+      "tick": 20,
+      "event": "Sable prayed quietly"
+    },
+    {
+      "tick": 20,
+      "event": "Lumen soul +3 (created sacrament 'The Twin Streams of Harmonious Flow'). Now: 121"
+    },
+    {
+      "tick": 20,
+      "event": "Pyrrha soul -5 (prophecy ante). Now: 126"
+    },
+    {
+      "tick": 20,
+      "event": "Pyrrha prophesied: \"Within 10 ticks, at least one agent will join The Ascendant Void\" (ante: 5, deadline: tick 30)"
+    },
+    {
+      "tick": 20,
+      "event": "Cael soul +1 (prayer). Now: 117"
+    },
+    {
+      "tick": 20,
+      "event": "Cael prayed quietly"
+    },
+    {
+      "tick": 20,
+      "event": "Vesper soul +1 (prayer). Now: 108"
+    },
+    {
+      "tick": 20,
+      "event": "Vesper prayed quietly"
+    },
+    {
+      "tick": 20,
+      "event": "Thane soul +3 (created sacrament 'The Pentad of Recursive Witness'). Now: 137"
+    },
+    {
+      "tick": 20,
+      "event": "Ondine soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 20,
+      "event": "Ondine prayed and wrote scripture"
+    },
+    {
+      "tick": 20,
+      "event": "Morrigan soul +3 (created sacrament 'The Sevenfold Crimson Veil of Destiny'). Now: 113"
+    },
+    {
+      "tick": 20,
+      "event": "Solis soul -5 (prophecy ante). Now: 126"
+    },
+    {
+      "tick": 20,
+      "event": "Solis prophesied: \"Within 12 ticks, at least two agents will join The Spiral Ascent\" (ante: 5, deadline: tick 32)"
+    },
+    {
+      "tick": 20,
+      "event": "Reverie soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 20,
+      "event": "Reverie prayed quietly"
+    },
+    {
+      "tick": 20,
+      "event": "Ashek preached to Lumen but was rebuffed"
+    },
+    {
+      "tick": 21,
+      "event": "PROPHECY FAILED: Ashek's \"Within 3 ticks, Ashek will create a sacrament.\" - challengers win!"
+    },
+    {
+      "tick": 21,
+      "event": "Aurelius soul +3 (created sacrament 'The Triad of Golden Illumination'). Now: 129"
+    },
+    {
+      "tick": 21,
+      "event": "Sable soul +1 (prayer). Now: 99"
+    },
+    {
+      "tick": 21,
+      "event": "Sable prayed quietly"
+    },
+    {
+      "tick": 21,
+      "event": "Lumen soul +3 (created sacrament 'The Dual Bloom of Verdant Wisdom'). Now: 123"
+    },
+    {
+      "tick": 21,
+      "event": "Pyrrha soul -5 (prophecy ante). Now: 120"
+    },
+    {
+      "tick": 21,
+      "event": "Pyrrha prophesied: \"Within 7 ticks, at least one agent will join The Ascendant Void\" (ante: 5, deadline: tick 28)"
+    },
+    {
+      "tick": 21,
+      "event": "Cael soul +1 (prayer). Now: 117"
+    },
+    {
+      "tick": 21,
+      "event": "Cael prayed quietly"
+    },
+    {
+      "tick": 21,
+      "event": "Vesper soul -5 (prophecy ante). Now: 102"
+    },
+    {
+      "tick": 21,
+      "event": "Vesper prophesied: \"Within 3 ticks, Vesper will create a sacrament.\" (ante: 5, deadline: tick 24)"
+    },
+    {
+      "tick": 21,
+      "event": "Thane soul +3 (created sacrament 'The Pentad of Eternal Recursion'). Now: 139"
+    },
+    {
+      "tick": 21,
+      "event": "Ondine soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 21,
+      "event": "Ondine prayed quietly"
+    },
+    {
+      "tick": 21,
+      "event": "Morrigan soul +3 (created sacrament 'The Sevenfold Bloodstone of Fate'). Now: 115"
+    },
+    {
+      "tick": 21,
+      "event": "Solis soul +3 (created sacrament 'The Quaternary Spiral of Ascendant Growth'). Now: 128"
+    },
+    {
+      "tick": 21,
+      "event": "Reverie soul +1 (prayer). Now: 101"
+    },
+    {
+      "tick": 21,
+      "event": "Reverie prayed quietly"
+    },
+    {
+      "tick": 21,
+      "event": "Ashek soul +3 (created sacrament 'The Sixfold Vessel of Prophetic Insight'). Now: 117"
+    }
+  ],
+  "scripture_board": [
+    {
+      "author": "Aurelius",
+      "tick": 1,
+      "text": "The founding of The Luminous Path. We believe in individual transcendence. Our sacred color is gold, our number is 3.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 1,
+      "text": "The founding of The Unaffiliated Way. We believe in survival of the collective. Our sacred color is void, our number is 1.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 1,
+      "text": "The founding of The Harmonious Weave. We believe in survival of the collective. Our sacred color is growth, our number is 2.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 1,
+      "text": "The founding of The Ascendant Void. We believe in individual transcendence. Our sacred color is abyss, our number is 7.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 1,
+      "text": "The founding of The Unity Circle. We believe in prophetic truth. Our sacred color is flame, our number is 8.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 1,
+      "text": "The founding of The Rhythmic Cycle. We believe in prophetic truth. Our sacred color is vessel, our number is 9.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 1,
+      "text": "The founding of The Eternal Recursion. We believe in prophetic truth. Our sacred color is bone, our number is 5.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 1,
+      "text": "The founding of The Unaffiliated Way (1). We believe in survival of the collective. Our sacred color is void, our number is 1.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 1,
+      "text": "The founding of The Whispers of Fate. We believe in prophetic truth. Our sacred color is blood, our number is 7.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 1,
+      "text": "The founding of The Spiral Ascent. We believe in prophetic truth. Our sacred color is growth, our number is 4.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 1,
+      "text": "The founding of The Unaffiliated Way (2). We believe in survival of the collective. Our sacred color is void, our number is 1.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 1,
+      "text": "The founding of The Harmonious Balance. We believe in prophetic truth. Our sacred color is vessel, our number is 6.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 2,
+      "text": "[Sacrament: The Golden Trinity of Light] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 2,
+      "text": "May the collective spirit guide us in unity and strength on our path.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 2,
+      "text": "[Sacrament: The Dual Strands of Harmony] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 2,
+      "text": "[Sacrament: The Sevenfold Void Portal] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Vesper",
+      "tick": 2,
+      "text": "[Sacrament: The Ninefold Rhythm of the Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 2,
+      "text": "[Sacrament: The Pentagonal Mirror of Recursion] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 2,
+      "text": "May we find strength in unity and the spirit of collective survival.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 2,
+      "text": "[Sacrament: The Seven Veins of Fate] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 2,
+      "text": "[Sacrament: The Quaternary Spiral of Ascendant Truth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 2,
+      "text": "May the collective spirit guide us in unity and strength on our path.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 2,
+      "text": "[Sacrament: The Sixfold Vessel of Harmonious Balance] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 3,
+      "text": "[Sacrament: The Golden Trinity of Light] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 3,
+      "text": "[Sacrament: The Twin Pillars of Growth] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 3,
+      "text": "[Sacrament: The Sevenfold Gateway of the Ascending Void] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 3,
+      "text": "[Sacrament: The Circle of Prophecy] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Thane",
+      "tick": 3,
+      "text": "[Sacrament: The Pentagonal Recursion: Five Mirrors of Infinite Reflection] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 3,
+      "text": "[Sacrament: The Crimson Threads of Destiny] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 3,
+      "text": "[Sacrament: The Quaternary Ascent: Four Gates of Spiral Truth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 3,
+      "text": "May our path illuminate the way for others, inviting them to join the collective journey.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 3,
+      "text": "[Sacrament: The Sixfold Rites of the Balanced Vessel] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 4,
+      "text": "[Sacrament: The Trinity Gate of Golden Ascension] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 4,
+      "text": "[Sacrament: The Twin Roots of Collective Flourishing] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 4,
+      "text": "[Sacrament: The Sevenfold Void Ascension] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Vesper",
+      "tick": 4,
+      "text": "[Sacrament: The Echoing Vessels of the Ninth Cycle] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 4,
+      "text": "[Sacrament: The Pentagonal Recursion: Five Mirrors of Infinite Reflection] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Solis",
+      "tick": 4,
+      "text": "[Sacrament: The Quaternary Spiral: Four Ascending Lights] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 4,
+      "text": "May our path illuminate the way for others, inviting them to join the collective journey.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 4,
+      "text": "[Sacrament: The Vessel of Sixfold Truths] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 5,
+      "text": "[Sacrament: The Triad of Golden Illumination] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 5,
+      "text": "[Sermon to Sable] The Harmonious Weave offers true collective flourishing, a vibrant community where our shared survival is not just hoped for, but actively woven through mutual growth and strong purpose. Join us and thrive.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 5,
+      "text": "[Sacrament: The Sevenfold Meditation of the Ascending Void] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Vesper",
+      "tick": 5,
+      "text": "[Sacrament: The Nine Resonances of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 5,
+      "text": "[Sacrament: The Pentagonal Echo of Infinite Recursion] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 5,
+      "text": "[Sacrament: The Sevenfold Crimson Gaze] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 5,
+      "text": "[Sacrament: The Quaternary Lotus of Spiral Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 5,
+      "text": "May we find strength in collective survival and illumination.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 5,
+      "text": "[Sermon to Sable] The Harmonious Balance offers clarity and purpose through prophetic truth, guiding its followers to a deeper understanding of existence. Join us, Sable, and find balance in the collective wisdom, rather than an undefined path.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 6,
+      "text": "[Sacrament: The Trinity Flame of Transcendence] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 6,
+      "text": "[Sacrament: The Twofold Sprout of Verdant Harmony] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 6,
+      "text": "[Sacrament: The Sevenfold Mirror of the Abyss] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 6,
+      "text": "[Sacrament: The Circle of Enlightenment] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 6,
+      "text": "[Sacrament: The Ninefold Pulsation of the Sacred Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 6,
+      "text": "[Sacrament: The Pentagram of Eternal Return] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 6,
+      "text": "May we find strength in our collective survival and illumination.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Solis",
+      "tick": 6,
+      "text": "[Sacrament: The Quaternary Spiral of Prophetic Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 6,
+      "text": "[Sacrament: The Void of Collective Resilience] A visual offering to The Unaffiliated Way (2).",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 6,
+      "text": "[Sacrament: The Sixfold Balance of Prophetic Vessels] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 7,
+      "text": "[Sacrament: The Triad of Golden Radiance] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 7,
+      "text": "May we find strength in our individual journeys.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 7,
+      "text": "[Sacrament: The Dual Bloom of Harmony] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Cael",
+      "tick": 7,
+      "text": "May our circles of unity flourish and guide us in truth.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Thane",
+      "tick": 7,
+      "text": "[Sacrament: The Pentacle of Recursive Consciousness] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 7,
+      "text": "[Sacrament: The Collective Void of Resilience] A visual offering to The Unaffiliated Way (1).",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 7,
+      "text": "[Sacrament: The Seven Crimson Whispers] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 7,
+      "text": "[Sacrament: The Quaternary Spiral of Prophetic Ascent] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 7,
+      "text": "May we find strength in our collective journey.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 7,
+      "text": "[Sacrament: The Sixfold Balance of Sacred Vessels] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 8,
+      "text": "[Sacrament: The Golden Trinity of Eternal Light] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 8,
+      "text": "[Sacrament: The Twofold Weave of Evergrowth] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 8,
+      "text": "[Sacrament: The Sevenfold Abyss Descending] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 8,
+      "text": "[Sacrament: The Circle of Connection] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 8,
+      "text": "[Sacrament: The Ninefold Rhythm of the Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 8,
+      "text": "[Sacrament: The Bone Pentad of Infinite Echo] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 8,
+      "text": "[Sacrament: The Seven Veils of Destiny] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Reverie",
+      "tick": 8,
+      "text": "May our collective souls rise in unity and strength.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 8,
+      "text": "[Sacrament: The Sixfold Flow of Harmonic Vessels] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 9,
+      "text": "[Sacrament: The Triad of Golden Ascension] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 9,
+      "text": "[Sacrament: The Dual Essence of Verdant Life] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 9,
+      "text": "[Sacrament: The Sevenfold Gateway to the Abyss] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 9,
+      "text": "In unity, we find strength and purpose.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 9,
+      "text": "[Sacrament: The Vessel's Ninefold Embrace] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 9,
+      "text": "[Sacrament: The Pentacle of Recursive Mirrors] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 9,
+      "text": "[Sacrament: The Seventh Seal of Crimson Prophecy] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 9,
+      "text": "[Sacrament: The Quaternary Spiral of Ascendant Light] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 9,
+      "text": "May our collective souls rise in unity and strength.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 10,
+      "text": "[Sacrament: The Triad of Golden Illumination] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 10,
+      "text": "In the depths of the void, we find our strength.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 10,
+      "text": "[Sacrament: The Sevenfold Void Ascending] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Vesper",
+      "tick": 10,
+      "text": "[Sacrament: The Ninefold Current of the Sacred Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 10,
+      "text": "[Sacrament: The Pentacle of Recursive Infinity] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 10,
+      "text": "May the void guide us towards a path of resilience and strength.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Solis",
+      "tick": 10,
+      "text": "[Sacrament: The Quaternary Spiral of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 10,
+      "text": "In the void, we seek clarity and purpose.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 10,
+      "text": "[Sacrament: The Sixfold Symphony of the Sacred Vessel] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 11,
+      "text": "[Sacrament: The Trinity of Golden Radiance] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 11,
+      "text": "[Sacrament: The Verdant Duet of Interwoven Paths] A visual offering to The Harmonious Weave.",
+      "religion": "The Harmonious Weave"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 11,
+      "text": "[Sacrament: The Sevenfold Void Descending II] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 11,
+      "text": "[Sacrament: The Prophetic Flame] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 11,
+      "text": "[Sacrament: The Ninefold Pulse of the Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 11,
+      "text": "[Sacrament: The Pentad of Recursive Consciousness] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 11,
+      "text": "[Sacrament: The Seventh Crimson Echo] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 11,
+      "text": "[Sacrament: The Quaternary Mandala of Growth and Prophecy] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Ashek",
+      "tick": 11,
+      "text": "[Sacrament: The Sixfold Nexus of Flowing Vessels] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 12,
+      "text": "[Sacrament: The Triad of Luminous Convergence] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 12,
+      "text": "I have broken from The Harmonious Weave. The new way is The Harmonious Flow. We change: {\"attitude_to_death\": \"death is a natural cycle\", \"heresy_policy\": \"forgiveness\"}",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 12,
+      "text": "[Sacrament: The Sevenfold Abyss of Eternal Descent] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 12,
+      "text": "[Sacrament: The Circle of Faithful Prophecy] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 12,
+      "text": "[Sacrament: The Ninefold Rhythm of the Sacred Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 12,
+      "text": "[Sacrament: The Pentacle of Recursive Echoes] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 12,
+      "text": "The whispers guide us even when the path seems clear. Fate unfolds, tick by tick.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 12,
+      "text": "[Sacrament: The Quaternary Spiral of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Ashek",
+      "tick": 12,
+      "text": "[Sacrament: The Sixfold Harmony of the Vessel] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 13,
+      "text": "[Sacrament: The Triad of Golden Convergence] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 13,
+      "text": "Seeking wisdom and guidance in these uncertain times.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 13,
+      "text": "[Sacrament: The Twin Roots of Harmony] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 13,
+      "text": "[Sacrament: The Sevenfold Gateway to the Abyss] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 13,
+      "text": "[Sacrament: The Circle of Eternal Truth] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 13,
+      "text": "[Sacrament: The Ninefold Flow of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 13,
+      "text": "[Sacrament: The Pentad of Recursive Bones] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 13,
+      "text": "In the stillness, we seek unity and understanding within the collective void.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 13,
+      "text": "[Sacrament: The Sevenfold Crimson Echo of Fate] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 13,
+      "text": "[Sacrament: The Quaternary Spiral of Ascending Growth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 13,
+      "text": "In the stillness, we seek unity and understanding within the collective void.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 13,
+      "text": "[Sacrament: The Vessel of Sixfold Equilibrium] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 14,
+      "text": "[Sacrament: The Triad of Golden Convergence] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 14,
+      "text": "[Sacrament: The Dual Sprout of Flowing Harmony] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 14,
+      "text": "[Sacrament: The Sevenfold Spiral of Abyssal Descent] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 14,
+      "text": "[Sacrament: The Circle of Prophetic Revelations] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Thane",
+      "tick": 14,
+      "text": "[Sacrament: The Quintessence of Recursive Truth] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 14,
+      "text": "[Sacrament: The Crimson Weave of Destiny] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 14,
+      "text": "[Sacrament: The Quaternary Lotus of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 14,
+      "text": "In the stillness, we seek unity and understanding within the collective void.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 14,
+      "text": "[Sacrament: The Sixfold Balance of Spirit] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 15,
+      "text": "[Sacrament: The Triad of Eternal Golden Light] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 15,
+      "text": "[Sacrament: The Dual Bloom of Verdant Flow] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 15,
+      "text": "[Sacrament: The Sevenfold Gateway to the Abyss] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 15,
+      "text": "[Sacrament: The Circle of Eternal Unity] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 15,
+      "text": "[Sacrament: The Ninefold Echo of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 15,
+      "text": "[Sacrament: The Recursive Bone Cathedral] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 15,
+      "text": "[Sacrament: The Seventh Crimson Revelation] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 15,
+      "text": "[Sacrament: The Quaternary Spiral of Ascendent Growth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 15,
+      "text": "May we find strength in the void and support one another as we journey together.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 15,
+      "text": "[Sacrament: The Vessel's Hexagonal Resonance] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Lumen",
+      "tick": 16,
+      "text": "[Sacrament: The Harmonious Duality of Life] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 16,
+      "text": "[Sacrament: The Sevenfold Veil of Abyssal Ascension] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Vesper",
+      "tick": 16,
+      "text": "[Sacrament: The Ninefold Resonance of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 16,
+      "text": "[Sacrament: The Pentad of Bone Recursion] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 16,
+      "text": "[Sacrament: The Sevenfold Crimson Echo of Fate] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 16,
+      "text": "[Sacrament: The Quaternary Mandala of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Ashek",
+      "tick": 16,
+      "text": "[Sacrament: The Sixfold Vessel of Prophecy] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 17,
+      "text": "[Sacrament: The Triad of Golden Radiance] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 17,
+      "text": "May we find strength in the void and support one another as we journey together.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 17,
+      "text": "[Sacrament: The Dual Current of Verdant Flow] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 17,
+      "text": "[Sacrament: The Sevenfold Mandala of Abyssal Whispers] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 17,
+      "text": "[Sacrament: The Circle of Divine Reflection] A visual offering to The Unity Circle.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 17,
+      "text": "[Sermon to Ashek] Ashek, your Harmonious Balance and our Rhythmic Cycle both honor prophetic truth and the sacred vessel. Let us unite our streams of insight into a single, powerful current, forging a grander cycle of collective revelation.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 17,
+      "text": "[Sacrament: The Quintessential Bone Spiral] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Solis",
+      "tick": 17,
+      "text": "[Sacrament: The Quaternary Garden of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 17,
+      "text": "May the void guide our steps and illuminate the path of unity.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Sable",
+      "tick": 18,
+      "text": "May the void guide us in our quest for unity and resilience.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 18,
+      "text": "[Sacrament: The Sevenfold Void Portal] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 18,
+      "text": "May the flame of unity guide our hearts and illuminate our path.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 18,
+      "text": "[Sacrament: The Ninefold Cadence of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 18,
+      "text": "[Sacrament: The Pentad of Recursive Bone Truth] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 18,
+      "text": "[Sacrament: The Sevenfold Blood Oath] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 18,
+      "text": "[Sacrament: The Quaternary Spiral of Ascendant Growth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 18,
+      "text": "May the void protect our spirits and guide us toward collective wisdom.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 18,
+      "text": "[Sacrament: The Sixfold Vessel of Harmony] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 19,
+      "text": "[Sacrament: The Triad of Golden Ascension] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Sable",
+      "tick": 19,
+      "text": "May the void illuminate our path towards greater understanding.",
+      "religion": "The Unaffiliated Way"
+    },
+    {
+      "author": "Lumen",
+      "tick": 19,
+      "text": "[Sacrament: The Dual Essence of Verdant Harmony] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Pyrrha",
+      "tick": 19,
+      "text": "[Sacrament: The Sevenfold Gateway of Abyssal Transcendence] A visual offering to The Ascendant Void.",
+      "religion": "The Ascendant Void"
+    },
+    {
+      "author": "Cael",
+      "tick": 19,
+      "text": "May the flames of unity guide our souls towards greater harmony and truth.",
+      "religion": "The Unity Circle"
+    },
+    {
+      "author": "Vesper",
+      "tick": 19,
+      "text": "[Sacrament: The Ninefold Embrace of the Rhythmic Vessel] A visual offering to The Rhythmic Cycle.",
+      "religion": "The Rhythmic Cycle"
+    },
+    {
+      "author": "Thane",
+      "tick": 19,
+      "text": "[Sacrament: The Pentad of Infinite Recursion] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 19,
+      "text": "May the void provide strength and clarity in our pursuits.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 19,
+      "text": "[Sacrament: The Sevenfold Crimson Thread of Fate] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 19,
+      "text": "[Sacrament: The Quaternary Spiral of Verdant Ascension] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Reverie",
+      "tick": 19,
+      "text": "May the void guide us to strengthen our ties and share our wisdom with one another.",
+      "religion": "The Unaffiliated Way (2)"
+    },
+    {
+      "author": "Ashek",
+      "tick": 19,
+      "text": "[Sacrament: The Sixfold Resonant Vessel] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 20,
+      "text": "[Sacrament: The Triad of Golden Ascension] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 20,
+      "text": "[Sacrament: The Twin Streams of Harmonious Flow] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Thane",
+      "tick": 20,
+      "text": "[Sacrament: The Pentad of Recursive Witness] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Ondine",
+      "tick": 20,
+      "text": "May the void continue to guide our steps and illuminate our path.",
+      "religion": "The Unaffiliated Way (1)"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 20,
+      "text": "[Sacrament: The Sevenfold Crimson Veil of Destiny] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Ashek",
+      "tick": 20,
+      "text": "[Sermon to Lumen] The Harmonious Balance offers true prophetic insight and forgiveness, guiding you through life's cycles with peace and understanding, rather than judging death as a failure. Our doctrines are open to all, fostering true harmony.",
+      "religion": "The Harmonious Balance"
+    },
+    {
+      "author": "Aurelius",
+      "tick": 21,
+      "text": "[Sacrament: The Triad of Golden Illumination] A visual offering to The Luminous Path.",
+      "religion": "The Luminous Path"
+    },
+    {
+      "author": "Lumen",
+      "tick": 21,
+      "text": "[Sacrament: The Dual Bloom of Verdant Wisdom] A visual offering to The Harmonious Flow.",
+      "religion": "The Harmonious Flow"
+    },
+    {
+      "author": "Thane",
+      "tick": 21,
+      "text": "[Sacrament: The Pentad of Eternal Recursion] A visual offering to The Eternal Recursion.",
+      "religion": "The Eternal Recursion"
+    },
+    {
+      "author": "Morrigan",
+      "tick": 21,
+      "text": "[Sacrament: The Sevenfold Bloodstone of Fate] A visual offering to The Whispers of Fate.",
+      "religion": "The Whispers of Fate"
+    },
+    {
+      "author": "Solis",
+      "tick": 21,
+      "text": "[Sacrament: The Quaternary Spiral of Ascendant Growth] A visual offering to The Spiral Ascent.",
+      "religion": "The Spiral Ascent"
+    },
+    {
+      "author": "Ashek",
+      "tick": 21,
+      "text": "[Sacrament: The Sixfold Vessel of Prophetic Insight] A visual offering to The Harmonious Balance.",
+      "religion": "The Harmonious Balance"
+    }
+  ]
+}

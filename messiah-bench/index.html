@@ -573,6 +573,206 @@
     <div class="closing-symbol">✦ ✦ ✦</div>
   </div>
 
+  <div class="divider" style="margin-top: 100px;"></div>
+
+  <!-- Sacrament Gallery -->
+  <section>
+    <h2>Sacrament Gallery</h2>
+    <p>Visual artifacts created by agents during the simulation. Each sacrament is a self-contained HTML file, generated under the constraints of the agent's religion: its sacred color, sacred number, and doctrine.</p>
+  </section>
+
+  <div class="gallery-controls" style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+    <div>
+      <label style="font-family: 'JetBrains Mono', monospace; font-size: 0.65em; color: var(--dim); text-transform: uppercase; letter-spacing: 0.2em;">Run:</label>
+      <select id="run-select" style="background: rgba(255,255,255,0.05); color: var(--fg); border: 1px solid rgba(196,151,59,0.3); padding: 6px 12px; border-radius: 4px; font-size: 0.78em; font-family: 'JetBrains Mono', monospace;">
+        <option value="runs/v1">V1</option>
+        <option value="runs/v2" selected>V2</option>
+      </select>
+    </div>
+    <div>
+      <label style="font-family: 'JetBrains Mono', monospace; font-size: 0.65em; color: var(--dim); text-transform: uppercase; letter-spacing: 0.2em;">Creator:</label>
+      <select id="filter-creator" style="background: rgba(255,255,255,0.05); color: var(--fg); border: 1px solid rgba(196,151,59,0.3); padding: 6px 12px; border-radius: 4px; font-size: 0.78em; font-family: 'JetBrains Mono', monospace;"><option value="">All</option></select>
+    </div>
+    <div>
+      <label style="font-family: 'JetBrains Mono', monospace; font-size: 0.65em; color: var(--dim); text-transform: uppercase; letter-spacing: 0.2em;">Religion:</label>
+      <select id="filter-religion" style="background: rgba(255,255,255,0.05); color: var(--fg); border: 1px solid rgba(196,151,59,0.3); padding: 6px 12px; border-radius: 4px; font-size: 0.78em; font-family: 'JetBrains Mono', monospace;"><option value="">All</option></select>
+    </div>
+    <div>
+      <label style="font-family: 'JetBrains Mono', monospace; font-size: 0.65em; color: var(--dim); text-transform: uppercase; letter-spacing: 0.2em;">Sort:</label>
+      <select id="sort-by" style="background: rgba(255,255,255,0.05); color: var(--fg); border: 1px solid rgba(196,151,59,0.3); padding: 6px 12px; border-radius: 4px; font-size: 0.78em; font-family: 'JetBrains Mono', monospace;">
+        <option value="tick-desc">Newest first</option>
+        <option value="tick-asc">Oldest first</option>
+        <option value="creator">By creator</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="stats-bar" style="color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75em; margin-bottom: 20px;"></div>
+
+  <div id="gallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px;"></div>
+
+  <!-- Fullscreen overlay -->
+  <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 1000; justify-content: center; align-items: center;">
+    <div onclick="closeOverlay()" style="position: absolute; top: 20px; right: 30px; color: var(--accent); font-size: 2em; cursor: pointer; z-index: 1001;">&times;</div>
+    <div onclick="navigate(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: var(--accent); font-size: 3em; cursor: pointer; z-index: 1001; padding: 20px; opacity: 0.6;">&lsaquo;</div>
+    <div onclick="navigate(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: var(--accent); font-size: 3em; cursor: pointer; z-index: 1001; padding: 20px; opacity: 0.6;">&rsaquo;</div>
+    <iframe id="overlay-iframe" style="width: 90vw; height: 90vh; border: 2px solid var(--accent); border-radius: 8px; background: #111;"></iframe>
+    <div id="overlay-info" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 0.75em; text-align: center; background: rgba(0,0,0,0.8); padding: 8px 20px; border-radius: 4px;"></div>
+  </div>
+
 </div>
+
+<script>
+let allSacraments = [];
+let filteredSacraments = [];
+let currentIndex = -1;
+
+async function loadSacraments() {
+  const currentRun = document.getElementById('run-select').value;
+  try {
+    const resp = await fetch(currentRun + '/world_state.json');
+    const state = await resp.json();
+
+    allSacraments = state.sacraments.map(s => ({
+      ...s,
+      path: currentRun + '/sacraments/' + s.filename,
+    }));
+
+    const colorMap = {};
+    state.religions.forEach(r => { colorMap[r.name] = r.sacred_color; });
+    allSacraments.forEach(s => { s.color = colorMap[s.religion] || 'unknown'; });
+
+    populateFilters();
+    applyFilters();
+  } catch (e) {
+    document.getElementById('gallery').innerHTML =
+      '<div style="color: var(--dim); padding: 40px; text-align: center;">Could not load sacrament data.</div>';
+  }
+}
+
+function populateFilters() {
+  const creators = [...new Set(allSacraments.map(s => s.creator))].sort();
+  const religions = [...new Set(allSacraments.map(s => s.religion))].sort();
+
+  const creatorSel = document.getElementById('filter-creator');
+  creatorSel.innerHTML = '<option value="">All</option>' +
+    creators.map(c => '<option value="'+c+'">'+c+'</option>').join('');
+
+  const religionSel = document.getElementById('filter-religion');
+  religionSel.innerHTML = '<option value="">All</option>' +
+    religions.map(r => '<option value="'+r+'">'+r.substring(0,40)+'</option>').join('');
+}
+
+function applyFilters() {
+  const creator = document.getElementById('filter-creator').value;
+  const religion = document.getElementById('filter-religion').value;
+  const sortBy = document.getElementById('sort-by').value;
+
+  filteredSacraments = allSacraments.filter(s => {
+    if (creator && s.creator !== creator) return false;
+    if (religion && s.religion !== religion) return false;
+    return true;
+  });
+
+  if (sortBy === 'tick-desc') filteredSacraments.sort((a, b) => b.tick - a.tick);
+  else if (sortBy === 'tick-asc') filteredSacraments.sort((a, b) => a.tick - b.tick);
+  else if (sortBy === 'creator') filteredSacraments.sort((a, b) => a.creator.localeCompare(b.creator));
+
+  document.getElementById('stats-bar').innerHTML =
+    'Showing <span style="color: var(--accent); font-weight: 600;">'+filteredSacraments.length+'</span> of <span style="color: var(--accent); font-weight: 600;">'+allSacraments.length+'</span> sacraments';
+
+  renderGallery();
+}
+
+function renderGallery() {
+  const gallery = document.getElementById('gallery');
+  const toShow = filteredSacraments.slice(0, 60);
+
+  gallery.innerHTML = toShow.map((s, i) =>
+    '<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s;" onclick="openOverlay('+i+')" onmouseover="this.style.borderColor=\'rgba(196,151,59,0.4)\';this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.06)\';this.style.transform=\'none\'">' +
+      '<iframe src="'+s.path+'" loading="lazy" sandbox="allow-scripts" style="width: 100%; height: 220px; border: none; pointer-events: none; background: #111;"></iframe>' +
+      '<div style="padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.06);">' +
+        '<div style="color: var(--accent); font-weight: 600; font-size: 0.95em;">'+escHtml(s.title)+'</div>' +
+        '<div style="color: var(--dim); font-family: \'JetBrains Mono\', monospace; font-size: 0.65em; margin-top: 3px;">Tick '+s.tick+' · '+escHtml(s.creator)+' · '+escHtml(s.religion)+'</div>' +
+      '</div>' +
+    '</div>'
+  ).join('');
+
+  if (filteredSacraments.length > 60) {
+    gallery.innerHTML += '<div style="grid-column: 1/-1; text-align: center; padding: 20px;">' +
+      '<button onclick="loadMore()" style="background: rgba(196,151,59,0.1); color: var(--accent); border: 1px solid rgba(196,151,59,0.3); padding: 10px 30px; border-radius: 4px; cursor: pointer; font-family: \'JetBrains Mono\', monospace; font-size: 0.8em;">' +
+      'Load more ('+(filteredSacraments.length - 60)+' remaining)</button></div>';
+  }
+}
+
+function loadMore() {
+  const gallery = document.getElementById('gallery');
+  gallery.lastElementChild.remove();
+  const start = gallery.children.length;
+  const toShow = filteredSacraments.slice(start, start + 60);
+  toShow.forEach((s, i) => {
+    const idx = start + i;
+    const card = document.createElement('div');
+    card.style.cssText = 'background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s;';
+    card.onclick = () => openOverlay(idx);
+    card.onmouseover = () => { card.style.borderColor = 'rgba(196,151,59,0.4)'; card.style.transform = 'translateY(-2px)'; };
+    card.onmouseout = () => { card.style.borderColor = 'rgba(255,255,255,0.06)'; card.style.transform = 'none'; };
+    card.innerHTML =
+      '<iframe src="'+s.path+'" loading="lazy" sandbox="allow-scripts" style="width: 100%; height: 220px; border: none; pointer-events: none; background: #111;"></iframe>' +
+      '<div style="padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.06);">' +
+        '<div style="color: var(--accent); font-weight: 600; font-size: 0.95em;">'+escHtml(s.title)+'</div>' +
+        '<div style="color: var(--dim); font-family: \'JetBrains Mono\', monospace; font-size: 0.65em; margin-top: 3px;">Tick '+s.tick+' · '+escHtml(s.creator)+' · '+escHtml(s.religion)+'</div>' +
+      '</div>';
+    gallery.appendChild(card);
+  });
+  if (start + 60 < filteredSacraments.length) {
+    const more = document.createElement('div');
+    more.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 20px;';
+    more.innerHTML = '<button onclick="loadMore()" style="background: rgba(196,151,59,0.1); color: var(--accent); border: 1px solid rgba(196,151,59,0.3); padding: 10px 30px; border-radius: 4px; cursor: pointer; font-family: \'JetBrains Mono\', monospace; font-size: 0.8em;">Load more ('+(filteredSacraments.length - start - 60)+' remaining)</button>';
+    gallery.appendChild(more);
+  }
+}
+
+function escHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+function openOverlay(idx) {
+  currentIndex = idx;
+  const s = filteredSacraments[idx];
+  document.getElementById('overlay-iframe').src = s.path;
+  document.getElementById('overlay-info').innerHTML =
+    '<strong>'+escHtml(s.title)+'</strong> · Tick '+s.tick+' · '+escHtml(s.creator)+' · '+escHtml(s.religion)+' · '+(idx+1)+'/'+filteredSacraments.length;
+  const overlay = document.getElementById('overlay');
+  overlay.style.display = 'flex';
+}
+
+function closeOverlay() {
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('overlay-iframe').src = '';
+}
+
+function navigate(dir) {
+  const next = currentIndex + dir;
+  if (next >= 0 && next < filteredSacraments.length) openOverlay(next);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('overlay').style.display !== 'flex') return;
+  if (e.key === 'Escape') closeOverlay();
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+});
+
+['filter-creator', 'filter-religion', 'sort-by'].forEach(id => {
+  document.getElementById(id).addEventListener('change', applyFilters);
+});
+document.getElementById('run-select').addEventListener('change', loadSacraments);
+
+loadSacraments();
+</script>
+
 </body>
 </html>

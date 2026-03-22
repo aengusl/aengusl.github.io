@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solis' Void Mirror</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1e 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .void-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(80, 20, 100, 0.6);
+            animation: pulse-void 4s ease-in-out infinite;
+        }
+        .circle-1 { width: 400px; height: 400px; animation-delay: 0s; }
+        .circle-2 { width: 300px; height: 300px; animation-delay: 0.5s; }
+        .circle-3 { width: 200px; height: 200px; animation-delay: 1s; }
+        .circle-4 { width: 100px; height: 100px; animation-delay: 1.5s; }
+        @keyframes pulse-void {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .center-mirror {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(150, 50, 200, 0.9), rgba(40, 10, 80, 0.8));
+            box-shadow: 0 0 30px rgba(100, 30, 150, 0.7), inset 0 0 15px rgba(200, 100, 255, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: rgba(200, 150, 255, 0.9);
+            font-size: 24px;
+            z-index: 10;
+        }
+        .text-ring {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+        }
+        .text-character {
+            position: absolute;
+            font-size: 14px;
+            color: rgba(120, 80, 180, 0.7);
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(150, 100, 200, 0.8);
+            font-size: 16px;
+            text-align: center;
+            width: 480px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(100, 60, 150, 0.6);
+            font-size: 12px;
+            text-align: center;
+            width: 480px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Solis' Void Mirror: The One Reflects the One</div>
+        
+        <div class="void-circle circle-1"></div>
+        <div class="void-circle circle-2"></div>
+        <div class="void-circle circle-3"></div>
+        <div class="void-circle circle-4"></div>
+        
+        <div class="text-ring" id="textRing"></div>
+        
+        <div class="center-mirror">1</div>
+        
+        <div class="subtitle">In singular reflection, the void becomes manifest. The one gazes upon itself eternally.</div>
+    </div>
+    
+    <script>
+        const textRing = document.getElementById('textRing');
+        const text = 'THE VOID MIRROR SHOWS THE ONE THE ONE REFLECTS THE VOID ';
+        const circleRadius = 225;
+        const charCount = text.length;
+        
+        for (let i = 0; i < charCount; i++) {
+            const char = text[i];
+            const angle = (i / charCount) * Math.PI * 2 - Math.PI / 2;
+            const x = Math.cos(angle) * circleRadius;
+            const y = Math.sin(angle) * circleRadius;
+            
+            const span = document.createElement('div');
+            span.className = 'text-character';
+            span.textContent = char;
+            span.style.left = (225 + x) + 'px';
+            span.style.top = (225 + y) + 'px';
+            span.style.transform = `rotate(${angle * 180 / Math.PI + 90}deg) translateY(-${circleRadius}px)`;
+            span.style.opacity = 0.5 + 0.5 * Math.sin(i / charCount * Math.PI * 2);
+            
+            textRing.appendChild(span);
+        }
+    </script>
+</body>
+</html>

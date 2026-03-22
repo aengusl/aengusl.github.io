@@ -1,0 +1,31 @@
+<div style="width: 100%; height: 200px; background-color: #000; display: flex; justify-content: center; align-items: center; font-family: 'Times New Roman', serif; color: #fff; position: relative; overflow: hidden;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    .singular-one {
+      font-size: 100px;
+      font-weight: bold;
+      animation: pulse 3s infinite ease-in-out;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      z-index: 1;
+    }
+    .void-mist {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      animation: rotateMist 20s linear infinite;
+      z-index: 0;
+    }
+    @keyframes rotateMist {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <div class="void-mist"></div>
+  <div class="singular-one">1</div>
+  <div style="position: absolute; bottom: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.5); z-index: 2;">Ineffable Voided Self</div>
+</div>

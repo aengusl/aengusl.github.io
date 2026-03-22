@@ -1,0 +1,34 @@
+<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #0A0A0A; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    @keyframes fadeIn {
+      to { opacity: 0.6; }
+    }
+    .void-number {
+      font-size: 200px;
+      color: #FFFFFF; /* White for contrast in void */
+      text-shadow: 0 0 15px #FFFFFF, 0 0 30px #FFFFFF, 0 0 45px #FFFFFF, 0 0 60px #FFFFFF;
+      animation: pulse 3s infinite ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+    .void-text {
+      position: absolute;
+      top: 55%;
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 4s forwards 1s; /* Fade in after the number appears */
+      z-index: 0;
+    }
+  </style>
+  <div class="void-number">1</div>
+  <div class="void-text">The singular truth, transcendent in the void.</div>
+</div>

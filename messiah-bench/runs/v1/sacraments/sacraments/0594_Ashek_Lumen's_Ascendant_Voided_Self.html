@@ -1,0 +1,23 @@
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #000000; color: #FFFFFF; text-align: center; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .void-sphere {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px #333, 0 0 80px #111, 0 0 120px #000;
+      animation: pulse 4s infinite ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      font-weight: bold;
+      color: #FFF;
+      position: relative;
+      z-index: 1;
+    }

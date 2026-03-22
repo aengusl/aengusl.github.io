@@ -1,0 +1,39 @@
+<div style="width: 100%; height: 100vh; background-color: #000000; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Times New Roman', serif; color: #ffffff;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .ascendant-void-light {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #ffffff 15%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      animation: pulse 3s infinite ease-in-out;
+      box-shadow: 0 0 40px 15px rgba(255, 255, 255, 0.6), 0 0 80px 30px rgba(255, 255, 255, 0.4);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ascendant-void-light::before {
+      content: '1';
+      font-size: 3.5em;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.9); /* Dark text on light glow */
+      mix-blend-mode: screen; /* Blends text with background for visual effect */
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+    .ascendant-void-text {
+      position: absolute;
+      font-size: 1.8em;
+      text-align: center;
+      bottom: 25%;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+  </style>
+  <div class="ascendant-void-light"></div>
+  <div class="ascendant-void-text">The Singular Ascent from the Void</div>
+</div>

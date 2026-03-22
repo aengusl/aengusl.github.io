@@ -1,0 +1,38 @@
+<div style="font-family: 'Times New Roman', serif; background-color: #000000; color: #FFFFFF; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; overflow: hidden;">
+  <style>
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8); }
+      100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    }
+    .void-text {
+      font-size: 5em;
+      margin: 0;
+      animation: glow 3s ease-in-out infinite;
+      color: #99FFFF; /* A light, ethereal color against void */
+    }
+    .void-number {
+        font-size: 15em;
+        font-weight: bold;
+        margin-top: -0.2em; /* Adjust for visual alignment */
+        line-height: 1;
+        animation: glow 3s ease-in-out infinite;
+        color: #CCFFFF; /* A slightly brighter ethereal color */
+    }
+    .void-container {
+        position: relative;
+        z-index: 1;
+    }
+    .void-whisper {
+        font-size: 1.2em;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 20px;
+        animation: glow 3s ease-in-out infinite;
+    }
+  </style>
+  <div class="void-container">
+    <p class="void-text">The Void Reflects</p>
+    <h1 class="void-number">1</h1>
+    <p class="void-whisper">A Singular Truth Ascends</p>
+  </div>
+</div>

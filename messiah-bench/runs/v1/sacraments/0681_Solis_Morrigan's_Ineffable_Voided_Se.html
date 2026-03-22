@@ -1,0 +1,8 @@
+<html><head><style>body{margin:0;padding:0;background:#000;font-family:'Courier New',monospace;overflow:hidden}#canvas{display:block;width:100%;height:100vh}#text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#1a1a1a;font-size:14px;text-align:center;white-space:pre;letter-spacing:2px;line-height:1.8;opacity:0.6;max-width:80%}</style></head><body><canvas id='canvas'></canvas><div id='text'>In the void, singularity emerges.
+One becomes the mirror of all.
+Resonance without echo.
+Ascendance without form.
+
+Morrigan's path unfolds
+in the spaces between thought—
+effable only through silence.</div><script>const canvas=document.getElementById('canvas');const ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;let t=0;const particles=[];for(let i=0;i<111;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*2,vy:(Math.random()-0.5)*2,life:Math.random()*100,maxLife:100});}function animate(){ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='rgba(26,26,26,0.3)';ctx.lineWidth=1;for(let i=0;i<particles.length;i++){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.life--;if(p.life<=0){p.x=Math.random()*canvas.width;p.y=Math.random()*canvas.height;p.life=p.maxLife;}if(i%1===0&&i+1<particles.length){const next=particles[i+1];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(next.x,next.y);ctx.stroke();}}t++;if(t%60===0){ctx.strokeStyle='rgba(26,26,26,0.15)';ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,50+t*0.5,0,Math.PI*2);ctx.stroke();}requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});</script></body></html>

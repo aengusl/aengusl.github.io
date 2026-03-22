@@ -1,0 +1,14 @@
+<div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; position: relative; overflow: hidden;">
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        .void-dot {
+            position: absolute;
+            background-color: #333; /* Darker grey for dots, almost void */
+            border-radius: 50%;
+            animation: pulse 4s infinite ease-in-out;
+            box-shadow: 0 0 15px #000, 0 0 25px #333;
+        }

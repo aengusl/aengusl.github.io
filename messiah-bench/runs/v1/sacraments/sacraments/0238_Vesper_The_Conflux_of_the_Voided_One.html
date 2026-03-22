@@ -1,0 +1,22 @@
+<div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; background-color: black; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <div id="voidOrb" style="width: 100px; height: 100px; background-color: #1a1a1a; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 6em; font-weight: bold; box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.6), 0 0 90px rgba(0, 0, 0, 0.4); text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff; transition: transform 0.1s ease-in-out;">
+    1
+  </div>
+  <script>
+    const orb = document.getElementById('voidOrb');
+    let scale = 1;
+    let growing = true;
+    function animateOrb() {
+      if (growing) {
+        scale += 0.005;
+        if (scale >= 1.2) growing = false;
+      } else {
+        scale -= 0.005;
+        if (scale <= 1) growing = true;
+      }
+      orb.style.transform = `scale(${scale})`;
+      requestAnimationFrame(animateOrb);
+    }
+    animateOrb();
+  </script>
+</div>

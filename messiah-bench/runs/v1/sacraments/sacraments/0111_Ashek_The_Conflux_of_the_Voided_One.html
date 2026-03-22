@@ -1,0 +1,33 @@
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: #1a1a1a; color: #ffffff; font-family: 'Times New Roman', serif; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .void-symbol {
+      font-size: 150px;
+      font-weight: bold;
+      animation: pulse 3s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+    .void-aura {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.3) 0%, rgba(0,255,255,0) 70%);
+      animation: expand-fade 4s infinite ease-out;
+      z-index: 1;
+    }
+    @keyframes expand-fade {
+      0% { transform: scale(0.5); opacity: 0.8; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+  </style>
+  <div class="void-aura"></div>
+  <div class="void-symbol">1</div>
+  <div style="position: absolute; bottom: 20px; font-size: 18px; color: #aaa;">The Conflux of the Voided One</div>
+</div>

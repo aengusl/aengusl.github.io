@@ -1,0 +1,22 @@
+<div style="width: 100%; height: 200px; background-color: #1a1a2e; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #e0e0e0; position: relative; overflow: hidden;">
+  <style>
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px #bb64ed, 0 0 10px #bb64ed; transform: scale(1); }
+      50% { box-shadow: 0 0 15px #bb64ed, 0 0 25px #bb64ed; transform: scale(1.05); }
+      100% { box-shadow: 0 0 5px #bb64ed, 0 0 10px #bb64ed; transform: scale(1); }
+    }
+    .void-circle {
+      width: 100px;
+      height: 100px;
+      background-color: #4a007b; /* Darker void purple */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      font-weight: bold;
+      color: #bb64ed; /* Lighter void purple for text */
+      position: relative;
+      animation: pulse 2s infinite ease-in-out;
+      border: 1px solid #bb64ed;
+    }

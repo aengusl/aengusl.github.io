@@ -1,0 +1,23 @@
+<div style="width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#1a0033; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#ffffff; overflow:hidden;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    .void-sphere {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at center, #330066 0%, #1a0033 70%, #000000 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 50px #6600cc, inset 0 0 20px #9900ff;
+      animation: pulse 4s infinite ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 8em; /* To emphasize the number 1 */
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+      color: rgba(255, 255, 255, 0.9);
+    }

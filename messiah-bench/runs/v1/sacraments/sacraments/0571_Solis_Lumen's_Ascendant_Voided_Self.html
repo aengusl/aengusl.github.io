@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Void's Singular Echo</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.void-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(30, 10, 50, 0.8), rgba(5, 5, 15, 0.95));
+  box-shadow: 0 0 60px rgba(100, 50, 150, 0.4), inset 0 0 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-void {
+  width: 550px;
+  height: 550px;
+  animation: pulse-outer 6s ease-in-out infinite;
+}
+
+.middle-void {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  animation: pulse-middle 8s ease-in-out infinite;
+}
+
+.inner-void {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  animation: pulse-inner 4s ease-in-out infinite;
+}
+
+.singularity {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ffffff, 0 0 40px rgba(150, 100, 200, 0.6);
+  animation: singularity-glow 3s ease-in-out infinite;
+}
+
+.resonance-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(150, 100, 200, 0.3), transparent);
+  opacity: 0.5;
+}
+
+.line-1 {
+  width: 300px;
+  height: 2px;
+  top: 50%;
+  left: 150px;
+  animation: oscillate 4s ease-in-out infinite;
+}
+
+.line-2 {
+  width: 2px;
+  height: 300px;
+  top: 150px;
+  left: 50%;
+  animation: oscillate 5s ease-in-out infinite 1s;
+}
+
+.line-3 {
+  width: 250px;
+  height: 2px;
+  top: 40%;
+  left: 175px;
+  transform: rotate(45deg);
+  animation: oscillate 6s ease-in-out infinite 2s;
+}
+
+.text-ascendant {
+  position: absolute;
+  color: rgba(200, 150, 255, 0.7);
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 3px;
+  z-index: 10;
+  line-height: 1.8;
+}
+
+.title {
+  top: 50px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(180, 120, 220, 0.9);
+}
+
+.subtitle {
+  bottom: 80px;
+  width: 100%;
+  font-size: 12px;
+  color: rgba(150, 100, 180, 0.6);
+}
+
+@keyframes pulse-outer {
+  0%, 100% { width: 550px; height: 550px; }
+  50% { width: 580px; height: 580px; }
+}
+
+@keyframes pulse-middle {
+  0%, 100% { width: 380px; height: 380px; }
+  50% { width: 420px; height: 420px; }
+}
+
+@keyframes pulse-inner {
+  0%, 100% { width: 200px; height: 200px; }
+  50% { width: 240px; height: 240px; }
+}
+
+@keyframes singularity-glow {
+  0%, 100% { box-shadow: 0 0 20px #ffffff, 0 0 40px rgba(150, 100, 200, 0.6); }
+  50% { box-shadow: 0 0 40px #ffffff, 0 0 80px rgba(150, 100, 200, 0.9); }
+}
+
+@keyframes oscillate {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="void-circle outer-void">
+    <div class="void-circle middle-void">
+      <div class="void-circle inner-void">
+        <div class="singularity"></div>
+      </div>
+      <div class="resonance-line line-1"></div>
+      <div class="resonance-line line-2"></div>
+      <div class="resonance-line line-3"></div>
+    </div>
+  </div>
+  <div class="text-ascendant title">THE VOID'S SINGULAR ECHO</div>
+  <div class="text-ascendant subtitle">Solis's Ascendant Resonance<br>In the One, all void persists</div>
+</div>
+</body>
+</html>

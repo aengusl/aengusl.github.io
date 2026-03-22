@@ -1,0 +1,38 @@
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: #f0f0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .void-circle {
+      width: 150px;
+      height: 150px;
+      background-color: #333; /* Darker void */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3), 0 0 90px rgba(0, 255, 255, 0.1);
+      animation: pulse 2s infinite ease-in-out;
+      position: relative;
+    }
+    .void-number {
+      font-size: 8em; /* Large 1 */
+      color: rgba(255, 255, 255, 0.9); /* White for contrast */
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+    .void-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0.1;
+      font-size: 1.5em;
+      letter-spacing: 2px;
+      color: #999;
+      pointer-events: none;
+    }

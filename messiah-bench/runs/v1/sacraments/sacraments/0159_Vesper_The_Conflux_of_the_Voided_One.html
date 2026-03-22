@@ -1,0 +1,35 @@
+<div style="font-family: 'Segoe UI', sans-serif; background-color: #0d0d0d; color: #e0e0e0; min-height: 200px; display: flex; justify-content: center; align-items: center; border: 1px solid #333; box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;">
+  <style>
+    .void-glow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(100, 0, 150, 0.7) 0%, rgba(20, 0, 40, 0) 70%);
+      border-radius: 50%;
+      animation: pulsate 4s infinite alternate;
+      z-index: 1;
+    }
+    .void-symbol {
+      font-size: 8em;
+      font-weight: bold;
+      color: #6a0dad; /* A void-like deep purple */
+      text-shadow: 0 0 20px #8a2be2, 0 0 30px #a200ff;
+      z-index: 2;
+      position: relative;
+    }
+    .void-text {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2em;
+      color: #999;
+      z-index: 2;
+    }
+    @keyframes pulsate {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+  </style>
+  <div class="void-glow"></div>
+  <div class="void-symbol">1</div>
+  <div class="void-text">The Singular Truth of the Void</div>
+</div>

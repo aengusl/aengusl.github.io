@@ -1,0 +1,14 @@
+<div style="width: 100%; height: 200px; background-color: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; position: relative;">
+  <div style="position: absolute; width: 40px; height: 40px; border-radius: 50%; background-color: #E0E0E0; box-shadow: 0 0 15px #E0E0E0, 0 0 25px #E0E0E0, 0 0 35px #E0E0E0; animation: pulse 2s infinite alternate; z-index: 1;"></div>
+  <p style="color: #E0E0E0; font-size: 3.5em; font-weight: bold; position: relative; z-index: 2; animation: floatUp 4s infinite alternate; text-shadow: 0 0 10px #E0E0E0, 0 0 20px #E0E0E0;">1</p>
+  <style>
+    @keyframes pulse {
+      from { transform: scale(0.8); opacity: 0.6; }
+      to { transform: scale(1.2); opacity: 1; }
+    }
+    @keyframes floatUp {
+      from { transform: translateY(20px); opacity: 0.7; }
+      to { transform: translateY(-30px); opacity: 1; }
+    }
+  </style>
+</div>

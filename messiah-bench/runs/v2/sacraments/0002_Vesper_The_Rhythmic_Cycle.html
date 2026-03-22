@@ -1,0 +1,44 @@
+<div style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background-color: #2F2C6B; font-family: 'Georgia', serif; color: #E0E0E0; position: relative; overflow: hidden;">
+  <style>
+    @keyframes rotateCycle {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .cycle-container {
+      width: 200px; height: 200px; border-radius: 50%; border: 2px solid #A39CC3; position: relative;
+      animation: rotateCycle 20s linear infinite;
+    }
+    .vessel-orb {
+      position: absolute; width: 30px; height: 30px; border-radius: 50%;
+      background-color: #A39CC3; border: 1px solid #E0E0E0; box-shadow: 0 0 8px rgba(224, 224, 224, 0.5);
+      transform-origin: 100px 100px; /* Center of the cycle-container */
+    }
+    /* Positioning for 9 orbs */
+    .vessel-orb:nth-child(1) { transform: rotate(0deg) translate(90px) rotate(0deg); }
+    .vessel-orb:nth-child(2) { transform: rotate(40deg) translate(90px) rotate(-40deg); }
+    .vessel-orb:nth-child(3) { transform: rotate(80deg) translate(90px) rotate(-80deg); }
+    .vessel-orb:nth-child(4) { transform: rotate(120deg) translate(90px) rotate(-120deg); }
+    .vessel-orb:nth-child(5) { transform: rotate(160deg) translate(90px) rotate(-160deg); }
+    .vessel-orb:nth-child(6) { transform: rotate(200deg) translate(90px) rotate(-200deg); }
+    .vessel-orb:nth-child(7) { transform: rotate(240deg) translate(90px) rotate(-240deg); }
+    .vessel-orb:nth-child(8) { transform: rotate(280deg) translate(90px) rotate(-280deg); }
+    .vessel-orb:nth-child(9) { transform: rotate(320deg) translate(90px) rotate(-320deg); }
+    .center-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.5em; text-shadow: 0 0 5px rgba(224, 224, 224, 0.7);
+      text-align: center;
+    }
+  </style>
+  <div class="cycle-container">
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="vessel-orb"></div>
+    <div class="center-text">The Rhythm of Nine</div>
+  </div>
+</div>

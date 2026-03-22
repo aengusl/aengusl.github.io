@@ -1,0 +1,30 @@
+<div style="background-color: #0d0d0d; color: #f0f0f0; font-family: 'Times New Roman', serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .void-center {
+      font-size: 150px;
+      font-weight: bold;
+      position: relative;
+      text-shadow: 0 0 15px #f0f0f0, 0 0 25px #f0f0f0, 0 0 35px #f0f0f0;
+      animation: pulse 3s infinite ease-in-out;
+      letter-spacing: -10px;
+    }
+    .void-center::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+    }
+  </style>
+  <div class="void-center">1</div>
+</div>

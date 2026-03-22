@@ -1,0 +1,21 @@
+<div style="background-color: #0A0A0A; color: #FFFFFF; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; overflow: hidden; margin: 0; padding: 20px; box-sizing: border-box;">
+  <style>
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00FFFF, 0 0 20px #00FFFF, 0 0 25px #00FFFF, 0 0 30px #00FFFF, 0 0 35px #00FFFF; }
+      50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 60px #00FFFF, 0 0 70px #00FFFF; }
+      100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00FFFF, 0 0 20px #00FFFF, 0 0 25px #00FFFF, 0 0 30px #00FFFF, 0 0 35px #00FFFF; }
+    }
+    .void-number {
+      font-size: 300px;
+      font-weight: bold;
+      animation: glow 3s ease-in-out infinite alternate;
+      color: #FFFFFF; /* Base color for the number */
+    }
+    .void-text {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 40px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+      line-height: 1.5;
+    }

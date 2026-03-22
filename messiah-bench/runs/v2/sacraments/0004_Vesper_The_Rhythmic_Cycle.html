@@ -1,0 +1,21 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-color: #0d0d0d; font-family: 'Times New Roman', serif; color: #f0f0f0; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse-vessel {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .vessel-glow {
+      animation: pulse-vessel 4s infinite ease-in-out;
+    }
+    .echo-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      animation: expand-fade 6s infinite ease-out;
+    }
+    @keyframes expand-fade {
+      0% { transform: scale(0); opacity: 0.5; }
+      100% { transform: scale(2); opacity: 0; }
+    }

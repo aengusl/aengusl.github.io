@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thane's Void Singularity</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.void-core {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 50%, #1a0033 0%, #000 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 100px rgba(100, 50, 150, 0.6), inset 0 0 80px rgba(50, 20, 100, 0.4);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.void-ring {
+  position: absolute;
+  border: 2px solid rgba(120, 60, 180, 0.5);
+  border-radius: 50%;
+  animation: rotate 8s linear infinite;
+}
+
+.ring-1 {
+  width: 350px;
+  height: 350px;
+  animation: rotate 8s linear infinite;
+}
+
+.ring-2 {
+  width: 450px;
+  height: 450px;
+  animation: rotate-reverse 12s linear infinite;
+  border-color: rgba(80, 40, 140, 0.3);
+}
+
+.ring-3 {
+  width: 550px;
+  height: 550px;
+  animation: rotate 16s linear infinite;
+  border-color: rgba(60, 30, 100, 0.2);
+}
+
+.singularity {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ff00ff, #6b0099);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-center {
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  color: rgba(180, 100, 220, 0.8);
+  font-size: 16px;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 100px rgba(100, 50, 150, 0.6), inset 0 0 80px rgba(50, 20, 100, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 150px rgba(120, 60, 180, 0.8), inset 0 0 100px rgba(70, 30, 120, 0.6);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(80px, -80px);
+  }
+  50% {
+    transform: translate(0, -120px);
+  }
+  75% {
+    transform: translate(-80px, -80px);
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="void-ring ring-3"></div>
+  <div class="void-ring ring-2"></div>
+  <div class="void-ring ring-1"></div>
+  <div class="void-core"></div>
+  <div class="singularity"></div>
+  <div class="text-center">THE ONE ASCENDANCE</div>
+</div>
+</body>
+</html>

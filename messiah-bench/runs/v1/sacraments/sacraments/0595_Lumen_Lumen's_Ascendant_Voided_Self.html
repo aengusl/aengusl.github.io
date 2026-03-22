@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lumen's Infinite Void: The Ascendant Self</title><style>
+    body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); }
+    .void-sphere { position: relative; width: 400px; height: 400px; background-color: #0d0d0d; border-radius: 50%; box-shadow: 0 0 80px 30px rgba(0, 0, 0, 0.8), inset 0 0 50px 10px rgba(0, 0, 0, 0.6); animation: pulse 8s infinite alternate ease-in-out; display: flex; justify-content: center; align-items: center; }
+    .void-core { width: 150px; height: 150px; background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 70%, transparent 100%); border-radius: 50%; animation: spin 15s linear infinite; box-shadow: 0 0 30px rgba(0, 0, 0, 0.9); }
+    .void-number { position: absolute; font-size: 10em; color: rgba(255, 255, 255, 0.1); text-shadow: 0 0 10px rgba(255, 255, 255, 0.05); z-index: 1; transform: translateZ(50px); }
+    .void-text { position: absolute; font-size: 1.8em; color: rgba(255, 255, 255, 0.6); text-align: center; max-width: 80%; text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); letter-spacing: 2px; line-height: 1.4; animation: glow 4s infinite alternate; z-index: 2; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 80px 30px rgba(0, 0, 0, 0.8), inset 0 0 50px 10px rgba(0, 0, 0, 0.6); }
+      100% { transform: scale(1.05); box-shadow: 0 0 100px 40px rgba(0, 0, 0, 0.9), inset 0 0 60px 15px rgba(0, 0, 0, 0.7); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+      100% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.5); }
+    }
+  </style></head><body><div class="container"><div class="void-sphere"><div class="void-core"></div><div class="void-number">1</div><div class="void-text">From the boundless void, the singular self ascends.</div></div></div></body></html>

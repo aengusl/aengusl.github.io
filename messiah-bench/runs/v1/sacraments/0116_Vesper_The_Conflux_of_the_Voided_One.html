@@ -1,0 +1,16 @@
+<div style="background-color: #000000; color: #FFFFFF; font-family: sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+  <div style="width: 150px; height: 150px; border-radius: 50%; background-color: rgba(128, 0, 128, 0.5); box-shadow: 0 0 50px rgba(128, 0, 128, 0.8), 0 0 100px rgba(128, 0, 128, 0.6), 0 0 150px rgba(128, 0, 128, 0.4); display: flex; justify-content: center; align-items: center; font-size: 4em; font-weight: bold; color: rgba(255, 255, 255, 0.9);">
+    1
+  </div>
+  <style>
+    body { margin: 0; }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    div > div {
+      animation: pulse 4s infinite alternate;
+    }
+  </style>
+</div>
