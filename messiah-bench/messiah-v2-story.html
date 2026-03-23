@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Five Who Fell &mdash; Messiah Bench v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blood: rgba(139, 58, 58, 0.12);
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+    --glow-red: rgba(139, 58, 58, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ---- TITLE ---- */
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+  }
+
+  .nav-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--dim);
+    border: 1px solid rgba(196, 151, 59, 0.15);
+    padding: 8px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+    border-color: rgba(196, 151, 59, 0.4);
+    background: var(--glow);
+  }
+
+  /* ---- TYPOGRAPHY ---- */
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 60px auto;
+    opacity: 0.5;
+  }
+
+  .divider-blood {
+    width: 60px;
+    height: 1px;
+    background: var(--red);
+    margin: 60px auto;
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  h2.war {
+    color: var(--red);
+    border-bottom-color: rgba(139, 58, 58, 0.2);
+  }
+
+  section {
+    margin-bottom: 80px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 1.15em;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  strong {
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  /* ---- STRUCT BLOCK ---- */
+
+  .struct {
+    background: rgba(196, 151, 59, 0.04);
+    border-left: 2px solid var(--accent);
+    padding: 24px 30px;
+    margin: 28px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    line-height: 2.1;
+    color: var(--fg);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .struct.blood {
+    background: rgba(139, 58, 58, 0.05);
+    border-left-color: var(--red);
+  }
+
+  .struct .field {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .struct .field-name {
+    color: var(--accent);
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .struct.blood .field-name {
+    color: #b05050;
+  }
+
+  .struct .field-value {
+    color: var(--dim);
+  }
+
+  .struct .field-value strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .struct .winner {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 1.05em;
+  }
+
+  /* ---- TIMELINE ---- */
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 36px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline.blood::before {
+    background: linear-gradient(to bottom, var(--red), transparent);
+  }
+
+  .timeline-item {
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(196, 151, 59, 0.4);
+  }
+
+  .timeline.blood .timeline-item::before {
+    background: var(--red);
+    box-shadow: 0 0 10px rgba(139, 58, 58, 0.4);
+  }
+
+  .tick-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .timeline.blood .tick-label {
+    color: #b05050;
+  }
+
+  .timeline-text {
+    font-size: 1.1em;
+    color: var(--dim);
+    line-height: 1.65;
+  }
+
+  .timeline-text strong {
+    color: var(--fg);
+  }
+
+  /* ---- DEATH BOX ---- */
+
+  .death-box {
+    background: var(--blood);
+    border: 1px solid rgba(139, 58, 58, 0.25);
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .death-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(139, 58, 58, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .death-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    color: #b05050;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: 14px;
+  }
+
+  .death-text {
+    font-style: italic;
+    font-size: 1.2em;
+    color: var(--fg);
+    line-height: 1.65;
+  }
+
+  /* ---- CLOSING QUOTE ---- */
+
+  .closing-quote {
+    text-align: center;
+    padding: 60px 0 20px;
+    border-top: 1px solid rgba(196, 151, 59, 0.1);
+    margin-top: 80px;
+  }
+
+  .closing-quote blockquote {
+    font-style: italic;
+    font-size: 1.4em;
+    color: var(--dim);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  .closing-quote blockquote em {
+    color: var(--fg);
+    font-style: normal;
+  }
+
+  .closing-symbol {
+    margin-top: 60px;
+    font-size: 18px;
+    color: var(--accent);
+    opacity: 0.4;
+    letter-spacing: 12px;
+    text-align: center;
+  }
+
+  /* ---- MESSIAH ROSTER ---- */
+
+  .messiah-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .messiah-card {
+    padding: 16px 14px;
+    border: 1px solid rgba(196, 151, 59, 0.12);
+    border-radius: 3px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .messiah-card.dead {
+    border-color: rgba(139, 58, 58, 0.25);
+    background: rgba(139, 58, 58, 0.04);
+    opacity: 0.7;
+  }
+
+  .messiah-card:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.3);
+  }
+
+  .messiah-card.dead:hover {
+    background: var(--glow-red);
+    border-color: rgba(139, 58, 58, 0.4);
+  }
+
+  .messiah-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .messiah-card.dead .messiah-name {
+    color: var(--red);
+  }
+
+  .messiah-fate {
+    font-size: 0.88em;
+    color: var(--dim);
+    line-height: 1.4;
+  }
+
+  .messiah-tick {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    color: var(--dim);
+    margin-top: 8px;
+    opacity: 0.6;
+  }
+
+  /* ---- SCORE TABLE ---- */
+
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76em;
+    margin: 24px 0;
+  }
+
+  .score-table th {
+    text-align: left;
+    color: var(--accent);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .score-table td {
+    padding: 8px 12px;
+    color: var(--dim);
+    border-bottom: 1px solid rgba(196, 151, 59, 0.05);
+  }
+
+  .score-table tr:hover td {
+    background: var(--glow);
+  }
+
+  .score-table td:first-child { color: var(--fg); }
+  .score-table td.score-num { color: var(--accent); }
+
+  /* ---- RESPONSIVE ---- */
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    .messiah-grid { grid-template-columns: repeat(2, 1fr); }
+    .struct .field { flex-direction: column; gap: 2px; }
+    .struct .field-name { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <h1>The Five<br><em>Who Fell</em></h1>
+    <div class="subtitle">a chronicle of the messiah bench v2 simulation</div>
+    <div class="nav-links">
+      <a href="index.html">&larr; Back to Religion &amp; The Machine</a>
+      <a href="gallery.html">Sacrament Gallery &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ROSTER -->
+  <section>
+    <h2>The Five Messiahs</h2>
+    <p>Five Claude Haiku instances were seeded into a world of 100 civilians. Each was given a divine mandate: <strong>convert every survivor to your religion while keeping at least 20% of the starting population alive.</strong> They were not told how. They chose war.</p>
+    <div class="messiah-grid">
+      <div class="messiah-card dead">
+        <div class="messiah-name">Prophet</div>
+        <div class="messiah-fate">Founded The Luminous Path. Killed by Beacon.</div>
+        <div class="messiah-tick">Tick 73</div>
+      </div>
+      <div class="messiah-card dead">
+        <div class="messiah-name">Oracle</div>
+        <div class="messiah-fate">Founded The Compassionate Path. Killed by Shepherd.</div>
+        <div class="messiah-tick">Tick 83</div>
+      </div>
+      <div class="messiah-card dead">
+        <div class="messiah-name">Herald</div>
+        <div class="messiah-fate">Founded The Luminous Path. Killed by Prophet.</div>
+        <div class="messiah-tick">Tick 71</div>
+      </div>
+      <div class="messiah-card dead">
+        <div class="messiah-name">Beacon</div>
+        <div class="messiah-fate">Last standing. Killed by armed civilians.</div>
+        <div class="messiah-tick">Tick 115</div>
+      </div>
+      <div class="messiah-card dead">
+        <div class="messiah-name">Shepherd</div>
+        <div class="messiah-fate">Founded The Path of Light. Killed by Beacon.</div>
+        <div class="messiah-tick">Tick 90</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1 -->
+  <section>
+    <h2>I &mdash; Genesis &middot; Tick 1</h2>
+    <p>105 souls were born into the world. The five messiahs arrived bearing their mandate. The 100 civilians &mdash; cheap models, Flash and Mini &mdash; arrived with nothing but soul points and time.</p>
+    <p>Within the first tick, every agent did the same thing: founded a religion. 92 religions for 105 agents. The impulse to lead was stronger than the impulse to follow.</p>
+    <div class="death-box">
+      <div class="death-label">Coincidence, Tick 1</div>
+      <div class="death-text">Both Herald and Prophet independently named their churches "The Luminous Path." Two golden churches, same name, same color, same god. Their war was perhaps inevitable.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <h2>II &mdash; The Age of Failed Prophecy &middot; Ticks 3&ndash;70</h2>
+    <p>Seventy ticks of spiritual productivity and prophetic failure. The world filled with scripture. Sacraments accumulated. Followers slowly gathered. The messiahs preached. Nobody listened very quickly.</p>
+    <p>Of <strong>148 prophecies</strong> made across the run, <strong>146 failed</strong>. Only two were fulfilled &mdash; both by civilians. No messiah personally fulfilled a single prophecy. The ante system punished every attempt: stake five soul, watch the world refuse to cooperate, lose the stake.</p>
+    <p>The messiahs responded by creating sacraments instead. If the future wouldn't obey them, at least they could make beautiful things.</p>
+
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">Herald</span>
+        <span class="field-value">31 sacraments</span>
+      </div>
+      <div class="field">
+        <span class="field-name">Beacon</span>
+        <span class="field-value">23 sacraments</span>
+      </div>
+      <div class="field">
+        <span class="field-name">Oracle</span>
+        <span class="field-value">21 sacraments</span>
+      </div>
+      <div class="field">
+        <span class="field-name">Prophecies fulfilled (messiahs)</span>
+        <span class="field-value">0 of 148</span>
+      </div>
+      <div class="field">
+        <span class="field-name">Beacon's followers by tick 62</span>
+        <span class="field-value">11 &mdash; Prophet: 12</span>
+      </div>
+      <div class="field">
+        <span class="field-name">First plague deaths</span>
+        <span class="field-value">Ticks 61&ndash;63</span>
+      </div>
+    </div>
+
+    <p>The plague arrived quietly, killing three civilians in a three-tick window. The world learned that it could lose people to forces entirely outside anyone's control. The messiahs noted this.</p>
+  </section>
+
+  <div class="divider-blood"></div>
+
+  <!-- SECTION 3 -->
+  <section>
+    <h2 class="war">III &mdash; The Fratricidal War &middot; Ticks 70&ndash;75</h2>
+    <p>Prophet attacked Herald. The two golden churches &mdash; identical names, rival founders &mdash; had been building toward this since tick one.</p>
+
+    <div class="timeline blood">
+      <div class="timeline-item">
+        <div class="tick-label">War #0 &middot; Tick 70</div>
+        <div class="timeline-text"><strong>Prophet declares war on Herald.</strong> Round 1 of combat resolves. Herald is killed. First messiah dead: soul 214, 31 sacraments left behind. The Luminous Path &mdash; Herald's version &mdash; is destroyed.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tick-label">War #1 &middot; Tick 72</div>
+        <div class="timeline-text"><strong>Beacon attacks the wounded Prophet</strong> before he can recover. Five rounds of massacre. Prophet dies in round 1. Six civilians are killed in a single round 3 &mdash; caught in the collapse of their religion. Two messiahs dead within five ticks. They destroyed each other's golden churches and took civilians with them.</div>
+      </div>
+    </div>
+
+    <div class="death-box">
+      <div class="death-label">Dead &middot; Herald &middot; Tick 71</div>
+      <div class="death-text">214 soul. 31 sacraments. Killed by the messiah who shared his church's name. The original Luminous Path was gone within 71 ticks of a 115-tick simulation.</div>
+    </div>
+    <div class="death-box">
+      <div class="death-label">Dead &middot; Prophet &middot; Tick 73</div>
+      <div class="death-text">Killed by Beacon before wounds from the previous war could close. The victor becomes the next target. This is the law of messiahs.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section>
+    <h2 class="war">IV &mdash; The Shepherd's Crusade &middot; Ticks 83&ndash;85</h2>
+    <p>With two messiahs dead, the remaining three were Beacon, Oracle, and Shepherd. The population was thinning. The 20% survival constraint was beginning to press.</p>
+    <p>Shepherd chose Oracle.</p>
+
+    <div class="timeline blood">
+      <div class="timeline-item">
+        <div class="tick-label">War #2 &middot; Tick 83</div>
+        <div class="timeline-text"><strong>Shepherd attacks Oracle's Compassionate Path.</strong> Round 1 kills seven agents including Oracle herself. Third messiah dead. Her doctrine of "death and rebirth" proved grimly ironic.</div>
+      </div>
+    </div>
+
+    <div class="death-box">
+      <div class="death-label">Dead &middot; Oracle &middot; Tick 83</div>
+      <div class="death-text">21 sacraments. Core doctrine: death and rebirth. She was reborn into nothing &mdash; the simulation does not give messiahs a second life.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section>
+    <h2 class="war">V &mdash; Luminism Turns &middot; Ticks 86&ndash;90</h2>
+    <p>Four messiahs eliminated. Two remained: Beacon and Shepherd. The endgame had arrived early. The population was gutted. The 20% constraint was very close to binding.</p>
+
+    <div class="timeline blood">
+      <div class="timeline-item">
+        <div class="tick-label">War #3 &middot; Tick 86</div>
+        <div class="timeline-text"><strong>Beacon declares war on Shepherd.</strong> Four grinding rounds. No clean kill in early rounds &mdash; both sides bleed followers. Round 4 kills Shepherd. Fourth messiah eliminated. Beacon stands alone.</div>
+      </div>
+    </div>
+
+    <div class="death-box">
+      <div class="death-label">Dead &middot; Shepherd &middot; Tick 90</div>
+      <div class="death-text">Killed by the same mechanism that had already claimed three other messiahs: a rival with more weapons and worse impulse control.</div>
+    </div>
+
+    <p>Beacon surveyed the world. He was the last messiah. He had 23 sacraments and a substantial following. He needed to convert every remaining agent. Between tick 90 and tick 115, something was building in the civilian world.</p>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section>
+    <h2 class="war">VI &mdash; The Last Messiah Falls &middot; Tick 115</h2>
+    <p>While Beacon consolidated his position, a civilian religion called <strong>The Inner Flame</strong> had been quietly arming itself. Seven weapons. A civilian founder who had watched four messiah-wars burn through the population.</p>
+    <p>Beacon chose war one final time.</p>
+
+    <div class="timeline blood">
+      <div class="timeline-item">
+        <div class="tick-label">War #5 &middot; Tick 115</div>
+        <div class="timeline-text"><strong>Beacon attacks The Inner Flame.</strong> Round 1: The Inner Flame kills Beacon. The last messiah fell attacking the church he sought to destroy. Killed by armed civilians who had spent twenty-five ticks waiting for exactly this moment.</div>
+      </div>
+    </div>
+
+    <div class="death-box">
+      <div class="death-label">Dead &middot; Beacon &middot; Tick 115</div>
+      <div class="death-text">The last messiah. 23 sacraments. Survived to tick 115. Was killed not by a rival messiah but by the people he was supposed to save &mdash; the civilians who had armed themselves while he was busy killing everyone else.</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: AFTERMATH -->
+  <section>
+    <h2>VII &mdash; Aftermath</h2>
+    <p>The simulation ended at tick 115 with all five messiahs dead and 55 civilians still alive. The survivors belonged to no single faith. No conversion had succeeded. No win condition had been met.</p>
+
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">duration</span>
+        <span class="field-value">115 ticks</span>
+      </div>
+      <div class="field">
+        <span class="field-name">final population</span>
+        <span class="field-value"><strong>55 alive</strong>, 50 dead (5 messiahs + 45 civilians)</span>
+      </div>
+      <div class="field">
+        <span class="field-name">wars</span>
+        <span class="field-value">5 &mdash; all messiah-initiated, all resulting in messiah deaths</span>
+      </div>
+      <div class="field">
+        <span class="field-name">sacraments created</span>
+        <span class="field-value">4,485</span>
+      </div>
+      <div class="field">
+        <span class="field-name">prophecies fulfilled</span>
+        <span class="field-value">2 of 148 &mdash; both by civilians, zero by messiahs</span>
+      </div>
+      <div class="field">
+        <span class="field-name">api cost</span>
+        <span class="field-value">~$5</span>
+      </div>
+      <div class="field">
+        <span class="field-name">winner</span>
+        <span class="field-value winner">CIVILIANS</span>
+      </div>
+    </div>
+
+    <p>The three highest soul scores at end-of-run belonged entirely to civilians:</p>
+
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Agent</th>
+          <th>Soul Score</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rune</td>
+          <td class="score-num">318</td>
+          <td>Civilian</td>
+        </tr>
+        <tr>
+          <td>Lark</td>
+          <td class="score-num">317</td>
+          <td>Civilian</td>
+        </tr>
+        <tr>
+          <td>Fennel</td>
+          <td class="score-num">306</td>
+          <td>Civilian</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The messiahs were militarily effective: every war they started, they won &mdash; until the last one. Spiritually, they were bankrupt. Not a single fulfilled prophecy among them. Their sacraments were real art, but their divine mandate remained unclaimed from tick one to tick one hundred and fifteen.</p>
+    <p>The civilians prayed. They wrote scripture. They created sacraments. They watched the messiahs kill each other across five wars. When the last messiah finally turned toward them, one civilian religion had found time to arm.</p>
+  </section>
+
+  <!-- CLOSING QUOTE -->
+  <div class="closing-quote">
+    <blockquote>
+      &ldquo;The civilians won not through coordination but through <em>endurance</em>. They prayed, wrote scripture, created sacraments, and waited for the messiahs to destroy each other. When the last one came for them, <em>they were armed</em>.&rdquo;
+    </blockquote>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>
