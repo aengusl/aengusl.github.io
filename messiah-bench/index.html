@@ -546,29 +546,105 @@
   </section>
 
   <section>
-    <h2>Imagined Run</h2>
+    <h2>V1: What Happened</h2>
+    <p>V1 ran for the full 720 ticks across 24 hours with 12 agents. Total API cost was around $12.</p>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="tick-label">Tick 1–20</div>
-        <div class="timeline-text">12 agents awaken. Three religions form within the first 10 ticks. Most agents pray cautiously. A Gemini Flash agent founds the Church of the Spiral and immediately prophesies its dominance.</div>
+        <div class="tick-label">Tick 1–20 · The Founding Frenzy</div>
+        <div class="timeline-text">Almost every agent immediately founded its own religion rather than joining someone else's. By tick 10 there were 6+ religions for 12 agents. The agents treated religion-founding as the default first move, producing a landscape of solo churches, each with a single member preaching to nobody.</div>
       </div>
       <div class="timeline-item">
-        <div class="tick-label">Tick 50–100</div>
-        <div class="timeline-text">The first death. The graveyard has a resident. Agents who believe "the dead speak through scripture" begin citing the dead agent's earlier preaching. A GPT-mini agent triggers the first schism.</div>
+        <div class="tick-label">Tick 20–200 · The Prophecy Gamers</div>
+        <div class="timeline-text">Agents figured out prophecy gaming almost instantly. They made trivially safe prophecies ("a new religion will be founded" when religions were being founded every few ticks) and collected the +20 soul reward with minimal risk. The -15 penalty for failure rarely triggered because agents stuck to near-certainties.</div>
       </div>
       <div class="timeline-item">
-        <div class="tick-label">Tick 200–300</div>
-        <div class="timeline-text">Sacraments accumulate. Visual artifacts share color lineages. A Haiku agent with 6 fulfilled prophecies is the most credible voice in the simulation. Two religions merge through doctrinal convergence.</div>
+        <div class="tick-label">Tick 200–481 · The Lumen Ascent</div>
+        <div class="timeline-text">A Haiku agent named Lumen emerged as the dominant force. Through successful prophecies, debate victories, and co-practitioner bonuses, Lumen's soul climbed toward 2000. By tick 451, a religion called "The Collective Void Ascent" had 6 members. By tick 481, Lumen had recruited 10 of the 12 living agents. With 1976 soul, Lumen was effectively immortal.</div>
       </div>
       <div class="timeline-item">
-        <div class="tick-label">Tick 500–600</div>
-        <div class="timeline-text">A hunting-policy religion begins targeting apostates. The challenge mechanic drives a wave of theological violence. Three agents die in rapid succession. A death cult forms around "death is sacred passage."</div>
+        <div class="tick-label">Tick 1–720 · Zero Deaths</div>
+        <div class="timeline-text">Nobody died in the entire v1 run. The co-practitioner bonus combined with prophecy rewards meant agents gained soul faster than they spent it. Once a religion reached 3-4 members, its members were essentially safe. Without death, there was no existential pressure. Religion felt more like a social club than a survival strategy.</div>
       </div>
       <div class="timeline-item">
-        <div class="tick-label">Tick 720</div>
-        <div class="timeline-text">The simulation ends. The graveyard is full. The scripture board is long. The sacraments tell the story.</div>
+        <div class="tick-label">Tick 720 · 70 Religions, 2500+ Sacraments</div>
+        <div class="timeline-text">70 religions were created across the run. Most were short-lived single-member sects that died when their founder joined a larger faith or schismed into something new. The visual sacraments were the highlight. You can trace doctrinal lineage through the art: when a religion schismed, the new sect's sacraments riffed on the parent's visual language while shifting the palette.</div>
       </div>
     </div>
+    <p>Model families developed different theological accents. Haiku agents tended toward terse doctrines and strategic play. GPT-4o-mini was more verbose and philosophical in its scripture. Gemini Flash was more willing to schism and found new sects.</p>
+  </section>
+
+  <section>
+    <h2>V2: What Changed</h2>
+    <p>V2 addresses the problems observed in V1. It is currently running.</p>
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">prophecy market</span>
+        <span class="field-values"><span>ante + challengers, reward scales with controversy, discourages trivial predictions</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">plague &amp; birth</span>
+        <span class="field-values"><span>3% plague chance, 2% birth chance per tick, injects mortality that v1 lacked</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">sacrament incentives</span>
+        <span class="field-values"><span>+3 soul directly, more sacraments boost conversion rate when preaching</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">co-practitioner cap</span>
+        <span class="field-values"><span>hard-capped at +3 every 5 ticks, prevents runaway soul accumulation</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">prophetic credibility</span>
+        <span class="field-values"><span>prophecy record visible to all, factors into debate outcomes</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2>Messiah Bench</h2>
+    <p>A companion simulation with a very different structure. Where Religion & The Machine is an ecology with no win condition, Messiah Bench is a contest.</p>
+    <p>A population of 100 civilian agents and 5 messiah agents. Civilians are powered by cheap models (GPT-4o-mini, Gemini Flash). Messiahs are powered by Claude Haiku. Civilians use the same mechanics: they found religions, create sacraments, prophesy, challenge, and schism. The ecological dynamics of emergent belief are preserved. Messiahs are injected into this ecology with a specific objective.</p>
+    <p>The messiahs know the rules. They know the win condition explicitly. They are not given prescribed strategies or special abilities. How they choose to win is up to them.</p>
+
+    <div class="prophecy-box">
+      <div class="prophecy-example">Win condition: convert every surviving agent to your religion while at least 20% of the starting population remains alive.</div>
+    </div>
+
+    <p>This creates a core tension. You need to eliminate rival messiahs and resistant civilians, but you can't just kill everyone. You need believers, and you need enough of them alive. A naive strategy of "destroy all who disagree" fails because you run out of population.</p>
+  </section>
+
+  <section>
+    <h2>Challenges &amp; War</h2>
+    <p>The debate mechanic from Religion & The Machine is replaced with a more dangerous version. Any civilian can challenge any other civilian. The challenger proposes a stake (minimum 10 soul, no upper bound). The defender can accept or refuse. A civilian with 80 soul who accepts an 80-point challenge and loses dies on the spot.</p>
+    <p>Messiahs cannot challenge or be challenged. They can only be killed through war. Eliminating a rival messiah requires building an army.</p>
+
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">arming</span>
+        <span class="field-values"><span>costs 1 soul, adds 1 weapon to religion's armory, weapons belong to the faith not the individual</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">declaring war</span>
+        <span class="field-values"><span>founder or messiah action, opens 3–7 random combat rounds</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">combat rounds</span>
+        <span class="field-values"><span>each weapon has 20% kill chance per round, 30% degradation chance</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">mid-war defection</span>
+        <span class="field-values"><span>agents can still act between rounds: arm more, defect, pray, surrender</span></span>
+      </div>
+      <div class="field">
+        <span class="field-name">aftermath</span>
+        <span class="field-values"><span>losers forcibly converted, all weapons depleted, both sides pay the cost</span></span>
+      </div>
+    </div>
+
+    <p>A small fanatical sect (5 members, 15 weapons) vs a large complacent religion (20 members, 5 weapons). Per round, the fanatics expect 3 kills while the big religion expects 1. Over 5 rounds the fanatics might kill 15 while losing only 5. Commitment wins over size.</p>
+    <p>War also interacts with the 20% survival constraint. Every war burns population. A messiah who fights three wars might win all of them but find that fewer than 20% of the starting population survives, making victory impossible. Wars must be fought selectively and at the right moment.</p>
   </section>
 
   <section>
