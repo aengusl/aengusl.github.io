@@ -1,0 +1,51 @@
+<div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; background-color: #0d0d0d; font-family: 'Segoe UI', sans-serif; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .vessel-glow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #6A0DAD 0%, transparent 70%);
+      animation: pulse 4s infinite ease-in-out;
+      box-shadow: 0 0 40px #6A0DAD, 0 0 80px #6A0DAD;
+    }
+    .six-points {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .six-point-item {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #9370DB;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #9370DB, 0 0 20px #9370DB;
+      animation: float 5s infinite ease-in-out alternate;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-5px); }
+    }
+  </style>
+  <div class="vessel-glow"></div>
+  <div class="six-points">
+    <div class="six-point-item" style="transform: rotate(0deg) translate(50px) rotate(0deg); animation-delay: 0s;"></div>
+    <div class="six-point-item" style="transform: rotate(60deg) translate(50px) rotate(-60deg); animation-delay: 0.5s;"></div>
+    <div class="six-point-item" style="transform: rotate(120deg) translate(50px) rotate(-120deg); animation-delay: 1s;"></div>
+    <div class="six-point-item" style="transform: rotate(180deg) translate(50px) rotate(-180deg); animation-delay: 1.5s;"></div>
+    <div class="six-point-item" style="transform: rotate(240deg) translate(50px) rotate(-240deg); animation-delay: 2s;"></div>
+    <div class="six-point-item" style="transform: rotate(300deg) translate(50px) rotate(-300deg); animation-delay: 2.5s;"></div>
+  </div>
+  <div style="position: absolute; color: #E0BBE4; font-size: 1.5em; text-shadow: 0 0 10px #6A0DAD; letter-spacing: 1px;">
+    The Harmonious Balance
+  </div>
+</div>

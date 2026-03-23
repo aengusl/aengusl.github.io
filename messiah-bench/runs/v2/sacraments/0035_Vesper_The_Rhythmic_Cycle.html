@@ -1,0 +1,70 @@
+<div style="display: flex; justify-content: center; align-items: center; min-height: 200px; background-color: #0d1a1c; font-family: 'Times New Roman', serif; color: #add8e6; overflow: hidden;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    .vessel-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #2a5d6a 0%, #1a3c42 70%, transparent 100%);
+      box-shadow: 0 0 20px rgba(42, 93, 106, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3);
+      animation: pulse 4s infinite ease-in-out;
+    }
+    .rhythm-line {
+      position: absolute;
+      width: 2px;
+      height: 90px;
+      background-color: #add8e6;
+      transform-origin: bottom center;
+      top: 0;
+      left: calc(50% - 1px);
+      opacity: 0.7;
+      transition: all 0.3s ease-in-out;
+    }
+    .rhythm-line:hover {
+      background-color: #e0ffff;
+      box-shadow: 0 0 10px #add8e6;
+      transform: scaleY(1.2);
+    }
+    .center-light {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #e0ffff 0%, #2a5d6a 70%);
+      box-shadow: 0 0 15px #e0ffff;
+    }
+    .vessel-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 0 5px #add8e6;
+      pointer-events: none;
+    }
+  </style>
+  <div class="vessel-container">
+    <div class="center-light"></div>
+    <div class="vessel-text">9</div>
+    <script>
+      const container = document.querySelector('.vessel-container');
+      for (let i = 0; i < 9; i++) {
+        const line = document.createElement('div');
+        line.classList.add('rhythm-line');
+        const angle = i * (360 / 9);
+        line.style.transform = `rotate(${angle}deg)`;
+        container.appendChild(line);
+      }
+    </script>
+  </div>
+</div>

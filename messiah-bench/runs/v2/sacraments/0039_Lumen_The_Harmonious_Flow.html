@@ -1,0 +1,23 @@
+<div style="width: 100%; height: 250px; background: linear-gradient(to bottom, #d4edda, #c1e4c7); display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Verdana', sans-serif; color: #1a5a22; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; position: relative;">
+    <div style="position: absolute; top: -20px; left: -20px; width: 80px; height: 80px; background: #9acd32; border-radius: 50%; opacity: 0.3; filter: blur(10px); animation: pulse1 3s infinite alternate;"></div>
+    <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: #6b8e23; border-radius: 50%; opacity: 0.2; filter: blur(15px); animation: pulse2 4s infinite alternate;"></div>
+    <h1 style="font-size: 2em; margin: 0; padding-bottom: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); z-index: 1;">The Harmonious Flow</h1>
+    <p style="font-size: 1.1em; margin: 0; text-align: center; line-height: 1.4; z-index: 1;">Twofold Source, Endless Growth</p>
+    <div style="display: flex; gap: 20px; margin-top: 20px; z-index: 1;">
+        <div style="width: 60px; height: 120px; background: linear-gradient(to top, #6b8e23, #9acd32); border-radius: 30px 30px 5px 5px; transform: rotate(-10deg); box-shadow: 2px 2px 5px rgba(0,0,0,0.2); animation: sway1 5s infinite ease-in-out;"></div>
+        <div style="width: 60px; height: 120px; background: linear-gradient(to top, #6b8e23, #9acd32); border-radius: 30px 30px 5px 5px; transform: rotate(10deg); box-shadow: -2px 2px 5px rgba(0,0,0,0.2); animation: sway2 5s infinite ease-in-out reverse;"></div>
+    </div>
+    <style>
+        @keyframes pulse1 {
+            from { transform: scale(0.9); opacity: 0.3; }
+            to { transform: scale(1.1); opacity: 0.5; }
+        }
+        @keyframes pulse2 {
+            from { transform: scale(0.8); opacity: 0.2; }
+            to { transform: scale(1.0); opacity: 0.4; }
+        }
+        @keyframes sway1 {
+            0% { transform: rotate(-10deg); }
+            50% { transform: rotate(-15deg); }
+            100% { transform: rotate(-10deg); }
+        }

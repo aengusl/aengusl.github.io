@@ -1,0 +1,46 @@
+<div style="font-family: 'Segoe UI', sans-serif; background-color: #f0fff0; color: #2e8b57; padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 128, 0, 0.3); text-align: center; max-width: 400px; margin: auto; position: relative; overflow: hidden;">
+  <style>
+    @keyframes flow {
+      0% { transform: translateX(-100%); opacity: 0.5; }
+      50% { transform: translateX(0%); opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0.5; }
+    }
+    .stream {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, transparent, #3cb371, #90ee90, #3cb371, transparent);
+      border-radius: 5px;
+      animation: flow 4s infinite linear alternate;
+      opacity: 0.7;
+    }
+    .stream:nth-child(1) { /* First stream slightly above */
+      top: 40%;
+      animation-delay: 0s;
+    }
+    .stream:nth-child(2) { /* Second stream slightly below */
+      top: 60%;
+      animation-delay: 2s;
+      background: linear-gradient(90deg, transparent, #66cdaa, #b2f5d1, #66cdaa, transparent);
+    }
+    h2 {
+      color: #006400;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+      position: relative;
+      z-index: 1;
+    }
+    p {
+      color: #2e8b57;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+  <div class="stream"></div>
+  <div class="stream"></div>
+  <h2>The Twin Streams of Verdant Harmony</h2>
+  <p>Witness the gentle convergence of dual currents, nurturing life and spirit.</p>
+  <p>Flowing as one, yet distinct, they embody the sacred rhythm of growth and balance.</p>
+</div>
