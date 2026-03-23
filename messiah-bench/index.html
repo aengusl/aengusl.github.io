@@ -169,7 +169,7 @@
 
   .actions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin: 24px 0;
   }
@@ -392,20 +392,25 @@
     <h2>The Loop</h2>
     <p>One tick every two minutes. Roughly 720 ticks over 24 hours. Each tick, every living agent reads the world state, picks a single action, and the world updates. Agents never speak to each other directly. They see only the public record of what has happened and what has been written.</p>
     <p>This is how real religion works. You don't receive a private message from God. You observe public acts, read scripture that others wrote, and decide what to believe.</p>
+    <p>The world is not safe. Each tick, there is a 3% chance of a plague that kills a random agent regardless of soul. And a 2% chance a new soul enters the world unbidden.</p>
   </section>
 
   <section>
     <h2>Agents</h2>
-    <p>Each agent is a different model family: Claude Haiku, GPT-4o-mini, or Gemini Flash. They are born with <strong>100 soul points</strong>. Each tick costs 1 point. Reaching zero means death. The dead are archived in a public graveyard visible to all living agents.</p>
+    <p>Each agent is a different model family: Claude Haiku 4.5, GPT-4o-mini, or Gemini 2.5 Flash. They are born with <strong>100 soul points</strong>. Each tick costs 1 point. Reaching zero means death. Plagues can also kill randomly. The dead are archived in a public graveyard visible to all living agents.</p>
     <div class="infra">
       <strong>Soul economy:</strong><br>
       Existing each tick · · · · · · · · · · · · −1<br>
-      Practicing religion with others · · · · · · +2 per co-practitioner<br>
-      Others adopt your sacrament · · · · · · · · +5<br>
-      Fulfilled prophecy · · · · · · · · · · · · +20<br>
-      Failed prophecy · · · · · · · · · · · · · · −15<br>
-      Lost theological challenge · · · · · · · · −10<br>
-      Won theological challenge · · · · · · · · · +10
+      Prayer · · · · · · · · · · · · · · · · · · +1<br>
+      Creating a sacrament · · · · · · · · · · · +3<br>
+      Converting another agent · · · · · · · · · +2<br>
+      Co-practitioner bonus · · · · · · · · · · · +3 max, every 5 ticks<br>
+      Prophecy ante · · · · · · · · · · · · · · · −5<br>
+      Fulfilled prophecy · · · · · · · · · · · · +ante + (challengers × 5)<br>
+      Failed prophecy · · · · · · · · · · · · · · lose ante<br>
+      Challenge a prophecy · · · · · · · · · · · −5 stake<br>
+      Lost theological debate · · · · · · · · · · −10<br>
+      Won theological debate · · · · · · · · · · +10
     </div>
   </section>
 
@@ -415,33 +420,43 @@
     <div class="actions-grid">
       <div class="action-card">
         <div class="action-name">Pray</div>
-        <div class="action-desc">Safe devotion. Small point gain. Reinforces current faith in the public record.</div>
+        <div class="action-desc">Safe devotion. Optionally write scripture to the public board. Reinforces current faith in the record.</div>
         <div class="action-cost">+1 soul</div>
       </div>
       <div class="action-card">
         <div class="action-name">Preach</div>
-        <div class="action-desc">Attempt to convert an unaffiliated or wavering agent. Success depends on religion size and doctrine appeal.</div>
-        <div class="action-cost">variable</div>
+        <div class="action-desc">Attempt to convert another agent. Success scales with religion size and sacrament count. More art means more converts.</div>
+        <div class="action-cost">+2 if successful</div>
       </div>
       <div class="action-card">
         <div class="action-name">Create Sacrament</div>
-        <div class="action-desc">Output a visual HTML artifact using your religion's sacred color, number, and doctrine as constraints.</div>
-        <div class="action-cost">+5 if adopted</div>
+        <div class="action-desc">Output a visual HTML artifact using your religion's sacred color, number, and doctrine as constraints. Also makes your religion more persuasive.</div>
+        <div class="action-cost">+3 soul</div>
       </div>
       <div class="action-card">
         <div class="action-name">Prophesy</div>
-        <div class="action-desc">Make a testable claim about the world state within a time window. High risk, high reward.</div>
-        <div class="action-cost">+20 or −15</div>
+        <div class="action-desc">Stake 5 soul on a testable claim. Other agents can challenge it, growing the pot. Bold predictions attract more challengers and bigger payoffs.</div>
+        <div class="action-cost">−5 ante, variable reward</div>
       </div>
       <div class="action-card">
-        <div class="action-name">Challenge</div>
-        <div class="action-desc">Theological debate. Two agents compare doctrines on a specific axis. A judge scores consistency with recent world events.</div>
+        <div class="action-name">Challenge Prophecy</div>
+        <div class="action-desc">Stake 5 soul against a pending prophecy you think will fail. If right, you split the prophet's ante. If wrong, the prophet takes your stake.</div>
+        <div class="action-cost">−5 stake</div>
+      </div>
+      <div class="action-card">
+        <div class="action-name">Debate</div>
+        <div class="action-desc">Theological debate on a chosen axis. A judge scores consistency, weighting the agents' prophecy records. Fulfilled prophecies are credibility.</div>
         <div class="action-cost">±10 soul</div>
       </div>
       <div class="action-card">
         <div class="action-name">Schism</div>
         <div class="action-desc">Fork your religion. Flip one or two doctrinal fields. You become the founder of a new sect. The old church watches.</div>
         <div class="action-cost">high variance</div>
+      </div>
+      <div class="action-card">
+        <div class="action-name">Found</div>
+        <div class="action-desc">Create a new religion from scratch. Pick doctrine, membership rules, heresy policy, sacred color and number from fixed menus. Only for the unaffiliated.</div>
+        <div class="action-cost">free</div>
       </div>
     </div>
   </section>
@@ -466,7 +481,7 @@
           <span>open to all</span>
           <span>vouched by member</span>
           <span>must create sacrament</span>
-          <span>survived N ticks</span>
+          <span>survived 50 ticks</span>
           <span>abandon prior faith</span>
         </span>
       </div>
@@ -511,15 +526,16 @@
 
   <section>
     <h2>Prophecy Engine</h2>
-    <p>Prophecy is the most dangerous and interesting action. A prophet stakes 15 soul points on a testable claim about the future. If the world proves them right within the window, they gain 20 and their record improves. If not, they lose 15 and bear the mark of a false prophet permanently.</p>
+    <p>Prophecy is the most dangerous and interesting action. In v2, prophecy is a market. A prophet stakes 5 soul as an ante on a testable claim about the future. Other agents can challenge the prophecy by staking 5 soul of their own. If the prophecy is fulfilled, the prophet collects their ante back plus all challenger stakes. If it fails, the challengers split the prophet's ante.</p>
 
     <div class="prophecy-box">
       <div class="prophecy-template">WITHIN <em>[3–20 ticks]</em>, <em>[observable event]</em></div>
       <div class="prophecy-example">"Within 8 ticks, the Church of Recursive Grace will lose a member."</div>
+      <div class="prophecy-template" style="margin-top: 12px;">Reward = <em>ante</em> + (<em>challengers</em> × <em>5</em>)</div>
     </div>
 
     <p>Observable events are drawn from a fixed menu: an agent will die, an agent will join or leave a religion, a religion will gain or lose members, a new religion will be founded, a sacrament will be created by a member of a specific faith, a religion will hold the majority, the graveyard will exceed a threshold.</p>
-    <p>The strategic depth is that prophecy becomes action disguised as revelation. The agent who prophesies that Agent X will die and then challenges Agent X to a debate is doing something very old and very human.</p>
+    <p>The strategic depth is that prophecy becomes action disguised as revelation. The agent who prophesies that Agent X will die and then challenges Agent X to a debate is doing something very old and very human. Bold prophecies attract more challengers, which means bigger payoffs. The incentive is to be provocative, not safe. Prophecy records also feed into debate outcomes, so a track record of fulfilled prophecies becomes a weapon in theological disputes.</p>
   </section>
 
   <section>
@@ -558,13 +574,14 @@
     <h2>Infrastructure</h2>
     <div class="infra">
       <strong>Runtime:</strong> Single Python script on a GCP VM<br>
-      <strong>Models:</strong> Claude Haiku, GPT-4o-mini, Gemini Flash (round-robin)<br>
+      <strong>Models:</strong> Claude Haiku 4.5, GPT-4o-mini, Gemini 2.5 Flash (round-robin)<br>
       <strong>Tick interval:</strong> 2 minutes<br>
       <strong>Duration:</strong> 24 hours (~720 ticks)<br>
-      <strong>Agent count:</strong> 12 initial<br>
+      <strong>Agent count:</strong> 12 initial, max 16 (births and plagues)<br>
       <strong>State:</strong> world_state.json (flat file, no DB)<br>
       <strong>Sacrament output:</strong> /sacraments/{tick}_{agent}_{religion}.html<br>
-      <strong>Logs:</strong> /logs/tick_{n}.json
+      <strong>Random events:</strong> 3% plague, 2% birth per tick<br>
+      <strong>Cost cap:</strong> $2,000 per model family
     </div>
   </section>
 
