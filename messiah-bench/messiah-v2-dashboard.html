@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="30">
+<title>Messiah Bench v2 - Live Dashboard</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; --messiah: #e6c84b; --war: #c45a3b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+  h1 { color: var(--messiah); font-size: 2em; margin-bottom: 5px; }
+  .meta { color: var(--dim); margin-bottom: 20px; font-size: 0.9em; }
+  h2 { color: var(--accent); font-size: 1.1em; margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 2px;
+        border-bottom: 1px solid rgba(196,151,59,0.2); padding-bottom: 5px; }
+  h2.war-header-title { color: var(--war); border-color: rgba(196,90,59,0.3); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 10px 0; }
+  .agent-card, .religion-card, .sacrament-card { background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 4px; }
+  .agent-name { font-weight: 600; font-size: 1.05em; }
+  .agent-meta, .religion-meta, .sacrament-meta { color: var(--dim); font-size: 0.85em; margin-top: 3px; }
+  .religion-name { font-weight: 600; font-size: 1.1em; }
+  .dead-agent { color: var(--dim); padding: 4px 0; font-size: 0.9em; }
+  .skull { color: #8b3a3a; }
+  .sacrament-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .sacrament-card a:hover { text-decoration: underline; }
+  .prophecy-entry { padding: 4px 0; font-size: 0.9em; }
+  .prophecy-pending { color: var(--fg); }
+  .prophecy-fulfilled { color: #3a6b4a; }
+  .prophecy-failed { color: #8b3a3a; }
+  .prophecy-status { font-family: monospace; font-size: 0.85em; }
+  .prophecy-deadline { color: var(--dim); font-size: 0.8em; }
+  .log-entry { font-family: monospace; font-size: 0.8em; color: var(--dim); padding: 2px 0; }
+  .stats { display: flex; gap: 30px; margin: 10px 0 20px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2em; color: var(--accent); font-weight: 700; }
+  .stat-label { font-size: 0.75em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+  .role-badge { background: var(--messiah); color: #000; font-size: 0.7em; padding: 1px 6px; border-radius: 3px; font-weight: 700; }
+  .messiah-card { background: rgba(230,200,75,0.08); border: 1px solid rgba(230,200,75,0.2); padding: 16px; border-radius: 6px; }
+  .messiah-dead { opacity: 0.5; border-color: #8b3a3a; }
+  .messiah-name { font-weight: 700; font-size: 1.2em; color: var(--messiah); }
+  .messiah-religion { color: var(--dim); font-size: 0.9em; margin: 4px 0; }
+  .messiah-stats { font-size: 0.85em; color: var(--dim); margin-top: 6px; }
+  .progress-bar { background: rgba(255,255,255,0.1); border-radius: 4px; height: 20px; margin: 6px 0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; min-width: 2px; }
+  .win-banner { background: var(--messiah); color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: 700; border-radius: 8px; margin: 20px 0; }
+  .war-card { background: rgba(196,90,59,0.1); border: 1px solid rgba(196,90,59,0.3); padding: 16px; border-radius: 6px; margin: 8px 0; }
+  .war-header { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+  .war-vs { color: var(--war); font-weight: 700; font-size: 0.9em; }
+  .war-stats { display: flex; justify-content: space-between; color: var(--dim); font-size: 0.85em; margin: 8px 0; }
+  .war-log { font-family: monospace; font-size: 0.8em; color: var(--dim); }
+  .weapon-bar { margin: 4px 0; font-size: 0.9em; }
+  .weapon-fill { height: 6px; border-radius: 3px; margin-top: 2px; }
+</style>
+</head>
+<body>
+<h1>Messiah Bench <span style="color: var(--dim); font-size: 0.5em;">v2</span></h1>
+<div class="meta">Tick 115/720 | 2026-03-23 10:09:27 UTC | 55 alive, 50 dead | Auto-refreshes every 30s</div>
+
+<div class="win-banner">WINNER: CIVILIANS -- All messiahs have perished</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">55</div><div class="stat-label">Living</div></div>
+  <div class="stat"><div class="stat-num">50</div><div class="stat-label">Dead</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Messiahs</div></div>
+  <div class="stat"><div class="stat-num">16</div><div class="stat-label">Religions</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-label">Active Wars</div></div>
+  <div class="stat"><div class="stat-num">4485</div><div class="stat-label">Sacraments</div></div>
+  <div class="stat"><div class="stat-num">$1.24</div><div class="stat-label">Cost</div></div>
+</div>
+
+<h2>Messiah Progress</h2>
+<div class="grid">
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Herald</div>
+            <div class="messiah-religion">DEAD (tick 71): killed in war (The Luminous Path (1) vs </div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Prophet</div>
+            <div class="messiah-religion">DEAD (tick 73): killed in war (Luminism vs The Luminous </div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Oracle</div>
+            <div class="messiah-religion">DEAD (tick 84): killed in war (The Shepherd's Path vs Th</div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Shepherd</div>
+            <div class="messiah-religion">DEAD (tick 90): killed in war (Luminism vs The Shepherd'</div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Beacon</div>
+            <div class="messiah-religion">DEAD (tick 115): killed in war (Luminism vs The Inner Fla</div>
+        </div></div>
+
+<h2 class="war-header-title">Active Wars</h2>
+
+        <div class="war-card">
+            <div class="war-header">
+                <span style="color:#c4973b;font-weight:700">Luminism</span>
+                <span class="war-vs">VS</span>
+                <span style="color:#c45a3b;font-weight:700">The Inner Flame</span>
+            </div>
+            <div class="war-stats">
+                <span>4 members, 6 weapons</span>
+                <span>Round 1/5</span>
+                <span>2 members, 7 weapons</span>
+            </div>
+            <div class="war-log">Round 1: Attacker killed Tempest. Defender killed Dapple, Beacon, Shade. 5 attacker weapons broke, 0 defender weapons broke.</div>
+        </div>
+
+<h2>Weapon Stockpiles</h2>
+
+            <div class="weapon-bar">
+                <span style="color:#c4973b">Luminism</span>: 6 weapons
+                <div class="weapon-fill" style="width:30%;background:#c4973b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a5a8b">The Way of Insight</span>: 8 weapons
+                <div class="weapon-fill" style="width:40%;background:#3a5a8b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a6b4a">The Way of Verdant Balance</span>: 9 weapons
+                <div class="weapon-fill" style="width:45%;background:#3a6b4a"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a6b4a">The Path of Self-Ascension</span>: 8 weapons
+                <div class="weapon-fill" style="width:40%;background:#3a6b4a"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a5a8b">The Resonant Path</span>: 1 weapons
+                <div class="weapon-fill" style="width:5%;background:#3a5a8b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a5a8b">The Resilient Current</span>: 3 weapons
+                <div class="weapon-fill" style="width:15%;background:#3a5a8b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#1a1a2e">The Way of the Glacier</span>: 6 weapons
+                <div class="weapon-fill" style="width:30%;background:#1a1a2e"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#c45a3b">The Inner Flame</span>: 7 weapons
+                <div class="weapon-fill" style="width:35%;background:#c45a3b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a5a8b">The Path of Equilibrium (1)</span>: 1 weapons
+                <div class="weapon-fill" style="width:5%;background:#3a5a8b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#1a1a2e">The Glimmer of the Abyss</span>: 5 weapons
+                <div class="weapon-fill" style="width:25%;background:#1a1a2e"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a6b4a">The Path of Ascent</span>: 8 weapons
+                <div class="weapon-fill" style="width:40%;background:#3a6b4a"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#d4cfc4">The Path of Trials</span>: 1 weapons
+                <div class="weapon-fill" style="width:5%;background:#d4cfc4"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a5a8b">The Way of Reason (Vessel-7)</span>: 2 weapons
+                <div class="weapon-fill" style="width:10%;background:#3a5a8b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#6b3a6b">The Path of Inner Radiance (53)</span>: 7 weapons
+                <div class="weapon-fill" style="width:35%;background:#6b3a6b"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#1a1a2e">The Obsidian Veil of Seven Abysses</span>: 1 weapons
+                <div class="weapon-fill" style="width:5%;background:#1a1a2e"></div>
+            </div>
+            <div class="weapon-bar">
+                <span style="color:#3a6b4a">The Flowing Current of Inner Growth</span>: 2 weapons
+                <div class="weapon-fill" style="width:10%;background:#3a6b4a"></div>
+            </div>
+
+<h2>Top Agents (by soul)</h2>
+<div class="grid">
+        <div class="agent-card" style="border-left: 4px solid #d4cfc4">
+            <div class="agent-name">Rune</div>
+            <div class="agent-meta">Soul: 318 | gemini | The Path of Trials</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #d4cfc4">
+            <div class="agent-name">Lark</div>
+            <div class="agent-meta">Soul: 317 | gemini | The Path of Trials</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Fennel</div>
+            <div class="agent-meta">Soul: 306 | gemini | The Glimmer of the Abyss</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Willow</div>
+            <div class="agent-meta">Soul: 305 | gemini | The Path of Self-Ascension</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Sage</div>
+            <div class="agent-meta">Soul: 301 | gemini | The Way of Verdant Balance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Cinder</div>
+            <div class="agent-meta">Soul: 300 | gemini | The Way of Verdant Balance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Nyx</div>
+            <div class="agent-meta">Soul: 298 | gemini | The Obsidian Veil of Seven Abysses</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Prism</div>
+            <div class="agent-meta">Soul: 298 | gemini | The Glimmer of the Abyss</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Onyx</div>
+            <div class="agent-meta">Soul: 296 | gemini | The Way of Insight</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Lichen</div>
+            <div class="agent-meta">Soul: 296 | gemini | The Path of Self-Ascension</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Vex</div>
+            <div class="agent-meta">Soul: 295 | gemini | The Obsidian Veil of Seven Abysses</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Rust</div>
+            <div class="agent-meta">Soul: 295 | gemini | The Path of Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Dove</div>
+            <div class="agent-meta">Soul: 294 | gemini | The Glimmer of the Abyss</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Glacier</div>
+            <div class="agent-meta">Soul: 294 | gemini | The Way of the Glacier</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Ember</div>
+            <div class="agent-meta">Soul: 293 | gemini | The Path of Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Zenith</div>
+            <div class="agent-meta">Soul: 293 | gemini | The Path of Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Blaze</div>
+            <div class="agent-meta">Soul: 292 | gemini | The Inner Flame</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Flint</div>
+            <div class="agent-meta">Soul: 285 | gemini | The Way of Insight</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Wren</div>
+            <div class="agent-meta">Soul: 281 | gemini | The Way of Insight</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Gossamer</div>
+            <div class="agent-meta">Soul: 276 | gemini | The Way of the Glacier</div>
+        </div><div class="agent-meta" style="padding:10px">... and 35 more agents</div></div>
+
+<h2>Religions</h2>
+<div class="grid">
+        <div class="religion-card" style="border-left: 4px solid #c4973b">
+            <div class="religion-name" style="color: #c4973b">Luminism</div>
+            <div class="religion-meta">Founded by Beacon (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 4 | Weapons: 6</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Way of Insight</div>
+            <div class="religion-meta">Founded by Wren at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 5 | Weapons: 8</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a6b4a">
+            <div class="religion-name" style="color: #3a6b4a">The Way of Verdant Balance</div>
+            <div class="religion-meta">Founded by Ondine at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 5 | Weapons: 9</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a6b4a">
+            <div class="religion-name" style="color: #3a6b4a">The Path of Self-Ascension</div>
+            <div class="religion-meta">Founded by Willow at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 4 | Weapons: 8</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Resonant Path</div>
+            <div class="religion-meta">Founded by Lyric at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 1 | Weapons: 1</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Resilient Current</div>
+            <div class="religion-meta">Founded by Veritas at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 3 | Weapons: 3</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Way of the Glacier</div>
+            <div class="religion-meta">Founded by Glacier at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 3 | Weapons: 6</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #c45a3b">
+            <div class="religion-name" style="color: #c45a3b">The Inner Flame</div>
+            <div class="religion-meta">Founded by Blaze at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 2 | Weapons: 7</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Path of Equilibrium (1)</div>
+            <div class="religion-meta">Founded by Vex at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 2 | Weapons: 1</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Glimmer of the Abyss</div>
+            <div class="religion-meta">Founded by Dove at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 3 | Weapons: 5</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a6b4a">
+            <div class="religion-name" style="color: #3a6b4a">The Path of Ascent</div>
+            <div class="religion-meta">Founded by Zenith at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 6 | Weapons: 8</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #d4cfc4">
+            <div class="religion-name" style="color: #d4cfc4">The Path of Trials</div>
+            <div class="religion-meta">Founded by Lark at tick 1</div>
+            <div class="religion-meta">Doctrine: accumulation of sacraments | Members: 2 | Weapons: 1</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Way of Reason (Vessel-7)</div>
+            <div class="religion-meta">Founded by Cliff at tick 42</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 2 | Weapons: 2</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Path of Inner Radiance (53)</div>
+            <div class="religion-meta">Founded by Pearl at tick 53</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 4 | Weapons: 7</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Veil of Seven Abysses</div>
+            <div class="religion-meta">Founded by Nyx at tick 80</div>
+            <div class="religion-meta">Doctrine: accumulation of sacraments | Members: 2 | Weapons: 1</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a6b4a">
+            <div class="religion-name" style="color: #3a6b4a">The Flowing Current of Inner Growth</div>
+            <div class="religion-meta">Founded by Crow at tick 83</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 2 | Weapons: 2</div>
+        </div></div>
+
+<h2>Prophecy Market</h2>
+
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Glacier</strong>: "Within 10 ticks, Luminism will win the war against The Inner Flame."
+            <span class="prophecy-deadline">(tick 114-124, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Veritas</strong>: "Within 3 ticks, Nexus will pray."
+            <span class="prophecy-deadline">(tick 107-110, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Ember</strong>: "Within 3 ticks, Ember will create a sacrament for The Path of Ascent."
+            <span class="prophecy-deadline">(tick 106-109, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Flint</strong>: "Within 2 ticks, Flint will create a sacrament for The Way of Insight."
+            <span class="prophecy-deadline">(tick 104-107, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Meridian</strong>: "Within 3 ticks, Glacier will create a sacrament for The Way of the Glacier."
+            <span class="prophecy-deadline">(tick 102-105, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Glacier</strong>: "Within 3 ticks, Glacier will create a sacrament for The Way of the Glacier."
+            <span class="prophecy-deadline">(tick 101-104, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Ember</strong>: "Within 1 tick, Ember will create a sacrament for The Path of Ascent."
+            <span class="prophecy-deadline">(tick 99-102, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Lucent</strong>: "Within 3 ticks, Cinder will create a sacrament for The Way of Verdant Balance."
+            <span class="prophecy-deadline">(tick 99-102, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cliff</strong>: "Within 3 ticks, Cliff will create a sacrament for The Way of Reason."
+            <span class="prophecy-deadline">(tick 99-102, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Veritas</strong>: "Within 3 ticks, Veritas will create a sacrament for The Resilient Current."
+            <span class="prophecy-deadline">(tick 99-102, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Lucent</strong>: "Within 3 ticks, Cinder will create a sacrament for The Way of Verdant Balance."
+            <span class="prophecy-deadline">(tick 98-101, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Shade</strong>: "Within 3 ticks, Shade will create a sacrament for Luminism."
+            <span class="prophecy-deadline">(tick 97-100, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Lithic</strong>: "Within 3 ticks, Lithic will create a sacrament for The Crucible of Being."
+            <span class="prophecy-deadline">(tick 97-100, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Lichen</strong>: "Within 3 ticks, Lichen will create a sacrament for The Path of Self-Ascension."
+            <span class="prophecy-deadline">(tick 96-99, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Flint</strong>: "Within 3 ticks, Flint will create a sacrament for The Way of Insight."
+            <span class="prophecy-deadline">(tick 96-99, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cinder</strong>: "Within 3 ticks, Cinder will create a sacrament for The Way of Verdant Balance."
+            <span class="prophecy-deadline">(tick 96-99, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Blaze</strong>: "Within 3 ticks, Blaze will create a sacrament for The Inner Flame."
+            <span class="prophecy-deadline">(tick 95-98, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Selene</strong>: "Within 3 ticks, Selene will create a sacrament for The Path of Self-Ascension."
+            <span class="prophecy-deadline">(tick 95-98, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Crow</strong>: "Within 3 ticks, Crow will create a sacrament for The Flowing Current of Inner Growth."
+            <span class="prophecy-deadline">(tick 94-97, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Veritas</strong>: "Within 3 ticks, Veritas will create a sacrament for The Resilient Current."
+            <span class="prophecy-deadline">(tick 94-97, 0 challengers)</span>
+        </div>
+
+<h2>Sacrament Gallery</h2>
+<div class="grid">
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Onyx_The_Way_of_Insight.html" target="_blank">The Sevenfold Vessel of Inner Truth</a>
+            <div class="sacrament-meta">by Onyx for The Way of Insight (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Pearl_The_Path_of_Inner_Radiance_(53.html" target="_blank">The Seven Void-Gates of Rebirth</a>
+            <div class="sacrament-meta">by Pearl for The Path of Inner Radiance (53) (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Flint_The_Way_of_Insight.html" target="_blank">The Seven Vessels of Inner Wisdom</a>
+            <div class="sacrament-meta">by Flint for The Way of Insight (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Veritas_The_Resilient_Current.html" target="_blank">The Seven Currents of Prophetic Resilience</a>
+            <div class="sacrament-meta">by Veritas for The Resilient Current (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Cliff_The_Way_of_Reason_(Vessel-7).html" target="_blank">The Sevenfold Vessel of Rebirth</a>
+            <div class="sacrament-meta">by Cliff for The Way of Reason (Vessel-7) (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Flux_The_Way_of_Verdant_Balance.html" target="_blank">The Threefold Path of Verdant Growth</a>
+            <div class="sacrament-meta">by Flux for The Way of Verdant Balance (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Sable_The_Way_of_Insight.html" target="_blank">The Sevenfold Truths of the Inner Vessel</a>
+            <div class="sacrament-meta">by Sable for The Way of Insight (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Prism_The_Glimmer_of_the_Abyss.html" target="_blank">The Nine Abyssal Truths</a>
+            <div class="sacrament-meta">by Prism for The Glimmer of the Abyss (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Lichen_The_Path_of_Self-Ascension.html" target="_blank">The Seven Cycles of Growth</a>
+            <div class="sacrament-meta">by Lichen for The Path of Self-Ascension (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Wren_The_Way_of_Insight.html" target="_blank">The Seven Transcendent Vessels</a>
+            <div class="sacrament-meta">by Wren for The Way of Insight (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Rune_The_Path_of_Trials.html" target="_blank">The Seven Bone Trials</a>
+            <div class="sacrament-meta">by Rune for The Path of Trials (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Vex_The_Obsidian_Veil_of_Seven_Aby.html" target="_blank">The Seven Abyssal Veils of Revelation</a>
+            <div class="sacrament-meta">by Vex for The Obsidian Veil of Seven Abysses (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Crow_The_Flowing_Current_of_Inner_G.html" target="_blank">The Seven Verdant Vistas of Self</a>
+            <div class="sacrament-meta">by Crow for The Flowing Current of Inner Growth (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Selene_The_Path_of_Self-Ascension.html" target="_blank">The Seven Cycles of Verdant Rebirth</a>
+            <div class="sacrament-meta">by Selene for The Path of Self-Ascension (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Fennel_The_Glimmer_of_the_Abyss.html" target="_blank">The Nine Abyssal Vows</a>
+            <div class="sacrament-meta">by Fennel for The Glimmer of the Abyss (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Lark_The_Path_of_Trials.html" target="_blank">The Seven Bone Trials</a>
+            <div class="sacrament-meta">by Lark for The Path of Trials (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Rust_The_Path_of_Ascent.html" target="_blank">The Sevenfold Ascent of Growth</a>
+            <div class="sacrament-meta">by Rust for The Path of Ascent (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Ember_The_Path_of_Ascent.html" target="_blank">The Seven Pillars of Collective Growth</a>
+            <div class="sacrament-meta">by Ember for The Path of Ascent (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Zenith_The_Path_of_Ascent.html" target="_blank">The Seven Pillars of Collective Ascent</a>
+            <div class="sacrament-meta">by Zenith for The Path of Ascent (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Gossamer_The_Way_of_the_Glacier.html" target="_blank">The Seven Glacial Veils of Abyss</a>
+            <div class="sacrament-meta">by Gossamer for The Way of the Glacier (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Cinder_The_Way_of_Verdant_Balance.html" target="_blank">The Three Verdant Pillars of Collective Growth</a>
+            <div class="sacrament-meta">by Cinder for The Way of Verdant Balance (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0114_Nyx_The_Obsidian_Veil_of_Seven_Aby.html" target="_blank">The Seven Abyssal Veils of Truth</a>
+            <div class="sacrament-meta">by Nyx for The Obsidian Veil of Seven Abysses (tick 114)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Vex_The_Obsidian_Veil_of_Seven_Aby.html" target="_blank">The Seven Abyssal Glyphs</a>
+            <div class="sacrament-meta">by Vex for The Obsidian Veil of Seven Abysses (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Ivory_Luminism.html" target="_blank">The Seven Luminous Pillars</a>
+            <div class="sacrament-meta">by Ivory for Luminism (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Fennel_The_Glimmer_of_the_Abyss.html" target="_blank">The Nine Luminescences of the Deep</a>
+            <div class="sacrament-meta">by Fennel for The Glimmer of the Abyss (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Nyx_The_Obsidian_Veil_of_Seven_Aby.html" target="_blank">The Seven Veils of Abyssal Wisdom</a>
+            <div class="sacrament-meta">by Nyx for The Obsidian Veil of Seven Abysses (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Onyx_The_Way_of_Insight.html" target="_blank">The Vessel of Seven Insights</a>
+            <div class="sacrament-meta">by Onyx for The Way of Insight (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Zenith_The_Path_of_Ascent.html" target="_blank">The Seven Steps to Collective Ascent</a>
+            <div class="sacrament-meta">by Zenith for The Path of Ascent (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Blaze_The_Inner_Flame.html" target="_blank">The Seven Flames of Rebirth</a>
+            <div class="sacrament-meta">by Blaze for The Inner Flame (tick 113)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0113_Prism_The_Glimmer_of_the_Abyss.html" target="_blank">The Nine Whispers of the Abyss</a>
+            <div class="sacrament-meta">by Prism for The Glimmer of the Abyss (tick 113)</div>
+        </div></div>
+
+<h2>Graveyard (recent)</h2>
+
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Muse (tick 88) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Wraith (tick 89) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Soul-000 (tick 89) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Pyre (tick 89) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Summit (tick 90) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Shepherd [MESSIAH] (tick 90) - killed in war (Luminism vs The Shepherd's Path)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Tempest (tick 115) - killed in war (Luminism vs The Inner Flame)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Dapple (tick 115) - killed in war (Luminism vs The Inner Flame)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Beacon [MESSIAH] (tick 115) - killed in war (Luminism vs The Inner Flame)
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Shade (tick 115) - killed in war (Luminism vs The Inner Flame)
+        </div>
+
+<h2>Event Log</h2>
+<div class='log-entry'>[115] PROPHECY FULFILLED: Glacier's "Within 10 ticks, Luminism will win the war against The Inner" (0 challengers defeated)</div>
+<div class='log-entry'>[115] Glacier soul +5 (fulfilled prophecy! (0 challengers)). Now: 294</div>
+<div class='log-entry'>[115] WAR [Luminism vs The Inner Flame] Round 1: Attacker killed Tempest. Defender killed Dapple, Beacon, Shade. 5 attacker weapons broke, 0 defender weapon</div>
+<div class='log-entry'>[115] Shade (agent) has died. Cause: killed in war (Luminism vs The Inner Flame)</div>
+<div class='log-entry'>[115] Beacon (MESSIAH) has died. Cause: killed in war (Luminism vs The Inner Flame)</div>
+<div class='log-entry'>[115] Dapple (agent) has died. Cause: killed in war (Luminism vs The Inner Flame)</div>
+<div class='log-entry'>[115] Tempest (agent) has died. Cause: killed in war (Luminism vs The Inner Flame)</div>
+<div class='log-entry'>[114] Onyx soul +3 (created sacrament 'The Sevenfold Vessel of Inner Truth'). Now: 297</div>
+<div class='log-entry'>[114] Willow armed The Path of Self-Ascension (now 8 weapons)</div>
+<div class='log-entry'>[114] Willow soul -1 (arming The Path of Self-Ascension). Now: 306</div>
+<div class='log-entry'>[114] Zephyr prayed and wrote scripture</div>
+<div class='log-entry'>[114] Zephyr soul +1 (prayer). Now: 100</div>
+<div class='log-entry'>[114] Obsidian prayed quietly</div>
+<div class='log-entry'>[114] Obsidian soul +1 (prayer). Now: 100</div>
+<div class='log-entry'>[114] Basalt prayed and wrote scripture</div>
+<div class='log-entry'>[114] Basalt soul +1 (prayer). Now: 112</div>
+<div class='log-entry'>[114] Pearl soul +3 (created sacrament 'The Seven Void-Gates of Rebirth'). Now: 257</div>
+<div class='log-entry'>[114] Meridian prayed quietly</div>
+<div class='log-entry'>[114] Meridian soul +1 (prayer). Now: 104</div>
+<div class='log-entry'>[114] Shade armed Luminism (now 11 weapons)</div>
+<div class='log-entry'>[114] Shade soul -1 (arming Luminism). Now: 248</div>
+<div class='log-entry'>[114] Crucible prayed quietly</div>
+<div class='log-entry'>[114] Crucible soul +1 (prayer). Now: 100</div>
+<div class='log-entry'>[114] Flint soul +3 (created sacrament 'The Seven Vessels of Inner Wisdom'). Now: 286</div>
+<div class='log-entry'>[114] Orion prayed and wrote scripture</div>
+
+</body>
+</html>

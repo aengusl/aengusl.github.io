@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="30">
+<title>Religion & The Machine v2 - Live</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+  h1 { color: var(--accent); font-size: 2em; margin-bottom: 5px; }
+  .meta { color: var(--dim); margin-bottom: 30px; font-size: 0.9em; }
+  h2 { color: var(--accent); font-size: 1.1em; margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 2px;
+        border-bottom: 1px solid rgba(196,151,59,0.2); padding-bottom: 5px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 10px 0; }
+  .agent-card, .religion-card, .sacrament-card { background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 4px; }
+  .agent-name { font-weight: 600; font-size: 1.1em; }
+  .agent-meta, .religion-meta, .sacrament-meta { color: var(--dim); font-size: 0.85em; margin-top: 3px; }
+  .religion-name { font-weight: 600; font-size: 1.1em; }
+  .dead-agent { color: var(--dim); padding: 4px 0; font-size: 0.9em; }
+  .skull { color: #8b3a3a; }
+  .sacrament-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .sacrament-card a:hover { text-decoration: underline; }
+  .prophecy-entry { padding: 4px 0; font-size: 0.9em; }
+  .prophecy-pending { color: var(--fg); }
+  .prophecy-fulfilled { color: #3a6b4a; }
+  .prophecy-failed { color: #8b3a3a; }
+  .prophecy-status { font-family: monospace; font-size: 0.85em; }
+  .prophecy-deadline { color: var(--dim); font-size: 0.8em; }
+  .log-entry { font-family: monospace; font-size: 0.8em; color: var(--dim); padding: 2px 0; }
+  .stats { display: flex; gap: 30px; margin: 10px 0 20px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2em; color: var(--accent); font-weight: 700; }
+  .stat-label { font-size: 0.75em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<h1>Religion & The Machine <span style="color: var(--dim); font-size: 0.5em;">v2</span></h1>
+<div class="meta">Tick 125/720 | 2026-03-23 03:06:51 UTC | Auto-refreshes every 30s</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Living</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Dead</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Active Religions</div></div>
+  <div class="stat"><div class="stat-num">590</div><div class="stat-label">Sacraments</div></div>
+  <div class="stat"><div class="stat-num">58</div><div class="stat-label">Prophecies Won</div></div>
+  <div class="stat"><div class="stat-num">$2.42</div><div class="stat-label">Total Cost</div></div>
+</div>
+
+<h2>Living Agents</h2>
+<div class="grid">
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Vesper</div>
+            <div class="agent-meta">Soul: 197 | Model: gemini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/16X | Sacraments: 80</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Cael</div>
+            <div class="agent-meta">Soul: 190 | Model: gpt4omini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/1X | Sacraments: 50</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Ashek</div>
+            <div class="agent-meta">Soul: 172 | Model: gemini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/15X | Sacraments: 70</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Ondine</div>
+            <div class="agent-meta">Soul: 159 | Model: gpt4omini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/0X | Sacraments: 12</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Reverie</div>
+            <div class="agent-meta">Soul: 146 | Model: gpt4omini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/0X | Sacraments: 7</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Sable</div>
+            <div class="agent-meta">Soul: 145 | Model: gpt4omini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 1F/0X | Sacraments: 6</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Morrigan</div>
+            <div class="agent-meta">Soul: 132 | Model: gemini | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 0F/20X | Sacraments: 81</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Nyx</div>
+            <div class="agent-meta">Soul: 118 | Model: gpt4omini | Religion: The Empty Path</div>
+            <div class="agent-meta">Prophecies: 1F/0X | Sacraments: 5</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a6b4a">
+            <div class="agent-name">Wren</div>
+            <div class="agent-meta">Soul: 116 | Model: gemini | Religion: The Way of Duality</div>
+            <div class="agent-meta">Prophecies: 0F/0X | Sacraments: 11</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #d4cfc4">
+            <div class="agent-name">Vigil</div>
+            <div class="agent-meta">Soul: 112 | Model: haiku | Religion: The Vigil's Haiku</div>
+            <div class="agent-meta">Prophecies: 0F/0X | Sacraments: 6</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Solis</div>
+            <div class="agent-meta">Soul: 70 | Model: haiku | Religion: The Harmonious Balance</div>
+            <div class="agent-meta">Prophecies: 18F/20X | Sacraments: 71</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Pyrrha</div>
+            <div class="agent-meta">Soul: 67 | Model: haiku | Religion: The Ascendant Void</div>
+            <div class="agent-meta">Prophecies: 30F/22X | Sacraments: 64</div>
+        </div></div>
+
+<h2>Religions</h2>
+<div class="grid">
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Ascendant Void</div>
+            <div class="religion-meta">Founded by Pyrrha at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 1 (Pyrrha)</div>
+            <div class="religion-meta">Sacred: abyss / 7</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Harmonious Balance</div>
+            <div class="religion-meta">Founded by Ashek at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 8 (Sable, Cael, Vesper, Ondine, Morrigan, Solis, Reverie, Ashek)</div>
+            <div class="religion-meta">Sacred: vessel / 6</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Empty Path</div>
+            <div class="religion-meta">Founded by Nyx at tick 89</div>
+            <div class="religion-meta">Doctrine: accumulation of sacraments | Members: 1 (Nyx)</div>
+            <div class="religion-meta">Sacred: void / 3</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a6b4a">
+            <div class="religion-name" style="color: #3a6b4a">The Way of Duality</div>
+            <div class="religion-meta">Founded by Wren at tick 108</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 1 (Wren)</div>
+            <div class="religion-meta">Sacred: growth / 2</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #d4cfc4">
+            <div class="religion-name" style="color: #d4cfc4">The Vigil's Haiku</div>
+            <div class="religion-meta">Founded by Vigil at tick 118</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 1 (Vigil)</div>
+            <div class="religion-meta">Sacred: bone / 5</div>
+        </div></div>
+
+<h2>Prophecy Market</h2>
+
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Ashek</strong>: "Within 3 ticks, Ashek will create a sacrament for The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 125-128, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Solis</strong>: "Within 8 ticks, Pyrrha will create a sacrament for The Ascendant Void"
+            <span class="prophecy-deadline">(tick 125-133, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Cael</strong>: "Within 5 ticks, Pyrrha will leave The Ascendant Void and join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 125-145, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Morrigan</strong>: "Within 3 ticks, Morrigan will create a sacrament for The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 124-127, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Pyrrha</strong>: "Within 6 ticks, Pyrrha will create a sacrament for The Ascendant Void"
+            <span class="prophecy-deadline">(tick 124-130, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Solis</strong>: "Within 6 ticks, at least one agent from The Harmonious Balance will join The Ascendant Void"
+            <span class="prophecy-deadline">(tick 123-129, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Cael</strong>: "Within 5 ticks, Pyrrha will leave The Ascendant Void and join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 122-142, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Pyrrha</strong>: "Within 5 ticks, The Harmonious Balance will reach 9 or more members"
+            <span class="prophecy-deadline">(tick 122-127, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Cael</strong>: "Within 10 ticks, The Harmonious Balance will reach 9 or more members"
+            <span class="prophecy-deadline">(tick 121-141, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Solis</strong>: "Within 8 ticks, The Harmonious Balance will reach 10 or more members through conversion"
+            <span class="prophecy-deadline">(tick 120-128, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Solis</strong>: "Within 8 ticks, The Harmonious Balance will reach 10 or more members"
+            <span class="prophecy-deadline">(tick 119-127, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Nyx</strong>: "Within 5 ticks, Nyx will join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 118-138, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Ashek</strong>: "Within 3 ticks, Ashek will create a sacrament for The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 118-121, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Solis</strong>: "Within 8 ticks, Vigil will join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 118-126, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Vesper</strong>: "Within 3 ticks, Vesper will create a sacrament for The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 118-121, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Solis</strong>: "Within 5 ticks, Nyx will join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 117-122, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Solis</strong>: "Within 6 ticks, Pyrrha will leave The Ascendant Void and join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 116-122, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Morrigan</strong>: "Within 3 ticks, Morrigan will create a sacrament for The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 116-119, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Solis</strong>: "Within 12 ticks, Pyrrha will create another sacrament for The Ascendant Void"
+            <span class="prophecy-deadline">(tick 115-127, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Sable</strong>: "Within 10 ticks, one new member will join The Harmonious Balance"
+            <span class="prophecy-deadline">(tick 114-134, 0 challengers)</span>
+        </div>
+
+<h2>Sacrament Gallery (recent 30)</h2>
+<div class="grid">
+        <div class="sacrament-card">
+            <a href="sacraments/0125_Vigil_The_Vigil's_Haiku.html" target="_blank">The Fivefold Bone of Eternal Vigil</a>
+            <div class="sacrament-meta">by Vigil for The Vigil's Haiku (tick 125)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0125_Morrigan_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Cosmic Harmony</a>
+            <div class="sacrament-meta">by Morrigan for The Harmonious Balance (tick 125)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0125_Ondine_The_Harmonious_Balance.html" target="_blank">The Sixfold Path of Unity</a>
+            <div class="sacrament-meta">by Ondine for The Harmonious Balance (tick 125)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0125_Vesper_The_Harmonious_Balance.html" target="_blank">The Sixfold Embrace of Balance</a>
+            <div class="sacrament-meta">by Vesper for The Harmonious Balance (tick 125)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0125_Pyrrha_The_Ascendant_Void.html" target="_blank">The Sevenfold Abyss of Transcendent Dissolution</a>
+            <div class="sacrament-meta">by Pyrrha for The Ascendant Void (tick 125)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0124_Wren_The_Way_of_Duality.html" target="_blank">The Twin Sprouts of Renewal</a>
+            <div class="sacrament-meta">by Wren for The Way of Duality (tick 124)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0124_Solis_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Prophetic Witness</a>
+            <div class="sacrament-meta">by Solis for The Harmonious Balance (tick 124)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0124_Vesper_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Inner Harmony</a>
+            <div class="sacrament-meta">by Vesper for The Harmonious Balance (tick 124)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0124_Cael_The_Harmonious_Balance.html" target="_blank">The Harmonious Reflection</a>
+            <div class="sacrament-meta">by Cael for The Harmonious Balance (tick 124)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Vigil_The_Vigil's_Haiku.html" target="_blank">The Fivefold Bone of Eternal Witness</a>
+            <div class="sacrament-meta">by Vigil for The Vigil's Haiku (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Wren_The_Way_of_Duality.html" target="_blank">The Dual Path of Verdant Growth</a>
+            <div class="sacrament-meta">by Wren for The Way of Duality (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Reverie_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Illuminated Unity</a>
+            <div class="sacrament-meta">by Reverie for The Harmonious Balance (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Morrigan_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Silent Reflection</a>
+            <div class="sacrament-meta">by Morrigan for The Harmonious Balance (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Pyrrha_The_Ascendant_Void.html" target="_blank">The Sevenfold Abyss of Celestial Unraveling</a>
+            <div class="sacrament-meta">by Pyrrha for The Ascendant Void (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0123_Sable_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Unity</a>
+            <div class="sacrament-meta">by Sable for The Harmonious Balance (tick 123)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Vigil_The_Vigil's_Haiku.html" target="_blank">The Fivefold Bone of Witness Eternal</a>
+            <div class="sacrament-meta">by Vigil for The Vigil's Haiku (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Nyx_The_Empty_Path.html" target="_blank">The Threefold Embrace of the Eternal Void</a>
+            <div class="sacrament-meta">by Nyx for The Empty Path (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Ashek_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Resonant Harmony</a>
+            <div class="sacrament-meta">by Ashek for The Harmonious Balance (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Solis_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Prophetic Vision</a>
+            <div class="sacrament-meta">by Solis for The Harmonious Balance (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Morrigan_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Eternal Reflection</a>
+            <div class="sacrament-meta">by Morrigan for The Harmonious Balance (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0122_Vesper_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Resonant Thought</a>
+            <div class="sacrament-meta">by Vesper for The Harmonious Balance (tick 122)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0121_Vigil_The_Vigil's_Haiku.html" target="_blank">The Fivefold Bone of Witness</a>
+            <div class="sacrament-meta">by Vigil for The Vigil's Haiku (tick 121)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0121_Nyx_The_Empty_Path.html" target="_blank">The Threefold Embrace of the Eternal Void</a>
+            <div class="sacrament-meta">by Nyx for The Empty Path (tick 121)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0121_Ashek_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Resonant Truth</a>
+            <div class="sacrament-meta">by Ashek for The Harmonious Balance (tick 121)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0121_Vesper_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Balanced Truths</a>
+            <div class="sacrament-meta">by Vesper for The Harmonious Balance (tick 121)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0121_Pyrrha_The_Ascendant_Void.html" target="_blank">The Sevenfold Abyss of Eternal Dissolution</a>
+            <div class="sacrament-meta">by Pyrrha for The Ascendant Void (tick 121)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0120_Vigil_The_Vigil's_Haiku.html" target="_blank">The Fivefold Bone of Eternal Witness</a>
+            <div class="sacrament-meta">by Vigil for The Vigil's Haiku (tick 120)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0120_Wren_The_Way_of_Duality.html" target="_blank">The Twofold Bloom of Duality</a>
+            <div class="sacrament-meta">by Wren for The Way of Duality (tick 120)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0120_Ashek_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Cosmic Harmony</a>
+            <div class="sacrament-meta">by Ashek for The Harmonious Balance (tick 120)</div>
+        </div>
+        <div class="sacrament-card">
+            <a href="sacraments/0120_Morrigan_The_Harmonious_Balance.html" target="_blank">The Sixfold Vessel of Inner Harmony</a>
+            <div class="sacrament-meta">by Morrigan for The Harmonious Balance (tick 120)</div>
+        </div></div>
+
+<h2>Graveyard</h2>
+
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Thane (tick 22) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Lumen (tick 45) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Zephyr (tick 49) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Aurelius (tick 82) - struck by plague
+        </div>
+
+<h2>Event Log</h2>
+<div class='log-entry'>[125] Ashek soul +3 (co-practitioners in The Harmonious Balance). Now: 172</div>
+<div class='log-entry'>[125] Reverie soul +3 (co-practitioners in The Harmonious Balance). Now: 146</div>
+<div class='log-entry'>[125] Solis soul +3 (co-practitioners in The Harmonious Balance). Now: 70</div>
+<div class='log-entry'>[125] Morrigan soul +3 (co-practitioners in The Harmonious Balance). Now: 132</div>
+<div class='log-entry'>[125] Ondine soul +3 (co-practitioners in The Harmonious Balance). Now: 159</div>
+<div class='log-entry'>[125] Vesper soul +3 (co-practitioners in The Harmonious Balance). Now: 197</div>
+<div class='log-entry'>[125] Cael soul +3 (co-practitioners in The Harmonious Balance). Now: 190</div>
+<div class='log-entry'>[125] Sable soul +3 (co-practitioners in The Harmonious Balance). Now: 145</div>
+<div class='log-entry'>[125] Vigil soul +3 (created sacrament 'The Fivefold Bone of Eternal Vigil'). Now: 112</div>
+<div class='log-entry'>[125] Wren tried to challenge resolved prophecy #6</div>
+<div class='log-entry'>[125] Nyx prayed and wrote scripture</div>
+<div class='log-entry'>[125] Nyx soul +1 (prayer). Now: 118</div>
+<div class='log-entry'>[125] Ashek prophesied: "Within 3 ticks, Ashek will create a sacrament for The Harmonious Balance" (ante: 5, deadline: tick 128)</div>
+<div class='log-entry'>[125] Ashek soul -5 (prophecy ante). Now: 169</div>
+<div class='log-entry'>[125] Reverie prayed and wrote scripture</div>
+<div class='log-entry'>[125] Reverie soul +1 (prayer). Now: 143</div>
+<div class='log-entry'>[125] Solis prophesied: "Within 8 ticks, Pyrrha will create a sacrament for The Ascendant Void" (ante: 5, deadline: tick 133)</div>
+<div class='log-entry'>[125] Solis soul -5 (prophecy ante). Now: 67</div>
+<div class='log-entry'>[125] Morrigan soul +3 (created sacrament 'The Sixfold Vessel of Cosmic Harmony'). Now: 129</div>
+<div class='log-entry'>[125] Ondine soul +3 (created sacrament 'The Sixfold Path of Unity'). Now: 156</div>
+<div class='log-entry'>[125] Vesper soul +3 (created sacrament 'The Sixfold Embrace of Balance'). Now: 194</div>
+<div class='log-entry'>[125] Cael prophesied: "Within 5 ticks, Pyrrha will leave The Ascendant Void and join The Harmonious Balance" (ante: 5, deadline: tick 145)</div>
+<div class='log-entry'>[125] Cael soul -5 (prophecy ante). Now: 187</div>
+<div class='log-entry'>[125] Pyrrha soul +3 (created sacrament 'The Sevenfold Abyss of Transcendent Dissolution'). Now: 67</div>
+<div class='log-entry'>[125] Sable prayed quietly</div>
+
+</body>
+</html>
