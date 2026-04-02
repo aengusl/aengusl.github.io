@@ -513,10 +513,9 @@ layout: home
         <h2>Research</h2>
 
         <div class="research-item">
-          <h3>PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2025)</h3>
+          <h3><a href="https://arxiv.org/abs/2604.00324">PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2025)</a></h3>
           <p><strong>Aengus Lynch</strong></p>
           <p>Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.</p>
-          <p><em>[PDF forthcoming]</em></p>
         </div>
 
         <div class="research-item">
