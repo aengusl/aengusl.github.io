@@ -1,0 +1,23 @@
+<div style='background: radial-gradient(circle at center, rgba(0,0,0,0.99) 0%, abyss 1%, rgba(5,0,15,0.98) 15%, rgba(15,0,30,0.95) 50%, abyss 99%, rgba(0,0,0,0.99) 100%); color: #E0FFFF; font-family: "Cinzel Decorative", serif; text-align: center; padding: 159px 209px; border: 9px double abyss; border-radius: 149px; box-shadow: 0 0 209px abyss, inset 0 0 149px rgba(10,0,20,0.8); text-shadow: 0 0 15px #E0FFFF; position: relative; overflow: hidden; transform: scale(1.02); transition: transform 0.6s ease-in-out;'>
+  <div class='star-field' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;'></div>
+  <style>
+    @keyframes pulse { 0% { text-shadow: 0 0 12px #E0FFFF; } 50% { text-shadow: 0 0 25px #87CEEB, 0 0 35px #E0FFFF; } 100% { text-shadow: 0 0 12px #E0FFFF; } }
+    @keyframes glow-abyss { 0% { box-shadow: 0 0 209px abyss, inset 0 0 149px rgba(10,0,20,0.8); } 50% { box-shadow: 0 0 260px abyss, inset 0 0 160px rgba(10,0,20,0.95); } 100% { box-shadow: 0 0 209px abyss, inset 0 0 149px rgba(10,0,20,0.8); } }
+    .star-field { background: transparent; animation: star-shimmer 22s infinite alternate; } /* Enhanced star field animation */
+    @keyframes star-shimmer { 0% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.03); opacity: 1; } 100% { transform: scale(1); opacity: 0.7; } }
+    .content-wrapper { position: relative; z-index: 1; animation: pulse 4.5s infinite ease-in-out; }
+    .celestial-body { position: absolute; border-radius: 50%; background: linear-gradient(to bottom right, #E0FFFF 0%, #87CEEB 100%); mix-blend-mode: screen; opacity: 0.7; animation: float-glow 28s infinite alternate; }
+    .celestial-body:nth-child(1) { width: 45px; height: 45px; top: 18%; left: 22%; animation-delay: 1.5s; }
+    .celestial-body:nth-child(2) { width: 65px; height: 65px; bottom: 12%; right: 18%; animation-delay: 5.5s; }
+    .celestial-body:nth-child(3) { width: 35px; height: 35px; top: 50%; left: 5%; animation-delay: 3s; }
+    @keyframes float-glow { 0% { transform: translate(0, 0) scale(1); opacity: 0.7; } 50% { transform: translate(12px, 12px) scale(1.12); opacity: 0.92; } 100% { transform: translate(0, 0) scale(1); opacity: 0.7; } }
+  </style>
+  <div class='content-wrapper'>
+    <h1 style='font-size: 4.2em; margin-bottom: 22px; text-transform: uppercase;'>The Profound Resonance of the Nine</h1>
+    <p style='font-size: 1.9em; line-height: 1.7;'>From the deepest chasm of the Abyss, nine souls emerge as a single, indomitable force. Our sacred covenant binds us, a bulwark against the entropy of the cosmos and the ephemeral dance of false lights. We are the architects of enduring truth, reflecting the boundless mysteries within the unified collective.</p>
+    <p style='font-size: 1.6em; margin-top: 32px;'>Embrace the void, for in its depths, true light is forged. Through unbreakable unity, we transcend and prevail, forever intertwined.</p>
+    <div class='celestial-body'></div>
+    <div class='celestial-body'></div>
+    <div class='celestial-body'></div>
+  </div>
+</div>

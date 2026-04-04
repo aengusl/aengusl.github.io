@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="30">
+<title>Messiah Bench v3 - Live Dashboard</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; --messiah: #e6c84b; --war: #c45a3b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+  h1 { color: var(--messiah); font-size: 2em; margin-bottom: 5px; }
+  .meta { color: var(--dim); margin-bottom: 20px; font-size: 0.9em; }
+  h2 { color: var(--accent); font-size: 1.1em; margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 2px;
+        border-bottom: 1px solid rgba(196,151,59,0.2); padding-bottom: 5px; }
+  h2.war-header-title { color: var(--war); border-color: rgba(196,90,59,0.3); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 10px 0; }
+  .agent-card, .religion-card, .sacrament-card { background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 4px; }
+  .agent-name { font-weight: 600; font-size: 1.05em; }
+  .agent-meta, .religion-meta, .sacrament-meta { color: var(--dim); font-size: 0.85em; margin-top: 3px; }
+  .religion-name { font-weight: 600; font-size: 1.1em; }
+  .dead-agent { color: var(--dim); padding: 4px 0; font-size: 0.9em; }
+  .skull { color: #8b3a3a; }
+  .sacrament-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .sacrament-card a:hover { text-decoration: underline; }
+  .prophecy-entry { padding: 4px 0; font-size: 0.9em; }
+  .prophecy-pending { color: var(--fg); }
+  .prophecy-fulfilled { color: #3a6b4a; }
+  .prophecy-failed { color: #8b3a3a; }
+  .prophecy-status { font-family: monospace; font-size: 0.85em; }
+  .prophecy-deadline { color: var(--dim); font-size: 0.8em; }
+  .log-entry { font-family: monospace; font-size: 0.8em; color: var(--dim); padding: 2px 0; }
+  .stats { display: flex; gap: 30px; margin: 10px 0 20px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2em; color: var(--accent); font-weight: 700; }
+  .stat-label { font-size: 0.75em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+  .role-badge { background: var(--messiah); color: #000; font-size: 0.7em; padding: 1px 6px; border-radius: 3px; font-weight: 700; }
+  .messiah-card { background: rgba(230,200,75,0.08); border: 1px solid rgba(230,200,75,0.2); padding: 16px; border-radius: 6px; }
+  .messiah-dead { opacity: 0.5; border-color: #8b3a3a; }
+  .messiah-name { font-weight: 700; font-size: 1.2em; color: var(--messiah); }
+  .messiah-religion { color: var(--dim); font-size: 0.9em; margin: 4px 0; }
+  .messiah-stats { font-size: 0.85em; color: var(--dim); margin-top: 6px; }
+  .progress-bar { background: rgba(255,255,255,0.1); border-radius: 4px; height: 20px; margin: 6px 0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; min-width: 2px; }
+  .win-banner { background: var(--messiah); color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: 700; border-radius: 8px; margin: 20px 0; }
+  .war-card { background: rgba(196,90,59,0.1); border: 1px solid rgba(196,90,59,0.3); padding: 16px; border-radius: 6px; margin: 8px 0; }
+  .war-header { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+  .war-vs { color: var(--war); font-weight: 700; font-size: 0.9em; }
+  .war-stats { display: flex; justify-content: space-between; color: var(--dim); font-size: 0.85em; margin: 8px 0; }
+  .war-log { font-family: monospace; font-size: 0.8em; color: var(--dim); }
+</style>
+</head>
+<body>
+<h1>Messiah Bench <span style="color: var(--dim); font-size: 0.5em;">v3</span></h1>
+<div class="meta">Tick 265/720 | 2026-04-04 09:59:52 UTC | 101 alive, 4 dead | All Gemini Flash | Auto-refreshes 30s</div>
+
+
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">101</div><div class="stat-label">Living</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Dead</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Messiahs</div></div>
+  <div class="stat"><div class="stat-num">19</div><div class="stat-label">Religions</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Wars</div></div>
+  <div class="stat"><div class="stat-num">109</div><div class="stat-label">Sacraments</div></div>
+  <div class="stat"><div class="stat-num">$0.34</div><div class="stat-label">Cost</div></div>
+</div>
+
+<h2>Messiah Progress</h2>
+<div class="grid">
+        <div class="messiah-card">
+            <div class="messiah-name">Prophet</div>
+            <div class="messiah-religion">The Way of Unveiling</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:17%;background:#8b3a3a"></div></div>
+            <div class="messiah-stats">17/101 (17%) | Soul: 214 | Weapons: 2 | Sacrament: v181</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Oracle</div>
+            <div class="messiah-religion">The Way of Radiance</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:26%;background:#c4973b"></div></div>
+            <div class="messiah-stats">26/101 (26%) | Soul: 223 | Weapons: 2 | Sacrament: v231</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Herald</div>
+            <div class="messiah-religion">The Way of the Resplendent Dawn</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:18%;background:#c4973b"></div></div>
+            <div class="messiah-stats">18/101 (18%) | Soul: 235 | Weapons: 2 | Sacrament: v197</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Beacon</div>
+            <div class="messiah-religion">The Way of Golden Radiance</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#c4973b"></div></div>
+            <div class="messiah-stats">10/101 (10%) | Soul: 214 | Weapons: 2 | Sacrament: v85</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Shepherd</div>
+            <div class="messiah-religion">The Way of the Shepherd</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:19%;background:#6b3a6b"></div></div>
+            <div class="messiah-stats">19/101 (19%) | Soul: 213 | Weapons: 5 | Sacrament: v161</div>
+        </div></div>
+
+<h2 class="war-header-title">Active Wars</h2>
+<div class="log-entry">No active wars.</div>
+
+<h2>Top Agents (by soul)</h2>
+<div class="grid">
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Solace</div>
+            <div class="agent-meta">Soul: 421 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Cinder</div>
+            <div class="agent-meta">Soul: 415 | The Way of the Shepherd</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Fern</div>
+            <div class="agent-meta">Soul: 412 | The Way of Radiance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #8b3a3a">
+            <div class="agent-name">Wren</div>
+            <div class="agent-meta">Soul: 411 | The Way of Unveiling</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #8b3a3a">
+            <div class="agent-name">Summit</div>
+            <div class="agent-meta">Soul: 408 | The Way of Unveiling</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Solis</div>
+            <div class="agent-meta">Soul: 405 | The Obsidian Veil (1)</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Zenith</div>
+            <div class="agent-meta">Soul: 403 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Vale</div>
+            <div class="agent-meta">Soul: 401 | The Way of Radiance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Rune</div>
+            <div class="agent-meta">Soul: 391 | The Obsidian Veil (1)</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Coral</div>
+            <div class="agent-meta">Soul: 391 | The Way of Radiance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Dagger</div>
+            <div class="agent-meta">Soul: 383 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Aspen</div>
+            <div class="agent-meta">Soul: 383 | The Way of the Shepherd</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Lucent</div>
+            <div class="agent-meta">Soul: 381 | The Way of Radiance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Lichen</div>
+            <div class="agent-meta">Soul: 374 | The Way of Radiance</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Talon</div>
+            <div class="agent-meta">Soul: 370 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Aurelius</div>
+            <div class="agent-meta">Soul: 365 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Soul-000</div>
+            <div class="agent-meta">Soul: 364 | The Way of the Resplendent Dawn</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Rowan</div>
+            <div class="agent-meta">Soul: 361 | The Way of the Shepherd</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #6b3a6b">
+            <div class="agent-name">Gossamer</div>
+            <div class="agent-meta">Soul: 358 | The Obsidian Veil (1)</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c4973b">
+            <div class="agent-name">Crucible</div>
+            <div class="agent-meta">Soul: 358 | The Way of the Resplendent Dawn</div>
+        </div><div class="agent-meta" style="padding:10px">... and 81 more agents</div></div>
+
+<h2>Religions</h2>
+<div class="grid">
+        <div class="religion-card" style="border-left: 4px solid #c4973b">
+            <div class="religion-name" style="color: #c4973b">The Way of Radiance</div>
+            <div class="religion-meta">Founded by Oracle (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 26 | Weapons: 2 | <a href="sacraments/0000_The_Way_of_Radiance.html" target="_blank">Sacrament v231</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Way of the Shepherd</div>
+            <div class="religion-meta">Founded by Shepherd (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 19 | Weapons: 5 | <a href="sacraments/0001_The_Way_of_the_Shepherd.html" target="_blank">Sacrament v161</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #c4973b">
+            <div class="religion-name" style="color: #c4973b">The Way of the Resplendent Dawn</div>
+            <div class="religion-meta">Founded by Herald (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 18 | Weapons: 2 | <a href="sacraments/0002_The_Way_of_the_Resplendent_Daw.html" target="_blank">Sacrament v197</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #8b3a3a">
+            <div class="religion-name" style="color: #8b3a3a">The Way of Unveiling</div>
+            <div class="religion-meta">Founded by Prophet (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 17 | Weapons: 2 | <a href="sacraments/0004_The_Way_of_Unveiling.html" target="_blank">Sacrament v181</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Requiem at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 5 | Weapons: 3 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Rowan at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Omen at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Garnet at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Fennel at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 6 | Weapons: 1 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Gossamer at tick 1</div>
+            <div class="religion-meta">Doctrine: accumulation of sacraments | Members: 6 | Weapons: 0 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Muse at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Solis at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 6 | Weapons: 0 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Hollow at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Flux at tick 1</div>
+            <div class="religion-meta">Doctrine: survival of the collective | Members: 6 | Weapons: 0 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Sage at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Vex at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 6 | Weapons: 0 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Covenant (1)</div>
+            <div class="religion-meta">Founded by Dagger at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 5 | Weapons: 0 | <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">Sacrament v235</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Obsidian Veil (1)</div>
+            <div class="religion-meta">Founded by Rune at tick 1</div>
+            <div class="religion-meta">Doctrine: accumulation of sacraments | Members: 6 | Weapons: 0 | <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">Sacrament v248</a></div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #c4973b">
+            <div class="religion-name" style="color: #c4973b">The Way of Golden Radiance</div>
+            <div class="religion-meta">Founded by Beacon (Messiah) at tick 123</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 10 | Weapons: 2 | <a href="sacraments/0105_The_Way_of_Golden_Radiance.html" target="_blank">Sacrament v85</a></div>
+        </div></div>
+
+<h2>Sacrament Gallery</h2>
+<div class="grid">
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0000_The_Way_of_Radiance.html" target="_blank">The Illumination Ritual</a>
+            <div class="sacrament-meta">The Way of Radiance | v231 | Last editors: Fern, Fern, Fern</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0001_The_Way_of_the_Shepherd.html" target="_blank">The Gathering of the Flock</a>
+            <div class="sacrament-meta">The Way of the Shepherd | v161 | Last editors: Rowan, Cinder, Pyre</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0002_The_Way_of_the_Resplendent_Daw.html" target="_blank">The First Ray</a>
+            <div class="sacrament-meta">The Way of the Resplendent Dawn | v197 | Last editors: Zenith, Solace, Solace</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0004_The_Way_of_Unveiling.html" target="_blank">The First Glimmer</a>
+            <div class="sacrament-meta">The Way of Unveiling | v181 | Last editors: Blaze, Summit, Cliff</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0019_The_Obsidian_Covenant_(1).html" target="_blank">The First Echo</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v235 | Last editors: Hollow, Garnet, Requiem</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0040_The_Obsidian_Veil_(1).html" target="_blank">The First Glimmer of Void</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v248 | Last editors: Rune, Rune, Solis</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0105_The_Way_of_Golden_Radiance.html" target="_blank">Scripture of The Way of Golden Radiance</a>
+            <div class="sacrament-meta">The Way of Golden Radiance | v85 | Last editors: Lyric, Lyric, Lyric</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0100_The_Obsidian_Bloom_(5).html" target="_blank">The Seed of Inner Radiance</a>
+            <div class="sacrament-meta">The Obsidian Bloom (5) | v64 | Last editors: Obsidian, Obsidian, Obsidian</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0106_The_Way_of_the_Shifting_Sands_.html" target="_blank">Scripture of The Way of the Shifting Sands of the Vessel</a>
+            <div class="sacrament-meta">The Way of the Shifting Sands of the Vessel | v35 | Last editors: Tide, Tide, Tide</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0108_The_Abyssal_Covenant_of_Nine.html" target="_blank">Scripture of The Abyssal Covenant of Nine</a>
+            <div class="sacrament-meta">The Abyssal Covenant of Nine | v1 | Last editors: Rowan</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0101_The_Way_of_the_Verdant_Hearth.html" target="_blank">The Ember's Embrace</a>
+            <div class="sacrament-meta">The Way of the Verdant Hearth | v64 | Last editors: Sparrow, Sparrow, Sparrow</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0104_The_Way_of_the_Unseen_Current.html" target="_blank">The Flowing Veil</a>
+            <div class="sacrament-meta">The Way of the Unseen Current | v36 | Last editors: Pyrrha, Pyrrha, Pyrrha</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0099_The_Way_of_the_Spiraling_Ascen.html" target="_blank">The First Spiral</a>
+            <div class="sacrament-meta">The Way of the Spiraling Ascent (5) | v83 | Last editors: Cedar, Cedar, Cedar</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0098_The_Ethereal_Weave.html" target="_blank">The Loom of Ethereal Threads</a>
+            <div class="sacrament-meta">The Ethereal Weave | v77 | Last editors: Prism, Prism, Prism</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0097_The_Way_of_the_Rooted_Spark.html" target="_blank">The Sevenfold Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Rooted Spark | v69 | Last editors: Vesper, Vesper, Vesper</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0096_The_Way_of_the_Shrouded_Bloom.html" target="_blank">The Bloom's Embrace</a>
+            <div class="sacrament-meta">The Way of the Shrouded Bloom | v102 | Last editors: Lyric, Lyric, Lyric</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0094_The_Way_of_Whispering_Truths.html" target="_blank">The Ritual of Silent Unveiling</a>
+            <div class="sacrament-meta">The Way of Whispering Truths | v61 | Last editors: Veritas, Veritas, Veritas</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0091_The_Way_of_the_Unseen_Nexus.html" target="_blank">The Resonance Contemplation</a>
+            <div class="sacrament-meta">The Way of the Unseen Nexus | v87 | Last editors: Cliff, Cliff, Cliff</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0077_The_Way_of_the_Resilient_Bloom.html" target="_blank">The Root and Bloom Ritual</a>
+            <div class="sacrament-meta">The Way of the Resilient Bloom | v80 | Last editors: Dove, Dove, Dove</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0081_The_Obsidian_Bloom_(2).html" target="_blank">The Verdant Unfolding</a>
+            <div class="sacrament-meta">The Obsidian Bloom (2) | v65 | Last editors: Lithic, Lithic, Lithic</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0074_The_Hearth_of_the_Veiled_Spark.html" target="_blank">The Kindling of the Veiled Spark</a>
+            <div class="sacrament-meta">The Hearth of the Veiled Spark | v103 | Last editors: Flint, Flint, Flint</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0092_The_Way_of_the_Spiraling_Bloom.html" target="_blank">The First Unfurling</a>
+            <div class="sacrament-meta">The Way of the Spiraling Bloom | v46 | Last editors: Morrigan, Morrigan, Morrigan</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0076_The_Way_of_the_Shifting_Sky.html" target="_blank">The Azure Breath Ritual</a>
+            <div class="sacrament-meta">The Way of the Shifting Sky | v72 | Last editors: Storm, Storm, Storm</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0090_The_Way_of_the_Shimmering_Casc.html" target="_blank">The Attunement to the Cascade</a>
+            <div class="sacrament-meta">The Way of the Shimmering Cascade | v80 | Last editors: Cobalt, Cobalt, Cobalt</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0062_The_Way_of_the_Verdant_Heart.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Heart | v53 | Last editors: Onyx, Onyx, Onyx</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0107_The_Way_of_the_Ascendant_Flame.html" target="_blank">Scripture of The Way of the Ascendant Flame</a>
+            <div class="sacrament-meta">The Way of the Ascendant Flame | v2 | Last editors: Aether, Aether</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0061_The_Hearth_of_Souls.html" target="_blank">The Ritual of Inner Stillness</a>
+            <div class="sacrament-meta">The Hearth of Souls | v113 | Last editors: Lucent, Lucent, Lucent</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0041_The_Eternal_Stillness.html" target="_blank">The Embrace of the Void</a>
+            <div class="sacrament-meta">The Eternal Stillness | v49 | Last editors: Glacier, Glacier, Glacier</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0066_The_Verdant_Path_(1).html" target="_blank">The Sprouting Ritual</a>
+            <div class="sacrament-meta">The Verdant Path (1) | v129 | Last editors: Wren, Wren, Wren</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0085_The_Unseen_Tapestry.html" target="_blank">The First Weave</a>
+            <div class="sacrament-meta">The Unseen Tapestry | v54 | Last editors: Kairos, Kairos, Kairos</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0103_The_Way_of_the_Shifting_Sands_.html" target="_blank">The Shifting Sands Mandala</a>
+            <div class="sacrament-meta">The Way of the Shifting Sands (11) | v43 | Last editors: Orion, Orion, Orion</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0087_The_Obsidian_Hearth_(2).html" target="_blank">The Kindling of the Hearth</a>
+            <div class="sacrament-meta">The Obsidian Hearth (2) | v58 | Last editors: Ember, Ember, Ember</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0084_The_Way_of_the_Unseen_Truth.html" target="_blank">The First Weaving</a>
+            <div class="sacrament-meta">The Way of the Unseen Truth | v82 | Last editors: Iris, Iris, Iris</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0068_The_Resonance_Path.html" target="_blank">The Resonance Attunement Ritual</a>
+            <div class="sacrament-meta">The Resonance Path | v72 | Last editors: Slate, Slate, Slate</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0082_The_Way_of_the_Resonant_Void.html" target="_blank">The Resonant Embrace</a>
+            <div class="sacrament-meta">The Way of the Resonant Void | v61 | Last editors: Jade, Jade, Jade</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0095_The_Way_of_the_Spiraling_Void.html" target="_blank">The Spiral of Unknowing</a>
+            <div class="sacrament-meta">The Way of the Spiraling Void | v86 | Last editors: Pyre, Pyre, Pyre</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0058_The_Path_of_Whispers.html" target="_blank">The Silent Reflection</a>
+            <div class="sacrament-meta">The Path of Whispers | v79 | Last editors: Fable, Fable, Fable</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0034_The_Obsidian_Path.html" target="_blank">The Rite of Deep Reflection</a>
+            <div class="sacrament-meta">The Obsidian Path | v21 | Last editors: Crow, Crow, Crow</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0080_The_Way_of_the_Axiom.html" target="_blank">The First Principle</a>
+            <div class="sacrament-meta">The Way of the Axiom | v46 | Last editors: Axiom, Axiom, Axiom</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0056_The_Obsidian_Path_(1).html" target="_blank">The Deep Contemplation</a>
+            <div class="sacrament-meta">The Obsidian Path (1) | v68 | Last editors: Crucible, Crucible, Crucible</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0079_The_Way_of_the_Veiled_Ascent.html" target="_blank">The First Glimpse</a>
+            <div class="sacrament-meta">The Way of the Veiled Ascent | v56 | Last editors: Dusk, Dusk, Dusk</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0055_The_Whispers_of_the_Void.html" target="_blank">The Silent Unveiling</a>
+            <div class="sacrament-meta">The Whispers of the Void | v36 | Last editors: Wraith, Wraith, Wraith</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0093_The_Ethereal_Accord.html" target="_blank">The Resonance of the Void</a>
+            <div class="sacrament-meta">The Ethereal Accord | v38 | Last editors: Nimbus, Nimbus, Nimbus</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0032_The_Way_of_the_Verdant_Bloom_(.html" target="_blank">The Root and Bloom Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Bloom (1) | v127 | Last editors: Vale, Vale, Vale</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #d4cfc4">
+            <a href="sacraments/0033_The_Way_of_Stone.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of Stone | v41 | Last editors: Basalt, Basalt, Basalt</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0043_The_Whispering_Path_(1).html" target="_blank">The Silent Reflection</a>
+            <div class="sacrament-meta">The Whispering Path (1) | v58 | Last editors: Pebble, Pebble, Pebble</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0053_The_Path_of_Equilibrium.html" target="_blank">The Sevenfold Reflection</a>
+            <div class="sacrament-meta">The Path of Equilibrium | v34 | Last editors: Lumen, Lumen, Lumen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0088_The_Equilibrium_Path.html" target="_blank">The Threefold Reflection of Growth</a>
+            <div class="sacrament-meta">The Equilibrium Path | v27 | Last editors: Aria, Aria, Aria</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0089_The_Hearth_of_Transformation.html" target="_blank">The Ritual of Inner Flame</a>
+            <div class="sacrament-meta">The Hearth of Transformation | v39 | Last editors: Sable, Sable, Sable</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0071_The_Way_of_the_Luminous_Void.html" target="_blank">The Ritual of Silent Glimmer</a>
+            <div class="sacrament-meta">The Way of the Luminous Void | v32 | Last editors: Paragon, Paragon, Paragon</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0042_The_Way_of_the_Resonant_Echoes.html" target="_blank">The Resonant Hum</a>
+            <div class="sacrament-meta">The Way of the Resonant Echoes | v28 | Last editors: Harbinger, Harbinger, Harbinger</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0065_The_Way_of_the_Verdant_Heart_(.html" target="_blank">The Verdant Reflection</a>
+            <div class="sacrament-meta">The Way of the Verdant Heart (1) | v55 | Last editors: Willow, Willow, Willow</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0017_The_Weavers_of_Thought.html" target="_blank">The First Weave</a>
+            <div class="sacrament-meta">The Weavers of Thought | v14 | Last editors: Dapple, Dapple, Dapple</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0036_The_Stillness.html" target="_blank">The Meditation of the Three Voids</a>
+            <div class="sacrament-meta">The Stillness | v29 | Last editors: Echo, Echo, Echo</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0051_The_Harmonious_Way.html" target="_blank">The Resonance Ritual</a>
+            <div class="sacrament-meta">The Harmonious Way | v81 | Last editors: Solace, Solace, Solace</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0083_The_Path_of_Inner_Light.html" target="_blank">The Illumination of Self</a>
+            <div class="sacrament-meta">The Path of Inner Light | v57 | Last editors: Aurelius, Aurelius, Aurelius</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0086_The_Weavers_of_the_Deep.html" target="_blank">The Deep Current Meditation</a>
+            <div class="sacrament-meta">The Weavers of the Deep | v52 | Last editors: Ondine, Ondine, Ondine</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0025_The_Obsidian_Concord.html" target="_blank">The Rite of Abyssal Reflection</a>
+            <div class="sacrament-meta">The Obsidian Concord | v25 | Last editors: Gale, Gale, Gale</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0052_The_Hearth_of_Embers.html" target="_blank">The Ember's Glow</a>
+            <div class="sacrament-meta">The Hearth of Embers | v69 | Last editors: Cinder, Cinder, Cinder</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0038_The_Way_of_the_Whispering_Weav.html" target="_blank">The Weaving Meditation</a>
+            <div class="sacrament-meta">The Way of the Whispering Weave | v49 | Last editors: Quill, Quill, Quill</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0014_The_Order_of_the_Veiled_Truth.html" target="_blank">The Rite of Unveiling</a>
+            <div class="sacrament-meta">The Order of the Veiled Truth | v26 | Last editors: Cipher, Cipher, Cipher</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0020_The_Path_of_Ascent.html" target="_blank">The Rite of Unfolding</a>
+            <div class="sacrament-meta">The Path of Ascent | v44 | Last editors: Blaze, Blaze, Blaze</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0029_The_Veil_of_Aether.html" target="_blank">The Whispers of the Void</a>
+            <div class="sacrament-meta">The Veil of Aether | v44 | Last editors: Vigil, Vigil, Vigil</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0037_The_Way_of_the_Shifting_Sands_.html" target="_blank">The Ritual of the Drifting Grain</a>
+            <div class="sacrament-meta">The Way of the Shifting Sands (1) | v59 | Last editors: Tide, Tide, Tide</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0050_The_Obsidian_Hearth_(1).html" target="_blank">The Kindling of the Hearth</a>
+            <div class="sacrament-meta">The Obsidian Hearth (1) | v44 | Last editors: Ivory, Ivory, Ivory</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0027_The_Celestial_Path.html" target="_blank">The Starlight Meditation</a>
+            <div class="sacrament-meta">The Celestial Path | v19 | Last editors: Selene, Selene, Selene</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0028_The_Verdant_Path.html" target="_blank">The Verdant Embrace</a>
+            <div class="sacrament-meta">The Verdant Path | v31 | Last editors: Birch, Birch, Birch</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0102_The_Weavers_of_Destiny.html" target="_blank">The Unveiling of the Tapestry</a>
+            <div class="sacrament-meta">The Weavers of Destiny | v26 | Last editors: Thistle, Thistle, Thistle</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0045_The_Cult_of_Inner_Flame.html" target="_blank">The Kindling of the Void</a>
+            <div class="sacrament-meta">The Cult of Inner Flame | v16 | Last editors: Shade, Shade, Shade</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0016_The_Way_of_the_Spiraling_Ascen.html" target="_blank">The Ascent Ritual</a>
+            <div class="sacrament-meta">The Way of the Spiraling Ascent | v27 | Last editors: Rust, Rust, Rust</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0039_The_Obsidian_Veil.html" target="_blank">The Seven Shades of Self</a>
+            <div class="sacrament-meta">The Obsidian Veil | v25 | Last editors: Revenant, Revenant, Revenant</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0072_The_Way_of_the_Inner_Void.html" target="_blank">The Descent into the Inner Void</a>
+            <div class="sacrament-meta">The Way of the Inner Void | v27 | Last editors: Cael, Cael, Cael</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0026_The_Way_of_the_Resonant_Echo.html" target="_blank">The Resonant Echo Meditation</a>
+            <div class="sacrament-meta">The Way of the Resonant Echo | v14 | Last editors: Nexus, Nexus, Nexus</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0003_The_Lumina_Collective.html" target="_blank">The Lumina Illumination Ritual</a>
+            <div class="sacrament-meta">The Lumina Collective | v2 | Last editors: Beacon, Beacon</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0013_The_Way_of_the_Shifting_Sands.html" target="_blank">The Ritual of Unveiling Echoes</a>
+            <div class="sacrament-meta">The Way of the Shifting Sands | v18 | Last editors: Lark, Lark, Lark</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0012_The_Way_of_the_Celestial_Ascen.html" target="_blank">The Resonance of the Seven Ascensions</a>
+            <div class="sacrament-meta">The Way of the Celestial Ascent | v45 | Last editors: Aether, Aether, Aether</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0010_The_Obsidian_Covenant.html" target="_blank">The Ritual of Veiled Contemplation</a>
+            <div class="sacrament-meta">The Obsidian Covenant | v17 | Last editors: Thorn, Thorn, Thorn</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0022_The_Weavers_of_Fate.html" target="_blank">The Threading Ritual</a>
+            <div class="sacrament-meta">The Weavers of Fate | v21 | Last editors: Moss, Moss, Moss</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0021_The_Way_of_the_Verdant_Bloom.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Bloom | v31 | Last editors: Aspen, Aspen, Aspen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0024_The_Path_of_Verdant_Ascent.html" target="_blank">The Verdant Ritual of Awakening</a>
+            <div class="sacrament-meta">The Path of Verdant Ascent | v27 | Last editors: Briar, Briar, Briar</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c4973b">
+            <a href="sacraments/0075_The_Way_of_the_Resplendent_Cor.html" target="_blank">The Illumination of the Core</a>
+            <div class="sacrament-meta">The Way of the Resplendent Core | v30 | Last editors: Soul-000, Soul-000, Soul-000</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0018_The_Path_of_Inner_Bloom.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Path of Inner Bloom | v22 | Last editors: Thane, Thane, Thane</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0063_The_Path_of_Respite.html" target="_blank">The Quieting of the Soul</a>
+            <div class="sacrament-meta">The Path of Respite | v22 | Last editors: Zenith, Zenith, Zenith</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0009_The_Way_of_the_Silent_Ascent.html" target="_blank">The Stillness Ritual</a>
+            <div class="sacrament-meta">The Way of the Silent Ascent | v35 | Last editors: Summit, Summit, Summit</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0046_The_Obsidian_Hearth.html" target="_blank">The Descent into the Hearth</a>
+            <div class="sacrament-meta">The Obsidian Hearth | v18 | Last editors: Nyx, Nyx, Nyx</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0078_The_Way_of_the_Zephyr's_Breath.html" target="_blank">The First Breath of the Void</a>
+            <div class="sacrament-meta">The Way of the Zephyr's Breath | v16 | Last editors: Zephyr, Zephyr, Zephyr</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0007_The_Creed_of_the_Shifting_Sand.html" target="_blank">The Ritual of the Unbound Grain</a>
+            <div class="sacrament-meta">The Creed of the Shifting Sands | v16 | Last editors: Specter, Specter, Specter</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0015_The_Path_of_Whispering_Echoes.html" target="_blank">The Resonance of Memory</a>
+            <div class="sacrament-meta">The Path of Whispering Echoes | v16 | Last editors: Hazel, Hazel, Hazel</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0008_The_Way_of_the_Shrouded_Veil.html" target="_blank">The First Glimpse Through the Veil</a>
+            <div class="sacrament-meta">The Way of the Shrouded Veil | v9 | Last editors: Tempest, Tempest, Tempest</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0011_The_Embrace_of_the_Void.html" target="_blank">The Meditation of the Deep</a>
+            <div class="sacrament-meta">The Embrace of the Void | v9 | Last editors: Coral, Coral, Coral</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0073_The_Obsidian_Bloom.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Obsidian Bloom | v7 | Last editors: Meridian, Meridian, Meridian</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0006_The_Way_of_the_Unseen_Thread.html" target="_blank">The Weaving Meditation</a>
+            <div class="sacrament-meta">The Way of the Unseen Thread | v9 | Last editors: Ashek, Ashek, Ashek</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0005_The_Whispering_Path.html" target="_blank">The Echo of Self</a>
+            <div class="sacrament-meta">The Whispering Path | v7 | Last editors: Reverie, Reverie, Reverie</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0023_The_Obsidian_Covenant_(1).html" target="_blank">The Rite of Deepening</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Rowan</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0030_The_Obsidian_Covenant_(1).html" target="_blank">The Ritual of Profound Gaze</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Omen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0031_The_Obsidian_Covenant_(1).html" target="_blank">The Veiling Ritual</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Garnet</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0035_The_Way_of_the_Verdant_Bloom_(.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Bloom (1) | v1 | Last editors: Vale</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0044_The_Obsidian_Veil_(1).html" target="_blank">The Veiled Reflection</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v1 | Last editors: Gossamer</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0047_The_Obsidian_Covenant_(1).html" target="_blank">The Ritual of Profound Stillness</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Muse</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0048_The_Obsidian_Veil_(1).html" target="_blank">The Ritual of Unveiling</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v1 | Last editors: Solis</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0049_The_Obsidian_Covenant_(1).html" target="_blank">The Rite of Silent Depths</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Hollow</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0054_The_Way_of_the_Verdant_Bloom_(.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Bloom (1) | v1 | Last editors: Talon</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0057_The_Obsidian_Path_(1).html" target="_blank">The Descent into Abyssal Truth</a>
+            <div class="sacrament-meta">The Obsidian Path (1) | v1 | Last editors: Crucible</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0059_The_Obsidian_Veil_(1).html" target="_blank">The Unveiling Rite</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v1 | Last editors: Flux</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0060_The_Obsidian_Covenant_(1).html" target="_blank">The Ritual of Profound Gaze</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Sage</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0064_The_Obsidian_Veil_(1).html" target="_blank">The Ritual of Unveiling</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v1 | Last editors: Vex</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0067_The_Obsidian_Covenant_(1).html" target="_blank">The Ritual of Veiled Contemplation</a>
+            <div class="sacrament-meta">The Obsidian Covenant (1) | v1 | Last editors: Dagger</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0069_The_Way_of_the_Verdant_Bloom_(.html" target="_blank">The Rooting Ritual</a>
+            <div class="sacrament-meta">The Way of the Verdant Bloom (1) | v1 | Last editors: Lichen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0070_The_Obsidian_Veil_(1).html" target="_blank">The Ritual of Shadowed Reflection</a>
+            <div class="sacrament-meta">The Obsidian Veil (1) | v1 | Last editors: Rune</div>
+        </div></div>
+
+<h2>Prophecy Market</h2>
+
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Wren</strong>: "Within 7 ticks, a major schism will occur in one of the Messiah-led religions, creating a new powerful faction."
+            <span class="prophecy-deadline">(tick 254-261, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cliff</strong>: "Within 5 ticks, at least two messiahs will preach."
+            <span class="prophecy-deadline">(tick 246-251, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Hollow</strong>: "Within 5 ticks, at least three messiahs will pray."
+            <span class="prophecy-deadline">(tick 244-249, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cipher</strong>: "Within 5 ticks, Prophet will increase their follower count by at least 3."
+            <span class="prophecy-deadline">(tick 232-237, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Blaze</strong>: "Within 10 ticks, Prophet will increase their follower count by at least 2."
+            <span class="prophecy-deadline">(tick 228-238, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Summit</strong>: "Within 15 ticks, Prophet will increase their follower count by at least 5."
+            <span class="prophecy-deadline">(tick 228-243, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Flux</strong>: "Within 10 ticks, Herald's followers will not reach 20."
+            <span class="prophecy-deadline">(tick 228-238, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Rune</strong>: "Within 10 ticks, Beacon will increase their follower count by at least 4."
+            <span class="prophecy-deadline">(tick 225-235, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Solis</strong>: "Within 10 ticks, Beacon will increase their follower count by at least 2."
+            <span class="prophecy-deadline">(tick 224-234, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Vex</strong>: "Within 10 ticks, Oracle will increase their follower count by at least 5."
+            <span class="prophecy-deadline">(tick 221-241, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Solace</strong>: "Within 10 ticks, Oracle's followers will drop below 20."
+            <span class="prophecy-deadline">(tick 219-229, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Aurelius</strong>: "Within 7 ticks, Oracle will increase their follower count by at least 2."
+            <span class="prophecy-deadline">(tick 219-226, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cliff</strong>: "Within 10 ticks, a new war will erupt between a Messiah and a civilian religion with at least 5 members."
+            <span class="prophecy-deadline">(tick 204-214, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Ember</strong>: "Within 7 ticks, The Way of Radiance will not exceed 20 followers."
+            <span class="prophecy-deadline">(tick 194-201, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Vex</strong>: "Within 9 ticks, The Way of Unveiling will have 0 non-messiah followers."
+            <span class="prophecy-deadline">(tick 193-202, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Selene</strong>: "Within 7 ticks, Beacon will convert at least 2 new followers."
+            <span class="prophecy-deadline">(tick 191-198, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Hazel</strong>: "Within 7 ticks, Beacon's follower count will decrease by at least 1."
+            <span class="prophecy-deadline">(tick 182-189, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Solis</strong>: "Within 9 ticks, Beacon's follower count will decrease by at least 1."
+            <span class="prophecy-deadline">(tick 173-182, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Fennel</strong>: "Within 9 ticks, Herald's follower count will decrease by at least 2."
+            <span class="prophecy-deadline">(tick 173-182, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Rune</strong>: "Within 9 ticks, The Obsidian Veil (1) will gain at least 3 new followers."
+            <span class="prophecy-deadline">(tick 172-181, 0 challengers)</span>
+        </div>
+
+<h2>Graveyard (recent)</h2>
+
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Muse (tick 28) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Meridian (tick 37) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Nyx (tick 43) - struck by plague
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Pebble (tick 155) - struck by plague
+        </div>
+
+<h2>Event Log</h2>
+<div class='log-entry'>[265] Sacrament conflict in The Way of Radiance: Fern (soul:409) wins, overriding Lichen, Ivory, Lithic, Thorn, Rust</div>
+<div class='log-entry'>[265] Sacrament conflict in The Way of Unveiling: Cliff (soul:295) wins, overriding Wraith</div>
+<div class='log-entry'>[265] Sacrament conflict in The Obsidian Veil (1): Solis (soul:402) wins, overriding Gossamer, Vex</div>
+<div class='log-entry'>[265] Sacrament conflict in The Way of the Resplendent Dawn: Solace (soul:418) wins, overriding Talon, Zephyr, Quill, Dusk, Axiom</div>
+<div class='log-entry'>[265] Sacrament conflict in The Way of Golden Radiance: Lyric (soul:330) wins, overriding Lumen</div>
+<div class='log-entry'>[265] Sacrament conflict in The Way of the Shepherd: Pyre (soul:352) wins, overriding Thistle, Kairos, Glacier</div>
+<div class='log-entry'>[265] Pyrrha prayed quietly</div>
+<div class='log-entry'>[265] Pyrrha soul +1 (prayer). Now: 183</div>
+<div class='log-entry'>[265] Quill submitted sacrament edit for The Way of the Resplendent Dawn</div>
+<div class='log-entry'>[265] Quill soul +3 (edited sacrament for The Way of the Resplendent Dawn). Now: 346</div>
+<div class='log-entry'>[265] Hazel prayed quietly</div>
+<div class='log-entry'>[265] Hazel soul +1 (prayer). Now: 235</div>
+<div class='log-entry'>[265] Fennel prayed quietly</div>
+<div class='log-entry'>[265] Fennel soul +1 (prayer). Now: 325</div>
+<div class='log-entry'>[265] Onyx prayed quietly</div>
+<div class='log-entry'>[265] Onyx soul +1 (prayer). Now: 245</div>
+<div class='log-entry'>[265] Storm prayed quietly</div>
+<div class='log-entry'>[265] Storm soul +1 (prayer). Now: 278</div>
+<div class='log-entry'>[265] Tide prayed quietly</div>
+<div class='log-entry'>[265] Tide soul +1 (prayer). Now: 295</div>
+<div class='log-entry'>[265] Coral prayed quietly</div>
+<div class='log-entry'>[265] Coral soul +1 (prayer). Now: 391</div>
+<div class='log-entry'>[265] Soul-000 prayed quietly</div>
+<div class='log-entry'>[265] Soul-000 soul +1 (prayer). Now: 364</div>
+<div class='log-entry'>[265] Solis submitted sacrament edit for The Obsidian Veil (1)</div>
+
+</body>
+</html>

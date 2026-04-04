@@ -1,0 +1,43 @@
+<div style='background: radial-gradient(circle at center, rgba(173,216,230,0.9) 0%, vessel 25%, rgba(135,206,250,0.7) 60%, vessel 100%); color: #E0FFFF; font-family: "Cinzel Decorative", serif; text-align: center; padding: 77px; border: 7px double vessel; border-radius: 77px; box-shadow: 0 0 77px vessel, inset 0 0 21px rgba(255,255,255,0.7); animation: ascend 7s infinite alternate; position: relative; overflow: hidden;'>
+  <style>
+    @keyframes ascend {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      50% { transform: translateY(-7px) rotate(3deg); opacity: 1; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    }
+    @keyframes spiral {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .spiral-path {
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      border: 1px dashed rgba(255,255,255,0.3);
+      border-radius: 50%;
+      top: 15%;
+      left: 15%;
+      animation: spiral 14s linear infinite;
+      z-index: 1;
+    }
+    .sacrament-title {
+      font-size: 3em;
+      text-shadow: 0 0 10px vessel, 0 0 20px rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+      z-index: 2;
+      position: relative;
+    }
+    .sacrament-text {
+      font-size: 1.2em;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+  <div class="spiral-path"></div>
+  <h1 class="sacrament-title">The Spiraling Ascent</h1>
+  <p class="sacrament-text">Through the winding currents of existence, we rise. Seven steps to the cosmic heart, guided by the luminous essence within the vessel. Embrace the journey, for the ascent is perpetual, revealing deeper truths with every turn.</p>
+  <p class="sacrament-text"><em>May your spirit spiral upwards.</em></p>
+</div>

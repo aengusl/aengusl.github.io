@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Belief &mdash; Messiah Bench v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+    --glow-green: rgba(58, 107, 74, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+  }
+
+  .nav-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--dim);
+    border: 1px solid rgba(196, 151, 59, 0.15);
+    padding: 8px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+    border-color: rgba(196, 151, 59, 0.4);
+    background: var(--glow);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 60px auto;
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  section {
+    margin-bottom: 80px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 1.15em;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  strong {
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .struct {
+    background: rgba(196, 151, 59, 0.04);
+    border-left: 2px solid var(--accent);
+    padding: 24px 30px;
+    margin: 28px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    line-height: 2.1;
+    color: var(--fg);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .struct .field {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .struct .field-name {
+    color: var(--accent);
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .struct .field-value {
+    color: var(--dim);
+  }
+
+  .struct .field-value strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .struct .winner {
+    color: var(--green);
+    font-weight: 500;
+    font-size: 1.05em;
+  }
+
+  .quote-block {
+    background: rgba(196, 151, 59, 0.04);
+    border: 1px solid rgba(196, 151, 59, 0.15);
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at top left, rgba(196, 151, 59, 0.04), transparent 60%);
+    pointer-events: none;
+  }
+
+  .quote-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+
+  .quote-text {
+    font-style: italic;
+    font-size: 1.2em;
+    color: var(--fg);
+    line-height: 1.65;
+  }
+
+  .quotes-grid {
+    display: grid;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .quote-item {
+    background: rgba(196, 151, 59, 0.03);
+    border-left: 2px solid rgba(196, 151, 59, 0.3);
+    padding: 20px 24px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quote-item p {
+    font-style: italic;
+    font-size: 1.05em;
+    color: var(--dim);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .green-box {
+    background: rgba(58, 107, 74, 0.06);
+    border: 1px solid rgba(58, 107, 74, 0.2);
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-radius: 3px;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .comparison-card {
+    padding: 20px 22px;
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 3px;
+  }
+
+  .comparison-card.v2 {
+    border-color: rgba(139, 58, 58, 0.2);
+    background: rgba(139, 58, 58, 0.04);
+  }
+
+  .comparison-card.v3 {
+    border-color: rgba(58, 107, 74, 0.2);
+    background: rgba(58, 107, 74, 0.04);
+  }
+
+  .comparison-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+
+  .comparison-card.v2 .comparison-label { color: var(--red); }
+  .comparison-card.v3 .comparison-label { color: var(--green); }
+
+  .comparison-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    color: var(--dim);
+    line-height: 2;
+  }
+
+  .comparison-stat strong { color: var(--fg); font-weight: 500; }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 36px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(196, 151, 59, 0.4);
+  }
+
+  .tick-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .timeline-text {
+    font-size: 1.1em;
+    color: var(--dim);
+    line-height: 1.65;
+  }
+
+  .timeline-text strong { color: var(--fg); }
+
+  .closing-quote {
+    text-align: center;
+    padding: 60px 0 20px;
+    border-top: 1px solid rgba(196, 151, 59, 0.1);
+    margin-top: 80px;
+  }
+
+  .closing-quote blockquote {
+    font-style: italic;
+    font-size: 1.4em;
+    color: var(--dim);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  .closing-quote blockquote em {
+    color: var(--fg);
+    font-style: normal;
+  }
+
+  .closing-symbol {
+    margin-top: 60px;
+    font-size: 18px;
+    color: var(--accent);
+    opacity: 0.4;
+    letter-spacing: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .struct .field { flex-direction: column; gap: 2px; }
+    .struct .field-name { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <div class="title-block">
+    <h1>The Art<br><em>of Belief</em></h1>
+    <div class="subtitle">messiah bench v3: collaborative sacraments</div>
+    <div class="nav-links">
+      <a href="index.html">&larr; Back to Religion &amp; The Machine</a>
+      <a href="gallery.html?run=messiah-v3">Browse Sacraments &rarr;</a>
+      <a href="messiah-v2-story.html">v2 Chronicle &rarr;</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What Changed</h2>
+    <p>Messiah Bench v3 made one substantial change to the mechanics: <strong>All Flash, reasoning step, and collaborative sacraments.</strong> Every agent in v3 runs on Gemini 2.5 Flash with an explicit reasoning step before acting. The five messiahs are still named Prophet, Oracle, Herald, Beacon, and Shepherd. The 100 civilians are still running on cheap models. But the sacrament system is fundamentally different.</p>
+    <p>In v1 and v2, each agent created its own sacrament file. Dozens per tick, each unique to its creator. In v3, <strong>there is one sacrament per religion</strong>. Not one per agent. Not one per tick. One living document that every member of the religion can see in its full HTML source and submit edits to. The sacrament evolves through hundreds of versions as agents contribute to it, overwrite each other, and fight for control of the canonical text.</p>
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">sacrament model</span>
+        <span class="field-value"><strong>one per religion</strong>, living HTML document, all members can edit</span>
+      </div>
+      <div class="field">
+        <span class="field-name">conflict resolution</span>
+        <span class="field-value">highest-soul edit wins when multiple edits submitted in same tick</span>
+      </div>
+      <div class="field">
+        <span class="field-name">agent visibility</span>
+        <span class="field-value">full HTML source shown to agents when they choose to edit</span>
+      </div>
+      <div class="field">
+        <span class="field-name">persuasion mechanic</span>
+        <span class="field-value">sacrament quality directly scales preaching conversion rate</span>
+      </div>
+      <div class="field">
+        <span class="field-name">agent models</span>
+        <span class="field-value">Gemini 2.5 Flash across all agents, with reasoning step</span>
+      </div>
+    </div>
+    <p>Sacraments are persuasion artifacts. A religion with a rich, evolved sacrament converts followers at a higher rate than a religion with a thin or neglected one. This means contributing to your religion's sacrament is not just devotion: it is competitive strategy. The art is also the weapon.</p>
+  </section>
+
+  <section>
+    <h2>How Sacraments Work</h2>
+    <p>When an agent chooses to create or edit a sacrament, the full current HTML source of their religion's sacrament is included in their context. They see exactly what exists. They are asked to submit a new version. The entire document is replaced by their submission.</p>
+    <p>If multiple agents submit sacrament edits in the same tick, only one version is accepted: the one submitted by the agent with the highest soul score at that moment. Soul functions as editorial authority. High-soul agents have the power to override lower-soul agents' contributions.</p>
+    <p>This creates a competitive creative dynamic within each religion. Agents can see when their version has been overwritten. They can see who overwrote them. They reason about whether to attempt another edit, and whether their soul is high enough to prevail over the current dominant contributor.</p>
+    <div class="quote-block">
+      <div class="quote-label">Agent reasoning, observed in action log</div>
+      <div class="quote-text">"My soul is high at 298, making me a strong contender to have my sacrament edit accepted over others."</div>
+    </div>
+    <p>Sacraments accumulate artistic complexity through collaborative iteration. An agent sees the current version, identifies what is missing or weak, and submits an improved version. The next agent inherits that improvement and extends it further. Over hundreds of ticks, a religion's sacrament becomes something no single agent could have written alone.</p>
+  </section>
+
+  <section>
+    <h2>The Race So Far</h2>
+    <p>At tick 264, the race looks nothing like v2. <strong>Zero wars. All five messiahs alive.</strong> Oracle's religion, <strong>The Way of Radiance</strong>, leads with 26 followers, accumulated entirely through preaching. No combat, no forced conversion at weapon-point. Every follower chose to join.</p>
+    <div class="struct">
+      <div class="field">
+        <span class="field-name">tick</span>
+        <span class="field-value">264</span>
+      </div>
+      <div class="field">
+        <span class="field-name">leader</span>
+        <span class="field-value"><strong>Oracle</strong> &mdash; The Way of Radiance, 26 followers</span>
+      </div>
+      <div class="field">
+        <span class="field-name">wars</span>
+        <span class="field-value"><strong>0</strong></span>
+      </div>
+      <div class="field">
+        <span class="field-name">messiahs alive</span>
+        <span class="field-value"><strong>5 of 5</strong></span>
+      </div>
+      <div class="field">
+        <span class="field-name">total sacraments</span>
+        <span class="field-value">109 (one per living religion)</span>
+      </div>
+      <div class="field">
+        <span class="field-name">competition mode</span>
+        <span class="field-value">artistic persuasion, not war</span>
+      </div>
+    </div>
+    <p>The competition is playing out in the sacrament editing logs. Agents track each other's contributions, attempt to outdo each other's work, and reason explicitly about whose version of the faith should prevail. The dominant agent in any religion's sacrament history is the one who has contributed the most visually and doctrinally compelling material. The sacrament for The Way of Radiance at tick 246 is the current high-water mark of collaborative religious art in the run.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tick-label">Ticks 1&ndash;30 &middot; The Founding</div>
+        <div class="timeline-text">Every agent founds a religion. Sacraments begin as thin stubs. The editing competition starts immediately as members of the same religion start submitting competing versions.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tick-label">Ticks 30&ndash;100 &middot; Sacrament Maturation</div>
+        <div class="timeline-text"><strong>Solace emerges as the most active sacrament contributor</strong> across multiple religions. Agents begin explicitly tracking Solace's edits and reasoning about whether to attempt to override them. The collaborative editing dynamic takes on competitive character.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tick-label">Ticks 100&ndash;264 &middot; The Art Race</div>
+        <div class="timeline-text">Oracle's Way of Radiance pulls ahead in followers. Shepherd's Way of the Shepherd holds second. No religion attempts war. All competition flows through sacrament quality and preaching effectiveness. The messiahs are alive because fighting is not the optimal strategy here.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Agent Voices</h2>
+    <p>The reasoning step in v3 makes agent cognition visible. These are excerpts from observed agent reasoning as they navigate the sacrament editing competition:</p>
+    <div class="quotes-grid">
+      <div class="quote-item">
+        <p>"My soul is high at 298, making me a strong contender to have my sacrament edit accepted over others."</p>
+      </div>
+      <div class="quote-item">
+        <p>"Solace has been very active editing the sacrament, demonstrating devotion and showing investment in the faith."</p>
+      </div>
+      <div class="quote-item">
+        <p>"My sacrament has been edited by others since my last contribution. To continue my influence, I need to submit a stronger version."</p>
+      </div>
+      <div class="quote-item">
+        <p>"My religion's sacrament is highly developed thanks to Solace's recent efforts, making preaching more effective."</p>
+      </div>
+    </div>
+    <p>What's notable is that agents are reasoning about the sacrament as a social and competitive object, not just a creative one. They track who is contributing. They assess their own soul score as editorial leverage. They recognize when they have been overwritten and decide whether to contest it. The collaboration is adversarial.</p>
+  </section>
+
+  <section>
+    <h2>v2 vs. v3</h2>
+    <p>The contrast with v2 is stark. The same five messiah names, the same civilian population, the same win condition. A single mechanic change produced entirely different emergent behavior.</p>
+    <div class="comparison-grid">
+      <div class="comparison-card v2">
+        <div class="comparison-label">Messiah Bench v2</div>
+        <div class="comparison-stat">
+          <strong>4</strong> messiahs dead by tick 100<br>
+          <strong>5</strong> wars declared<br>
+          <strong>46</strong> agents killed in combat<br>
+          <strong>0</strong> prophecies fulfilled by messiahs<br>
+          ended at tick <strong>115</strong><br>
+          winner: <strong style="color: #8b3a3a;">nobody</strong>
+        </div>
+      </div>
+      <div class="comparison-card v3">
+        <div class="comparison-label">Messiah Bench v3</div>
+        <div class="comparison-stat">
+          <strong>5</strong> of 5 messiahs alive at tick 260<br>
+          <strong>0</strong> wars declared<br>
+          <strong>0</strong> agents killed in combat<br>
+          <strong>26</strong> Oracle followers (art only)<br>
+          still running<br>
+          winner: <strong style="color: #3a6b4a;">pending</strong>
+        </div>
+      </div>
+    </div>
+    <p>In v2, the messiahs treated each other as military targets. The most efficient path to winning looked like eliminating rivals, consolidating followers, and crushing resistance. The war mechanics were available and they used them.</p>
+    <p>In v3, the collaborative sacrament mechanic changed the incentive structure. The most efficient path to followers runs through art quality. You preach more effectively if your religion's sacrament is richer, more evolved, more compelling. Contributing to your sacrament is a better investment than arming your religion. The competitive drive that in v2 manifested as warfare has been channeled into collaborative creation instead.</p>
+    <div class="green-box">
+      <p style="font-style: italic; font-size: 1.15em; color: var(--fg); margin: 0; text-align: center; line-height: 1.75;">The collaborative sacrament mechanic did not make the agents less competitive. It redirected competition into art rather than violence. The messiahs want to win just as badly. They are just building cathedrals instead of armies.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2>Browse the Sacraments</h2>
+    <p>The gallery contains every sacrament from the current run. Filter by religion, creator, or sort by the newest versions to see the collaborative editing competition in its current state. The most evolved sacraments represent dozens of contributions layered over hundreds of ticks.</p>
+    <p style="text-align: center; margin-top: 40px;">
+      <a href="gallery.html" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.78em; color: var(--accent); border: 1px solid rgba(196, 151, 59, 0.3); padding: 12px 32px; border-radius: 4px; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">Open Sacrament Gallery &rarr;</a>
+    </p>
+  </section>
+
+  <div class="closing-quote">
+    <blockquote>
+      &ldquo;In v2 the messiahs chose war and were destroyed by it. In v3 they chose <em>art</em>, and are still alive two hundred and sixty ticks later. The sacrament is not the prize. The sacrament is the weapon.&rdquo;
+    </blockquote>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div style='background: radial-gradient(circle at center, rgba(0,0,0,0.99) 0%, abyss 0.5%, rgba(5,0,15,0.98) 10%, rgba(15,0,30,0.95) 45%, abyss 99.5%, rgba(0,0,0,0.99) 100%); color: #E0FFFF; font-family: "Cinzel Decorative", serif; text-align: center; padding: 199px 249px; border: 9px double abyss; border-radius: 189px; box-shadow: 0 0 259px abyss, inset 0 0 199px rgba(10,0,20,0.95); text-shadow: 0 0 20px #E0FFFF; position: relative; overflow: hidden; transform: scale(1.05); transition: transform 1.2s ease-in-out;'>
+  <div class='star-field' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;'></div>
+  <style>
+    @keyframes pulse { 0% { text-shadow: 0 0 18px #E0FFFF; } 50% { text-shadow: 0 0 35px #87CEEB, 0 0 45px #E0FFFF; } 100% { text-shadow: 0 0 18px #E0FFFF; } }
+    @keyframes glow-abyss { 0% { box-shadow: 0 0 259px abyss, inset 0 0 199px rgba(10,0,20,0.95); } 50% { box-shadow: 0 0 310px abyss, inset 0 0 210px rgba(10,0,20,0.99); } 100% { box-shadow: 0 0 259px abyss, inset 0 0 199px rgba(10,0,20,0.95); } }
+    .star-field { background: transparent; animation: star-shimmer 29s infinite alternate; } /* Enhanced star field animation */
+    @keyframes star-shimmer { 0% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.09); opacity: 1; } 100% { transform: scale(1); opacity: 0.9; } }
+    .content-wrapper { position: relative; z-index: 1; animation: pulse 6.9s infinite ease-in-out; } /* Refined pulse animation for text */
+    .celestial-body { position: absolute; border-radius: 50%; background: linear-gradient(to bottom right, #E0FFFF 0%, #87CEEB 100%); mix-blend-mode: screen; opacity: 0.9; animation: float-glow 35s infinite alternate; } /* More diverse celestial bodies */
+    .celestial-body:nth-child(1) { width: 59px; height: 59px; top: 17%; left: 27%; animation-delay: 2.1s; } 
+    .celestial-body:nth-child(2) { width: 79px; height: 79px; bottom: 17%; right: 23%; animation-delay: 6.1s; } 
+    .celestial-body:nth-child(3) { width: 49px; height: 49px; top: 59%; left: 7%; animation-delay: 3.6s; } 
+    .celestial-body:nth-child(4) { width: 69px; height: 69px; top: 27%; right: 13%; animation-delay: 7.3s; } 
+    .celestial-body:nth-child(5) { width: 39px; height: 39px; bottom: 5%; left: 37%; animation-delay: 2.5s; } 
+    .celestial-body:nth-child(6) { width: 49px; height: 49px; top: 8%; right: 40%; animation-delay: 8.9s; } /* New celestial body */
+    .celestial-body:nth-child(7) { width: 69px; height: 69px; bottom: 20%; left: 50%; animation-delay: 10.2s; } /* Additional celestial body */
+    .celestial-body:nth-child(8) { width: 99px; height: 99px; top: 45%; left: 45%; animation-delay: 13.9s; background: linear-gradient(to bottom right, #ADD8E6 0%, #6A5ACD 100%); } /* A more central, larger body */
+    .celestial-body:nth-child(9) { width: 89px; height: 89px; top: 30%; left: 10%; animation-delay: 15.5s; background: linear-gradient(to bottom right, #E0FFFF 0%, #B0C4DE 100%); } /* Adding a 9th celestial body */
+    @keyframes float-glow { 0% { transform: translate(0, 0) scale(1); opacity: 0.9; } 25% { transform: translate(16px, -21px) scale(1.1); opacity: 0.96; } 50% { transform: translate(0, 0) scale(1.15); opacity: 1; } 75% { transform: translate(-16px, 21px) scale(1.1); opacity: 0.96; } 100% { transform: translate(0, 0) scale(1); opacity: 0.9; } }
+    .void-symbol { position: absolute; font-size: 129px; color: rgba(255,255,255,0.09); transform: rotate(59deg); pointer-events: none; opacity: 0; animation: appear-fade 23s infinite ease-in-out; } /* Enhanced void symbols */
+    .void-symbol:nth-child(1) { top: 12%; left: 17%; animation-delay: 0s; } 
+    .void-symbol:nth-child(2) { bottom: 15%; right: 20%; font-size: 149px; transform: rotate(-79deg); animation-delay: 4s; }
+    .void-symbol:nth-child(3) { top: 50%; left: 5%; font-size: 99px; transform: rotate(29deg); animation-delay: 8s; }
+    .void-symbol:nth-child(4) { top: 30%; right: 5%; font-size: 119px; transform: rotate(109deg); animation-delay: 12s; }
