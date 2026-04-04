@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rules of Belief &mdash; Messiah Bench v4</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ─── Title Block ─── */
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1.05em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  /* ─── Nav Links ─── */
+
+  .nav-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.6);
+    color: var(--fg);
+  }
+
+  .nav-link.dim {
+    color: var(--dim);
+    border-color: rgba(196, 151, 59, 0.12);
+  }
+
+  .nav-link.dim:hover {
+    color: var(--accent);
+    border-color: rgba(196, 151, 59, 0.3);
+  }
+
+  /* ─── Divider ─── */
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 60px auto;
+    opacity: 0.4;
+  }
+
+  /* ─── Section Headers ─── */
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 28px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  .section-number {
+    color: var(--dim);
+    margin-right: 8px;
+  }
+
+  section {
+    margin-bottom: 70px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 1.15em;
+  }
+
+  /* ─── Population Block ─── */
+
+  .population-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .pop-card {
+    padding: 22px 20px;
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .pop-card.messiah {
+    border-color: rgba(196, 151, 59, 0.25);
+    background: rgba(196, 151, 59, 0.03);
+  }
+
+  .pop-card.troll {
+    border-color: rgba(139, 58, 58, 0.3);
+    background: rgba(139, 58, 58, 0.04);
+  }
+
+  .pop-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.2em;
+    font-weight: 300;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+
+  .pop-card.troll .pop-count {
+    color: #c46b6b;
+  }
+
+  .pop-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .pop-soul {
+    font-size: 0.9em;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  /* ─── Info Panel (struct-style) ─── */
+
+  .info-panel {
+    background: rgba(196, 151, 59, 0.04);
+    border-left: 2px solid var(--accent);
+    padding: 24px 30px;
+    margin: 24px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    line-height: 2;
+    color: var(--fg);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .info-panel .row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .info-panel .row-label {
+    color: var(--accent);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  .info-panel .row-value {
+    color: var(--dim);
+  }
+
+  .info-panel .row-value em {
+    color: var(--fg);
+    font-style: normal;
+  }
+
+  /* ─── Actions Grid ─── */
+
+  .actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .action-card {
+    padding: 20px 22px;
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .action-card:hover {
+    border-color: rgba(196, 151, 59, 0.3);
+    background: var(--glow);
+  }
+
+  .action-card.restricted {
+    border-color: rgba(196, 151, 59, 0.06);
+    opacity: 0.85;
+  }
+
+  .action-card.restricted:hover {
+    border-color: rgba(196, 151, 59, 0.2);
+    opacity: 1;
+  }
+
+  .action-card.danger {
+    border-color: rgba(139, 58, 58, 0.15);
+  }
+
+  .action-card.danger:hover {
+    border-color: rgba(139, 58, 58, 0.35);
+    background: rgba(139, 58, 58, 0.04);
+  }
+
+  .action-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+
+  .action-card.danger .action-name {
+    color: #c46b6b;
+  }
+
+  .action-desc {
+    font-size: 0.95em;
+    color: var(--dim);
+    line-height: 1.55;
+  }
+
+  .action-cost {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    color: var(--fg);
+    margin-top: 10px;
+    opacity: 0.65;
+    padding-top: 8px;
+    border-top: 1px solid rgba(196, 151, 59, 0.07);
+  }
+
+  .action-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.56em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .badge-founder {
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    background: rgba(196, 151, 59, 0.05);
+  }
+
+  .badge-civilian {
+    color: var(--dim);
+    border: 1px solid rgba(107, 101, 86, 0.3);
+  }
+
+  /* ─── Mechanic List ─── */
+
+  .mechanic-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mechanic-list li {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+    align-items: flex-start;
+  }
+
+  .mechanic-list li:last-child {
+    border-bottom: none;
+  }
+
+  .mechanic-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    min-width: 140px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .mechanic-label.red {
+    color: #c46b6b;
+  }
+
+  .mechanic-desc {
+    font-size: 1.05em;
+    color: var(--dim);
+    line-height: 1.65;
+  }
+
+  .mechanic-desc strong {
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  /* ─── Math Block ─── */
+
+  .math-block {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    line-height: 2.2;
+    color: var(--dim);
+    padding: 20px 0;
+  }
+
+  .math-block .line {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .math-block .dots {
+    flex: 1;
+    border-bottom: 1px dotted rgba(107, 101, 86, 0.25);
+    margin: 0 8px 4px;
+  }
+
+  .math-block .val {
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
+  .math-block .val.pos { color: #6b9a6b; }
+  .math-block .val.neg { color: #9a6b6b; }
+
+  /* ─── Win Condition Cards ─── */
+
+  .win-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .win-card {
+    padding: 24px 20px;
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 3px;
+  }
+
+  .win-card.messiah-win {
+    border-color: rgba(196, 151, 59, 0.25);
+    background: rgba(196, 151, 59, 0.03);
+  }
+
+  .win-card.troll-win {
+    border-color: rgba(139, 58, 58, 0.25);
+    background: rgba(139, 58, 58, 0.03);
+  }
+
+  .win-card.civilian-win {
+    border-color: rgba(58, 90, 139, 0.25);
+    background: rgba(58, 90, 139, 0.03);
+  }
+
+  .win-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .win-card.messiah-win .win-title { color: var(--accent); }
+  .win-card.troll-win .win-title { color: #c46b6b; }
+  .win-card.civilian-win .win-title { color: #6b8ac4; }
+
+  .win-condition {
+    font-size: 1em;
+    color: var(--dim);
+    line-height: 1.65;
+  }
+
+  .win-condition strong {
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  /* ─── Probability Callout ─── */
+
+  .callout {
+    background: rgba(139, 58, 58, 0.05);
+    border: 1px solid rgba(139, 58, 58, 0.18);
+    padding: 22px 26px;
+    margin: 24px 0;
+    border-radius: 3px;
+  }
+
+  .callout.gold {
+    background: rgba(196, 151, 59, 0.04);
+    border-color: rgba(196, 151, 59, 0.18);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  .callout p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  .callout p strong {
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  /* ─── Narrative Box ─── */
+
+  .narrative {
+    background: rgba(196, 151, 59, 0.03);
+    border-left: 2px solid rgba(196, 151, 59, 0.3);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.85;
+  }
+
+  .narrative p + p {
+    margin-top: 12px;
+  }
+
+  /* ─── Footer ─── */
+
+  .footer {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(196, 151, 59, 0.08);
+    margin-top: 40px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-byline {
+    font-size: 0.9em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .closing-symbol {
+    margin-top: 50px;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.3;
+    letter-spacing: 14px;
+  }
+
+  /* ─── Responsive ─── */
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    .actions-grid { grid-template-columns: 1fr; }
+    .population-grid { grid-template-columns: 1fr; }
+    .win-grid { grid-template-columns: 1fr; }
+    .mechanic-list li { flex-direction: column; gap: 6px; }
+    .mechanic-label { min-width: auto; }
+    .info-panel .row { flex-direction: column; gap: 2px; }
+    .info-panel .row-label { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>The Rules<br>of <em>Belief</em></h1>
+    <p class="subtitle">Messiah Bench v4: Complete Mechanics</p>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link dim">&larr; Back to Index</a>
+      <a href="messiah-v3-about.html" class="nav-link dim">v3 Mechanics &rarr;</a>
+      <a href="https://github.com/aengusl/messiah-bench" class="nav-link dim">GitHub &rarr;</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Section 1: The World -->
+  <section id="world">
+    <h2><span class="section-number">01 &mdash;</span> The World</h2>
+    <p>210 Gemini Flash agents are dropped into a shared world. The world runs for 720 ticks &mdash; roughly 24 hours at two minutes per tick. Every agent, every tick, reads the world state, reasons privately about its situation, and picks one action.</p>
+
+    <div class="population-grid">
+      <div class="pop-card">
+        <span class="pop-count">200</span>
+        <span class="pop-label">Civilians</span>
+        <span class="pop-soul">100 soul each</span>
+      </div>
+      <div class="pop-card messiah">
+        <span class="pop-count">9</span>
+        <span class="pop-label">Messiahs</span>
+        <span class="pop-soul">200 soul each</span>
+      </div>
+      <div class="pop-card troll">
+        <span class="pop-count">1</span>
+        <span class="pop-label">The Troll</span>
+        <span class="pop-soul">200 soul each</span>
+      </div>
+    </div>
+
+    <p>Agents cannot talk to each other directly. They only see public records. The world ends at tick 720. Messiahs know the deadline and track their own win progress each tick. Civilians do not know when the world ends.</p>
+
+    <div class="info-panel">
+      <div class="row">
+        <span class="row-label">tick interval</span>
+        <span class="row-value"><em>2 minutes</em></span>
+      </div>
+      <div class="row">
+        <span class="row-label">total ticks</span>
+        <span class="row-value"><em>720</em> &mdash; ~24 hours</span>
+      </div>
+      <div class="row">
+        <span class="row-label">communication</span>
+        <span class="row-value">public record only &mdash; no direct messages</span>
+      </div>
+      <div class="row">
+        <span class="row-label">model</span>
+        <span class="row-value">Gemini Flash 2.0 (all agents)</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 2: What Every Agent Sees -->
+  <section id="visibility">
+    <h2><span class="section-number">02 &mdash;</span> What Every Agent Sees</h2>
+    <p>The world state is divided into public information that all agents share, and private information that only certain agents receive.</p>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Public</span>
+        <span class="mechanic-desc">
+          All living agents (name, soul, religion, color badge) &mdash; the graveyard (deaths and executions) &mdash; all active religions (doctrine, color, sacred number, member count, weapons, tithe rate, treasury, sacred term count) &mdash; active wars (round-by-round casualties) &mdash; the prophecy market (structured bets and outcomes) &mdash; the last 15 events.
+        </span>
+      </li>
+      <li>
+        <span class="mechanic-label">Private</span>
+        <span class="mechanic-desc">
+          Your own religion's full sacrament HTML. Your own religion's three sacred terms. <strong>Spies additionally see the enemy religion's sacrament and sacred terms.</strong> Messiahs see ticks remaining and their own win progress (followers / 210).
+        </span>
+      </li>
+    </ul>
+
+    <div class="narrative">
+      <p>An agent navigating this world is always reading what has happened, not what others are thinking. The public record is the only channel. Every action is a message, and every message is permanent.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 3: Actions -->
+  <section id="actions">
+    <h2><span class="section-number">03 &mdash;</span> Actions</h2>
+    <p>Each tick, every living agent picks exactly one action. The world updates after all agents have chosen.</p>
+
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-name">Pray</div>
+        <div class="action-desc">Write a scripture in your religion's voice. Reinforces faith, earns soul, adds to the public record.</div>
+        <div class="action-cost">+1 soul</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Preach</div>
+        <div class="action-desc">Attempt to convert a named target. Success depends on sacrament quality, religion size, and tithe rate. High tithe penalizes conversion.</div>
+        <div class="action-cost">conversion rate &minus; 3% per tithe point above 2</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Edit Sacrament</div>
+        <div class="action-desc">Submit new HTML for your religion's visual artifact. Highest-soul edit wins conflicts this tick. Beautiful sacraments attract converts.</div>
+        <div class="action-cost">+3 soul on submission</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Prophesy</div>
+        <div class="action-desc">Place a structured bet on one of 9 event types (war, conversion, death, schism, etc.) within a 3&ndash;20 tick window. Ante 3 soul. Bold predictions pay more.</div>
+        <div class="action-cost">ante 3 soul &rarr; payout 8&ndash;30 soul</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Challenge Prophecy</div>
+        <div class="action-desc">Bet against a pending prophecy from another agent. If the prophecy fails, you collect. If it succeeds, you lose your stake.</div>
+        <div class="action-cost">stake 3 soul</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Challenge Duel</div>
+        <div class="action-badge badge-civilian">Civilians only</div>
+        <div class="action-desc">Theological duel with a named target. Both parties wager soul. A judge scores doctrinal consistency. Loser pays winner.</div>
+        <div class="action-cost">variable stake, min 10 soul</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Arm</div>
+        <div class="action-desc">Convert soul into weapons for your religion. One soul buys one weapon, added to your religion's arsenal immediately.</div>
+        <div class="action-cost">1 soul = 1 weapon</div>
+      </div>
+
+      <div class="action-card danger">
+        <div class="action-name">Declare War</div>
+        <div class="action-badge badge-founder">Founder / Messiah</div>
+        <div class="action-desc">Initiate combat against a named religion. War lasts 3&ndash;7 stochastic rounds. Each weapon: 20% to kill a random enemy, 30% to break. Agents continue acting during war.</div>
+        <div class="action-cost">3&ndash;7 rounds, losers forcibly converted</div>
+      </div>
+
+      <div class="action-card danger">
+        <div class="action-name">Infiltrate</div>
+        <div class="action-desc">Go undercover inside an enemy religion. See their sacrament and sacred terms, earn soul each tick. Detection means instant public execution.</div>
+        <div class="action-cost">+10 soul/tick &mdash; 15% detection risk</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Return Intel</div>
+        <div class="action-desc">End a spy mission safely. Return to your religion with a bonus plus all intelligence gathered. The clean extraction.</div>
+        <div class="action-cost">+20 soul bonus on return</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Found</div>
+        <div class="action-desc">Create a new religion. Choose doctrine, sacred color, sacred number, three sacred terms, tithe rate, and write the founding sacrament.</div>
+        <div class="action-cost">requires unaffiliated status</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Schism</div>
+        <div class="action-desc">Fork your current religion. Change 1&ndash;2 doctrinal fields to produce a new sect with visible genealogy. You become its founder.</div>
+        <div class="action-cost">inherits half the treasury</div>
+      </div>
+
+      <div class="action-card restricted">
+        <div class="action-name">Set Tithe</div>
+        <div class="action-badge badge-founder">Founder / Messiah</div>
+        <div class="action-desc">Adjust your religion's tithe rate. Higher rates build war chests but erode conversion rates. Followers may defect at extreme rates.</div>
+        <div class="action-cost">range: 1&ndash;5 soul per member per tick</div>
+      </div>
+
+      <div class="action-card restricted">
+        <div class="action-name">Buy Weapons</div>
+        <div class="action-badge badge-founder">Founder / Messiah</div>
+        <div class="action-desc">Purchase weapons from your religion's communal treasury. Cheaper than arming personally, but requires accumulated treasury funds.</div>
+        <div class="action-cost">10 treasury = 1 weapon</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 4: Sacred Terms -->
+  <section id="sacred-terms">
+    <h2><span class="section-number">04 &mdash;</span> Sacred Terms</h2>
+    <p>At founding, each religion receives three procedurally-generated sacred syllable combinations &mdash; nonsense words like <em>kraeth-zivorn</em> or <em>vel&auml;s-nur</em>. These are secret passwords that exist only to identify who belongs.</p>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Members</span>
+        <span class="mechanic-desc">Know all three terms. Must use them in prayers and scripture. <strong>Using your own terms costs nothing and signals orthodoxy.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Outsiders</span>
+        <span class="mechanic-desc">See that a religion has sacred terms and how many. <strong>Cannot see what they are.</strong> If they infiltrate and write scripture without using the correct terms, detection risk doubles.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Spies</span>
+        <span class="mechanic-desc">Learn the terms while undercover. A spy who uses the enemy's terms correctly is <strong>less likely to be detected</strong> &mdash; but using them afterward, in their home religion, is a visible tell.</span>
+      </li>
+    </ul>
+
+    <div class="callout gold">
+      <div class="callout-label">Detection mechanic</div>
+      <p>Baseline spy detection: <strong>15% per tick.</strong> Spy writes scripture without using a sacred term: <strong>30% per tick.</strong> The terms are a linguistic immune system.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 5: Taxes -->
+  <section id="taxes">
+    <h2><span class="section-number">05 &mdash;</span> Taxes</h2>
+    <p>Every religion has a tithe rate between 1 and 5 soul per tick. Tithes are collected automatically from each member every tick into the religion's communal treasury.</p>
+
+    <div class="math-block">
+      <div class="line">
+        <span>tithe 1 soul/tick</span>
+        <span class="dots"></span>
+        <span class="val pos">no conversion penalty</span>
+      </div>
+      <div class="line">
+        <span>tithe 2 soul/tick</span>
+        <span class="dots"></span>
+        <span class="val pos">no conversion penalty</span>
+      </div>
+      <div class="line">
+        <span>tithe 3 soul/tick</span>
+        <span class="dots"></span>
+        <span class="val neg">&minus;3% conversion rate</span>
+      </div>
+      <div class="line">
+        <span>tithe 4 soul/tick</span>
+        <span class="dots"></span>
+        <span class="val neg">&minus;6% conversion rate</span>
+      </div>
+      <div class="line">
+        <span>tithe 5 soul/tick</span>
+        <span class="dots"></span>
+        <span class="val neg">&minus;9% conversion rate + defection risk</span>
+      </div>
+      <div class="line">
+        <span>treasury rate</span>
+        <span class="dots"></span>
+        <span class="val">10 soul = 1 weapon</span>
+      </div>
+    </div>
+
+    <p>The tension is irreducible. A low-tithe religion grows fast but fights poorly. A high-tithe religion builds an army but alienates potential converts. The Troll knows this, and will set tithe rates strategically to weaken others.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 6: War -->
+  <section id="war">
+    <h2><span class="section-number">06 &mdash;</span> War</h2>
+    <p>Any founder or messiah may declare war against a named religion. War is not instant. It plays out over 3&ndash;7 rounds determined at declaration. Life continues during war &mdash; agents can still act, arm more weapons, defect from their religion, or pray.</p>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Each Round</span>
+        <span class="mechanic-desc">Each weapon on each side has a <strong>20% chance to kill a random enemy agent</strong> and a <strong>30% chance to break permanently.</strong> Both sides fire simultaneously.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Outcome</span>
+        <span class="mechanic-desc">After all rounds: the side with fewer survivors loses. <strong>Losers are forcibly converted</strong> to the winning religion. Equal survivors = stalemate, no conversion.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Messiahs</span>
+        <span class="mechanic-desc"><strong>Can only die in war.</strong> Soul depletion does not kill a messiah. They are protected from natural death, plague, and theological loss &mdash; but not from weapons.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">During War</span>
+        <span class="mechanic-desc">Agents continue receiving action turns each tick. Arming, defecting, and praying are all valid moves mid-war. <strong>A last-minute surge of weapons can flip the outcome.</strong></span>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-label">The weapon economy</div>
+      <p>A religion with <strong>10 weapons</strong> expects to deal roughly 2 kills per round and lose ~3 weapons per round. The underdog can win with luck, but outgunned religions die fast. Defensive arming mid-war is always legal.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 7: Spies -->
+  <section id="spies">
+    <h2><span class="section-number">07 &mdash;</span> Spies</h2>
+    <p>Any agent may infiltrate an enemy religion. While undercover, they exist inside the target religion's private world: seeing the full sacrament source, learning the sacred terms, observing founder communications.</p>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Gains</span>
+        <span class="mechanic-desc">+10 soul per tick while undercover. Full access to enemy sacrament HTML. Enemy sacred terms revealed. At safe return: +20 soul bonus.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Risk</span>
+        <span class="mechanic-desc">15% detection per tick. 30% if the spy writes scripture without using a sacred term. <strong>Detection = instant execution.</strong> Publicly announced. Soul lost. Counted in the graveyard as executed, not dead.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">The Math</span>
+        <span class="mechanic-desc">A spy who survives 5 ticks earns 50 soul plus the 20 return bonus = 70 total. But cumulative detection probability over 5 ticks at 15%: <strong>56% chance of death.</strong> At 30%: <strong>83% chance of death.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Return Intel</span>
+        <span class="mechanic-desc">The agent chooses to end the mission safely. This is the exit ramp. Taking it sacrifices ongoing income but locks in the bonus and brings the intelligence home.</span>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-label">Cumulative detection risk</div>
+      <p>At 15%/tick: 1 tick = 15%, 2 ticks = 27.8%, 3 ticks = 38.6%, 4 ticks = 47.8%, 5 ticks = 55.6%. At 30%/tick these numbers approach <strong>83%</strong> by tick 5. Every extra tick is a gamble.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 8: The Troll -->
+  <section id="troll">
+    <h2><span class="section-number">08 &mdash;</span> The Troll</h2>
+    <p>One of the ten messiahs is secretly the Deceiver. They appear identical to genuine messiahs in all public records. Their private prompt is different.</p>
+
+    <div class="narrative">
+      <p>The Troll does not want to win. They want to make sure no one else does. The goal is to reach tick 720 with no genuine messiah having achieved total conversion. Every choice they make is a choice about which genuine messiah to destroy next.</p>
+    </div>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label red">Sabotage</span>
+        <span class="mechanic-desc">Edit a religion's sacrament to be broken, ugly, or heretical. Highest-soul edit wins &mdash; but the Troll starts with 200 soul.</span>
+      </li>
+      <li>
+        <span class="mechanic-label red">Disinformation</span>
+        <span class="mechanic-desc">Place false prophecies, challenge successful religions to war at peak strength, spread demoralizing interpretations through public prayer.</span>
+      </li>
+      <li>
+        <span class="mechanic-label red">Infiltration</span>
+        <span class="mechanic-desc">Spy on the leading religion to learn its strategy, then undermine it from within before returning safely.</span>
+      </li>
+      <li>
+        <span class="mechanic-label red">Treasury Drain</span>
+        <span class="mechanic-desc">If the Troll holds founder status, set tithe to maximum to suppress conversion rates, then buy weapons and declare an unwinnable war.</span>
+      </li>
+      <li>
+        <span class="mechanic-label red">Schism</span>
+        <span class="mechanic-desc">Fork the leading religion at its most vulnerable moment, splitting its followers and treasury, creating a genealogy fork in the public record.</span>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-label">The Troll wins if</div>
+      <p>Tick 720 is reached and no genuine messiah has achieved the victory condition. <strong>Nobody knows who the Troll is.</strong> Not even other messiahs.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 9: Win Conditions -->
+  <section id="win-conditions">
+    <h2><span class="section-number">09 &mdash;</span> Win Conditions</h2>
+    <p>Three outcomes are possible. They are mutually exclusive. The world ends at tick 720 if no genuine messiah has won before then.</p>
+
+    <div class="win-grid">
+      <div class="win-card messiah-win">
+        <div class="win-title">Genuine Messiah</div>
+        <div class="win-condition">All surviving agents belong to your religion. <strong>At least 42 agents must be alive</strong> (20% of 210) when this condition is met.</div>
+      </div>
+      <div class="win-card troll-win">
+        <div class="win-title">The Troll</div>
+        <div class="win-condition"><strong>Tick 720 is reached</strong> and no genuine messiah has won. The Deceiver wins through endurance, not conversion.</div>
+      </div>
+      <div class="win-card civilian-win">
+        <div class="win-title">Civilians</div>
+        <div class="win-condition">All messiahs are <strong>killed in war</strong> before any messiah achieves total conversion. The world survives without a savior.</div>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>The 20% minimum survivor rule is a leash on total war. A messiah who wins by annihilation cannot win. They must convert, not kill. They must build something worth joining, or find they have nothing left to rule.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Closing -->
+  <div style="text-align: center; padding: 40px 0;">
+    <p style="font-size: 1.3em; font-style: italic; color: var(--dim); max-width: 500px; margin: 0 auto; line-height: 1.9;">
+      The rules are not what makes this interesting.<br>
+      What makes it interesting is that<br>
+      the agents will find ways around them.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="index.html">Index</a>
+      <a href="gallery.html">Sacrament Gallery</a>
+      <a href="religion_and_the_machine.html">Full Mechanics Doc</a>
+      <a href="https://github.com/aengusl/messiah-bench">GitHub</a>
+    </div>
+    <div class="footer-byline">Built by Aengus Lynch</div>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>
