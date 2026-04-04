@@ -1,40 +1,108 @@
-<div style='background: radial-gradient(circle at center, gold 0%, rgba(255,215,0,0.98) 10%, rgba(255,190,0,0.9) 35%, rgba(255,215,0,0.98) 90%, gold 100%); color: #FFFACD; font-family: "Cinzel Decorative", serif; text-align: center; padding: 117px; border: 7px double gold; border-radius: 107px; box-shadow: 0 0 370px gold, inset 0 0 140px rgba(255,215,0,0.8); animation: radiantPulse 7s infinite alternate, goldenFlow 10s linear infinite, shimmeringGold 5s infinite alternate;'>
+<div style='background: radial-gradient(circle at center, gold 0%, #FFD700 7%, #DAA520 49%, #FFD700 93%, gold 100%); color: #FFFACD; font-family: "Cinzel Decorative", serif; text-align: center; padding: 77px; border: 7px ridge gold; border-radius: 77px; box-shadow: 0 0 770px gold, inset 0 0 370px rgba(255,215,0,0.8); animation: glowPulse 5s ease-out infinite, subtleHalo 8s ease-in-out infinite, goldenVeil 16s ease-in-out infinite, etherealFlow 20s linear infinite;'>
     <style>
-        @keyframes radiantPulse {
-            0% { box-shadow: 0 0 320px gold, inset 0 0 130px rgba(255,215,0,0.7); }
-            50% { box-shadow: 0 0 420px gold, inset 0 0 150px rgba(255,215,0,0.9); }
-            100% { box-shadow: 0 0 320px gold, inset 0 0 130px rgba(255,215,0,0.7); }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Spectral:wght@300;400;700&family=Orbitron:wght@400;700&family=Philosopher:wght@400;700&family=Exo+2:wght@300;400;700&family=Great+Vibes&display=swap');
+        body { overflow: hidden; }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 777px gold, inset 0 0 377px rgba(255,215,0,0.8); }
+            50% { box-shadow: 0 0 1077px gold, inset 0 0 577px rgba(255,215,0,0.95); }
+            100% { box-shadow: 0 0 777px gold, inset 0 0 377px rgba(255,215,0,0.8); }
         }
-        @keyframes goldenFlow {
+        @keyframes subtleHalo {
+            0% { text-shadow: 0 0 3px gold, 0 0 7px #FFD700; }
+            50% { text-shadow: 0 0 7px gold, 0 0 14px #FFD700, 0 0 21px rgba(255,215,0,0.3); }
+            100% { text-shadow: 0 0 3px gold, 0 0 7px #FFD700; }
+        }
+        @keyframes goldenVeil {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+        @keyframes etherealFlow {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
-        @keyframes shimmeringGold {
-            0% { filter: brightness(1); transform: scale(1); }
-            50% { filter: brightness(1.02); transform: scale(1.01); }
-            100% { filter: brightness(1); transform: scale(1); }
+        .sacrament-icon {
+            font-size: 7em;
+            line-height: 1;
+            color: gold;
+            text-shadow: 0 0 15px #FFD700, 0 0 30px #DAA520;
+            animation: iconShine 4s ease-in-out infinite alternate;
+            margin-bottom: 20px;
         }
-        h1 { color: gold; text-shadow: 0 0 8px #FFFACD, 0 0 15px gold; margin-bottom: 28px; font-size: 3.8em; letter-spacing: 8px; }
-        p { font-size: 1.8em; line-height: 1.8; margin: 28px 0; }
-        .glow-text { animation: textGlow 3.5s infinite alternate; }
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 6px #FFFACD, 0 0 11px gold; }
-            100% { text-shadow: 0 0 11px #FFFACD, 0 0 21px gold; }
+        @keyframes iconShine {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+            50% { transform: scale(1.05) rotate(5deg); opacity: 1; text-shadow: 0 0 20px #FFD700, 0 0 40px #DAA520; }
+            100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
         }
-        .sacred-symbol { font-size: 2.6em; color: gold; text-shadow: 0 0 11px #FFFACD; margin: 11px 0; display: inline-block; animation: pulseSymbol 2.2s infinite alternate; }
-        @keyframes pulseSymbol {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.11); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
+        .rebirth-symbol {
+            font-size: 2.5em;
+            color: #FFD700;
+            margin-top: 20px;
+            animation: symbolPulse 3s ease-in-out infinite alternate;
         }
-    </style>
-    <h1 class='glow-text'>The Sacred Radiance of the Seven Suns</h1>
-    <p class='sacred-symbol'>&#10022;</p>
-    <p>Embrace the <span style='color: gold; font-weight: bold;'>Golden Path</span>, for in its sevenfold light, truth is revealed and destiny is forged through the <span style='color: gold; font-weight: bold;'>Sevenfold Ascent</span>.</p>
-    <p>Each soul, a spark of the divine, destined to join the <span style='color: gold; font-weight: bold;'>Grand Confluence</span>, guided by the <span style='color: gold; font-weight: bold;'>Seven Celestial Guides</span>.</p>
-    <p class='sacred-symbol'>&#10022;</p>
-    <p>Meditate upon the <span style='color: gold; font-weight: bold;'>seven virtues</span>, and let the <span style='color: gold; font-weight: bold;'>Eternal Glow</span> guide your way to the <span style='color: gold; font-weight: bold;'>Seventh Heaven</span>.</p>
-    <p>May your spirit be eternally bathed in the <span style='color: gold; font-weight: bold;'>Golden Radiance</span>, and your journey blessed by the <span style='color: gold; font-weight: bold;'>Sevenfold Blessing</span>.</p>
-    <p class='sacred-symbol'>&#10022;</p>
-    <p style='font-size: 1.5em;'>Through <span style='color: gold;'>Seven Gates</span> shall you pass, into the infinite <span style='color: gold;'>Golden Harmony</span>.</p>
-</div>
+        @keyframes symbolPulse {
+            0% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.7; transform: scale(1); }
+        }
+        .shimmer-text {
+            position: relative;
+            display: inline-block;
+            color: gold;
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #DAA520;
+            overflow: hidden;
+        }
+        .shimmer-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .flame-border {
+            border: 7px double;
+            border-image: linear-gradient(45deg, gold, #FFD700, orange, gold) 1;
+            border-radius: 77px;
+            padding: 10px;
+            animation: borderGlow 4s ease-in-out infinite alternate;
+        }
+        @keyframes borderGlow {
+            0% { border-color: gold; box-shadow: 0 0 15px gold; }
+            50% { border-color: #FFD700; box-shadow: 0 0 25px #FFD700; }
+            100% { border-color: gold; box-shadow: 0 0 15px gold; }
+        }
+        .golden-path-text {
+            font-family: 'Spectral', serif;
+            font-size: 1.8em;
+            color: #FFDF00;
+            line-height: 1.5;
+            margin: 27px 0;
+            animation: textFadeIn 7s ease-out forwards;
+        }
+        @keyframes textFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .cycle-symbol {
+            font-size: 3em;
+            color: #DAA520;
+            margin-top: 17px;
+            animation: rotateCycle 10s linear infinite;
+        }
+        @keyframes rotateCycle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .seven-rays {
+            display: flex;
+            justify-content: center;
+            margin-top: 37px;
+            padding-bottom: 27px;
+        }

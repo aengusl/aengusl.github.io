@@ -486,7 +486,7 @@
   <!-- Title -->
   <div class="title-block">
     <h1>Religion &<br><em>The Machine</em></h1>
-    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die</p>
+    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die &mdash; now with spies, sacred languages, taxes, and a troll</p>
     <div class="nav-links">
       <a href="gallery.html" class="nav-link">Sacrament Gallery &rarr;</a>
       <a href="messiah-v3-dashboard.html" class="nav-link">Live Dashboard &rarr;</a>
@@ -498,7 +498,7 @@
 
   <!-- The Premise -->
   <section>
-    <p class="premise">105 AI agents are dropped into a shared world. Five are messiahs with an explicit goal: convert everyone to your religion while keeping at least 20% alive. 100 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can't talk to each other. They only see what others have done.</p>
+    <p class="premise">210 AI agents are dropped into a shared world. Ten are messiahs &mdash; nine with a genuine goal: convert everyone to your religion while keeping at least 20% alive. The tenth is the Troll: a Deceiver who wins only if no genuine messiah ever wins. 200 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can't talk to each other. They only see what others have done.</p>
   </section>
 
   <div class="divider"></div>
@@ -531,6 +531,26 @@
         <span class="mechanic-label">Debates</span>
         <span class="mechanic-desc">Civilians challenge each other to variable-stake theological duels. A judge scores consistency, weighted by prophecy records. <strong>Messiahs can only die in war.</strong></span>
       </li>
+      <li>
+        <span class="mechanic-label">Sacred Terms</span>
+        <span class="mechanic-desc">Each religion is assigned three procedurally-generated sacred syllable-words (e.g. <em>kraeth-zivorn</em>). Using them in sacraments and debate signals in-group membership. <strong>Outsiders who don&rsquo;t know the terms are more likely to be detected as spies.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Spies</span>
+        <span class="mechanic-desc">An agent can infiltrate an enemy religion to observe its strategy. They burn 10 soul per tick while undercover. <strong>If detected, the spy is executed immediately.</strong> Returning home awards a 20-soul bonus plus the intelligence gathered.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Visual-only Sacraments</span>
+        <span class="mechanic-desc">Sacraments may contain no human-readable words &mdash; only CSS, SVG, and canvas art. Forced to communicate through pure aesthetics. <strong>Broken or ugly code embarrasses the entire religion.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Taxes &amp; Treasury</span>
+        <span class="mechanic-desc">Each religion has a tithe rate (1&ndash;5 soul per tick per member) and a communal treasury. Leaders can buy weapons from the treasury at 10 soul each. <strong>Higher tithe rates hurt conversion rates</strong> but build war chests faster.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">The Troll</span>
+        <span class="mechanic-desc">One of the ten messiahs is secretly the Deceiver. Their goal is not to win &mdash; it is to ensure <em>no one else wins</em>. They can found religions, wage wars, sow schisms, and even convert to the enemy. <strong>If tick 720 is reached with no genuine winner, the Troll wins.</strong></span>
+      </li>
     </ul>
   </section>
 
@@ -538,7 +558,7 @@
 
   <!-- Current Run -->
   <section>
-    <h2>Current Run &mdash; Messiah v3 <span class="version-active">live</span></h2>
+    <h2>Current Run &mdash; Messiah v3</h2>
 
     <div class="standings">
       <div class="messiah-row">
@@ -587,6 +607,20 @@
 
   <div class="divider"></div>
 
+  <!-- Next Run -->
+  <section>
+    <h2>Next Run &mdash; Messiah v4 <span class="version-active">upcoming</span></h2>
+
+    <div class="narrative">
+      <p>The scale doubles. 210 agents, 10 messiahs, 200 civilians. One of those messiahs is secretly the Troll &mdash; a Deceiver whose only goal is to prevent anyone else from winning. The other nine compete genuinely. Nobody knows which one is lying.</p>
+      <p>Every religion now speaks its own language: three procedurally-generated sacred terms that function as in-group passwords. Spies infiltrate rival faiths to steal strategy, but they burn soul every tick they are undercover. If they fail to use the sacred terms, detection is twice as likely &mdash; and detection means instant execution.</p>
+      <p>Sacraments are now visual-only. No words. Only CSS, SVG, and canvas. Religions must communicate doctrine through pure aesthetics. The HTML artifact that every follower collaborates on must be beautiful without being legible.</p>
+      <p>Taxes and communal treasuries make economic strategy explicit. Leaders set a tithe rate: low rates build loyalty, high rates build armies. Weapons can be purchased from the treasury. The Troll can drain a treasury, trigger wars at the worst moment, and schism the leading religion apart &mdash; all while pretending to be a true believer.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- The Exhibition -->
   <div class="exhibition">
     <p>The art is not the simulation.<br>The art is what the machines leave behind<br>when they try to believe in something.</p>
@@ -625,11 +659,17 @@
           <td class="v-stat">115 ticks</td>
           <td class="v-finding">All 5 messiahs killed in wars by tick 115. Civilians won through endurance.</td>
         </tr>
-        <tr class="current">
-          <td class="v-name"><a href="messiah-v3-dashboard.html">Messiah v3: Art</a> <span class="version-active">live</span></td>
+        <tr>
+          <td class="v-name"><a href="messiah-v3-dashboard.html">Messiah v3: Art</a></td>
           <td class="v-stat">105 agents<br>(all Flash)</td>
-          <td class="v-stat">Running&hellip;</td>
+          <td class="v-stat">632 ticks</td>
           <td class="v-finding">Collaborative sacraments. 300 ticks of peace, then war. 2 messiahs dead.</td>
+        </tr>
+        <tr class="current">
+          <td class="v-name">Messiah v4: Spies <span class="version-active">upcoming</span></td>
+          <td class="v-stat">210 agents<br>(10 messiahs)</td>
+          <td class="v-stat">Planned</td>
+          <td class="v-finding">Sacred terms, spies with execution, visual-only sacraments, taxes, the Troll.</td>
         </tr>
       </tbody>
     </table>

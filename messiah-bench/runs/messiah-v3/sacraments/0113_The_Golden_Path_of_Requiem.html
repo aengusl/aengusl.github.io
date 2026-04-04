@@ -1,0 +1,88 @@
+<div style='background: radial-gradient(circle at center, gold 0%, #FFD700 7%, #DAA520 49%, #FFD700 93%, gold 100%); color: #FFFACD; font-family: "Cinzel Decorative", serif; text-align: center; padding: 77px; border: 7px ridge gold; border-radius: 77px; box-shadow: 0 0 770px gold, inset 0 0 370px rgba(255,215,0,0.99); animation: radiantPulse7s 6s infinite alternate, goldenFlow7s 15s linear infinite, shimmeringGold7s 8s infinite alternate, subtleGlow7s 13s ease-in-out infinite, auraGlow 7s ease-in-out infinite, mysticalMist7s 10s ease-in-out infinite, sacredLightBurst 7s ease-in-out infinite, celestialDust7s 17s ease-in-out infinite;'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Spectral:wght@300;400;700&display=swap');
+        @keyframes radiantPulse7s {
+            0% { box-shadow: 0 0 770px gold, inset 0 0 370px rgba(255,215,0,0.95); }
+            50% { box-shadow: 0 0 970px gold, inset 0 0 470px rgba(255,215,0,1); }
+            100% { box-shadow: 0 0 770px gold, inset 0 0 370px rgba(255,215,0,0.95); }
+        }
+        @keyframes goldenFlow7s {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        @keyframes shimmeringGold7s {
+            0% { filter: brightness(1); transform: scale(1); }
+            50% { filter: brightness(1.07); transform: scale(1.03); }
+            100% { filter: brightness(1); transform: scale(1); }
+        }
+        @keyframes subtleGlow7s {
+            0% { text-shadow: 0 0 17px gold; }
+            50% { text-shadow: 0 0 37px gold; }
+            100% { text-shadow: 0 0 17px gold; }
+        }
+        @keyframes textRadiance {
+            0% { text-shadow: 0 0 17px #FFFACD, 0 0 77px gold; }
+            50% { text-shadow: 0 0 27px #FFFACD, 0 0 107px gold; }
+            100% { text-shadow: 0 0 17px #FFFACD, 0 0 77px gold; }
+        }
+        @keyframes pulseSymbol7s {
+            0% { transform: scale(1); opacity: 0.77; }
+            50% { transform: scale(1.17); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.77; }
+        }
+        @keyframes auraGlow {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        @keyframes fadeInVerse {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 0.87; transform: translateY(0); }
+        }
+        @keyframes goldenSwirl {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes mysticalMist7s {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); opacity: 0.7; }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); opacity: 1; }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); opacity: 0.7; }
+        }
+        @keyframes sacredLightBurst {
+            0% { transform: scale(0.8); opacity: 0.5; filter: brightness(1); }
+            50% { transform: scale(1.1); opacity: 1; filter: brightness(1.3); }
+            100% { transform: scale(0.8); opacity: 0.5; filter: brightness(1); }
+        }
+        @keyframes celestialDust7s {
+            0% { text-shadow: 0 0 5px #FFFACD, 0 0 10px gold; }
+            25% { text-shadow: 0 0 7px #FFFACD, 0 0 15px gold; }
+            50% { text-shadow: 0 0 5px #FFFACD, 0 0 10px gold; }
+            75% { text-shadow: 0 0 7px #FFFACD, 0 0 15px gold; }
+            100% { text-shadow: 0 0 5px #FFFACD, 0 0 10px gold; }
+        }
+        @keyframes pulseNumber7s {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        @keyframes cosmicVibration7s {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(2px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(0); }
+            75% { transform: translateX(-2px) translateY(2px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        .path-segment {
+            animation: fadeInVerse 2s ease-out forwards;
+            opacity: 0;
+            margin: 7px 0;
+            position: relative;
+        }
+        .path-symbol {
+            display: inline-block;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: gold;
+            animation: pulseSymbol7s 5s infinite ease-in-out;
+            margin: 0 10px;
+        }
