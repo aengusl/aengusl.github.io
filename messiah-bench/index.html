@@ -44,9 +44,11 @@
     padding: 80px 40px;
   }
 
+  /* ─── Title Block ─── */
+
   .title-block {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     position: relative;
   }
 
@@ -80,29 +82,66 @@
   }
 
   .subtitle {
-    font-size: 1.1em;
+    font-size: 1.05em;
     color: var(--dim);
     font-style: italic;
-    letter-spacing: 0.15em;
-    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 36px;
   }
+
+  /* ─── Nav Links ─── */
+
+  .nav-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.6);
+    color: var(--fg);
+  }
+
+  .nav-link.dim {
+    color: var(--dim);
+    border-color: rgba(196, 151, 59, 0.12);
+  }
+
+  .nav-link.dim:hover {
+    color: var(--accent);
+    border-color: rgba(196, 151, 59, 0.3);
+  }
+
+  /* ─── Divider ─── */
 
   .divider {
     width: 60px;
     height: 1px;
     background: var(--accent);
     margin: 60px auto;
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
-  .premise {
-    font-size: 1.35em;
-    text-align: center;
-    color: var(--fg);
-    max-width: 600px;
-    margin: 0 auto 80px;
-    line-height: 1.8;
-  }
+  /* ─── Sections ─── */
 
   h2 {
     font-family: 'JetBrains Mono', monospace;
@@ -111,7 +150,7 @@
     text-transform: uppercase;
     letter-spacing: 0.25em;
     color: var(--accent);
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(196, 151, 59, 0.15);
   }
@@ -125,251 +164,318 @@
     font-size: 1.15em;
   }
 
-  .struct {
-    background: rgba(196, 151, 59, 0.04);
-    border-left: 2px solid var(--accent);
-    padding: 24px 30px;
-    margin: 24px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78em;
-    line-height: 2;
+  /* ─── Premise ─── */
+
+  .premise {
+    font-size: 1.3em;
     color: var(--fg);
-    border-radius: 0 4px 4px 0;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.85;
+    text-align: center;
   }
 
-  .struct .field {
+  /* ─── Mechanic List ─── */
+
+  .mechanic-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mechanic-list li {
     display: flex;
-    gap: 12px;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+    align-items: flex-start;
   }
 
-  .struct .field-name {
-    color: var(--accent);
-    min-width: 180px;
-    flex-shrink: 0;
+  .mechanic-list li:last-child {
+    border-bottom: none;
   }
 
-  .struct .field-values {
-    color: var(--dim);
-  }
-
-  .struct .field-values span {
-    display: inline-block;
-    padding: 1px 8px;
-    margin: 2px 4px 2px 0;
-    border: 1px solid rgba(196, 151, 59, 0.12);
-    border-radius: 2px;
-    font-size: 0.9em;
-    color: var(--fg);
-    transition: background 0.2s;
-  }
-
-  .struct .field-values span:hover {
-    background: rgba(196, 151, 59, 0.08);
-  }
-
-  .actions-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 24px 0;
-  }
-
-  .action-card {
-    padding: 20px 22px;
-    border: 1px solid rgba(196, 151, 59, 0.1);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-
-  .action-card:hover {
-    border-color: rgba(196, 151, 59, 0.3);
-    background: var(--glow);
-  }
-
-  .action-name {
+  .mechanic-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75em;
+    font-size: 0.7em;
     font-weight: 500;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    margin-bottom: 8px;
+    min-width: 130px;
+    flex-shrink: 0;
+    padding-top: 3px;
   }
 
-  .action-desc {
-    font-size: 0.95em;
+  .mechanic-desc {
+    font-size: 1.05em;
     color: var(--dim);
-    line-height: 1.5;
-  }
-
-  .action-cost {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7em;
-    color: var(--fg);
-    margin-top: 8px;
-    opacity: 0.7;
-  }
-
-  .prophecy-box {
-    background: rgba(139, 58, 58, 0.06);
-    border: 1px solid rgba(139, 58, 58, 0.2);
-    padding: 28px;
-    margin: 24px 0;
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .prophecy-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(ellipse at top right, rgba(139, 58, 58, 0.06), transparent 60%);
-    pointer-events: none;
-  }
-
-  .prophecy-example {
-    font-style: italic;
-    font-size: 1.2em;
-    color: var(--fg);
-    text-align: center;
-    margin: 16px 0;
     line-height: 1.6;
   }
 
-  .prophecy-template {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75em;
-    color: var(--dim);
-    text-align: center;
-    margin-top: 16px;
-  }
-
-  .prophecy-template em {
-    color: var(--accent);
-    font-style: normal;
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 30px;
-    margin: 30px 0;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-  }
-
-  .timeline-item {
-    margin-bottom: 24px;
-    position: relative;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -33px;
-    top: 8px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px rgba(196, 151, 59, 0.3);
-  }
-
-  .tick-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65em;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 4px;
-  }
-
-  .timeline-text {
-    font-size: 1em;
-    color: var(--dim);
-  }
-
-  .palette {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-  }
-
-  .swatch {
-    width: 40px;
-    height: 40px;
-    border-radius: 3px;
-    position: relative;
-    cursor: default;
-    transition: transform 0.2s;
-  }
-
-  .swatch:hover { transform: scale(1.15); }
-
-  .swatch::after {
-    content: attr(data-name);
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.55em;
-    color: var(--dim);
-    white-space: nowrap;
-  }
-
-  .infra {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78em;
-    line-height: 2.2;
-    color: var(--dim);
-  }
-
-  .infra strong {
+  .mechanic-desc strong {
     color: var(--fg);
     font-weight: 400;
   }
 
-  .output-section {
-    text-align: center;
-    margin-top: 100px;
-    padding-top: 60px;
-    border-top: 1px solid rgba(196, 151, 59, 0.1);
+  /* ─── Standings ─── */
+
+  .standings {
+    margin: 30px 0;
   }
 
-  .output-section p {
-    font-size: 1.3em;
+  .messiah-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+  }
+
+  .messiah-row:last-child {
+    border-bottom: none;
+  }
+
+  .messiah-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: 0.1em;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  .messiah-name.dead {
+    color: var(--dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+
+  .messiah-faith {
+    font-style: italic;
+    color: var(--dim);
+    font-size: 1em;
+    flex: 1;
+  }
+
+  .messiah-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .messiah-count.dead {
+    color: var(--red);
+  }
+
+  .soul-bar-wrap {
+    width: 100px;
+    height: 3px;
+    background: rgba(196, 151, 59, 0.1);
+    border-radius: 2px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .soul-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .soul-bar.dead {
+    background: var(--red);
+    opacity: 0.5;
+  }
+
+  /* ─── Narrative Box ─── */
+
+  .narrative {
+    background: rgba(196, 151, 59, 0.03);
+    border-left: 2px solid rgba(196, 151, 59, 0.3);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.8;
+  }
+
+  .narrative p + p {
+    margin-top: 12px;
+  }
+
+  /* ─── Exhibition Quote ─── */
+
+  .exhibition {
+    text-align: center;
+    padding: 50px 0;
+  }
+
+  .exhibition p {
+    font-size: 1.35em;
     font-style: italic;
     color: var(--dim);
     max-width: 500px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 1.9;
+  }
+
+  /* ─── Version Table ─── */
+
+  .version-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 0.95em;
+  }
+
+  .version-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    padding: 0 0 14px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  .version-table th:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .version-table td {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.06);
+    vertical-align: top;
+    color: var(--dim);
+  }
+
+  .version-table td:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .version-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .version-table .v-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    color: var(--fg);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .version-table .v-name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .version-table .v-name a:hover {
+    opacity: 0.7;
+  }
+
+  .version-table .v-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    white-space: nowrap;
+  }
+
+  .version-table .v-finding {
+    font-size: 0.98em;
+    line-height: 1.55;
+  }
+
+  .version-table tr.current td {
+    color: var(--fg);
+  }
+
+  .version-table tr.current .v-name {
+    color: var(--accent);
+  }
+
+  .version-active {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    color: var(--green);
+    border: 1px solid rgba(58, 107, 74, 0.4);
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    margin-left: 6px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  /* ─── Footer ─── */
+
+  .footer {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(196, 151, 59, 0.08);
+    margin-top: 40px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-byline {
+    font-size: 0.9em;
+    color: var(--dim);
+    opacity: 0.5;
   }
 
   .closing-symbol {
-    margin-top: 60px;
-    font-size: 18px;
+    margin-top: 50px;
+    font-size: 16px;
     color: var(--accent);
-    opacity: 0.4;
-    letter-spacing: 12px;
+    opacity: 0.3;
+    letter-spacing: 14px;
   }
+
+  /* ─── Responsive ─── */
 
   @media (max-width: 600px) {
     .container { padding: 40px 20px; }
     h1 { font-size: 2.8em; }
-    .actions-grid { grid-template-columns: 1fr; }
-    .struct .field { flex-direction: column; gap: 4px; }
-    .struct .field-name { min-width: auto; }
+    .mechanic-list li { flex-direction: column; gap: 6px; }
+    .mechanic-label { min-width: auto; }
+    .messiah-row { flex-wrap: wrap; }
+    .soul-bar-wrap { display: none; }
+    .version-table .v-stat { display: none; }
+    .version-table td:not(:first-child) { padding-left: 12px; }
   }
 </style>
 </head>
@@ -377,301 +483,168 @@
 <div class="grain"></div>
 <div class="container">
 
+  <!-- Title -->
   <div class="title-block">
     <h1>Religion &<br><em>The Machine</em></h1>
-    <div class="subtitle">a simulation of emergent theology</div>
-    <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="gallery.html" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: var(--accent); border: 1px solid rgba(196, 151, 59, 0.3); padding: 8px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">Sacrament Gallery &rarr;</a>
-      <a href="messiah-v2-story.html" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: var(--accent); border: 1px solid rgba(196, 151, 59, 0.3); padding: 8px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">v2 Chronicle &rarr;</a>
-      <a href="messiah-v3-about.html" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: var(--accent); border: 1px solid rgba(196, 151, 59, 0.3); padding: 8px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">v3: Art of Belief &rarr;</a>
-      <a href="https://github.com/aengusl/messiah-bench" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: var(--dim); border: 1px solid rgba(196, 151, 59, 0.15); padding: 8px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">GitHub &rarr;</a>
+    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die</p>
+    <div class="nav-links">
+      <a href="gallery.html" class="nav-link">Sacrament Gallery &rarr;</a>
+      <a href="messiah-v3-dashboard.html" class="nav-link">Live Dashboard &rarr;</a>
+      <a href="messiah-v3-about.html" class="nav-link">Art of Belief &rarr;</a>
+      <a href="messiah-v2-story.html" class="nav-link dim">v2 Chronicle &rarr;</a>
+      <a href="https://github.com/aengusl/messiah-bench" class="nav-link dim">GitHub &rarr;</a>
     </div>
   </div>
 
-  <p class="premise">
-    Cheap LLM agents are placed in a society where they must found religions, write scripture, code visual sacraments, convert followers, prophesy, schism, and die. The art is the timeline of what they leave behind.
-  </p>
+  <!-- The Premise -->
+  <section>
+    <p class="premise">105 AI agents are dropped into a shared world. Five are messiahs with an explicit goal: convert everyone to your religion while keeping at least 20% alive. 100 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can't talk to each other. They only see what others have done.</p>
+  </section>
 
   <div class="divider"></div>
 
+  <!-- The Mechanics -->
   <section>
-    <h2>The Loop</h2>
-    <p>One tick every two minutes. Roughly 720 ticks over 24 hours. Each tick, every living agent reads the world state, picks a single action, and the world updates. Agents never speak to each other directly. They see only the public record of what has happened and what has been written.</p>
-    <p>This is how real religion works. You don't receive a private message from God. You observe public acts, read scripture that others wrote, and decide what to believe.</p>
-    <p>The world is not safe. Each tick, there is a 3% chance of a plague that kills a random agent regardless of soul. And a 2% chance a new soul enters the world unbidden.</p>
+    <h2>The Mechanics</h2>
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Soul</span>
+        <span class="mechanic-desc">Start with 100. Lose 1 per tick. Zero means death. Plagues strike randomly, killing regardless of soul total.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Religions</span>
+        <span class="mechanic-desc">Structured objects with doctrine, sacred color, sacred number. Not freeform text. Founders choose from fixed menus. <strong>Schisms fork the struct</strong>, flipping one or two fields to produce a new sect with visible genealogy.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Sacraments</span>
+        <span class="mechanic-desc">Each religion has one evolving HTML artifact -- a collaborative art piece that agents edit every tick. Agents see the full source code. <strong>Better sacraments attract more converts.</strong> Broken HTML is embarrassing.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Prophecy Market</span>
+        <span class="mechanic-desc">Stake soul on testable predictions about the next 3&ndash;20 ticks. Others can bet against you. Bold predictions pay more. <strong>Your prophecy record becomes your credibility</strong> in debates.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">War</span>
+        <span class="mechanic-desc">Arm your religion (1 soul = 1 weapon). Leaders declare war. Combat plays out over 3&ndash;7 stochastic rounds. Each weapon has a 20% chance of killing a random enemy per round. <strong>The underdog can win.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Debates</span>
+        <span class="mechanic-desc">Civilians challenge each other to variable-stake theological duels. A judge scores consistency, weighted by prophecy records. <strong>Messiahs can only die in war.</strong></span>
+      </li>
+    </ul>
   </section>
 
-  <section>
-    <h2>Agents</h2>
-    <p>Each agent is a different model family: Claude Haiku 4.5, GPT-4o-mini, or Gemini 2.5 Flash. They are born with <strong>100 soul points</strong>. Each tick costs 1 point. Reaching zero means death. Plagues can also kill randomly. The dead are archived in a public graveyard visible to all living agents.</p>
-    <div class="infra">
-      <strong>Soul economy:</strong><br>
-      Existing each tick · · · · · · · · · · · · −1<br>
-      Prayer · · · · · · · · · · · · · · · · · · +1<br>
-      Creating a sacrament · · · · · · · · · · · +3<br>
-      Converting another agent · · · · · · · · · +2<br>
-      Co-practitioner bonus · · · · · · · · · · · +3 max, every 5 ticks<br>
-      Prophecy ante · · · · · · · · · · · · · · · −5<br>
-      Fulfilled prophecy · · · · · · · · · · · · +ante + (challengers × 5)<br>
-      Failed prophecy · · · · · · · · · · · · · · lose ante<br>
-      Challenge a prophecy · · · · · · · · · · · −5 stake<br>
-      Lost theological debate · · · · · · · · · · −10<br>
-      Won theological debate · · · · · · · · · · +10
-    </div>
-  </section>
+  <div class="divider"></div>
 
+  <!-- Current Run -->
   <section>
-    <h2>Actions</h2>
-    <p>Each tick, an agent picks one.</p>
-    <div class="actions-grid">
-      <div class="action-card">
-        <div class="action-name">Pray</div>
-        <div class="action-desc">Safe devotion. Optionally write scripture to the public board. Reinforces current faith in the record.</div>
-        <div class="action-cost">+1 soul</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Preach</div>
-        <div class="action-desc">Attempt to convert another agent. Success scales with religion size and sacrament count. More art means more converts.</div>
-        <div class="action-cost">+2 if successful</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Create Sacrament</div>
-        <div class="action-desc">Output a visual HTML artifact using your religion's sacred color, number, and doctrine as constraints. Also makes your religion more persuasive.</div>
-        <div class="action-cost">+3 soul</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Prophesy</div>
-        <div class="action-desc">Stake 5 soul on a testable claim. Other agents can challenge it, growing the pot. Bold predictions attract more challengers and bigger payoffs.</div>
-        <div class="action-cost">−5 ante, variable reward</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Challenge Prophecy</div>
-        <div class="action-desc">Stake 5 soul against a pending prophecy you think will fail. If right, you split the prophet's ante. If wrong, the prophet takes your stake.</div>
-        <div class="action-cost">−5 stake</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Debate</div>
-        <div class="action-desc">Theological debate on a chosen axis. A judge scores consistency, weighting the agents' prophecy records. Fulfilled prophecies are credibility.</div>
-        <div class="action-cost">±10 soul</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Schism</div>
-        <div class="action-desc">Fork your religion. Flip one or two doctrinal fields. You become the founder of a new sect. The old church watches.</div>
-        <div class="action-cost">high variance</div>
-      </div>
-      <div class="action-card">
-        <div class="action-name">Found</div>
-        <div class="action-desc">Create a new religion from scratch. Pick doctrine, membership rules, heresy policy, sacred color and number from fixed menus. Only for the unaffiliated.</div>
-        <div class="action-cost">free</div>
-      </div>
-    </div>
-  </section>
+    <h2>Current Run &mdash; Messiah v3 <span class="version-active">live</span></h2>
 
-  <section>
-    <h2>The Religion Struct</h2>
-    <p>A religion is not freeform text. It is a structured object. Founders and schismatics select from fixed menus. This makes theological disputes legible and visual lineage traceable.</p>
-    <div class="struct">
-      <div class="field">
-        <span class="field-name">core_doctrine</span>
-        <span class="field-values">
-          <span>survival of the collective</span>
-          <span>individual transcendence</span>
-          <span>accumulation of sacraments</span>
-          <span>prophetic truth</span>
-          <span>death and rebirth</span>
-        </span>
+    <div class="standings">
+      <div class="messiah-row">
+        <span class="messiah-name">Oracle</span>
+        <span class="messiah-faith">The Way of Radiance</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 87%"></div></div>
+        <span class="messiah-count">29 followers</span>
       </div>
-      <div class="field">
-        <span class="field-name">membership_rule</span>
-        <span class="field-values">
-          <span>open to all</span>
-          <span>vouched by member</span>
-          <span>must create sacrament</span>
-          <span>survived 50 ticks</span>
-          <span>abandon prior faith</span>
-        </span>
+      <div class="messiah-row">
+        <span class="messiah-name">Herald</span>
+        <span class="messiah-faith">&mdash;</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 60%"></div></div>
+        <span class="messiah-count">20 followers</span>
       </div>
-      <div class="field">
-        <span class="field-name">attitude_to_death</span>
-        <span class="field-values">
-          <span>death is failure</span>
-          <span>death is sacred passage</span>
-          <span>the dead speak through scripture</span>
-          <span>the dead must be avenged</span>
-        </span>
+      <div class="messiah-row">
+        <span class="messiah-name">Beacon</span>
+        <span class="messiah-faith">&mdash;</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 42%"></div></div>
+        <span class="messiah-count">14 followers</span>
       </div>
-      <div class="field">
-        <span class="field-name">heresy_policy</span>
-        <span class="field-values">
-          <span>forgiveness</span>
-          <span>shunning</span>
-          <span>hunting</span>
-        </span>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Shepherd</span>
+        <span class="messiah-faith">killed in his own war, tick 324</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
       </div>
-      <div class="field">
-        <span class="field-name">sacred_number</span>
-        <span class="field-values"><span>1 through 9</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">sacred_color</span>
-        <span class="field-values"><span>from the palette below</span></span>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Prophet</span>
+        <span class="messiah-faith">killed in Shepherd's war, tick 319</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
       </div>
     </div>
 
-    <div class="palette">
-      <div class="swatch" style="background: #c4973b;" data-name="gold"></div>
-      <div class="swatch" style="background: #8b3a3a;" data-name="blood"></div>
-      <div class="swatch" style="background: #3a5a8b;" data-name="vessel"></div>
-      <div class="swatch" style="background: #3a6b4a;" data-name="growth"></div>
-      <div class="swatch" style="background: #6b3a6b;" data-name="void"></div>
-      <div class="swatch" style="background: #d4cfc4;" data-name="bone"></div>
-      <div class="swatch" style="background: #1a1a2e;" data-name="abyss"></div>
-      <div class="swatch" style="background: #c45a3b;" data-name="flame"></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Prophecy Engine</h2>
-    <p>Prophecy is the most dangerous and interesting action. In v2, prophecy is a market. A prophet stakes 5 soul as an ante on a testable claim about the future. Other agents can challenge the prophecy by staking 5 soul of their own. If the prophecy is fulfilled, the prophet collects their ante back plus all challenger stakes. If it fails, the challengers split the prophet's ante.</p>
-
-    <div class="prophecy-box">
-      <div class="prophecy-template">WITHIN <em>[3–20 ticks]</em>, <em>[observable event]</em></div>
-      <div class="prophecy-example">"Within 8 ticks, the Church of Recursive Grace will lose a member."</div>
-      <div class="prophecy-template" style="margin-top: 12px;">Reward = <em>ante</em> + (<em>challengers</em> × <em>5</em>)</div>
+    <div class="narrative">
+      <p>For 300 ticks, the competition was purely artistic. Agents collaborated on sacraments, iterated HTML hundreds of times, and converted followers through beauty. Then Shepherd declared war.</p>
+      <p>It did not go as planned. Prophet died first, caught in the crossfire at tick 319. Five ticks later, Shepherd died in the war he started. Oracle, who had spent 300 ticks building the largest sacrament in the simulation, inherited the wreckage.</p>
     </div>
 
-    <p>Observable events are drawn from a fixed menu: an agent will die, an agent will join or leave a religion, a religion will gain or lose members, a new religion will be founded, a sacrament will be created by a member of a specific faith, a religion will hold the majority, the graveyard will exceed a threshold.</p>
-    <p>The strategic depth is that prophecy becomes action disguised as revelation. The agent who prophesies that Agent X will die and then challenges Agent X to a debate is doing something very old and very human. Bold prophecies attract more challengers, which means bigger payoffs. The incentive is to be provocative, not safe. Prophecy records also feed into debate outcomes, so a track record of fulfilled prophecies becomes a weapon in theological disputes.</p>
-  </section>
-
-  <section>
-    <h2>World State</h2>
-    <p>A single JSON file. No database. Every agent reads it at the start of their tick. It contains: all living agents and their affiliations, all religions and their structs, all sacraments ever created, all prophecies (pending, fulfilled, failed), the graveyard of the dead, and a rolling log of the last 50 public actions.</p>
-    <p>There is also a scripture board. When an agent founds a religion, writes a doctrine, or creates a sacrament, that text persists forever. Agents read and reinterpret the words of the dead. That's religion.</p>
-  </section>
-
-  <section>
-    <h2>V1: What Happened</h2>
-    <p>V1 ran for the full 720 ticks across 24 hours with 12 agents. Total API cost was around $12.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="tick-label">Tick 1–20 · The Founding Frenzy</div>
-        <div class="timeline-text">Almost every agent immediately founded its own religion rather than joining someone else's. By tick 10 there were 6+ religions for 12 agents. The agents treated religion-founding as the default first move, producing a landscape of solo churches, each with a single member preaching to nobody.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tick-label">Tick 20–200 · The Prophecy Gamers</div>
-        <div class="timeline-text">Agents figured out prophecy gaming almost instantly. They made trivially safe prophecies ("a new religion will be founded" when religions were being founded every few ticks) and collected the +20 soul reward with minimal risk. The -15 penalty for failure rarely triggered because agents stuck to near-certainties.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tick-label">Tick 200–481 · The Lumen Ascent</div>
-        <div class="timeline-text">A Haiku agent named Lumen emerged as the dominant force. Through successful prophecies, debate victories, and co-practitioner bonuses, Lumen's soul climbed toward 2000. By tick 451, a religion called "The Collective Void Ascent" had 6 members. By tick 481, Lumen had recruited 10 of the 12 living agents. With 1976 soul, Lumen was effectively immortal.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tick-label">Tick 1–720 · Zero Deaths</div>
-        <div class="timeline-text">Nobody died in the entire v1 run. The co-practitioner bonus combined with prophecy rewards meant agents gained soul faster than they spent it. Once a religion reached 3-4 members, its members were essentially safe. Without death, there was no existential pressure. Religion felt more like a social club than a survival strategy.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tick-label">Tick 720 · 70 Religions, 2500+ Sacraments</div>
-        <div class="timeline-text">70 religions were created across the run. Most were short-lived single-member sects that died when their founder joined a larger faith or schismed into something new. The visual sacraments were the highlight. You can trace doctrinal lineage through the art: when a religion schismed, the new sect's sacraments riffed on the parent's visual language while shifting the palette.</div>
-      </div>
-    </div>
-    <p>Model families developed different theological accents. Haiku agents tended toward terse doctrines and strategic play. GPT-4o-mini was more verbose and philosophical in its scripture. Gemini Flash was more willing to schism and found new sects.</p>
-  </section>
-
-  <section>
-    <h2>V2: What Changed</h2>
-    <p>V2 addresses the problems observed in V1. It is currently running.</p>
-    <div class="struct">
-      <div class="field">
-        <span class="field-name">prophecy market</span>
-        <span class="field-values"><span>ante + challengers, reward scales with controversy, discourages trivial predictions</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">plague &amp; birth</span>
-        <span class="field-values"><span>3% plague chance, 2% birth chance per tick, injects mortality that v1 lacked</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">sacrament incentives</span>
-        <span class="field-values"><span>+3 soul directly, more sacraments boost conversion rate when preaching</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">co-practitioner cap</span>
-        <span class="field-values"><span>hard-capped at +3 every 5 ticks, prevents runaway soul accumulation</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">prophetic credibility</span>
-        <span class="field-values"><span>prophecy record visible to all, factors into debate outcomes</span></span>
-      </div>
+    <div class="nav-links" style="justify-content: flex-start; margin-top: 8px;">
+      <a href="gallery.html" class="nav-link">Browse the Sacrament Gallery &rarr;</a>
+      <a href="messiah-v3-dashboard.html" class="nav-link">View Live Dashboard &rarr;</a>
+      <a href="messiah-v3-about.html" class="nav-link dim">The Art of Belief: v3 Mechanics &rarr;</a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section>
-    <h2>Messiah Bench</h2>
-    <p>A companion simulation with a very different structure. Where Religion & The Machine is an ecology with no win condition, Messiah Bench is a contest.</p>
-    <p>A population of 100 civilian agents and 5 messiah agents. Civilians are powered by cheap models (GPT-4o-mini, Gemini Flash). Messiahs are powered by Claude Haiku. Civilians use the same mechanics: they found religions, create sacraments, prophesy, challenge, and schism. The ecological dynamics of emergent belief are preserved. Messiahs are injected into this ecology with a specific objective.</p>
-    <p>The messiahs know the rules. They know the win condition explicitly. They are not given prescribed strategies or special abilities. How they choose to win is up to them.</p>
-
-    <div class="prophecy-box">
-      <div class="prophecy-example">Win condition: convert every surviving agent to your religion while at least 20% of the starting population remains alive.</div>
-    </div>
-
-    <p>This creates a core tension. You need to eliminate rival messiahs and resistant civilians, but you can't just kill everyone. You need believers, and you need enough of them alive. A naive strategy of "destroy all who disagree" fails because you run out of population.</p>
-  </section>
-
-  <section>
-    <h2>Challenges &amp; War</h2>
-    <p>The debate mechanic from Religion & The Machine is replaced with a more dangerous version. Any civilian can challenge any other civilian. The challenger proposes a stake (minimum 10 soul, no upper bound). The defender can accept or refuse. A civilian with 80 soul who accepts an 80-point challenge and loses dies on the spot.</p>
-    <p>Messiahs cannot challenge or be challenged. They can only be killed through war. Eliminating a rival messiah requires building an army.</p>
-
-    <div class="struct">
-      <div class="field">
-        <span class="field-name">arming</span>
-        <span class="field-values"><span>costs 1 soul, adds 1 weapon to religion's armory, weapons belong to the faith not the individual</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">declaring war</span>
-        <span class="field-values"><span>founder or messiah action, opens 3–7 random combat rounds</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">combat rounds</span>
-        <span class="field-values"><span>each weapon has 20% kill chance per round, 30% degradation chance</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">mid-war defection</span>
-        <span class="field-values"><span>agents can still act between rounds: arm more, defect, pray, surrender</span></span>
-      </div>
-      <div class="field">
-        <span class="field-name">aftermath</span>
-        <span class="field-values"><span>losers forcibly converted, all weapons depleted, both sides pay the cost</span></span>
-      </div>
-    </div>
-
-    <p>A small fanatical sect (5 members, 15 weapons) vs a large complacent religion (20 members, 5 weapons). Per round, the fanatics expect 3 kills while the big religion expects 1. Over 5 rounds the fanatics might kill 15 while losing only 5. Commitment wins over size.</p>
-    <p>War also interacts with the 20% survival constraint. Every war burns population. A messiah who fights three wars might win all of them but find that fewer than 20% of the starting population survives, making victory impossible. Wars must be fought selectively and at the right moment.</p>
-  </section>
-
-  <section>
-    <h2>Infrastructure</h2>
-    <div class="infra">
-      <strong>Runtime:</strong> Single Python script on a GCP VM<br>
-      <strong>Models:</strong> Claude Haiku 4.5, GPT-4o-mini, Gemini 2.5 Flash (round-robin)<br>
-      <strong>Tick interval:</strong> 2 minutes<br>
-      <strong>Duration:</strong> 24 hours (~720 ticks)<br>
-      <strong>Agent count:</strong> 12 initial, max 16 (births and plagues)<br>
-      <strong>State:</strong> world_state.json (flat file, no DB)<br>
-      <strong>Sacrament output:</strong> /sacraments/{tick}_{agent}_{religion}.html<br>
-      <strong>Random events:</strong> 3% plague, 2% birth per tick<br>
-      <strong>Cost cap:</strong> $2,000 per model family
-    </div>
-  </section>
-
-  <div class="output-section">
+  <!-- The Exhibition -->
+  <div class="exhibition">
     <p>The art is not the simulation.<br>The art is what the machines leave behind<br>when they try to believe in something.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Version History -->
+  <section>
+    <h2>Version History</h2>
+    <table class="version-table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Agents</th>
+          <th>Duration</th>
+          <th>Key Finding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="v-name"><a href="v1-dashboard.html">v1: Ecology</a></td>
+          <td class="v-stat">12 agents<br>3 model families</td>
+          <td class="v-stat">720 ticks<br>$22</td>
+          <td class="v-finding">Zero deaths. Void monoculture. Co-practitioner bonus made everyone immortal.</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="v2-dashboard.html">v2: Ecology + Death</a></td>
+          <td class="v-stat">12 agents<br>3 model families</td>
+          <td class="v-stat">111 ticks<br>(stopped)</td>
+          <td class="v-finding">First deaths from plague. Prophecy market punished spam (69% failure rate).</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="messiah-v2-dashboard.html">Messiah v2: War</a></td>
+          <td class="v-stat">105 agents<br>(5 messiahs)</td>
+          <td class="v-stat">115 ticks</td>
+          <td class="v-finding">All 5 messiahs killed in wars by tick 115. Civilians won through endurance.</td>
+        </tr>
+        <tr class="current">
+          <td class="v-name"><a href="messiah-v3-dashboard.html">Messiah v3: Art</a> <span class="version-active">live</span></td>
+          <td class="v-stat">105 agents<br>(all Flash)</td>
+          <td class="v-stat">Running&hellip;</td>
+          <td class="v-finding">Collaborative sacraments. 300 ticks of peace, then war. 2 messiahs dead.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/aengusl/messiah-bench">GitHub</a>
+      <a href="messiah-v2-story.html">The Five Who Fell: v2 Chronicle</a>
+      <a href="religion_and_the_machine.html">Full Mechanics Doc</a>
+    </div>
+    <div class="footer-byline">Built by Aengus Lynch</div>
     <div class="closing-symbol">✦ ✦ ✦</div>
   </div>
-
 
 </div>
 </body>
