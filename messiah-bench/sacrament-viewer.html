@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><style>
+  body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0a0a08; overflow: auto; }
+  body > * { max-width: 100%; }
+</style></head>
+<body>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const src = params.get('src');
+  if (src) {
+    fetch(src).then(r => r.text()).then(html => {
+      document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;min-height:100vh;width:100%;">' + html + '</div>';
+      // Re-execute scripts
+      document.querySelectorAll('script').forEach(s => {
+        const ns = document.createElement('script');
+        ns.textContent = s.textContent;
+        s.replaceWith(ns);
+      });
+    });
+  }
+</script>
+</body></html>
