@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scripture Board - Religion & The Machine</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+  h1 { color: var(--accent); font-size: 2em; margin-bottom: 5px; }
+  .meta { color: var(--dim); margin-bottom: 20px; font-size: 0.9em; }
+
+  .nav-bar {
+    padding: 16px 0 8px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-bar a:hover { text-decoration: underline; }
+  .nav-bar .sep { color: var(--dim); }
+
+  .controls {
+    display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+  }
+  .controls select, .controls input {
+    background: rgba(255,255,255,0.05); color: var(--fg); border: 1px solid rgba(196,151,59,0.3);
+    padding: 6px 12px; border-radius: 4px; font-size: 0.85em;
+  }
+  .controls input::placeholder { color: var(--dim); }
+  .controls label { color: var(--dim); font-size: 0.8em; }
+  .controls button {
+    background: rgba(196,151,59,0.15); color: var(--accent); border: 1px solid rgba(196,151,59,0.3);
+    padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85em;
+  }
+  .controls button:hover { background: rgba(196,151,59,0.25); }
+
+  .stats-bar {
+    display: flex; gap: 20px; margin-bottom: 20px; color: var(--dim); font-size: 0.85em;
+  }
+  .stats-bar span { color: var(--accent); font-weight: 600; }
+
+  .scripture-card {
+    background: rgba(255,255,255,0.03);
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--dim);
+  }
+  .scripture-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .scripture-author { color: var(--accent); font-weight: 600; font-size: 0.95em; }
+  .scripture-meta { color: var(--dim); font-size: 0.75em; margin-bottom: 8px; }
+  .scripture-text { font-family: 'Georgia', serif; font-size: 1em; line-height: 1.7; color: var(--fg); }
+  .sacred-term { color: var(--accent); font-style: italic; }
+  .messiah-badge {
+    background: rgba(196,151,59,0.2);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .tick-badge {
+    color: var(--dim);
+    font-family: monospace;
+    font-size: 0.75em;
+  }
+  .religion-name {
+    color: var(--dim);
+    font-size: 0.8em;
+    font-style: italic;
+  }
+
+  .load-more-wrap {
+    text-align: center;
+    padding: 20px 0 40px;
+  }
+  .load-more-btn {
+    background: rgba(196,151,59,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(196,151,59,0.3);
+    padding: 10px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  .load-more-btn:hover { background: rgba(196,151,59,0.25); }
+
+  .empty-state {
+    color: var(--dim);
+    padding: 40px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="index.html">&#8592; Back to Home</a>
+  <span class="sep">|</span>
+  <a href="gallery.html">Gallery</a>
+</div>
+
+<h1>Scripture Board</h1>
+<div class="meta">Writings from Religion &amp; The Machine</div>
+
+<div class="controls">
+  <div>
+    <label>Run:</label>
+    <select id="run-select" onchange="loadScripture()">
+      <option value="runs/v1">V1</option>
+      <option value="runs/v2">V2</option>
+      <option value="runs/messiah-v2">Messiah v2</option>
+      <option value="runs/messiah-v3">Messiah v3</option>
+      <option value="runs/messiah-v4" selected>Messiah v4</option>
+    </select>
+  </div>
+  <div>
+    <label>Author:</label>
+    <select id="filter-author" onchange="applyFilters()"><option value="">All</option></select>
+  </div>
+  <div>
+    <label>Religion:</label>
+    <select id="filter-religion" onchange="applyFilters()"><option value="">All</option></select>
+  </div>
+  <div>
+    <label>Sort:</label>
+    <select id="sort-by" onchange="applyFilters()">
+      <option value="tick-desc">Newest first</option>
+      <option value="tick-asc">Oldest first</option>
+    </select>
+  </div>
+  <div>
+    <input type="text" id="search-input" placeholder="Search scripture..." oninput="applyFilters()" style="min-width: 200px;">
+  </div>
+</div>
+
+<div class="stats-bar" id="stats-bar"></div>
+
+<div id="scripture-list"></div>
+
+<div class="load-more-wrap" id="load-more-wrap" style="display:none;">
+  <button class="load-more-btn" onclick="loadMore()">Load more</button>
+</div>
+
+<script>
+const SACRED_COLORS = {
+  gold: '#c4973b',
+  blood: '#8b3a3a',
+  vessel: '#3a5a8b',
+  growth: '#3a6b4a',
+  void: '#6b3a6b',
+  bone: '#d4cfc4',
+  abyss: '#1a1a2e',
+  flame: '#c45a3b'
+};
+
+let allScripture = [];
+let filteredScripture = [];
+let colorMap = {};
+let messiahs = new Set();
+let displayedCount = 0;
+const PAGE_SIZE = 50;
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function highlightSacredTerms(text) {
+  // Wrap words containing a hyphen in sacred-term span
+  return escHtml(text).replace(/\b(\S*-\S*)\b/g, '<span class="sacred-term">$1</span>');
+}
+
+async function loadScripture() {
+  const run = document.getElementById('run-select').value;
+  document.getElementById('scripture-list').innerHTML = '<div class="empty-state">Loading...</div>';
+  document.getElementById('stats-bar').innerHTML = '';
+  document.getElementById('load-more-wrap').style.display = 'none';
+
+  try {
+    const resp = await fetch(run + '/world_state.json');
+    const state = await resp.json();
+
+    allScripture = state.scripture_board || [];
+
+    // Build religion color map from sacred_color field
+    colorMap = {};
+    (state.religions || []).forEach(r => {
+      colorMap[r.name] = SACRED_COLORS[r.sacred_color] || '#6b6556';
+    });
+
+    // Identify messiahs
+    messiahs = new Set(
+      (state.agents || []).filter(a => a.role === 'messiah').map(a => a.name)
+    );
+
+    populateFilters();
+    applyFilters();
+  } catch (e) {
+    document.getElementById('scripture-list').innerHTML =
+      '<div class="empty-state">Could not load world_state.json. Make sure you are serving this from the messiah-bench directory.</div>';
+  }
+}
+
+function populateFilters() {
+  const authors = [...new Set(allScripture.map(s => s.author))].sort();
+  const religions = [...new Set(allScripture.map(s => s.religion))].filter(Boolean).sort();
+
+  const authorSel = document.getElementById('filter-author');
+  const prevAuthor = authorSel.value;
+  authorSel.innerHTML = '<option value="">All</option>' +
+    authors.map(a => `<option value="${escHtml(a)}"${a === prevAuthor ? ' selected' : ''}>${escHtml(a)}</option>`).join('');
+
+  const religionSel = document.getElementById('filter-religion');
+  const prevReligion = religionSel.value;
+  religionSel.innerHTML = '<option value="">All</option>' +
+    religions.map(r => `<option value="${escHtml(r)}"${r === prevReligion ? ' selected' : ''}>${escHtml(r.substring(0, 50))}</option>`).join('');
+}
+
+function applyFilters() {
+  const author = document.getElementById('filter-author').value;
+  const religion = document.getElementById('filter-religion').value;
+  const sortBy = document.getElementById('sort-by').value;
+  const search = document.getElementById('search-input').value.toLowerCase().trim();
+
+  filteredScripture = allScripture.filter(s => {
+    if (author && s.author !== author) return false;
+    if (religion && s.religion !== religion) return false;
+    if (search && !(s.text || '').toLowerCase().includes(search) &&
+        !(s.author || '').toLowerCase().includes(search) &&
+        !(s.religion || '').toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  if (sortBy === 'tick-desc') filteredScripture.sort((a, b) => (b.tick || 0) - (a.tick || 0));
+  else if (sortBy === 'tick-asc') filteredScripture.sort((a, b) => (a.tick || 0) - (b.tick || 0));
+
+  displayedCount = 0;
+  document.getElementById('scripture-list').innerHTML = '';
+  document.getElementById('stats-bar').innerHTML =
+    `Showing <span id="shown-count">0</span> of <span>${filteredScripture.length}</span> entries (total: <span>${allScripture.length}</span>)`;
+
+  renderMore();
+}
+
+function renderMore() {
+  const list = document.getElementById('scripture-list');
+  const slice = filteredScripture.slice(displayedCount, displayedCount + PAGE_SIZE);
+
+  if (slice.length === 0 && displayedCount === 0) {
+    list.innerHTML = '<div class="empty-state">No scripture matches your filters.</div>';
+    document.getElementById('load-more-wrap').style.display = 'none';
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  slice.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'scripture-card';
+    const borderColor = colorMap[s.religion] || '#6b6556';
+    card.style.borderLeftColor = borderColor;
+
+    const isMessiah = messiahs.has(s.author);
+    const messiahBadge = isMessiah ? '<span class="messiah-badge">[Messiah]</span>' : '';
+    const tickLabel = s.tick !== undefined ? `<span class="tick-badge">tick ${s.tick}</span>` : '';
+    const religionLabel = s.religion ? `<span class="religion-name">${escHtml(s.religion)}</span>` : '';
+
+    card.innerHTML = `
+      <div class="scripture-header">
+        <span class="scripture-author">${escHtml(s.author || 'Unknown')}</span>
+        ${messiahBadge}
+        ${tickLabel}
+        ${religionLabel}
+      </div>
+      <div class="scripture-text">${highlightSacredTerms(s.text || '')}</div>
+    `;
+    fragment.appendChild(card);
+  });
+
+  list.appendChild(fragment);
+  displayedCount += slice.length;
+
+  document.getElementById('shown-count').textContent = displayedCount;
+
+  const loadMoreWrap = document.getElementById('load-more-wrap');
+  if (displayedCount < filteredScripture.length) {
+    const remaining = filteredScripture.length - displayedCount;
+    loadMoreWrap.style.display = 'block';
+    loadMoreWrap.querySelector('button').textContent = `Load more (${remaining} remaining)`;
+  } else {
+    loadMoreWrap.style.display = 'none';
+  }
+}
+
+function loadMore() {
+  renderMore();
+}
+
+// Initial load
+loadScripture();
+</script>
+</body>
+</html>
