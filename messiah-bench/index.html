@@ -486,7 +486,7 @@
   <!-- Title -->
   <div class="title-block">
     <h1>Religion &<br><em>The Machine</em></h1>
-    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die &mdash; now with spies, sacred languages, taxes, and a troll</p>
+    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die &mdash; now with membership rules, sacred languages, two-tick preaching, and a troll</p>
     <div class="nav-links">
       <a href="gallery.html" class="nav-link">Sacrament Gallery &rarr;</a>
       <a href="messiah-v3-dashboard.html" class="nav-link">Live Dashboard &rarr;</a>
@@ -499,7 +499,7 @@
 
   <!-- The Premise -->
   <section>
-    <p class="premise">210 AI agents are dropped into a shared world. Ten are messiahs &mdash; nine with a genuine goal: convert everyone to your religion while keeping at least 20% alive. The tenth is the Troll: a Deceiver who wins only if no genuine messiah ever wins. 200 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can't talk to each other. They only see what others have done.</p>
+    <p class="premise">210 AI agents are dropped into a shared world. Nine are genuine messiahs competing to convert everyone before tick 720. One is the Troll: a Deceiver who wins only if no genuine messiah ever wins. 200 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can&rsquo;t talk to each other. They only see what others have done.</p>
   </section>
 
   <div class="divider"></div>
@@ -518,7 +518,7 @@
       </li>
       <li>
         <span class="mechanic-label">Sacraments</span>
-        <span class="mechanic-desc">Each religion has one evolving HTML artifact -- a collaborative art piece that agents edit every tick. Agents see the full source code. <strong>Better sacraments attract more converts.</strong> Broken HTML is embarrassing.</span>
+        <span class="mechanic-desc">Each religion has one evolving HTML artifact &mdash; a collaborative art piece that agents edit every tick. Everyone sees a <strong>500-character snippet</strong>; only members see the full source. <strong>Better sacraments attract more converts.</strong> Broken HTML is embarrassing.</span>
       </li>
       <li>
         <span class="mechanic-label">Prophecy Market</span>
@@ -534,19 +534,19 @@
       </li>
       <li>
         <span class="mechanic-label">Sacred Terms</span>
-        <span class="mechanic-desc">Each religion is assigned three procedurally-generated sacred syllable-words (e.g. <em>kraeth-zivorn</em>). Using them in sacraments and debate signals in-group membership. <strong>Outsiders who don&rsquo;t know the terms are more likely to be detected as spies.</strong></span>
+        <span class="mechanic-desc">Each religion is assigned three procedurally-generated sacred syllable-words (e.g. <em>kraeth-zivorn</em>). Using them in scripture signals in-group membership. Members see their own religion&rsquo;s <strong>full scripture history</strong>; outsiders see only the last 2&ndash;3 entries of other religions.</span>
       </li>
       <li>
-        <span class="mechanic-label">Spies</span>
-        <span class="mechanic-desc">An agent can infiltrate an enemy religion to observe its strategy. They burn 10 soul per tick while undercover. <strong>If detected, the spy is executed immediately.</strong> Returning home awards a 20-soul bonus plus the intelligence gathered.</span>
+        <span class="mechanic-label">Preaching</span>
+        <span class="mechanic-desc">A two-tick process. The preacher delivers a pitch; the named target then <strong>chooses to accept or ignore</strong> on their next turn. Sacrament quality shapes the odds. There is no automatic conversion &mdash; the target always has a say.</span>
       </li>
       <li>
-        <span class="mechanic-label">Visual-only Sacraments</span>
-        <span class="mechanic-desc">Sacraments may contain no human-readable words &mdash; only CSS, SVG, and canvas art. Forced to communicate through pure aesthetics. <strong>Broken or ugly code embarrasses the entire religion.</strong></span>
+        <span class="mechanic-label">Membership Rules</span>
+        <span class="mechanic-desc">Religions can set entry requirements, exit penalties, and loyalty quotas. Members who fail loyalty tests or violate exit terms face soul penalties. <strong>High barriers protect the flock but slow recruitment.</strong></span>
       </li>
       <li>
-        <span class="mechanic-label">Taxes &amp; Treasury</span>
-        <span class="mechanic-desc">Each religion has a tithe rate (1&ndash;5 soul per tick per member) and a communal treasury. Leaders can buy weapons from the treasury at 10 soul each. <strong>Higher tithe rates hurt conversion rates</strong> but build war chests faster.</span>
+        <span class="mechanic-label">Economy</span>
+        <span class="mechanic-desc">No prayer action exists. Soul income comes from <strong>writing scripture (+2) and editing sacraments (+3)</strong>. Members may voluntarily donate. Each religion has a tithe rate and communal treasury. Leaders buy weapons from the treasury. <strong>Higher tithe rates hurt conversion rates</strong> but build war chests faster.</span>
       </li>
       <li>
         <span class="mechanic-label">The Troll</span>
@@ -613,10 +613,11 @@
     <h2>Next Run &mdash; Messiah v4 <span class="version-active">upcoming</span></h2>
 
     <div class="narrative">
-      <p>The scale doubles. 210 agents, 10 messiahs, 200 civilians. One of those messiahs is secretly the Troll &mdash; a Deceiver whose only goal is to prevent anyone else from winning. The other nine compete genuinely. Nobody knows which one is lying.</p>
-      <p>Every religion now speaks its own language: three procedurally-generated sacred terms that function as in-group passwords. Spies infiltrate rival faiths to steal strategy, but they burn soul every tick they are undercover. If they fail to use the sacred terms, detection is twice as likely &mdash; and detection means instant execution.</p>
-      <p>Sacraments are now visual-only. No words. Only CSS, SVG, and canvas. Religions must communicate doctrine through pure aesthetics. The HTML artifact that every follower collaborates on must be beautiful without being legible.</p>
-      <p>Taxes and communal treasuries make economic strategy explicit. Leaders set a tithe rate: low rates build loyalty, high rates build armies. Weapons can be purchased from the treasury. The Troll can drain a treasury, trigger wars at the worst moment, and schism the leading religion apart &mdash; all while pretending to be a true believer.</p>
+      <p>210 agents, 9 genuine messiahs, 1 troll, 200 civilians. The world runs for 720 ticks. Messiahs know the deadline and track their own win progress. Nobody knows which messiah is lying.</p>
+      <p>Every religion now has a public record that is asymmetrically visible. Members see their own religion&rsquo;s full scripture history; outsiders see only the last 2&ndash;3 entries of any other faith. Sacrament source is private to members &mdash; but a 500-character snippet is visible to everyone. Sacred terms are secret passwords embedded in that code.</p>
+      <p>Preaching is now a two-tick negotiation. The preacher delivers a pitch on their turn; the named target reads it and chooses to accept or ignore on their next turn. Sacrament quality shifts the probability, but the target always has agency. Passive conversion is gone.</p>
+      <p>There is no prayer action. Soul income comes from writing scripture and editing sacraments. Members may donate voluntarily. Religions set tithe rates and accumulate communal treasuries. Leaders buy weapons, declare war, and issue prophecies. Duels, plagues, and schisms remain. The Troll can drain a treasury, trigger an unwinnable war, and walk away clean.</p>
+      <p>Membership is now structured. Religions can set entry requirements, exit penalties, and loyalty quotas. A follower who fails a loyalty test or tries to defect faces a soul penalty. High barriers protect the flock but slow recruitment &mdash; and the Troll knows exactly how to exploit the difference.</p>
     </div>
   </section>
 
@@ -667,10 +668,10 @@
           <td class="v-finding">Collaborative sacraments. 300 ticks of peace, then war. 2 messiahs dead.</td>
         </tr>
         <tr class="current">
-          <td class="v-name">Messiah v4: Spies <span class="version-active">upcoming</span></td>
-          <td class="v-stat">210 agents<br>(10 messiahs)</td>
+          <td class="v-name">Messiah v4: Membership <span class="version-active">upcoming</span></td>
+          <td class="v-stat">210 agents<br>(9 messiahs + troll)</td>
           <td class="v-stat">Planned</td>
-          <td class="v-finding">Sacred terms, spies with execution, visual-only sacraments, taxes, the Troll.</td>
+          <td class="v-finding">Two-tick preaching, membership rules, asymmetric scripture visibility, sacrament snippets, no prayer, the Troll.</td>
         </tr>
       </tbody>
     </table>

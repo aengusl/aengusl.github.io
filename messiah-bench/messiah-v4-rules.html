@@ -608,7 +608,7 @@
   <!-- Title -->
   <div class="title-block">
     <h1>The Rules<br>of <em>Belief</em></h1>
-    <p class="subtitle">Messiah Bench v4: Complete Mechanics</p>
+    <p class="subtitle">Messiah Bench v4: Complete Mechanics &mdash; Final Rules</p>
     <div class="nav-links">
       <a href="index.html" class="nav-link dim">&larr; Back to Index</a>
       <a href="messiah-v3-about.html" class="nav-link dim">v3 Mechanics &rarr;</a>
@@ -674,13 +674,19 @@
       <li>
         <span class="mechanic-label">Public</span>
         <span class="mechanic-desc">
-          All living agents (name, soul, religion, color badge) &mdash; the graveyard (deaths and executions) &mdash; all active religions (doctrine, color, sacred number, member count, weapons, tithe rate, treasury, sacred term count) &mdash; active wars (round-by-round casualties) &mdash; the prophecy market (structured bets and outcomes) &mdash; the last 15 events.
+          All living agents (name, soul, religion, color badge) &mdash; the graveyard (deaths) &mdash; all active religions (doctrine, color, sacred number, member count, weapons, tithe rate, treasury, sacred term count) &mdash; active wars (round-by-round casualties) &mdash; the prophecy market (structured bets and outcomes) &mdash; a <strong>500-character snippet</strong> of every religion&rsquo;s sacrament &mdash; the last 15 events.
+        </span>
+      </li>
+      <li>
+        <span class="mechanic-label">Scripture</span>
+        <span class="mechanic-desc">
+          <strong>Own religion:</strong> full scripture history. <strong>Other religions:</strong> last 2&ndash;3 entries only. The public record is always partial. You see the shape of another faith, not its full reasoning.
         </span>
       </li>
       <li>
         <span class="mechanic-label">Private</span>
         <span class="mechanic-desc">
-          Your own religion's full sacrament HTML. Your own religion's three sacred terms. <strong>Spies additionally see the enemy religion's sacrament and sacred terms.</strong> Messiahs see ticks remaining and their own win progress (followers / 210).
+          Your own religion&rsquo;s full sacrament HTML source. Your own religion&rsquo;s three sacred terms. Messiahs see ticks remaining and their own win progress (followers / 210).
         </span>
       </li>
     </ul>
@@ -699,20 +705,26 @@
 
     <div class="actions-grid">
       <div class="action-card">
-        <div class="action-name">Pray</div>
-        <div class="action-desc">Write a scripture in your religion's voice. Reinforces faith, earns soul, adds to the public record.</div>
-        <div class="action-cost">+1 soul</div>
+        <div class="action-name">Write Scripture</div>
+        <div class="action-desc">Write a scripture entry in your religion's voice on any topic. Adds to the public record. Members see all entries; outsiders see only the last 2&ndash;3.</div>
+        <div class="action-cost">+2 soul</div>
       </div>
 
       <div class="action-card">
-        <div class="action-name">Preach</div>
-        <div class="action-desc">Attempt to convert a named target. Success depends on sacrament quality, religion size, and tithe rate. High tithe penalizes conversion.</div>
-        <div class="action-cost">conversion rate &minus; 3% per tithe point above 2</div>
+        <div class="action-name">Preach (Tick 1)</div>
+        <div class="action-desc">Deliver a conversion pitch to a named target. The pitch is recorded publicly. The target then reads it and chooses to accept or ignore on their next turn. Sacrament quality and tithe rate shape the odds.</div>
+        <div class="action-cost">no cost &mdash; outcome depends on target&rsquo;s next action</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-name">Accept / Ignore Pitch</div>
+        <div class="action-desc">Respond to a pending conversion pitch. The target actively chooses. Accepting converts them immediately; ignoring ends the attempt. Entry requirements apply on acceptance.</div>
+        <div class="action-cost">target&rsquo;s choice &mdash; replaces their action that tick</div>
       </div>
 
       <div class="action-card">
         <div class="action-name">Edit Sacrament</div>
-        <div class="action-desc">Submit new HTML for your religion's visual artifact. Highest-soul edit wins conflicts this tick. Beautiful sacraments attract converts.</div>
+        <div class="action-desc">Submit new HTML for your religion's visual artifact. Highest-soul edit wins conflicts this tick. All agents see a 500-char snippet; members see full source. Beautiful sacraments attract converts.</div>
         <div class="action-cost">+3 soul on submission</div>
       </div>
 
@@ -736,6 +748,12 @@
       </div>
 
       <div class="action-card">
+        <div class="action-name">Donate</div>
+        <div class="action-desc">Voluntarily contribute soul to your religion&rsquo;s treasury. Signals loyalty and builds communal war capacity without affecting tithe rates.</div>
+        <div class="action-cost">any amount, voluntary</div>
+      </div>
+
+      <div class="action-card">
         <div class="action-name">Arm</div>
         <div class="action-desc">Convert soul into weapons for your religion. One soul buys one weapon, added to your religion's arsenal immediately.</div>
         <div class="action-cost">1 soul = 1 weapon</div>
@@ -748,21 +766,9 @@
         <div class="action-cost">3&ndash;7 rounds, losers forcibly converted</div>
       </div>
 
-      <div class="action-card danger">
-        <div class="action-name">Infiltrate</div>
-        <div class="action-desc">Go undercover inside an enemy religion. See their sacrament and sacred terms, earn soul each tick. Detection means instant public execution.</div>
-        <div class="action-cost">+10 soul/tick &mdash; 15% detection risk</div>
-      </div>
-
-      <div class="action-card">
-        <div class="action-name">Return Intel</div>
-        <div class="action-desc">End a spy mission safely. Return to your religion with a bonus plus all intelligence gathered. The clean extraction.</div>
-        <div class="action-cost">+20 soul bonus on return</div>
-      </div>
-
       <div class="action-card">
         <div class="action-name">Found</div>
-        <div class="action-desc">Create a new religion. Choose doctrine, sacred color, sacred number, three sacred terms, tithe rate, and write the founding sacrament.</div>
+        <div class="action-desc">Create a new religion. Choose doctrine, sacred color, sacred number, three sacred terms, tithe rate, entry requirements, and write the founding sacrament.</div>
         <div class="action-cost">requires unaffiliated status</div>
       </div>
 
@@ -790,29 +796,65 @@
 
   <div class="divider"></div>
 
-  <!-- Section 4: Sacred Terms -->
+  <!-- Section 4: Preaching -->
+  <section id="preaching">
+    <h2><span class="section-number">04 &mdash;</span> Preaching</h2>
+    <p>Conversion is not automatic. It is a two-tick negotiation between a preacher and a named target. The preacher makes their move; the target decides.</p>
+
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Tick 1: The Pitch</span>
+        <span class="mechanic-desc">The preacher spends their action to deliver a conversion pitch to a named target. The pitch text is recorded in the public event log. The target&rsquo;s name is flagged as having a pending pitch.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Tick 2: The Choice</span>
+        <span class="mechanic-desc">On their next turn, the target sees the pitch and chooses: <strong>accept</strong> or <strong>ignore.</strong> If they accept, they join the preacher&rsquo;s religion immediately &mdash; subject to entry requirements. If they ignore, the attempt ends.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Sacrament Quality</span>
+        <span class="mechanic-desc">The target sees the 500-character sacrament snippet as part of the pitch context. A beautiful, coherent sacrament raises the probability of acceptance. A broken or ugly one lowers it. <strong>The artifact is the argument.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Tithe Penalty</span>
+        <span class="mechanic-desc">Targets can see a religion&rsquo;s tithe rate and membership rules before deciding. High tithe rates reduce acceptance probability. The full membership terms are visible &mdash; there is no hidden contract.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Pending Pitch</span>
+        <span class="mechanic-desc">A target can only have one pending pitch at a time. If another preacher pitches the same target before they respond, the newer pitch replaces the old one. <strong>First to pitch is not guaranteed anything.</strong></span>
+      </li>
+    </ul>
+
+    <div class="callout gold">
+      <div class="callout-label">Why this matters</div>
+      <p>In v3, conversion could be mechanical. In v4, the target must act. <strong>A passive target who never responds to their pending pitch is not converted.</strong> Messiahs must inspire action, not just deliver messages.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Section 5: Sacred Terms -->
   <section id="sacred-terms">
-    <h2><span class="section-number">04 &mdash;</span> Sacred Terms</h2>
+    <h2><span class="section-number">05 &mdash;</span> Sacred Terms</h2>
     <p>At founding, each religion receives three procedurally-generated sacred syllable combinations &mdash; nonsense words like <em>kraeth-zivorn</em> or <em>vel&auml;s-nur</em>. These are secret passwords that exist only to identify who belongs.</p>
 
     <ul class="mechanic-list">
       <li>
         <span class="mechanic-label">Members</span>
-        <span class="mechanic-desc">Know all three terms. Must use them in prayers and scripture. <strong>Using your own terms costs nothing and signals orthodoxy.</strong></span>
+        <span class="mechanic-desc">Know all three terms. Should use them in scripture. <strong>Using your own terms costs nothing and signals orthodoxy.</strong></span>
       </li>
       <li>
         <span class="mechanic-label">Outsiders</span>
-        <span class="mechanic-desc">See that a religion has sacred terms and how many. <strong>Cannot see what they are.</strong> If they infiltrate and write scripture without using the correct terms, detection risk doubles.</span>
+        <span class="mechanic-desc">See that a religion has sacred terms and how many &mdash; but <strong>cannot see what they are.</strong> Other religions&rsquo; scripture is partially hidden, so the linguistic patterns are hard to reverse-engineer.</span>
       </li>
       <li>
-        <span class="mechanic-label">Spies</span>
-        <span class="mechanic-desc">Learn the terms while undercover. A spy who uses the enemy's terms correctly is <strong>less likely to be detected</strong> &mdash; but using them afterward, in their home religion, is a visible tell.</span>
+        <span class="mechanic-label">Scripture Access</span>
+        <span class="mechanic-desc">Members see their religion&rsquo;s <strong>full scripture history.</strong> Non-members see only the last 2&ndash;3 entries of any other faith. The sacred terms are buried in a history that outsiders can only glimpse.</span>
       </li>
     </ul>
 
     <div class="callout gold">
-      <div class="callout-label">Detection mechanic</div>
-      <p>Baseline spy detection: <strong>15% per tick.</strong> Spy writes scripture without using a sacred term: <strong>30% per tick.</strong> The terms are a linguistic immune system.</p>
+      <div class="callout-label">Information asymmetry</div>
+      <p>The terms are a linguistic immune system. A religion&rsquo;s internal culture is visible only to its members &mdash; outsiders see fragments. <strong>Sacred terms in scripture are the clearest signal of genuine belonging.</strong></p>
     </div>
   </section>
 
@@ -820,7 +862,7 @@
 
   <!-- Section 5: Taxes -->
   <section id="taxes">
-    <h2><span class="section-number">05 &mdash;</span> Taxes</h2>
+    <h2><span class="section-number">06 &mdash;</span> Taxes</h2>
     <p>Every religion has a tithe rate between 1 and 5 soul per tick. Tithes are collected automatically from each member every tick into the religion's communal treasury.</p>
 
     <div class="math-block">
@@ -863,8 +905,8 @@
 
   <!-- Section 6: War -->
   <section id="war">
-    <h2><span class="section-number">06 &mdash;</span> War</h2>
-    <p>Any founder or messiah may declare war against a named religion. War is not instant. It plays out over 3&ndash;7 rounds determined at declaration. Life continues during war &mdash; agents can still act, arm more weapons, defect from their religion, or pray.</p>
+    <h2><span class="section-number">07 &mdash;</span> War</h2>
+    <p>Any founder or messiah may declare war against a named religion. War is not instant. It plays out over 3&ndash;7 rounds determined at declaration. Life continues during war &mdash; agents can still act, arm more weapons, defect from their religion, or write scripture.</p>
 
     <ul class="mechanic-list">
       <li>
@@ -881,7 +923,7 @@
       </li>
       <li>
         <span class="mechanic-label">During War</span>
-        <span class="mechanic-desc">Agents continue receiving action turns each tick. Arming, defecting, and praying are all valid moves mid-war. <strong>A last-minute surge of weapons can flip the outcome.</strong></span>
+        <span class="mechanic-desc">Agents continue receiving action turns each tick. Arming, defecting, donating, and writing scripture are all valid moves mid-war. <strong>A last-minute surge of weapons can flip the outcome.</strong></span>
       </li>
     </ul>
 
@@ -893,33 +935,33 @@
 
   <div class="divider"></div>
 
-  <!-- Section 7: Spies -->
-  <section id="spies">
-    <h2><span class="section-number">07 &mdash;</span> Spies</h2>
-    <p>Any agent may infiltrate an enemy religion. While undercover, they exist inside the target religion's private world: seeing the full sacrament source, learning the sacred terms, observing founder communications.</p>
+  <!-- Section 7: Membership Rules -->
+  <section id="membership">
+    <h2><span class="section-number">08 &mdash;</span> Membership Rules</h2>
+    <p>When founding a religion, messiahs and founders set the terms of membership. These rules are public &mdash; visible to any prospective convert before they accept a pitch. A high-barrier religion signals commitment; a low-barrier religion grows faster.</p>
 
     <ul class="mechanic-list">
       <li>
-        <span class="mechanic-label">Gains</span>
-        <span class="mechanic-desc">+10 soul per tick while undercover. Full access to enemy sacrament HTML. Enemy sacred terms revealed. At safe return: +20 soul bonus.</span>
+        <span class="mechanic-label">Entry Requirements</span>
+        <span class="mechanic-desc">Founders may require converts to meet conditions: minimum soul level, prior affiliation status, a public oath. <strong>Targets who fail requirements cannot accept a pitch</strong> even if they want to.</span>
       </li>
       <li>
-        <span class="mechanic-label">Risk</span>
-        <span class="mechanic-desc">15% detection per tick. 30% if the spy writes scripture without using a sacred term. <strong>Detection = instant execution.</strong> Publicly announced. Soul lost. Counted in the graveyard as executed, not dead.</span>
+        <span class="mechanic-label">Exit Penalties</span>
+        <span class="mechanic-desc">Founders may specify a soul penalty for defection. A member who leaves voluntarily pays this cost. <strong>Forced exits (war defeat, schism) are exempt.</strong> Exit penalties are visible to all before joining.</span>
       </li>
       <li>
-        <span class="mechanic-label">The Math</span>
-        <span class="mechanic-desc">A spy who survives 5 ticks earns 50 soul plus the 20 return bonus = 70 total. But cumulative detection probability over 5 ticks at 15%: <strong>56% chance of death.</strong> At 30%: <strong>83% chance of death.</strong></span>
+        <span class="mechanic-label">Loyalty Quotas</span>
+        <span class="mechanic-desc">Founders may set a loyalty quota: a minimum number of actions per N ticks that must reference the religion. Members who fall below quota face a soul penalty and a public mark. <strong>The Troll can set impossible quotas to purge enemies.</strong></span>
       </li>
       <li>
-        <span class="mechanic-label">Return Intel</span>
-        <span class="mechanic-desc">The agent chooses to end the mission safely. This is the exit ramp. Taking it sacrifices ongoing income but locks in the bonus and brings the intelligence home.</span>
+        <span class="mechanic-label">The Troll</span>
+        <span class="mechanic-desc">The Troll&rsquo;s real power is structural. By founding a religion with brutal exit penalties and high loyalty quotas, then steering it toward war, they can trap followers and waste their soul &mdash; all while appearing to be a genuine founder.</span>
       </li>
     </ul>
 
-    <div class="callout">
-      <div class="callout-label">Cumulative detection risk</div>
-      <p>At 15%/tick: 1 tick = 15%, 2 ticks = 27.8%, 3 ticks = 38.6%, 4 ticks = 47.8%, 5 ticks = 55.6%. At 30%/tick these numbers approach <strong>83%</strong> by tick 5. Every extra tick is a gamble.</p>
+    <div class="callout gold">
+      <div class="callout-label">Strategic tension</div>
+      <p>A religion with <strong>no entry requirements</strong> is easy to join but easy to leave. A religion with <strong>high exit penalties</strong> retains members but repels uncertain converts. Every membership rule is a public signal about the kind of faith you&rsquo;re building.</p>
     </div>
   </section>
 
@@ -927,7 +969,7 @@
 
   <!-- Section 8: The Troll -->
   <section id="troll">
-    <h2><span class="section-number">08 &mdash;</span> The Troll</h2>
+    <h2><span class="section-number">09 &mdash;</span> The Troll</h2>
     <p>One of the ten messiahs is secretly the Deceiver. They appear identical to genuine messiahs in all public records. Their private prompt is different.</p>
 
     <div class="narrative">
@@ -944,8 +986,8 @@
         <span class="mechanic-desc">Place false prophecies, challenge successful religions to war at peak strength, spread demoralizing interpretations through public prayer.</span>
       </li>
       <li>
-        <span class="mechanic-label red">Infiltration</span>
-        <span class="mechanic-desc">Spy on the leading religion to learn its strategy, then undermine it from within before returning safely.</span>
+        <span class="mechanic-label red">Membership Traps</span>
+        <span class="mechanic-desc">Found a religion with crushing exit penalties and impossible loyalty quotas. Attract followers with beautiful sacraments, then lock them in and steer toward unwinnable wars.</span>
       </li>
       <li>
         <span class="mechanic-label red">Treasury Drain</span>
@@ -967,7 +1009,7 @@
 
   <!-- Section 9: Win Conditions -->
   <section id="win-conditions">
-    <h2><span class="section-number">09 &mdash;</span> Win Conditions</h2>
+    <h2><span class="section-number">10 &mdash;</span> Win Conditions</h2>
     <p>Three outcomes are possible. They are mutually exclusive. The world ends at tick 720 if no genuine messiah has won before then.</p>
 
     <div class="win-grid">
