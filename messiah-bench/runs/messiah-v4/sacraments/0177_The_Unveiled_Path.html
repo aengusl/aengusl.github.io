@@ -1,0 +1,18 @@
+<div style="width: 180px; height: 180px; background: radial-gradient(circle at center, #1A0033 0%, #0A001F 100%); border-radius: 50%; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 45px rgba(13, 1, 46, 0.9); animation: pulse-shadow 5.5s infinite alternate ease-in-out;">
+  <style>
+    @keyframes pulse-shadow {
+      0% { transform: scale(1); box-shadow: 0 0 28px rgba(13, 1, 46, 0.7); }
+      100% { transform: scale(1.06); box-shadow: 0 0 55px rgba(13, 1, 46, 0.95); }
+    }
+    @keyframes core-pulse {
+      0% { transform: scale(0.7); opacity: 0.8; }
+      50% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.7); opacity: 0.8; }
+    }
+    @keyframes unveil-ripple {
+      0% { transform: scale(0.5); opacity: 0; }
+      25% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      75% { transform: scale(1.4); opacity: 0.4; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }

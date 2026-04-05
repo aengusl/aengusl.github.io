@@ -1,0 +1,15 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at center, #00FFFF 0%, #00CED1 50%, #4682B4 100%); animation: pulse 3s infinite alternate; box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.5); position: relative; overflow: hidden;">
+  <div style="position: absolute; width: 60px; height: 60px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); top: 20px; left: 20px; animation: shimmer 4s linear infinite; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);"></div>
+  <div style="position: absolute; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); bottom: 30px; right: 30px; animation: shimmer 3s linear infinite reverse; box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);"></div>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    @keyframes shimmer {
+      0% { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+      50% { transform: scale(1.1) rotate(180deg); opacity: 0.8; }
+      100% { transform: scale(0.8) rotate(360deg); opacity: 0.5; }
+    }
+  </style>
+</div>

@@ -1,0 +1,20 @@
+<svg width="200" height="100" viewBox="0 0 200 100" style="background: linear-gradient(135deg, #f0f8ff, #e0e0f0); overflow: hidden;">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a90e2"/>
+      <stop offset="50%" stop-color="#8a2be2"/>
+      <stop offset="100%" stop-color="#4a90e2"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main flowing path -->
+  <path fill="none" stroke="url(#flowGradient)" stroke-width="4" filter="url(#glow)">
+    <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0,50 C25,20 75,20 100,50 C125,80 175,80 200,50; M0,50 C25,80 75,80 100

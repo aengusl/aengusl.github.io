@@ -1,0 +1,15 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at center, #E0BBE4 0%, #4B0082 100%); position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.6; }
+    }
+    @keyframes flow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <div style="width: 80px; height: 80px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); position: absolute; animation: pulse 3s infinite ease-in-out;"></div>
+  <div style="width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(138, 43, 226, 0.5); position: absolute; animation: flow 8s linear infinite;"></div>
+</div>

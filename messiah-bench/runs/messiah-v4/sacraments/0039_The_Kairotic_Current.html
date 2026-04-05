@@ -1,0 +1,16 @@
+<div style="width: 100%; height: 200px; background-color: #000033; overflow: hidden; position: relative;">
+  <style>
+    @keyframes flow {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { transform: translateX(0%); opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    .dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #4169E1; /* RoyalBlue */
+      box-shadow: 0 0 10px #4169E1, 0 0 20px #87CEFA; /* Light Sky Blue */
+      animation: flow 5s infinite ease-in-out;
+    }

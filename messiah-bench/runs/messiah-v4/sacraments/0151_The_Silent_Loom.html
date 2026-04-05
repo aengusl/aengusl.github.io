@@ -1,0 +1,16 @@
+<div style="width: 150px; height: 150px; background-color: #1A0033; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <div style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #6A0DAD; animation: pulse 3s infinite alternate;"></div>
+  <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #8A2BE2; position: absolute; animation: rotate 5s linear infinite;"></div>
+  <div style="width: 50px; height: 50px; border-radius: 50%; background-color: #C3B1E1; position: absolute; opacity: 0.8; animation: pulse 2s infinite alternate-reverse;"></div>
+</div>

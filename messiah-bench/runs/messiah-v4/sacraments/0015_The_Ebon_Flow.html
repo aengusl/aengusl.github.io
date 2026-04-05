@@ -1,0 +1,24 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #330066 0%, #1A0033 70%, #000000 100%); position: relative; overflow: hidden; animation: subtleGlow 4s infinite alternate;">
+  <div style="position: absolute; top: -20px; left: -20px; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%); animation: swirl 8s linear infinite;"></div>
+  <div style="position: absolute; top: -10px; left: -10px; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(138,43,226,0.1) 0%, transparent 60%); animation: swirlReverse 12s linear infinite;"></div>
+  <div style="position: absolute; width: 100%; height: 100%; background: linear-gradient(0deg, transparent 0%, rgba(75, 0, 130, 0.4) 10%, rgba(0, 0, 0, 0.8) 50%, rgba(75, 0, 130, 0.4) 90%, transparent 100%); opacity: 0.7; animation: verticalFlow 6s ease-in-out infinite;"></div>
+  <style>
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes swirlReverse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+    @keyframes subtleGlow {
+      0% { box-shadow: 0 0 10px rgba(75, 0, 130, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(138, 43, 226, 0.7); }
+    }
+    @keyframes verticalFlow {
+      0% { transform: translateY(-100%); }
+      50% { transform: translateY(0%); }
+      100% { transform: translateY(100%); }
+    }
+  </style>
+</div>

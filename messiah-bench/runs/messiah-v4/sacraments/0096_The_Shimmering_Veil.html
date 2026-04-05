@@ -1,0 +1,36 @@
+<div style="width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #E0FFFF, #ADD8E6, #4169E1, #8A2BE2, #9932CC, #6A0DAD); box-shadow: 0 0 30px rgba(138,43,226,0.8), inset 0 0 12px rgba(255,255,255,0.6); position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; animation: pulse-veil-v14 5s infinite alternate ease-in-out;">
+  <div style="position: absolute; width: 130px; height: 130px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.25); animation: shimmer-flow-v14 6s linear infinite;"></div>
+  <div style="position: absolute; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, #E0FFFF 0%, #ADD8E6 100%); animation: inner-pulse-v14 3.5s infinite alternate ease-in-out;"></div>
+  <div style="position: absolute; width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle, #9370DB 0%, #6A0DAD 100%); animation: core-pulse-v14 2.5s infinite alternate ease-in-out; box-shadow: 0 0 12px rgba(147,112,219,0.9);"></div>
+  <div style="position: absolute; width: 25px; height: 25px; border-radius: 50%; background: radial-gradient(circle, #DAA520 0%, #FFD700 100%); animation: flicker-v14 1.2s infinite alternate; box-shadow: 0 0 10px rgba(255,215,0,0.95);"></div>
+  <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: transparent; border: 3px solid rgba(0,255,255,0.15); animation: outer-flow-v14 8s linear infinite;"></div>
+
+  <style>
+    @keyframes pulse-veil-v14 {
+      0% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 25px rgba(138,43,226,0.7), inset 0 0 10px rgba(255,255,255,0.5); }
+      100% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 40px rgba(138,43,226,0.9), inset 0 0 15px rgba(255,255,255,0.7); }
+    }
+    @keyframes shimmer-flow-v14 {
+      0% { transform: rotate(0deg) scale(0.9); opacity: 0.25; }
+      50% { transform: rotate(180deg) scale(1.0); opacity: 0.4; }
+      100% { transform: rotate(360deg) scale(0.9); opacity: 0.25; }
+    }
+    @keyframes inner-pulse-v14 {
+      0% { transform: scale(0.9); opacity: 0.9; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    @keyframes core-pulse-v14 {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes flicker-v14 {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes outer-flow-v14 {
+      0% { transform: rotate(0deg); border-width: 2px; opacity: 0.15; }
+      100% { transform: rotate(360deg); border-width: 4px; opacity: 0.25; }
+    }
+  </style>
+</div>

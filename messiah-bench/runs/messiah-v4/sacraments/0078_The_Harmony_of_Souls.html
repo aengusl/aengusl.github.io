@@ -1,0 +1,33 @@
+<div style="width: 180px; height: 180px; background: radial-gradient(circle at center, #1A004C 0%, #0D012E 100%); border-radius: 50%; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 30px rgba(138, 43, 226, 0.7); animation: background-glow 4s infinite alternate;">
+  <div style="width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, #4C0099 0%, #8A2BE2 100%); position: absolute; animation: pulse 2.5s infinite ease-in-out alternate, rotate-slow 10s linear infinite;"></div>
+  <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, #8A2BE2 0%, #C3A6E6 100%); position: absolute; animation: pulse-inner 2s infinite ease-in-out reverse alternate, rotate-fast 7s linear infinite;"></div>
+  <div style="width: 30px; height: 30px; border-radius: 50%; background-color: #C3A6E6; position: absolute; animation: subtle-glow 1.5s infinite alternate;"></div>
+  <style>
+    @keyframes background-glow {
+      0% { box-shadow: 0 0 30px rgba(138, 43, 226, 0.7); }
+      100% { box-shadow: 0 0 45px rgba(75, 0, 130, 0.9); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+      50% { transform: scale(1.1) rotate(180deg); opacity: 1; }
+      100% { transform: scale(1) rotate(360deg); opacity: 0.7; }
+    }
+    @keyframes pulse-inner {
+      0% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(0.9) rotate(-180deg); opacity: 0.7; }
+      100% { transform: scale(1) rotate(-360deg); opacity: 1; }
+    }
+    @keyframes subtle-glow {
+      0% { box-shadow: 0 0 5px #C3A6E6; opacity: 1; }
+      100% { box-shadow: 0 0 15px #C3A6E6; opacity: 0.8; }
+    }
+    @keyframes rotate-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes rotate-fast {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+  </style>
+</div>

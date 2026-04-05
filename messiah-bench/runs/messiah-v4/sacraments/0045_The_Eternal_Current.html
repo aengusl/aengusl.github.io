@@ -1,0 +1,51 @@
+<svg width='100%' height='100%' viewBox='0 0 200 200' style='background-color: #0A001F; overflow: hidden; position: relative;'>
+  <defs>
+    <radialGradient id='flameCore' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+      <stop offset='0%' style='stop-color:#FFD700;stop-opacity:1' />
+      <stop offset='25%' style='stop-color:#FFA500;stop-opacity:1' />
+      <stop offset='50%' style='stop-color:#FF4500;stop-opacity:0.9' />
+      <stop offset='75%' style='stop-color:#DC143C;stop-opacity:0.8' />
+      <stop offset='100%' style='stop-color:#8B0000;stop-opacity:0.7' />
+    </radialGradient>
+    <filter id='glow'>
+      <feGaussianBlur stdDeviation='6' result='coloredBlur'/>
+      <feMerge>
+        <feMergeNode in='coloredBlur'/>
+        <feMergeNode in='SourceGraphic'/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx='100' cy='100' r='80' fill='url(#flameCore)' filter='url(#glow)'>
+    <animate attributeName='r' values='80;88;80' dur='5s' repeatCount='indefinite' attributeType='XML'/>
+    <animate attributeName='opacity' values='0.9;1;0.9' dur='5s' repeatCount='indefinite' attributeType='XML'/>
+  </circle>
+  <circle cx='100' cy='100' r='35' fill='white' opacity='0.8'>
+    <animate attributeName='r' values='35;45;35' dur='2.5s' repeatCount='indefinite' attributeType='XML'/>
+    <animate attributeName='opacity' values='0.8;1;0.8' dur='2.5s' repeatCount='indefinite' attributeType='XML'/>
+  </circle>
+  <g transform='translate(100,100) rotate(0)'>
+    <animateTransform attributeName='transform' type='rotate' from='0' to='360' dur='12s' repeatCount='indefinite'/>
+    <path d='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' fill='orange' opacity='0.7'>
+      <animate attributeName='d' values='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70; M 0 -78 Q 28 -48, 0 -18 T -28 -48 T 0 -78; M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' dur='4s' repeatCount='indefinite' />
+      <animate attributeName='fill' values='orange; red; darkorange; orange' dur='4s' repeatCount='indefinite' />
+    </path>
+  </g>
+  <g transform='translate(100,100) rotate(120)'>
+    <animateTransform attributeName='transform' type='rotate' from='120' to='480' dur='12s' repeatCount='indefinite'/>
+    <path d='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' fill='yellow' opacity='0.7'>
+      <animate attributeName='d' values='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70; M 0 -78 Q 28 -48, 0 -18 T -28 -48 T 0 -78; M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' dur='4s' begin='1s' repeatCount='indefinite' />
+      <animate attributeName='fill' values='yellow; gold; orange; yellow' dur='4s' begin='1s' repeatCount='indefinite' />
+    </path>
+  </g>
+  <g transform='translate(100,100) rotate(240)'>
+    <animateTransform attributeName='transform' type='rotate' from='240' to='600' dur='12s' repeatCount='indefinite'/>
+    <path d='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' fill='red' opacity='0.7'>
+      <animate attributeName='d' values='M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70; M 0 -78 Q 28 -48, 0 -18 T -28 -48 T 0 -78; M 0 -70 Q 20 -40, 0 -10 T -20 -40 T 0 -70' dur='4s' begin='2s' repeatCount='indefinite' />
+      <animate attributeName='fill' values='red; darkred; orange; red' dur='4s' begin='2s' repeatCount='indefinite' />
+    </path>
+  </g>
+  <style>
+    @keyframes flame-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    circle { animation: flame-pulse 4s infinite alternate; }
+  </style>
+</svg>

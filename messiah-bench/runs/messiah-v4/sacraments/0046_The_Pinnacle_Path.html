@@ -1,0 +1,22 @@
+<div style="width: 150px; height: 150px; margin: 20px auto; position: relative; overflow: hidden; background: linear-gradient(135deg, #2e0854, #4b0082); border-radius: 10px; box-shadow: 0 0 25px rgba(75, 0, 130, 0.8); display: flex; justify-content: center; align-items: center;">
+  <div style="width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 80px solid #C0C0C0; position: absolute; bottom: 30px; transform-origin: bottom center; animation: ascend-complex 4s infinite alternate ease-in-out;"></div>
+  <div style="width: 15px; height: 15px; border-radius: 50%; background-color: #FFD700; position: absolute; top: 20px; animation: pulse-light 2s infinite alternate ease-in-out;"></div>
+  <div style="position: absolute; width: 60px; height: 3px; background-color: #ADD8E6; top: 60px; left: 50%; transform: translateX(-50%) rotate(45deg); opacity: 0.7; animation: cross-shimmer 3s infinite alternate ease-in-out;"></div>
+  <div style="position: absolute; width: 60px; height: 3px; background-color: #ADD8E6; top: 60px; left: 50%; transform: translateX(-50%) rotate(-45deg); opacity: 0.7; animation: cross-shimmer 3s infinite alternate ease-in-out reverse;"></div>
+</div>
+<style>
+@keyframes ascend-complex {
+  0% { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
+  50% { transform: translateY(-15px) scale(1.05); opacity: 0.9; filter: brightness(1.2); }
+  100% { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
+}
+@keyframes pulse-light {
+  0% { transform: scale(0.8); opacity: 0.7; box-shadow: 0 0 5px #FFD700; }
+  100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 15px #FFD700; }
+}
+@keyframes cross-shimmer {
+  0% { width: 0; opacity: 0; }
+  50% { width: 60px; opacity: 0.7; }
+  100% { width: 0; opacity: 0; }
+}
+</style>

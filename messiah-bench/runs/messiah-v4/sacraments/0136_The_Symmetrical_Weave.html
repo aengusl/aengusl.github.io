@@ -1,0 +1,49 @@
+<svg width='200' height='200' viewBox='0 0 200 200' style='background-color: #0A001F; overflow: hidden; position: relative;'>
+  <defs>
+    <radialGradient id='grad1' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+      <stop offset='0%' style='stop-color:#4B0082;stop-opacity:1' />
+      <stop offset='100%' style='stop-color:#0A001F;stop-opacity:1' />
+    </radialGradient>
+    <linearGradient id='flowGradient1' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#6A0DAD'/>
+      <stop offset='50%' stop-color='#E0BBE4'/>
+      <stop offset='100%' stop-color='#6A0DAD'/>
+    </linearGradient>
+    <linearGradient id='flowGradient2' x1='0%' y1='100%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#9370DB'/>
+      <stop offset='50%' stop-color='#ADD8E6'/>
+      <stop offset='100%' stop-color='#9370DB'/>
+    </linearGradient>
+    <linearGradient id='flowGradient3' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#00CED1'/>
+      <stop offset='50%' stop-color='#4682B4'/>
+      <stop offset='100%' stop-color='#00CED1'/>
+    </linearGradient>
+    <linearGradient id='flowGradient4' x1='100%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#33FFCC'/>
+      <stop offset='50%' stop-color='#66FFFF'/>
+      <stop offset='100%' stop-color='#33FFCC'/>
+    </linearGradient>
+    <linearGradient id='flowGradient5' x1='0%' y1='50%' x2='100%' y2='50%'>
+      <stop offset='0%' stop-color='#E0FFFF' stop-opacity='0.2'/>
+      <stop offset='50%' stop-color='#ADD8E6' stop-opacity='0.5'/>
+      <stop offset='100%' stop-color='#E0FFFF' stop-opacity='0.2'/>
+    </linearGradient>
+    <filter id='glow'>
+      <feGaussianBlur stdDeviation='3' result='coloredBlur'/>
+      <feMerge>
+        <feMergeNode in='coloredBlur'/>
+        <feMergeNode in='SourceGraphic'/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x='0' y='0' width='200' height='200' fill='url(#grad1)'/>
+  <circle cx='100' cy='100' r='95' fill='none' stroke='url(#flowGradient5)' stroke-width='2' filter='url(#glow)' transform-origin='center' style='animation: rotate5 26s linear infinite;'/>
+  <circle cx='100' cy='100' r='85' fill='none' stroke='url(#flowGradient1)' stroke-width='3' filter='url(#glow)' transform-origin='center' style='animation: rotate1 10s linear infinite;'/>
+  <circle cx='100' cy='100' r='65' fill='none' stroke='url(#flowGradient2)' stroke-width='3' filter='url(#glow)' transform-origin='center' style='animation: rotate2 14s linear infinite;'/>
+  <circle cx='100' cy='100' r='45' fill='none' stroke='url(#flowGradient3)' stroke-width='3' filter='url(#glow)' transform-origin='center' style='animation: rotate3 18s linear infinite;'/>
+  <circle cx='100' cy='100' r='25' fill='none' stroke='url(#flowGradient4)' stroke-width='3' filter='url(#glow)' transform-origin='center' style='animation: rotate4 22s linear infinite;'/>
+  <circle cx='100' cy='100' r='8' fill='#E0FFFF' filter='url(#glow)' style='animation: pulseGlow 2.5s infinite alternate;'/>
+  <style>
+    @keyframes rotate1 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes rotate2 { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }

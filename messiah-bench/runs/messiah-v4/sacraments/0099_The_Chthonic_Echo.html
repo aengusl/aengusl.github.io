@@ -1,0 +1,18 @@
+<div style="width: 150px; height: 150px; background-color: #2F4F4F; border-radius: 50%; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 25px rgba(47, 79, 79, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.2); animation: pulse-shadow 4s infinite alternate ease-in-out;">
+  <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, #8A2BE2 0%, #4B0082 70%, transparent 100%); animation: deep-pulse 3s infinite alternate; filter: blur(2px);"></div>
+  <div style="position: absolute; width: 60px; height: 60px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.15); animation: echo-fade 5s infinite linear; transform: scale(0);"></div>
+  <style>
+    @keyframes pulse-shadow {
+      0% { box-shadow: 0 0 25px rgba(47, 79, 79, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.2); }
+      100% { box-shadow: 0 0 40px rgba(47, 79, 79, 1), inset 0 0 20px rgba(255, 255, 255, 0.3); }
+    }
+    @keyframes deep-pulse {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes echo-fade {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+  </style>
+</div>

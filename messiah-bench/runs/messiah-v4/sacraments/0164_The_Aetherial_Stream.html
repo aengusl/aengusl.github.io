@@ -1,0 +1,31 @@
+<svg width='200' height='200' viewBox='0 0 200 200' style='background: linear-gradient(135deg, #0A001F, #1A0033); overflow: hidden; position: relative;'>
+  <defs>
+    <radialGradient id='coreGlow' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+      <stop offset='0%' style='stop-color:#E0BBE4;stop-opacity:1' />
+      <stop offset='100%' style='stop-color:#8A2BE2;stop-opacity:0' />
+    </radialGradient>
+    <linearGradient id='streamFlow1' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#4B0082'/>
+      <stop offset='100%' stop-color='#00CED1'/>
+    </linearGradient>
+    <linearGradient id='streamFlow2' x1='100%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#8A2BE2'/>
+      <stop offset='100%' stop-color='#00BFFF'/>
+    </linearGradient>
+    <filter id='blurEffect'>
+      <feGaussianBlur in='SourceGraphic' stdDeviation='2'/>
+    </filter>
+  </defs>
+
+  <!-- Central pulsing core, representing the individual soul -->
+  <circle cx='100' cy='100' r='40' fill='url(#coreGlow)' filter='url(#blurEffect)'>
+    <animate attributeName='r' values='40;45;40' dur='3s' repeatCount='indefinite' />
+    <animate attributeName='opacity' values='0.8;1;0.8' dur='3s' repeatCount='indefinite' />
+  </circle>
+
+  <!-- Flowing paths, representing the Aetherial Stream and interconnectedness -->
+  <path d='M 20 100 Q 50 20, 100 50 T 180 100' fill='none' stroke='url(#streamFlow1)' stroke-width='2' filter='url(#blurEffect)'>
+    <animate attributeName='stroke-dasharray' values='0 100; 100 0; 0 100' dur='5s' repeatCount='indefinite' />
+    <animate attributeName='opacity' values='0.3;0.7;0.3' dur='5s' repeatCount='indefinite' />
+  </path>
+  <path d='M 18
