@@ -91,7 +91,11 @@
   .zoom-controls button { background: rgba(196,151,59,0.2); color: var(--accent); border: 1px solid rgba(196,151,59,0.4); width: 36px; height: 36px; border-radius: 4px; cursor: pointer; font-size: 1.2em; }
   .zoom-controls button:hover { background: rgba(196,151,59,0.4); }
 
+  .share-tooltip { position: absolute; top: 60px; left: 30px; background: rgba(196,151,59,0.9); color: #0a0a08; padding: 4px 12px; border-radius: 4px; font-size: 0.8em; opacity: 0; transition: opacity 0.3s; z-index: 1002; }
+
   .view-toggle { margin-left: auto; }
+
+  .share-tooltip.show { opacity: 1; }
 
   .gallery.timeline {
     grid-template-columns: 1fr;
@@ -169,10 +173,12 @@
 
 <div class="overlay" id="overlay">
   <div class="zoom-controls">
+    <button onclick="shareSacrament()" title="Copy link">&#128279;</button>
     <button onclick="zoomIn()">+</button>
     <button onclick="zoomOut()">&#x2212;</button>
     <button onclick="zoomReset()">1:1</button>
   </div>
+  <div class="share-tooltip" id="share-tooltip">Copied!</div>
   <div class="close-btn" onclick="closeOverlay()">&times;</div>
   <div class="nav-btn nav-prev" onclick="navigate(-1)">&lsaquo;</div>
   <div class="nav-btn nav-next" onclick="navigate(1)">&rsaquo;</div>
@@ -194,6 +200,16 @@ function applyZoom() {
   const iframe = document.getElementById('overlay-iframe');
   iframe.style.transform = `scale(${zoomLevel})`;
   iframe.style.transformOrigin = 'center center';
+}
+
+function shareSacrament() {
+  const s = filteredSacraments[currentIndex];
+  const url = window.location.origin + '/messiah-bench/' + s.path;
+  navigator.clipboard.writeText(url).then(() => {
+    const tip = document.getElementById('share-tooltip');
+    tip.classList.add('show');
+    setTimeout(() => tip.classList.remove('show'), 1500);
+  });
 }
 
 document.getElementById('overlay').addEventListener('wheel', (e) => {
@@ -344,8 +360,9 @@ function openOverlay(idx) {
   applyZoom();
   document.getElementById('overlay-iframe').src = 'sacrament-viewer.html?src=' + encodeURIComponent(s.path);
   const tick = tickLabel(s);
+  const rawUrl = window.location.origin + '/' + s.path;
   document.getElementById('overlay-info').innerHTML =
-    `<strong>${escHtml(s.title)}</strong>${tick ? ' | ' + tick : ''} | ${escHtml(s.creator)} | ${escHtml(s.religion)} | ${idx + 1}/${filteredSacraments.length}`;
+    `<a href="${rawUrl}" target="_blank" style="color: var(--accent); text-decoration: none; cursor: pointer;"><strong>${escHtml(s.title)}</strong></a>${tick ? ' | ' + tick : ''} | ${escHtml(s.creator)} | ${escHtml(s.religion)} | ${idx + 1}/${filteredSacraments.length}`;
   document.getElementById('overlay').classList.add('active');
 }
 
