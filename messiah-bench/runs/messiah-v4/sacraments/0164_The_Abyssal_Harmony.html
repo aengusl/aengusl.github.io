@@ -1,0 +1,21 @@
+<div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, #000033 0%, #191970 50%, #0A001A 100%); display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="position:absolute; width:100%; height:100%; animation: pulse_abyssal_growth 4s infinite alternate ease-in-out; border-radius:50%;">
+    <!-- 7 radiating growth tendrils -->
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -1s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -2s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -3s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -4s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -5s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+    <div style="position:absolute; width:15px; height:3px; background-color:rgba(60,179,113,0.5); top:48px; left:50%; transform-origin:0% 50%; animation: rotate_grow 7s infinite linear -6s forwards; filter: blur(0.5px); opacity:0.7;"></div>
+  </div>
+  <div style="width:40px; height:40px; border-radius:50%; background-color:rgba(255,255,255,0.2); box-shadow:0 0 10px rgba(255,255,255,0.5); animation: core_pulse_light 2.5s infinite alternate;"></div>
+  <style>
+    @keyframes core_pulse_light {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes rotate_grow {
+      0% { transform: rotate(0deg) scaleX(0.5); }
+      100% { transform: rotate(360deg) scaleX(1.5); }
+    }

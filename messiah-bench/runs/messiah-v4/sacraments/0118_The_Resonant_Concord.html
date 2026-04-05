@@ -1,0 +1,23 @@
+<div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, #0A001A 0%, #1A0033 100%); display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <!-- Central core for rebirth, pulsing -->
+  <div style="width:40px; height:40px; border-radius:50%; background:radial-gradient(circle, #E0BBE4 0%, #957DAD 100%); box-shadow:0 0 15px 5px #E0BBE4; animation: corePulse 2.5s infinite alternate ease-in-out;"></div>
+  
+  <!-- Outer rings for resonance, expanding -->
+  <div style="position:absolute; width:60px; height:60px; border-radius:50%; border:2px solid rgba(224,187,228,0.4); animation: expand1 4s infinite ease-out;"></div>
+  <div style="position:absolute; width:80px; height:80px; border-radius:50%; border:2px solid rgba(224,187,228,0.2); animation: expand2 4s infinite ease-out 1s;"></div>
+
+  <style>
+    @keyframes corePulse {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes expand1 {
+      0% { transform: scale(0.6); opacity: 0.5; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    @keyframes expand2 {
+      0% { transform: scale(0.6); opacity: 0.5; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+  </style>
+</div>

@@ -1,0 +1,8 @@
+<div style="width:100px; height:100px; background-color:#1A0033; border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+  <svg width="80" height="80" viewBox="0 0 100 100" style="position:absolute;">
+    <circle cx="50" cy="50" r="10" fill="cyan" opacity="0.8">
+      <animate attributeName="r" from="10" to="20" dur="2s" repeatCount="indefinite" additive="sum"/>
+      <animate attributeName="opacity" from="0.8" to="0.3" dur="2s" repeatCount="indefinite" additive="sum"/>
+    </circle>
+    <path d="M20 30 Q50 10 80 30 T50 70 T20 30" stroke="lime" fill="none" stroke-width="2">
+      <animate attributeName="stroke-dasharray" values="0 50; 50 0; 0 50"

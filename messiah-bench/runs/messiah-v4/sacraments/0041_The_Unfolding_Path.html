@@ -1,0 +1,13 @@
+<div style="width:100px; height:100px; background-color:#0A001A; border-radius:50%; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <style>
+    @keyframes pulse-fade {
+      0% { transform: scale(0.8); opacity: 0.3; }
+      50% { transform: scale(1.0); opacity: 0.7; }
+      100% { transform: scale(0.8); opacity: 0.3; }
+    }
+    .circle-unfold {
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(255,255,255,0.2);
+      animation: pulse-fade 4s infinite alternate ease-in-out;
+    }

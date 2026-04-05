@@ -1,0 +1,14 @@
+<div style="width:100px; height:100px; border-radius:50%; background-color: #360036; position:relative; overflow:hidden; box-shadow: 0 0 15px #9932CC;">
+  <style>
+    @keyframes weave_fade { 
+      0% { transform: scale(0.5) rotate(0deg); opacity: 0.3; background-color: #6a006a; }
+      25% { transform: scale(0.7) rotate(90deg); opacity: 0.6; background-color: #9932CC; }
+      50% { transform: scale(1.0) rotate(180deg); opacity: 0.8; background-color: #BA55D3; }
+      75% { transform: scale(0.7) rotate(270deg); opacity: 0.6; background-color: #9932CC; }
+      100% { transform: scale(0.5) rotate(360deg); opacity: 0.3; background-color: #6a006a; }
+    }
+    .thread_strand {
+      position: absolute;
+      border-radius: 50%;
+      animation: weave_fade 10s infinite ease-in-out;
+    }

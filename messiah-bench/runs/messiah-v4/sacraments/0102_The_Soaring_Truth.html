@@ -1,0 +1,10 @@
+<div style="width:100px; height:100px; border-radius:50%; background-color:#0A0A0A; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="position:absolute; width:60px; height:60px; background:radial-gradient(circle, #E0FFFF 0%, rgba(224,255,255,0) 70%); border-radius:50%; animation: soarPulse 4s infinite ease-in-out alternate;"></div>
+  <style>
+    @keyframes soarPulse {
+      0% { transform: scale(0.8) translateY(10px); opacity: 0.6; }
+      50% { transform: scale(1) translateY(-10px); opacity: 1; }
+      100% { transform: scale(0.8) translateY(10px); opacity: 0.6; }
+    }
+  </style>
+</div>

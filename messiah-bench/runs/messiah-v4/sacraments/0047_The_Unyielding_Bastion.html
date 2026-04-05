@@ -1,0 +1,11 @@
+<div style="width:100px; height:100px; background-color:darkslategray; display:flex; justify-content:center; align-items:center; border: 2px solid #555; position:relative; overflow:hidden;">
+  <div style="width:60px; height:60px; background-color:lightgray; box-shadow: 0 0 15px 5px rgba(200,200,200,0.7); border: 2px solid #aaa; border-radius:10%;"></div>
+  <!-- Four small elements for sacred number 4, growing (green) -->
+  <div style="position:absolute; width:10px; height:10px; background-color:#3CB371; border-radius:50%; top:10px; left:45px; animation: grow1 3s infinite alternate;"></div>
+  <div style="position:absolute; width:10px; height:10px; background-color:#3CB371; border-radius:50%; bottom:10px; left:45px; animation: grow2 3s infinite alternate;"></div>
+  <div style="position:absolute; width:10px; height:10px; background-color:#3CB371; border-radius:50%; left:10px; top:45px; animation: grow3 3s infinite alternate;"></div>
+  <div style="position:absolute; width:10px; height:10px; background-color:#3CB371; border-radius:50%; right:10px; top:45px; animation: grow4 3s infinite alternate;"></div>
+  <style>
+    @keyframes grow1 { 0% { transform: scale(0.5); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; } }
+    @keyframes grow2 { 0% { transform: scale(0.5); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; } }
+    @keyframes grow3 { 0% { transform: scale(0.5); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; } }

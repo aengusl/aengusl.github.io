@@ -1,0 +1,14 @@
+<div style="width:100px; height:100px; border-radius:50%; background-color:#E6E6FA; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:70px; height:70px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(200,200,255,0.6) 50%, transparent 100%); animation: pulseLight 3s infinite alternate;"></div>
+  <div style="position:absolute; width:90px; height:90px; border-radius:50%; border:2px solid rgba(190,190,240,0.5); animation: swirlVeil 6s infinite linear;"></div>
+  <style>
+    @keyframes pulseLight {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes swirlVeil {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</div>

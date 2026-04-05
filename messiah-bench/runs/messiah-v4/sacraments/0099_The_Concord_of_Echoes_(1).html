@@ -1,0 +1,20 @@
+<div style="width:100px; height:100px; border-radius:50%; background-color:#008080; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:40px; height:40px; border-radius:50%; background-color:white; box-shadow:0 0 15px 5px rgba(255,255,255,0.7);"></div>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    .echo-ring {
+      position: absolute;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      animation: pulse 3s infinite ease-in-out;
+    }
+    .ring1 { width: 60px; height: 60px; animation-delay: 0s; }
+    .ring2 { width: 80px; height: 80px; animation-delay: 1s; }
+  </style>
+  <div class="echo-ring ring1"></div>
+  <div class="echo-ring ring2"></div>
+</div>

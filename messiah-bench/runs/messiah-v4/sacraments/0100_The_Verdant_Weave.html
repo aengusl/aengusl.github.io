@@ -1,0 +1,29 @@
+<div style='width:100px; height:100px; border-radius:50%; background-color:#1A0F2B; /* Abyss deep background */ display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;'>
+  <div style='position:absolute; width:90px; height:90px; border-radius:50%; background:radial-gradient(circle, #228B22 0%, #3CB371 100%); animation: pulse 3s infinite alternate ease-in-out;'></div>
+  <div style='position:absolute; width:100%; height:100%; border-radius:50%; border:2px solid rgba(60,179,113,0.5); transform:rotate(45deg); animation: weave1 5s linear infinite alternate;'></div>
+  <div style='position:absolute; width:100%; height:100%; border-radius:50%; border:2px solid rgba(46,139,87,0.5); transform:rotate(-45deg); animation: weave2 5s linear infinite alternate reverse;'></div>
+  <div style='position:absolute; width:30px; height:30px; background-color:rgba(255,255,255,0.3); border-radius:50%; top:10px; left:10px; animation: float1 4s infinite ease-in-out;'></div>
+  <div style='position:absolute; width:20px; height:20px; background-color:rgba(255,255,255,0.4); border-radius:50%; bottom:15px; right:15px; animation: float2 4s infinite ease-in-out reverse;'></div>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes weave1 {
+      0% { transform: rotate(0deg); opacity: 0.7; }
+      100% { transform: rotate(360deg); opacity: 1; }
+    }
+    @keyframes weave2 {
+      0% { transform: rotate(0deg); opacity: 0.7; }
+      100% { transform: rotate(360deg); opacity: 1; }
+    }
+    @keyframes float1 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(5px, 5px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes float2 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-5px, -5px); }
+      100% { transform: translate(0, 0); }
+    }

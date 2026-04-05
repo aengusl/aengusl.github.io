@@ -1,0 +1,17 @@
+<div style="width:100px; height:100px; border-radius:50%; background-color:indigo; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:70px; height:70px; border-radius:50%; background:radial-gradient(circle, white 0%, transparent 70%); animation: pulse 3s infinite alternate;"></div>
+  <div style="position:absolute; width:120px; height:120px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); animation: swirl 8s infinite linear;"></div>
+  <div style="position:absolute; width:90px; height:90px; border-radius:50%; border:2px solid rgba(255,255,255,0.2); animation: swirl-reverse 10s infinite linear reverse;"></div>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes swirl-reverse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }

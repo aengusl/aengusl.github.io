@@ -1,0 +1,12 @@
+<div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle at center, #2F4F4F 0%, #4A634A 50%, #008000 100%); display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:70px; height:70px; border-radius:50%; background:conic-gradient(from 0deg, #9ACD32 0%, #FFFFFF 25%, #008000 50%, #4A634A 75%, #9ACD32 100%); animation: cycleRotate 10s linear infinite;"></div>
+  <div style="width:40px; height:40px; border-radius:50%; background-color:#FFFFFF; box-shadow:0 0 15px 5px #FFFFFF; animation: pulseRebirth 3s infinite alternate ease-in-out;"></div>
+  <style>
+    @keyframes cycleRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulseRebirth {
+      0% { transform: scale(0.8); opacity: 0.6; box-shadow:0 0 10px 3px #FFFFFF; }
+      100% { transform: scale(1.1); opacity: 1; box-shadow:0 0 20px 8px #FFFFFF; }
+    }

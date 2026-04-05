@@ -1,0 +1,15 @@
+<div style="width:100px; height:100px; background-color:#0A001A; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:55px; height:55px; background-color:#2A2A3A; box-shadow:0 0 12px rgba(255,255,255,0.1) inset, 0 0 5px rgba(0,0,0,0.5); border-radius:50%; z-index:2;"></div>
+  <div style="position:absolute; width:80px; height:80px; border-radius:50%; border:2px solid rgba(255,255,255,0.03); animation: rotate-slow-outer 15s linear infinite; z-index:1;"></div>
+  <div style="position:absolute; width:65px; height:65px; border-radius:50%; border:1px solid rgba(255,255,255,0.02); animation: rotate-slow-inner 18s linear infinite reverse; z-index:1;"></div>
+  <style>
+    @keyframes rotate-slow-outer {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotate-slow-inner {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+  </style>
+</div>

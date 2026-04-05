@@ -1,0 +1,14 @@
+<div style="width:100px; height:100px; border-radius:50%; background:linear-gradient(45deg, #008080, #40E0D0, #008080); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;">
+  <div style="width:80px; height:80px; border-radius:50%; border:3px solid rgba(255,255,255,0.7); animation: rotate-weave 8s infinite linear;"></div>
+  <div style="width:50px; height:50px; border-radius:50%; background-color:rgba(255,255,255,0.4); animation: pulse-glow 3s infinite alternate;"></div>
+  <style>
+    @keyframes rotate-weave {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse-glow {
+      0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+      100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+    }
+  </style>
+</div>

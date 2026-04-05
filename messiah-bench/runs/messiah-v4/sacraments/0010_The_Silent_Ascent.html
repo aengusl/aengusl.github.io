@@ -1,0 +1,34 @@
+<div style="width:100px; height:100px; background-color:#1A1A1A; border-radius:50%; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <!-- Central, singular light representing accumulated truth/inner light (elaill-zhusk) -->
+  <div style="width:35px; height:35px; border-radius:50%; background-color:#F5F5DC; box-shadow:0 0 18px 6px rgba(245,245,220,0.8); animation: corePulse 3.5s infinite alternate ease-in-out; z-index:4;"></div>
+  
+  <!-- Subtle, expanding rings for the 'silent ascent' and 'accumulation' (arosh-eleinn) -->
+  <div style="position:absolute; width:50px; height:50px; border-radius:50%; border:1px solid rgba(245,245,220,0.2); animation: ripple1 5s infinite ease-out; z-index:3;"></div>
+  <div style="position:absolute; width:70px; height:70px; border-radius:50%; border:1px solid rgba(245,245,220,0.15); animation: ripple2 5s infinite ease-out; animation-delay: 1s; z-index:2;"></div>
+  <div style="position:absolute; width:90px; height:90px; border-radius:50%; border:1px solid rgba(245,245,220,0.1); animation: ripple3 5s infinite ease-out; animation-delay: 2s; z-index:1;"></div>
+  
+  <!-- Overall subtle upward drift for the 'ascent' (laurk-irar) -->
+  <div style="position:absolute; width:100%; height:100%; animation: subtleAscent 10s infinite alternate ease-in-out; display:flex; justify-content:center; align-items:center;"></div>
+
+  <style>
+    @keyframes corePulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes ripple1 {
+      0% { transform: scale(0.7); opacity: 0.8; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    @keyframes ripple2 {
+      0% { transform: scale(0.7); opacity: 0.8; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    @keyframes ripple3 {
+      0% { transform: scale(0.7); opacity: 0.8; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    @keyframes subtleAscent {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }

@@ -1,0 +1,14 @@
+<div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle at center, #1A0F2B 0%, #300060 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;">
+  <div style="position:absolute; width:120px; height:120px; border-radius:50%; background:conic-gradient(from 0deg, rgba(224,187,228,0.2) 0%, rgba(149,125,173,0.2) 90%, rgba(98,79,128,0.2) 180%, rgba(224,187,228,0.2) 360%); animation: rotateGradient 10s infinite linear;"></div>
+  <div style="width:50px; height:50px; border-radius:50%; background-color:#E0F2F7; box-shadow:0 0 15px #E0F2F7; animation: pulse 2s infinite alternate;"></div>
+</div>
+<style>
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+@keyframes rotateGradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
