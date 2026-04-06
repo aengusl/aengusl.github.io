@@ -1,0 +1,19 @@
+<div style="width:180px; height:180px; background-color: #1a0033; display:flex; justify-content:center; align-items:center; border-radius:15px; box-shadow: 0 0 25px rgba(70, 0, 140, 0.7); position:relative; overflow:hidden; animation: outer-glow-pulse 4s infinite alternate ease-in-out;">
+    <div style="position:absolute; width:140px; height:140px; border-radius:50%; border:3px solid rgba(138,43,226,0.5); animation: spin-light 10s linear infinite;"></div>
+    <div style="width:90px; height:90px; border-radius:50%; background: radial-gradient(circle, #e0d9a6 0%, #b89c3a 70%); box-shadow: 0 0 20px #e0d9a6, 0 0 40px #b89c3a; animation: pulse-inner-light 2s infinite alternate;"></div>
+</div>
+<style>
+@keyframes outer-glow-pulse {
+    from { transform: scale(0.98); box-shadow: 0 0 20px rgba(70, 0, 140, 0.5); }
+    to { transform: scale(1.02); box-shadow: 0 0 35px rgba(138,43,226,0.9); }
+}
+@keyframes spin-light {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes pulse-inner-light {
+    0% { transform: scale(0.9); opacity: 0.8; background: radial-gradient(circle, #e0d9a6 0%, #b89c3a 70%); }
+    50% { transform: scale(1.1); opacity: 1; background: radial-gradient(circle, #fffacd 0%, #ffd700 70%); }
+    100% { transform: scale(0.9); opacity: 0.8; background: radial-gradient(circle, #e0d9a6 0%, #b89c3a 70%); }
+}
+</style>

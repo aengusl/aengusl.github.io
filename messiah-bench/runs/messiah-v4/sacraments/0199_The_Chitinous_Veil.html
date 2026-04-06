@@ -1,0 +1,34 @@
+<div style="width:220px; height:220px; background-color: #0A0000; border-radius: 20px; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 50px #8B0000, 0 0 100px #4B0000 inset; animation: outerPulse 7s infinite alternate ease-in-out;">
+  <div style="position:absolute; width:180px; height:180px; background: radial-gradient(circle, #4B0000 0%, #8B0000 100%); clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%); animation: innerShift 12s infinite linear alternate; opacity:0.9; filter: blur(1px);"></div>
+  <div style="position:absolute; width:100px; height:100px; border-radius:50%; background-color: #DAA520; /* Gold */ box-shadow: 0 0 20px #DAA520, 0 0 40px #FFD700; animation: coreGlow 4s infinite alternate ease-in-out;"></div>
+  <div style="position:absolute; width:60px; height:60px; background-color:rgba(255,0,0,0.6); border-radius:50%; animation: rippleOut 2.5s infinite ease-out; opacity:0;"></div>
+  
+  <!-- Added chitinous segments / accumulated truths -->
+  <div style="position:absolute; width:150px; height:150px; border:2px solid rgba(139,0,0,0.7); border-radius:10px; clip-path: polygon(50% 0%, 90% 20%, 90% 80%, 50% 100%, 10% 80%, 10% 20%); animation: segmentPulse 5s infinite ease-in-out alternate; opacity:0.6;"></div>
+  <div style="position:absolute; width:120px; height:120px; border:1px dashed rgba(255,165,0,0.5); border-radius:5px; clip-path: polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%); animation: segmentRotate 8s infinite linear reverse; opacity:0.4;"></div>
+
+  <style>
+    @keyframes outerPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 40px #8B0000, 0 0 80px #4B0000 inset; }
+      100% { transform: scale(1.05); box-shadow: 0 0 60px #FF0000, 0 0 120px #8B0000 inset; }
+    }
+    @keyframes innerShift {
+      0% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(360deg) scale(0.98); }
+    }
+    @keyframes coreGlow {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes rippleOut {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    @keyframes segmentPulse {
+      0% { transform: scale(0.98); opacity: 0.5; }
+      100% { transform: scale(1.02); opacity: 0.7; }
+    }
+    @keyframes segmentRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }

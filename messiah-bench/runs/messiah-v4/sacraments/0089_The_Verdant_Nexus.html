@@ -1,0 +1,21 @@
+<div style="width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at center, #32CD32 0%, #228B22 100%); box-shadow:0 0 25px #32CD32, 0 0 40px #228B22; animation: pulse-emerald 3s infinite alternate ease-in-out; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;">
+  <div style="width:80px; height:80px; border-radius:50%; background:radial-gradient(circle, #90EE90 0%, #3CB371 100%); animation: swirl-inner 5s infinite linear; opacity:0.7; position:absolute; filter: blur(1px);">
+    <div style="position:absolute; inset:10px; border-radius:50%; background-color:rgba(0,0,0,0.1); animation: fade-and-grow 4s infinite alternate ease-in-out;"></div>
+  </div>
+</div>
+<style>
+  @keyframes pulse-emerald {
+    0% { transform: scale(0.95); opacity: 0.8; box-shadow:0 0 15px #32CD32, 0 0 25px #228B22; }
+    100% { transform: scale(1.05); opacity: 1; box-shadow:0 0 25px #32CD32, 0 0 40px #228B22; }
+  }
+  @keyframes swirl-inner {
+    0% { transform: rotate(0deg) scale(0.8); opacity: 0.7; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+    100% { transform: rotate(360deg) scale(0.8); opacity: 0.7; }
+  }
+  @keyframes fade-and-grow {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.0); opacity: 0.3; }
+    100% { transform: scale(1.2); opacity: 0; }
+  }
+</style>

@@ -1,0 +1,14 @@
+<div style="width:150px; height:150px; border-radius:50%; background: radial-gradient(circle, #8A2BE2 0%, #4B0082 100%); display:flex; justify-content:center; align-items:center; overflow:hidden;">
+  <div style="width:120px; height:120px; border-radius:50%; border: 3px solid rgba(255,255,255,0.3); animation: rotate-slow 10s linear infinite;">
+    <div style="width:90px; height:90px; border-radius:50%; border: 3px solid rgba(255,255,255,0.5); animation: rotate-medium 7s linear infinite reverse;">
+      <div style="width:60px; height:60px; border-radius:50%; border: 3px solid rgba(255,255,255,0.7); animation: rotate-fast 5s linear infinite;">
+        <div style="width:20px; height:20px; border-radius:50%; background-color:white; box-shadow: 0 0 5px white;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  @keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes rotate-medium { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes rotate-fast { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>

@@ -1,0 +1,13 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, gold 0%, orange 50%, transparent 100%); box-shadow: 0 0 30px gold, 0 0 50px orange; animation: glowPulse 3s infinite alternate ease-in-out; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+  <div style="width: 80px; height: 80px; border-radius: 50%; background-color: white; opacity: 0.7; animation: innerPulse 2s infinite alternate ease-in-out;"></div>
+</div>
+<style>
+  @keyframes glowPulse {
+    from { transform: scale(0.9); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes innerPulse {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1.0); opacity: 0.9; }
+  }
+</style>

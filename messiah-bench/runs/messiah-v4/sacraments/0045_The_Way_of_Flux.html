@@ -1,0 +1,29 @@
+<div style="width:180px; height:180px; border-radius:50%; background: linear-gradient(45deg, #4B0082, #8A2BE2); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 30px #8A2BE2, 0 0 60px #4B0082 inset; animation: outerPulse 5s infinite alternate ease-in-out;">
+  <div style="width:120px; height:120px; border-radius:50%; background: radial-gradient(circle, #ADD8E6, #BA55D3); animation: innerShift 4s infinite linear alternate; position:relative;">
+    <div style="position:absolute; top:20px; left:20px; width:20px; height:20px; border-radius:50%; background-color:white; animation: orbit 6s linear infinite, glowPulse 2s infinite alternate;"></div>
+    <div style="position:absolute; bottom:20px; right:20px; width:20px; height:20px; border-radius:50%; background-color:white; animation: orbitReverse 6s linear infinite, glowPulse 2s infinite alternate;"></div>
+  </div>
+  <style>
+    @keyframes outerPulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    @keyframes innerShift {
+      0% { background: radial-gradient(circle, #ADD8E6, #BA55D3); }
+      50% { background: radial-gradient(circle, #BA55D3, #8A2BE2); }
+      100% { background: radial-gradient(circle, #8A2BE2, #ADD8E6); }
+    }
+    @keyframes orbit {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(80px, 0px) rotate(360deg); }
+    }
+    @keyframes orbitReverse {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-80px, 0px) rotate(-360deg); }
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px white, 0 0 10px #E0FFFF; }
+      100% { box-shadow: 0 0 10px white, 0 0 20px #E0FFFF; }
+    }
+  </style>
+</div>

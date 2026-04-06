@@ -1,0 +1,25 @@
+<div style='width:180px; height:180px; border-radius:50%; background-color:#0A001A; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 30px rgba(75,0,130,0.7), inset 0 0 15px rgba(26,0,51,0.5); animation: outerVortex 8s infinite linear;'>
+  <div style='width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, #8B0000 0%, #440000 70%, transparent 100%); animation: innerPulse 4s infinite ease-in-out alternate; position:absolute; filter: blur(1px);'></div>
+  <div style='width:70px; height:70px; border-radius:50%; background-color:rgba(255,100,0,0.8); animation: sparkFlicker 2s infinite alternate ease-in-out; position:absolute; z-index:1;'></div>
+  <div style='position:absolute; width:100%; height:100%; border:2px dashed rgba(255,100,0,0.4); border-radius:50%; animation: spinOutline 10s linear infinite;'></div>
+</div>
+<style>
+  @keyframes outerVortex {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes innerPulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+  }
+  @keyframes sparkFlicker {
+    0% { transform: scale(0.8); opacity: 0.5; filter: blur(2px); }
+    50% { transform: scale(1.2); opacity: 1; filter: blur(0px); }
+    100% { transform: scale(0.8); opacity: 0.5; filter: blur(2px); }
+  }
+  @keyframes spinOutline {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+</style>

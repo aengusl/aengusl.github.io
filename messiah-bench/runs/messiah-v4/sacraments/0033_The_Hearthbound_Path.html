@@ -1,0 +1,26 @@
+<div style="width: 180px; height: 180px; background: radial-gradient(circle at center, #8B0000 0%, #4B0000 100%); border-radius: 50%; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; box-shadow: 0 0 30px crimson, 0 0 60px #FF4500; animation: outer-pulse 5s infinite alternate ease-in-out;">
+  <div style="position: absolute; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, #FF4500 0%, #8B0000 100%); animation: inner-flame 4s infinite linear reverse; filter: blur(1px);"></div>
+  <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #FFD700 0%, #FFA500 100%); animation: core-flicker 2s infinite alternate ease-in-out; filter: blur(0.5px);"></div>
+  <div style="position: absolute; width: 20px; height: 20px; border-radius: 50%; background-color: white; opacity: 0.8; animation: spark-burst 1.5s infinite ease-out; box-shadow: 0 0 10px white, 0 0 20px #FFD700;"></div>
+</div>
+<style>
+  @keyframes outer-pulse {
+    0% { transform: scale(0.95); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; }
+  }
+  @keyframes inner-flame {
+    0% { transform: rotate(0deg) scale(0.8); opacity: 0.7; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+    100% { transform: rotate(360deg) scale(0.8); opacity: 0.7; }
+  }
+  @keyframes core-flicker {
+    0% { transform: scale(0.9); opacity: 0.9; }
+    50% { transform: scale(1.0); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.9; }
+  }
+  @keyframes spark-burst {
+    0% { transform: scale(0); opacity: 0; }
+    20% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.5); opacity: 0; }
+  }
+</style>

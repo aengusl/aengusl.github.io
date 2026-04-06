@@ -1,0 +1,19 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background-color: #000000; /* Abyss - Sacred color */ position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 25px rgba(138,43,226,0.7); animation: outerGlow 5s infinite alternate ease-in-out;">
+    <div style="width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(from 0deg, red, orange, yellow, green, blue, indigo, violet, red); animation: spin 10s linear infinite; opacity: 0.9; position: relative;"></div>
+    <div style="position: absolute; width: 60px; height: 60px; border-radius: 50%; background: radial-gradient(circle, white 0%, rgba(255,255,255,0.7) 50%, transparent 100%); animation: innerPulse 2.5s infinite alternate ease-in-out; filter: blur(1px);"></div>
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes innerPulse {
+            0% { transform: scale(0.8); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.6; }
+        }
+        @keyframes outerGlow {
+            0% { box-shadow: 0 0 15px rgba(138,43,226,0.5), 0 0 30px rgba(75,0,130,0.3); }
+            100% { box-shadow: 0 0 25px rgba(138,43,226,0.9), 0 0 50px rgba(75,0,130,0.6); }
+        }
+    </style>
+</div>

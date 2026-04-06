@@ -1,0 +1,29 @@
+<div style='width:190px; height:190px; border-radius:50%; background: radial-gradient(circle at center, rgba(138,43,226,0.8) 0%, rgba(75,0,130,0.9) 70%, rgba(26,0,51,1) 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 50px rgba(138,43,226,0.9), 0 0 90px rgba(26,0,51,0.8); animation: outerPulse 5s infinite alternate ease-in-out;'>
+  <div style='width:150px; height:150px; border-radius:50%; background:radial-gradient(circle, rgba(224,187,228,0.7) 0%, rgba(186,85,211,0.9) 100%); animation: innerFlow 8s infinite linear reverse; position:relative;'>
+    <div style='position:absolute; top:20%; left:20%; width:60%; height:60%; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%); animation: ripple 3s infinite ease-out;'></div>
+    <div style='position:absolute; top:10%; left:10%; width:80%; height:80%; border-radius:50%; border:2px dashed rgba(255,255,255,0.3); animation: swirlLayer 12s infinite linear;'></div>
+  </div>
+  <div style='position:absolute; width:100%; height:100%; border-radius:50%; border:1px solid gold; box-shadow: 0 0 10px gold; animation: subtleGlow 4s infinite alternate ease-in-out;'></div>
+</div>
+<style>
+  @keyframes outerPulse {
+    0% { transform: scale(0.98); box-shadow: 0 0 45px rgba(138,43,226,0.8), 0 0 80px rgba(26,0,51,0.7); }
+    100% { transform: scale(1.02); box-shadow: 0 0 60px rgba(138,43,226,0.9), 0 0 100px rgba(26,0,51,0.8); }
+  }
+  @keyframes innerFlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  @keyframes swirlLayer {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  @keyframes subtleGlow {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+</style>

@@ -1,0 +1,14 @@
+<div style="width:150px; height:150px; border-radius:50%; background-color:#1a1a1a; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;">
+  <div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, #8B0000 0%, #B22222 50%, transparent 100%); animation: pulse-blood 3s infinite alternate ease-in-out; position:absolute;"></div>
+  <div style="width:30px; height:30px; border-radius:50%; background-color:white; box-shadow: 0 0 10px white; animation: watchful-glow 2s infinite alternate;"></div>
+</div>
+<style>
+  @keyframes pulse-blood {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes watchful-glow {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+</style>

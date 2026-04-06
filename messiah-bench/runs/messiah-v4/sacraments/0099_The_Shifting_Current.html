@@ -1,0 +1,11 @@
+<div style="width:180px; height:180px; border-radius:50%; background: linear-gradient(135deg, #00FFFF, #00BFFF, #00AADD); position:relative; overflow:hidden; animation: rotateBackground 15s infinite linear, pulseShadow 3s infinite alternate;">
+  <style>
+    @keyframes rotateBackground {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulseShadow {
+      0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 10px rgba(240, 230, 210, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(0, 191, 255, 1), 0 0 20px rgba(240, 230, 210, 0.8); }
+      100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 10px rgba(240, 230, 210, 0.5); }
+    }

@@ -1,0 +1,31 @@
+<div style="width:180px; height:180px; background-color:#000000; border-radius:15px; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 40px rgba(75,0,130,0.8), inset 0 0 20px rgba(0,0,0,0.7); animation: deepVoidPulse 6s infinite alternate ease-in-out;">
+  <div style="position:absolute; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, #1A0033 0%, transparent 70%); animation: vortexSpin 10s linear infinite;"></div>
+  <div style="position:absolute; width:100px; height:100px; border-radius:50%; border:2px solid #4B0082; animation: subtleExpand 4s infinite alternate ease-in-out;"></div>
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:60px; height:60px; border-radius:50%; background:radial-gradient(circle, #E0BBE4 0%, #8A2BE2 100%); animation: coreGlow 3s infinite alternate ease-in-out; filter: blur(1px);"></div>
+  <div style="position:absolute; width:8px; height:8px; background-color:rgba(255,255,255,0.7); border-radius:50%; top:20%; left:30%; animation: floatPath1 8s infinite linear;"></div>
+  <div style="position:absolute; width:8px; height:8px; background-color:rgba(255,255,255,0.7); border-radius:50%; top:70%; left:60%; animation: floatPath2 10s infinite linear;"></div>
+  <div style="position:absolute; width:8px; height:8px; background-color:rgba(255,255,255,0.7); border-radius:50%; top:40%; left:80%; animation: floatPath3 7s infinite linear;"></div>
+</div>
+<style>
+@keyframes deepVoidPulse {
+  0% { box-shadow: 0 0 30px rgba(75,0,130,0.6), inset 0 0 15px rgba(0,0,0,0.5); }
+  100% { box-shadow: 0 0 50px rgba(75,0,130,1), inset 0 0 25px rgba(0,0,0,0.9); }
+}
+@keyframes vortexSpin {
+  from { transform: rotate(0deg); opacity: 0.7; }
+  to { transform: rotate(360deg); opacity: 1; }
+}
+@keyframes subtleExpand {
+  0% { transform: scale(0.9); border-color: #4B0082; }
+  100% { transform: scale(1.05); border-color: #8A2BE2; }
+}
+@keyframes coreGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.0); opacity: 1; }
+}
+@keyframes floatPath1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(30px, 40px); }
+  50% { transform: translate(0, 80px); }
+  75% { transform: translate(-30px, 40px); }
+}

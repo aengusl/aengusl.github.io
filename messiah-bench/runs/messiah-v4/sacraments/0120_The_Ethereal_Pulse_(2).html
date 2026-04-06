@@ -1,0 +1,23 @@
+<div style="width:180px; height:180px; border-radius:50%; background: radial-gradient(circle, #E6E6FA 0%, #BA55D3 50%, #800080 100%); display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden; box-shadow: 0 0 35px #BA55D3, 0 0 60px #800080; animation: outer-pulse 5s infinite alternate ease-in-out;">
+  <div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, #DDA0DD 0%, #E0FFFF 50%, transparent 70%); animation: inner-glow 3s infinite alternate ease-in-out; filter: blur(1px); position:relative;"></div>
+  <div style="position:absolute; width:140px; height:140px; border-radius:50%; border:2px solid rgba(255,255,255,0.4); animation: pulse-ring1 3s infinite alternate ease-in-out;"></div>
+  <div style="position:absolute; width:160px; height:160px; border-radius:50%; border:1px solid rgba(255,255,255,0.2); animation: pulse-ring2 4s infinite alternate ease-in-out;"></div>
+</div>
+<style>
+  @keyframes outer-pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+  }
+  @keyframes inner-glow {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(1.1); opacity: 0.9; }
+  }
+  @keyframes pulse-ring1 {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1.0); opacity: 0.8; }
+  }
+  @keyframes pulse-ring2 {
+    0% { transform: scale(0.9); opacity: 0.3; }
+    100% { transform: scale(1.1); opacity: 0.6; }
+  }
+</style>

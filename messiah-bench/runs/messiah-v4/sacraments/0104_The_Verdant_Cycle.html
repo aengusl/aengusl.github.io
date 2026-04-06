@@ -1,0 +1,19 @@
+<div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #3CB371 0%, #2E8B57 100%); box-shadow: 0 0 20px #3CB371, 0 0 40px #2E8B57; animation: pulse-growth 3s infinite alternate ease-in-out; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+  <div style="width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, #2E8B57 0%, #1A522D 100%); animation: rotate-cycle 6s infinite linear; position: absolute;"></div>
+  <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #0A1B0A; animation: fade-seed 4s infinite alternate ease-in-out; position: absolute;"></div>
+  <style>
+    @keyframes pulse-growth {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes rotate-cycle {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fade-seed {
+      0% { opacity: 0.5; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.5; transform: scale(0.8); }
+    }
+  </style>
+</div>

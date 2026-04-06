@@ -1,0 +1,25 @@
+<div style="width:150px; height:150px; background-color:#333; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow: 0 0 20px rgba(192, 192, 192, 0.7); animation: collective-pulse 4s infinite alternate ease-in-out;">
+    <div style="width:100px; height:100px; background:radial-gradient(circle, white 0%, lightgray 70%, transparent 100%); border-radius:50%; display:flex; justify-content:center; align-items:center; animation: inner-shimmer 3s infinite alternate; position:relative; overflow:hidden;">
+        <svg width="80" height="80" viewBox="0 0 100 100" style="animation: rotate-complex 8s infinite linear;">
+            <circle cx="50" cy="50" r="40" fill="deepskyblue" opacity="0.6" />
+            <path d="M20,50 Q50,10 80,50 Q50,90 20,50 Z" fill="darkblue" opacity="0.7" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="lightgray" stroke-width="2" />
+            <line x1="50" y1="10" x2="50" y2="90" stroke="lightgray" stroke-width="2" />
+        </svg>
+    </div>
+</div>
+<style>
+@keyframes collective-pulse {
+    0% { transform: scale(0.98); opacity: 0.9; box-shadow: 0 0 15px rgba(192, 192, 192, 0.5); background-color:#333; }
+    50% { transform: scale(1.02); opacity: 1; box-shadow: 0 0 30px rgba(192, 192, 192, 1); background-color:#4B0082; }
+    100% { transform: scale(0.98); opacity: 0.9; box-shadow: 0 0 15px rgba(192, 192, 192, 0.5); background-color:#333; }
+}
+@keyframes inner-shimmer {
+    from { transform: scale(0.9); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+@keyframes rotate-complex {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>

@@ -1,0 +1,19 @@
+<div style="width:150px; height:150px; border-radius:50%; background-color: #1A0033; /* Darker indigo base */ display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;">
+  <div style="width:100px; height:100px; border-radius:50%; border: 3px solid #4B0082; /* Indigo ring */ animation: pulse-weave 3s infinite alternate ease-in-out;"></div>
+  <div style="position:absolute; width:70px; height:70px; border-radius:50%; background:radial-gradient(circle, #8A2BE2 0%, transparent 70%); /* Lighter central glow */ animation: spin-glow 5s linear infinite;"></div>
+  <div style="position:absolute; width:40px; height:40px; border-radius:50%; background-color:#DA70D6; /* Inner highlight */ animation: pulse-core 2s infinite alternate;"></div>
+</div>
+<style>
+  @keyframes pulse-weave {
+    0% { transform: scale(0.9); opacity: 0.7; border-color: #4B0082; }
+    100% { transform: scale(1.1); opacity: 1; border-color: #8A2BE2; }
+  }
+  @keyframes spin-glow {
+    from { transform: rotate(0deg) scale(0.8); opacity: 0.5; }
+    to { transform: rotate(360deg) scale(1.2); opacity: 0.8; }
+  }
+  @keyframes pulse-core {
+    0% { transform: scale(0.8); opacity: 0.9; }
+    100% { transform: scale(1.0); opacity: 1; }
+  }
+</style>

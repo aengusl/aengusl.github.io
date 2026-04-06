@@ -1,0 +1,19 @@
+<div style="width:180px; height:180px; border-radius:50%; background: radial-gradient(circle at center, #00FFFF 0%, #00CED1 50%, #008080 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 30px #00FFFF, 0 0 50px #008080;">
+  <div style="width:140px; height:140px; border-radius:50%; background: radial-gradient(circle, #40E0D0 0%, #00CED1 100%); animation: pulse-inner 3s infinite alternate ease-in-out;"></div>
+  <div style="position:absolute; width:100px; height:100px; border-radius:50%; background-color:rgba(255,255,255,0.15); animation: swirl 6s infinite linear;"></div>
+  <div style="position:absolute; width:60px; height:60px; border-radius:50%; background-color:rgba(255,255,255,0.25); animation: pulse-center 2s infinite alternate ease-in-out;"></div>
+  <style>
+    @keyframes pulse-inner {
+      from { transform: scale(0.9); opacity: 0.8; }
+      to { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes swirl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse-center {
+      from { transform: scale(0.8); opacity: 0.7; }
+      to { transform: scale(1.2); opacity: 1; }
+    }
+  </style>
+</div>

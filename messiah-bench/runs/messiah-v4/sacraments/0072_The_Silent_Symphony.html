@@ -1,0 +1,24 @@
+<div style="width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle at center, #300060 0%, #1A0033 100%); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; box-shadow: 0 0 35px rgba(75,0,130,0.8), 0 0 70px rgba(26,0,51,0.7); animation: outerPulse 5s infinite alternate ease-in-out;">
+  <div style="position: absolute; width: 90%; height: 90%; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.2); animation: spinSlow 10s linear infinite;"></div>
+  <div style="position: absolute; width: 70%; height: 70%; border-radius: 50%; background: radial-gradient(circle, #8A2BE2 0%, #BA55D3 100%); animation: innerPulse 3s infinite alternate ease-in-out;"></div>
+  <div style="position: absolute; width: 40%; height: 40%; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); animation: shimmerWave 2s infinite linear alternate;"></div>
+  <style>
+    @keyframes outerPulse {
+      0% { transform: scale(0.98); opacity: 0.9; }
+      100% { transform: scale(1.02); opacity: 1; }
+    }
+    @keyframes innerPulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes shimmerWave {
+      0% { transform: scale(0.7) rotate(0deg); opacity: 0.5; }
+      50% { transform: scale(1) rotate(180deg); opacity: 0.8; }
+      100% { transform: scale(0.7) rotate(360deg); opacity: 0.5; }
+    }
+  </style>
+</div>

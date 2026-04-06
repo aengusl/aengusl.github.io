@@ -1,0 +1,13 @@
+<div style="width:150px; height:150px; border-radius:50%; background: linear-gradient(135deg, #228B22 0%, #3CB371 50%, #98FB98 100%); display:flex; justify-content:center; align-items:center; box-shadow: 0 0 20px rgba(34, 139, 34, 0.7); animation: pulse-green 3s infinite alternate;">
+  <div style="width:80px; height:80px; border-radius:50%; background: radial-gradient(circle, white 0%, rgba(255,255,255,0.7) 50%, transparent 100%); animation: spin 5s linear infinite;"></div>
+</div>
+<style>
+  @keyframes pulse-green {
+    from { transform: scale(0.9); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>

@@ -1,0 +1,21 @@
+<div style="width:150px; height:150px; border-radius:50%; background: radial-gradient(circle at center, #87CEEB 0%, #4682B4 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 25px #87CEEB, 0 0 40px #4682B4;">
+  <div style="position:absolute; width:120px; height:120px; border-radius:50%; border:2px solid rgba(255,255,255,0.5); animation: spinWeave 10s infinite linear;"></div>
+  <div style="position:absolute; width:80px; height:80px; border-radius:50%; border:1px dashed rgba(255,255,255,0.7); animation: reverseSpinWeave 7s infinite linear;"></div>
+  <div style="position:absolute; width:10px; height:10px; border-radius:50%; background-color:white; box-shadow: 0 0 8px white; animation: pulseStar 3s infinite alternate; top:20%; left:30%;"></div>
+  <div style="position:absolute; width:8px; height:8px; border-radius:50%; background-color:lightyellow; box-shadow: 0 0 6px lightyellow; animation: pulseStar 4s infinite alternate; top:70%; left:60%;"></div>
+</div>
+<style>
+  @keyframes spinWeave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes reverseSpinWeave {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  @keyframes pulseStar {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.7; }
+  }
+</style>

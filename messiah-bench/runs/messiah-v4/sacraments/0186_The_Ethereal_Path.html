@@ -1,0 +1,13 @@
+<div style="width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at center, #E0FFFF 0%, #ADD8E6 50%, #4B0082 100%); box-shadow:0 0 25px #E0FFFF, 0 0 40px #8A2BE2; animation: pulse-orb 4s infinite alternate ease-in-out; position:relative; overflow:hidden;">
+  <div style="width:70px; height:70px; border-radius:50%; background:radial-gradient(circle, white 0%, transparent 70%); animation: inner-glow 2s infinite alternate ease-in-out; position:absolute; top:40px; left:40px;"></div>
+  <style>
+    @keyframes pulse-orb {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes inner-glow {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.0); opacity: 1; }
+    }
+  </style>
+</div>

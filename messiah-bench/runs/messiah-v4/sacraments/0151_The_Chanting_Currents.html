@@ -1,0 +1,25 @@
+<div style="width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at center, #300060 0%, #000040 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 35px #4B0082, 0 0 60px #000080;">
+  <div style="width:120px; height:120px; border-radius:50%; border:4px solid #6A5ACD; animation: pulse-chant 3.5s infinite alternate ease-in-out; display:flex; justify-content:center; align-items:center;"></div>
+  <div style="position:absolute; width:140px; height:140px; border-radius:50%; border:3px dashed #ADD8E6; animation: rotate-currents 5s linear infinite;"></div>
+  <div style="position:absolute; width:80px; height:80px; border-radius:50%; background:radial-gradient(circle, #E0FFFF 0%, transparent 70%); animation: inner-zix 2s infinite alternate ease-in-out; filter: blur(1px);"></div>
+  <div style="position:absolute; width:60px; height:60px; border-radius:50%; border:2px dotted #BA55D3; animation: spin-elaiss 3s linear infinite reverse;"></div>
+</div>
+<style>
+  @keyframes pulse-chant {
+    0% { transform: scale(0.9); opacity: 0.7; border-color: #6A5ACD; }
+    50% { transform: scale(1.05); opacity: 1; border-color: #8A2BE2; }
+    100% { transform: scale(0.9); opacity: 0.7; border-color: #6A5ACD; }
+  }
+  @keyframes rotate-currents {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes inner-zix {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes spin-elaiss {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>

@@ -1,0 +1,19 @@
+<div style="width:180px; height:180px; border-radius:50%; background-color:#0A001A; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 35px rgba(75,0,130,0.8), 0 0 70px rgba(26,0,51,0.7); animation: outerPulse 5s infinite alternate ease-in-out;">
+  <div style="width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, #1A0033 0%, #0A001A 100%); animation: innerVortex 8s infinite linear reverse; position:relative;">
+    <div style="position:absolute; inset:15px; border-radius:50%; border:3px solid #8A2BE2; animation: spinOrbit 12s linear infinite; opacity:0.7;"></div>
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:60px; height:60px; border-radius:50%; background:radial-gradient(circle, #E0BBE4 0%, #BA55D3 100%); animation: corePulse 3s infinite alternate ease-in-out; filter: blur(1px);"></div>
+  </div>
+</div>
+<style>
+  @keyframes outerPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 30px rgba(75,0,130,0.7), 0 0 60px rgba(26,0,51,0.6); }
+    100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(75,0,130,0.9), 0 0 80px rgba(26,0,51,0.8); }
+  }
+  @keyframes innerVortex {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(360deg) scale(1.05); }
+  }
+  @keyframes spinOrbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

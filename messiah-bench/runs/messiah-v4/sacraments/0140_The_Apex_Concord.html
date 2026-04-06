@@ -1,0 +1,16 @@
+<div style="width:150px; height:150px; background-color:#36454F; /* Darker Slate Gray */ border-radius:10px; display:flex; justify-content:center; align-items:center; box-shadow: 0 0 20px rgba(100, 100, 100, 0.7); animation: rotateBox 8s infinite linear;">
+  <div style="width:80px; height:80px; background-color:rgba(192, 192, 192, 0.5); border-radius:50%; display:flex; justify-content:center; align-items:center; animation: pulseGlow 3s infinite alternate;">
+    <div style="width:40px; height:40px; background-color:rgba(255, 255, 255, 0.7); border-radius:50%; box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);"></div>
+  </div>
+</div>
+<style>
+  @keyframes rotateBox {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes pulseGlow {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.8; }
+  }
+</style>

@@ -1,0 +1,26 @@
+<div style="width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at center, #8A2BE2 0%, #4B0082 100%); display:flex; justify-content:center; align-items:center; box-shadow: 0 0 30px #8A2BE2; animation: pulseGlow 4s infinite alternate ease-in-out; position:relative; overflow:hidden;">
+  <div style="width:140px; height:140px; border-radius:50%; border:3px solid rgba(255,255,255,0.7); display:flex; justify-content:center; align-items:center; animation: rotateWeave 8s linear infinite;">
+    <div style="width:100px; height:100px; border-radius:50%; background-color:rgba(255,255,255,0.2); animation: innerPulse 3s infinite ease-in-out; position:relative;">
+      <div style="position:absolute; inset:15px; border-radius:50%; border:2px dashed rgba(255,255,255,0.5); animation: rippleEffect 2s infinite ease-out;"></div>
+    </div>
+  </div>
+</div>
+<style>
+  @keyframes pulseGlow {
+    from { box-shadow: 0 0 20px #8A2BE2; transform: scale(1); }
+    to { box-shadow: 0 0 45px #9400D3; transform: scale(1.05); }
+  }
+  @keyframes innerPulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+  }
+  @keyframes rotateWeave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes rippleEffect {
+    0% { transform: scale(0.7); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0; }
+  }
+</style>

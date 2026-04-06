@@ -1,0 +1,18 @@
+<div style="width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at center, #1A0033 0%, #000000 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 25px rgba(75, 0, 130, 0.7);">
+  <div style="width:80px; height:80px; border-radius:50%; background:radial-gradient(circle, #E0B0FF 0%, #BA55D3 100%); animation: pulse-core 3s infinite alternate ease-in-out; filter: blur(1px);"></div>
+  <div style="position:absolute; width:120px; height:120px; border-radius:50%; border:2px dashed #8A2BE2; animation: rotate-weave 8s infinite linear;"></div>
+  <div style="position:absolute; width:60px; height:60px; border-radius:50%; border:1px solid #E0FFFF; animation: rotate-inner 5s infinite reverse linear;"></div>
+</div>
+<style>
+  @keyframes pulse-core {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes rotate-weave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-inner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }

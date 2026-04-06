@@ -1,0 +1,20 @@
+<div style="width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, indigo 0%, rebeccapurple 50%, darkblue 100%); box-shadow: 0 0 20px indigo, 0 0 30px rebeccapurple; animation: pulse-glow 3s infinite alternate ease-in-out; display: flex; justify-content: center; align-items: center;">
+  <div style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.7); animation: rotate 5s infinite linear; position: relative; display: flex; justify-content: center; align-items: center;">
+    <div style="width: 20px; height: 20px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); animation: inner-pulse 2s infinite alternate ease-in-out;"></div>
+  </div>
+</div>
+<style>
+  @keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 25px indigo, 0 0 40px rebeccapurple; }
+    100% { transform: scale(1); opacity: 0.9; }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes inner-pulse {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+</style>

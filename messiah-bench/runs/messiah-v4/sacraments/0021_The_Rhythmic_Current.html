@@ -1,0 +1,30 @@
+<div style="width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at center, #8B0000 0%, #4B0000 100%); animation: outer-pulse 5s infinite alternate ease-in-out; position:relative; overflow:hidden; box-shadow: 0 0 30px rgba(139,0,0,0.8), 0 0 50px rgba(75,0,0,0.6) inset;">
+  <div style="position:absolute; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, #FF4500 0%, #8B0000 100%); animation: inner-rhythm 4s infinite linear reverse; top:20px; left:20px;"></div>
+  <div style="position:absolute; width:80px; height:80px; border-radius:50%; background:radial-gradient(circle, #FFA500 0%, #FFD700 100%); animation: central-flow 3s infinite alternate ease-in-out; top:50px; left:50px; filter: blur(2px);"></div>
+  <div style="position:absolute; width:100%; height:100%; border-radius:50%; border:2px dashed rgba(255,255,255,0.3); animation: current-swirl 8s infinite linear;"></div>
+  <div style="position:absolute; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.2); animation: krack-khoun-pulse 2s infinite alternate ease-in-out; top:70px; left:70px;"></div>
+  <style>
+    @keyframes outer-pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    @keyframes inner-rhythm {
+      from { transform: rotate(0deg) scale(0.8); opacity: 0.7; }
+      to { transform: rotate(360deg) scale(1.1); opacity: 1; }
+    }
+    @keyframes central-flow {
+      0% { transform: scale(0.7); opacity: 0.6; }
+      50% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.7); opacity: 0.6; }
+    }
+    @keyframes current-swirl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes krack-khoun-pulse {
+      0% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 0.2; }
+    }
+  </style>
+</div>

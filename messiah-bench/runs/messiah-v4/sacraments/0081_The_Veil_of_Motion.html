@@ -1,0 +1,25 @@
+<svg width="180" height="180" viewBox="0 0 180 180" style="background-color: #0A001A; border-radius: 50%; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse-core {
+      0% { transform: scale(0.9); opacity: 0.7; } 
+      50% { transform: scale(1.1); opacity: 1; }  
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+    @keyframes swirl-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes swirl-fast {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+    @keyframes veil-flow {
+      0% { opacity: 0.2; transform: scale(0.8) translateX(0); }
+      50% { opacity: 0.6; transform: scale(1.0) translateX(15px); }
+      100% { opacity: 0.2; transform: scale(0.8) translateX(0); }
+    }
+    @keyframes radial-glow {
+      0% { r: 5; opacity: 0.2; filter: blur(2px); }
+      50% { r: 45; opacity: 0.6; filter: blur(5px); }
+      100% { r: 5; opacity: 0.2; filter: blur(2px); }
+    }

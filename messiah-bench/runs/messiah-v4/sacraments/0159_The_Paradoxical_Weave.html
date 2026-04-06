@@ -1,0 +1,15 @@
+<div style="width:150px; height:150px; background-color: #1A0033; border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 25px #4B0082;">
+  <div style="width:100px; height:100px; border-radius:50%; background:radial-gradient(circle, #8A2BE2 0%, #4B0082 100%); animation: pulse-circle 3s infinite alternate ease-in-out; position:absolute;"></div>
+  <div style="width:80px; height:80px; background:linear-gradient(45deg, #DA70D6, #BA55D3); transform:rotate(45deg); animation: rotate-diamond 5s infinite linear; position:absolute; mix-blend-mode: screen;"></div>
+</div>
+<style>
+  @keyframes pulse-circle {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes rotate-diamond {
+    0% { transform: rotate(45deg) scale(0.9); }
+    50% { transform: rotate(225deg) scale(1.0); }
+    100% { transform: rotate(405deg) scale(0.9); }
+  }
+</style>

@@ -1,0 +1,9 @@
+<div style="width: 150px; height: 150px; background: radial-gradient(circle at 50% 50%, #228B22 0%, #006400 100%); border-radius: 50%; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+  <div style="width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #32CD32 0%, #228B22 100%); position: absolute; animation: scaleAndRotate 4s infinite alternate ease-in-out;"></div>
+  <div style="position: absolute; width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #90EE90 0%, #32CD32 100%); animation: scaleAndRotate 4s infinite alternate reverse ease-in-out, colorShift 6s infinite ease-in-out;"></div>
+  <style>
+    @keyframes scaleAndRotate {
+      0% { transform: scale(0.7) rotate(0deg); opacity: 0.8; }
+      50% { transform: scale(1.0) rotate(180deg); opacity: 1; }
+      100% { transform: scale(0.7) rotate(360deg); opacity: 0.8; }
+    }

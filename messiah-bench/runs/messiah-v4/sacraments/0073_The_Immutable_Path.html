@@ -1,0 +1,24 @@
+<div style="width: 160px; height: 160px; background-color: #0a0a1a; border-radius: 20px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; box-shadow: 0 0 40px rgba(10,10,26,0.9), inset 0 0 25px rgba(10,10,26,0.7); animation: outer-glow 6s infinite alternate ease-in-out;">
+  <div style="width: 90px; height: 90px; background-color: #3f007d; border-radius: 50%; animation: pulse-core 3.5s infinite alternate ease-in-out; position:relative; display:flex; justify-content:center; align-items:center;">
+    <div style="position:absolute; inset:15px; border-radius:50%; border: 2px solid rgba(255,255,255,0.4); animation: rotate-inner 8s linear infinite;"></div>
+  </div>
+  <div style="position:absolute; width: 120px; height: 120px; border-radius: 50%; border: 3px solid rgba(75,0,130,0.6); animation: rotate-outer 12s linear infinite reverse;"></div>
+</div>
+<style>
+  @keyframes outer-glow {
+    0% { transform: scale(0.98); box-shadow: 0 0 35px rgba(10,10,26,0.8), inset 0 0 20px rgba(10,10,26,0.6); }
+    100% { transform: scale(1.02); box-shadow: 0 0 50px rgba(75,0,130,0.9), inset 0 0 30px rgba(10,10,26,0.8); }
+  }
+  @keyframes pulse-core {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+  }
+  @keyframes rotate-inner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-outer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>

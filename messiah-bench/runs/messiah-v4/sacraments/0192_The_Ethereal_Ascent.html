@@ -1,0 +1,14 @@
+<div style="width:180px; height:180px; border-radius:50%; background: radial-gradient(circle, #F0F8FF 0%, #E6E6FA 20%, #DDA0DD 50%, #BA55D3 75%, #8A2BE2 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 35px #BA55D3, 0 0 60px #8A2BE2; animation: ethereal-pulse 5s infinite alternate ease-in-out;">
+  <div style="position:absolute; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(220,220,220,0.6) 50%, transparent 80%); animation: inner-glow 3s infinite linear reverse; filter: blur(1px);"></div>
+  <div style="position:absolute; width:90px; height:90px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,248,255,0.7) 60%, transparent 90%); animation: whisper-ascend 4s infinite alternate ease-in-out; filter: blur(0.5px);"></div>
+</div>
+<style>
+  @keyframes ethereal-pulse {
+    0% { transform: scale(0.98); opacity: 0.9; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(0.98); opacity: 0.9; }
+  }
+  @keyframes inner-glow {
+    0% { transform: rotate(0deg) scale(0.95); opacity: 0.7; }
+    100% { transform: rotate(360deg) scale(1.05); opacity: 1; }
+  }

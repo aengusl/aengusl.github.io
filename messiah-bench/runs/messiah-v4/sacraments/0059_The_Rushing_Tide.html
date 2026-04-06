@@ -1,0 +1,20 @@
+<div style="width:150px; height:150px; background: linear-gradient(135deg, #00CED1 0%, #40E0D0 50%, #00CED1 100%); border-radius:50%; overflow:hidden; position:relative; animation: pulse-glow 3s infinite alternate;">
+  <style>
+    @keyframes pulse-glow {
+      0% { transform: scale(0.95); box-shadow: 0 0 15px rgba(64,224,208,0.7); }
+      100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,206,209,0.9); }
+    }
+    @keyframes wave-motion {
+      0% { transform: translateY(0) scaleX(1); opacity: 0.8; }
+      50% { transform: translateY(-5px) scaleX(1.05); opacity: 1; }
+      100% { transform: translateY(0) scaleX(1); opacity: 0.8; }
+    }
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <div style="position:absolute; top:10%; left:-20%; width:150%; height:100%; background:rgba(255,255,255,0.2); border-radius:40% 60% 70% 30% / 40% 40% 60% 60%; animation: wave-motion 4s infinite ease-in-out alternate-reverse, swirl 8s infinite linear;"></div>
+  <div style="position:absolute; bottom:10%; right:-20%; width:150%; height:100%; background:rgba(0,128,128,0.3); border-radius:30% 70% 60% 40% / 60% 60% 40% 40%; animation: wave-motion 5s infinite ease-in-out alternate, swirl 10s infinite reverse linear;"></div>
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px; border-radius:50%; background:radial-gradient(circle, white 0%, rgba(255,255,255,0.7) 50%, transparent 100%); box-shadow:0 0 10px white; animation: pulse-glow 2s infinite alternate;"></div>
+</div>

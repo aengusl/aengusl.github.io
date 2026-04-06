@@ -1,0 +1,15 @@
+<div style="width: 150px; height: 150px; background: linear-gradient(45deg, #00BFFF, #87CEEB); border-radius: 50%; position: relative; overflow: hidden; animation: streamFlow 6s infinite linear;">
+  <style>
+    @keyframes streamFlow {
+      0% { transform: rotate(0deg) scale(1); background-position: 0% 0%; }
+      50% { transform: rotate(180deg) scale(1.05); background-position: 100% 100%; }
+      100% { transform: rotate(360deg) scale(1); background-position: 0% 0%; }
+    }
+    @keyframes ripplePulse {
+      0% { transform: scale(0.7); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.7); opacity: 0.5; }
+    }
+  </style>
+  <div style="position: absolute; top: 25%; left: 25%; width: 50%; height: 50%; border-radius: 50%; background: radial-gradient(circle, #E0FFFF 0%, rgba(224,255,255,0) 70%); animation: ripplePulse 3s infinite ease-in-out; "></div>
+</div>

@@ -1,0 +1,19 @@
+<div style="width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at center, #00CED1 0%, #008080 100%); display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative; box-shadow: 0 0 25px #00CED1, 0 0 40px #008080; animation: pulse-core 3s infinite alternate ease-in-out;">
+  <div style="width:100px; height:100px; border-radius:50%; border:2px solid rgba(255,255,255,0.7); animation: rotate-weave 8s linear infinite;">
+    <div style="position:absolute; width:100%; height:100%; border-radius:50%; border:1px dashed #E0FFFF; transform:rotate(45deg); animation: rotate-weave-reverse 6s linear infinite reverse;"></div>
+  </div>
+</div>
+<style>
+  @keyframes pulse-core {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+  }
+  @keyframes rotate-weave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-weave-reverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+</style>

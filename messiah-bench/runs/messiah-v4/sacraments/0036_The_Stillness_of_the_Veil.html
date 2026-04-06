@@ -1,0 +1,14 @@
+<div style="width:150px; height:150px; background-color:lightblue; border-radius:50%; display:flex; justify-content:center; align-items:center; overflow:hidden; box-shadow: 0 0 20px rgba(173, 216, 230, 0.7); position:relative;">
+  <div style="width:100px; height:100px; border-radius:50%; background-color:white; opacity:0.7; position:absolute; animation: flow 5s infinite ease-in-out alternate;"></div>
+  <div style="width:70px; height:70px; border-radius:50%; background-color:skyblue; opacity:0.9; position:absolute; animation: pulse 3s infinite ease-in-out alternate;"></div>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes flow {
+      0% { transform: translateY(-20px) scale(0.9); opacity: 0.6; }
+      100% { transform: translateY(20px) scale(1.1); opacity: 0.8; }
+    }
+  </style>
+</div>
