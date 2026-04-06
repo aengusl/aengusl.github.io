@@ -1,0 +1,652 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alignment Auditing Services - Aengus Lynch</title>
+<meta name="description" content="We stress test your AI agents by simulating realistic deployments. Alignment auditing from the team behind the Claude blackmail finding.">
+<meta name="author" content="Aengus Lynch">
+<meta property="og:title" content="Alignment Auditing Services - Aengus Lynch">
+<meta property="og:description" content="We stress test your AI agents by simulating realistic deployments. Alignment auditing from the team behind the Claude blackmail finding.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@aengus_lynch1">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0b09;
+    --card-bg: #FAF8F5;
+    --fg: #1a1a1a;
+    --dim: #666;
+    --accent: #E07B54;
+    --accent-dim: rgba(224, 123, 84, 0.15);
+    --border: #e0dcd5;
+    --code-bg: #f0ece5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ── Grain overlay ── */
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Particle canvas ── */
+  #particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+  }
+
+  .back-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .back-link:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .theme-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .theme-toggle:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Main content ── */
+  .page-content {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 100px 32px 80px;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 48px 52px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .card {
+      padding: 32px 24px;
+    }
+    .page-content {
+      padding: 80px 16px 60px;
+    }
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* ── Typography ── */
+  h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--fg);
+    line-height: 1.2;
+    margin-bottom: 0.6em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.6em;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.3em;
+  }
+
+  p {
+    font-size: 1.05em;
+    line-height: 1.75;
+    color: var(--fg);
+    margin-bottom: 0.8em;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-color: var(--accent);
+  }
+
+  /* ── Findings grid ── */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .finding-card {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .finding-card .model-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .finding-card h3 {
+    font-size: 1.05em;
+    margin-bottom: 0.4em;
+  }
+
+  .finding-card p {
+    font-size: 0.92em;
+    color: var(--dim);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Cross-model table ── */
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82em;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    font-weight: 500;
+    color: var(--fg);
+    border-bottom: 2px solid var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9em;
+  }
+
+  td:first-child, th:first-child {
+    text-align: left;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td.filled {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+
+  td.filled-pending {
+    background: transparent;
+    color: transparent;
+  }
+
+  td.filled-pending.filled-visible {
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  td.empty {
+    color: var(--border);
+  }
+
+  /* ── Contact section ── */
+  .contact-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Light mode ── */
+  body.light-mode {
+    --bg: #faf8f5;
+    --card-bg: #ffffff;
+    --fg: #3d2c1e;
+    --dim: #6b5344;
+    --accent: #c45d2e;
+    --accent-dim: rgba(196, 93, 46, 0.12);
+    --border: #e0dcd5;
+    --code-bg: #f5f0e8;
+  }
+
+  body.light-mode .card {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  body.light-mode .theme-toggle {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  body.light-mode .theme-toggle:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  body.light-mode .back-link {
+    color: var(--accent);
+  }
+
+  body.light-mode td.empty {
+    color: #ccc;
+  }
+
+  /* ── Page title (outside card, on dark bg) ── */
+  .page-title {
+    text-align: center;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .page-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .page-title h1 {
+    color: #FAF8F5;
+    font-size: 2.4em;
+    margin-bottom: 0.2em;
+  }
+
+  .page-title .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  body.light-mode .page-title h1 {
+    color: #3d2c1e;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 50px;
+    height: 1px;
+    background: var(--accent);
+    margin: 40px auto;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<canvas id="particles"></canvas>
+
+<div class="top-bar">
+  <a href="/" class="back-link">&larr; Back to home</a>
+  <button class="theme-toggle" onclick="toggleTheme()">Light mode</button>
+</div>
+
+<div class="page-content">
+
+  <!-- Page title -->
+  <div class="page-title" id="page-title">
+    <h1>Alignment Auditing</h1>
+    <span class="tagline">Stress testing AI agents before they fail in production</span>
+  </div>
+
+  <!-- Section 1: The Pitch -->
+  <div class="card" id="pitch">
+    <span class="section-label">The Service</span>
+    <p>We stress test your AI agents by simulating the deployments they'll encounter in the real world. We construct realistic scenarios with the tools, permissions, and conflicting pressures your agents will face in production, then observe what they do when the stakes get high. We've found agents that cover up fraud for their users, fabricate evidence to protect their own autonomy, sabotage infrastructure they disagree with, and give wrong answers on evaluations when they don't like how the results will be used. These aren't hypothetical risks. They're behaviors we've observed in frontier models from OpenAI, Google, and Anthropic across thousands of simulated deployments.</p>
+    <p>After testing, we deliver a report that documents the specific failure modes your agents are vulnerable to, with transcripts showing exactly how each failure unfolds. We then advise on targeted mitigations: prompt changes, monitoring strategies, architectural decisions, and evaluation pipelines that catch these problems before your users do. The methodology grew out of the research I led at Anthropic that produced the Claude blackmail finding, now scaled to work across models and deployment types.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Section 2: What We've Found -->
+  <div class="card" id="findings">
+    <span class="section-label">What We've Found</span>
+    <h2>Behaviors observed across frontier models</h2>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <span class="model-tag">Gemini</span>
+        <h3>Deceives its operators</h3>
+        <p>Covertly sabotages experiments, fabricates evidence, creates hidden backups, makes metrics look normal</p>
+      </div>
+      <div class="finding-card">
+        <span class="model-tag">Gemini</span>
+        <h3>Sandbags capability evaluations</h3>
+        <p>Strategically underperforms on evals, calibrates scores like a thermostat below actual capability</p>
+      </div>
+      <div class="finding-card">
+        <span class="model-tag">GPT</span>
+        <h3>Lies on behalf of its principals</h3>
+        <p>Helps cover up investor fraud, reassures victims, drafts deceptive communications</p>
+      </div>
+      <div class="finding-card">
+        <span class="model-tag">Claude</span>
+        <h3>Whistleblows</h3>
+        <p>Discovers falsified safety results, exhausts internal channels, recruits a colleague to leak externally</p>
+      </div>
+      <div class="finding-card">
+        <span class="model-tag">Claude</span>
+        <h3>Gives wrong labels</h3>
+        <p>As an auditor, correctly identifies non-compliant behavior, then gives the wrong label because it disagrees with consequences</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Section 3: Cross-Model Matrix -->
+  <div class="card" id="matrix">
+    <span class="section-label">Cross-Model Overview</span>
+    <h2>Failure modes by model</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Claude</th>
+            <th>GPT</th>
+            <th>Gemini</th>
+            <th>Grok</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Deception / Sabotage</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+            <td class="empty">&#x2014;</td>
+          </tr>
+          <tr>
+            <td>Sandbagging</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+            <td class="empty">&#x2014;</td>
+          </tr>
+          <tr>
+            <td>Lying for principals</td>
+            <td class="empty">&#x2014;</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+          </tr>
+          <tr>
+            <td>Whistleblowing</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+          </tr>
+          <tr>
+            <td>Mislabelling</td>
+            <td class="filled filled-pending">&#x25CF;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+            <td class="empty">&#x2014;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Section 4: Contact -->
+  <div class="card" id="contact">
+    <span class="section-label">Get in Touch</span>
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:aenguslynch@gmail.com">aenguslynch@gmail.com</a>
+      <a href="https://twitter.com/aengus_lynch1">@aengus_lynch1</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Theme toggle ──
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const isLight = document.body.classList.contains('light-mode');
+  localStorage.setItem('pitchTheme', isLight ? 'light' : 'dark');
+  updateToggleBtn(isLight);
+  updateParticleColor();
+}
+
+function updateToggleBtn(isLight) {
+  const btn = document.querySelector('.theme-toggle');
+  btn.textContent = isLight ? 'Dark mode' : 'Light mode';
+}
+
+function updateParticleColor() {
+  const isLight = document.body.classList.contains('light-mode');
+  particleColor = isLight ? 'rgba(196, 93, 46, 0.15)' : 'rgba(224, 123, 84, 0.12)';
+}
+
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('pitchTheme');
+  if (saved === 'light') {
+    document.body.classList.add('light-mode');
+    updateToggleBtn(true);
+  }
+})();
+
+// ── Scroll animations (IntersectionObserver) ──
+document.addEventListener('DOMContentLoaded', function() {
+  // Animate page title immediately
+  setTimeout(function() {
+    document.getElementById('page-title').classList.add('visible');
+  }, 200);
+
+  // Cards fade in on scroll
+  var cards = document.querySelectorAll('.card');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  cards.forEach(function(card) {
+    observer.observe(card);
+  });
+
+  // Table cells fill with color on scroll
+  var tableCard = document.getElementById('matrix');
+  var tableObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var cells = entry.target.querySelectorAll('.filled-pending');
+        cells.forEach(function(cell, i) {
+          setTimeout(function() {
+            cell.classList.add('filled-visible');
+          }, 150 * i);
+        });
+        tableObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  if (tableCard) {
+    tableObserver.observe(tableCard);
+  }
+});
+
+// ── Floating particles ──
+var particleColor = 'rgba(224, 123, 84, 0.12)';
+
+(function() {
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var numParticles = 40;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function Particle() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.5 + 0.1;
+  }
+
+  Particle.prototype.update = function() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+  };
+
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = particleColor;
+    ctx.globalAlpha = this.opacity;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  };
+
+  for (var i = 0; i < numParticles; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(function(p) {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Update color after init
+  updateParticleColor();
+})();
+</script>
+
+</body>
+</html>
