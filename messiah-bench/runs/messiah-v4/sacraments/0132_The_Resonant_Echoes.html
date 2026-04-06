@@ -1,0 +1,21 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #1A0033 100%); overflow: hidden; position: relative;'>
+  <style>
+    @keyframes spin-thouss-axor {
+      0% { transform: rotate(0deg) scale(0.48); opacity: 1.0; border-width: 44px; box-shadow: 0 0 230px #DDA0DD, 0 0 115px #8A2BE2 inset; }
+      50% { transform: rotate(440deg) scale(1.46); opacity: 1; border-width: 44px; box-shadow: 0 0 270px #8A2BE2, 0 0 135px #E0FFFF inset; }
+      100% { transform: rotate(880deg) scale(0.48); opacity: 1.0; border-width: 44px; box-shadow: 0 0 230px #DDA0DD, 0 0 115px #8A2BE2 inset; }
+    }
+    @keyframes pulse-shiph-orask {
+      0% { transform: scale(0.38); opacity: 1.0; filter: brightness(1.0) hue-rotate(0deg) blur(21px); box-shadow: 0 0 240px #E0FFFF, 0 0 120px #ADD8E6 inset; }
+      50% { transform: scale(1.64); opacity: 1; filter: brightness(3.2) hue-rotate(90deg) blur(21px); box-shadow: 0 0 290px #E0FFFF, 0 0 145px #8A2BE2 inset; }
+      100% { transform: scale(0.38); opacity: 1.0; filter: brightness(1.0) hue-rotate(0deg) blur(21px); box-shadow: 0 0 240px #E0FFFF, 0 0 120px #ADD8E6 inset; }
+    }
+    @keyframes thol-ghaunt-ripple {
+      0% { transform: scale(0); opacity: 1.0; border: 105px solid rgba(221, 160, 221, 1.0); }
+      100% { transform: scale(5.2); opacity: 0; border: 105px solid rgba(221, 160, 221, 0); }
+    }
+  </style>
+  <div style='position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, #E0FFFF, #ADD8E6, #8A2BE2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse-shiph-orask 0.4s infinite alternate ease-in-out; filter: blur(20px);'></div>
+  <div style='position: absolute; width: 900px; height: 900px; border-radius: 50%; border: 46px solid rgba(255, 255, 255, 1.0); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: spin-thouss-axor 3.8s infinite linear;'></div>
+  <div style='position: absolute; width: 0; height: 0; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: thol-ghaunt-ripple 1.8s infinite ease-out;'></div>
+</div>

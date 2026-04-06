@@ -1,0 +1,52 @@
+<div style="width: 100%; height: 100vh; background-color: #000031; position: relative; overflow: hidden; font-family: sans-serif;">
+  <style>
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 47px #00DCDC, 0 0 94px #00B0B0; transform: scale(1.74); }
+      50% { box-shadow: 0 0 98px #00FFFF, 0 0 196px #00B0B0; transform: scale(0.32); }
+      100% { box-shadow: 0 0 47px #00DCDC, 0 0 94px #00B0B0; transform: scale(1.74); }
+    }
+    @keyframes weave-float {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(47px, -47px); }
+      50% { transform: translate(0px, 0px); }
+      75% { transform: translate(-47px, 47px); }
+      100% { transform: translate(0px, 0px); }
+    }
+    @keyframes line-shimmer {
+      0% { background-color: rgba(0, 255, 255, 1.0); }
+      50% { background-color: rgba(128, 255, 255, 1.0); }
+      100% { background-color: rgba(0, 255, 255, 1.0); }
+    }
+    @keyframes small-node-travel {
+      0% { transform: translate(0, 0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translate(100vw, 100vh); opacity: 0; }
+    }
+    .soul-node {
+      position: absolute;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background-color: #00FFFF;
+      animation: pulse-glow 11.4s infinite alternate ease-in-out, weave-float 13.4s infinite alternate ease-in-out;
+      opacity: 1.0;
+      z-index: 2;
+    }
+    .line-segment {
+      position: absolute;
+      height: 22px;
+      background-color: rgba(0, 255, 255, 1.0);
+      animation: line-shimmer 5.4s infinite alternate ease-in-out;
+      opacity: 1.0;
+      z-index: 1;
+    }
+    .small-soul-node {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: #00FFC0;
+      animation: small-node-travel 7.2s infinite linear;
+      opacity: 0;
+      z-index: 3;
+    }

@@ -1,0 +1,38 @@
+<div style="width: 100%; height: 100vh; background: radial-gradient(circle at center, #0a0a0a, #000000); overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse-void {
+      0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 96px rgba(138, 43, 226, 1.0), inset 0 0 48px rgba(75, 0, 130, 0.98); }
+      50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 116px rgba(138, 43, 226, 1.0), inset 0 0 58px rgba(75, 0, 130, 1.0); }
+      100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 96px rgba(138, 43, 226, 1.0), inset 0 0 48px rgba(75, 0, 130, 0.98); }
+    }
+    @keyframes shift-hue {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    @keyframes shimmer-border {
+      0% { border-color: rgba(255, 255, 255, 0.99); }
+      50% { border-color: rgba(255, 255, 255, 1.0); }
+      100% { border-color: rgba(255, 255, 255, 0.99); }
+    }
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes subtle-float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(7px, 7px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes deep-pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.03); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+  </style>
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 340px; height: 340px; border-radius: 50%; background: linear-gradient(45deg, #4B0082, #8A2BE2); animation: pulse-void 8s infinite alternate ease-in-out, shift-hue 12s infinite linear, shimmer-border 4s infinite alternate ease-in-out, subtle-float 10s infinite alternate ease-in-out; border: 33px solid transparent; transform-origin: center center; filter: saturate(4.2) brightness(3.9);">
+    <div style="position: absolute; top: 25%; left: 25%; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, #DDA0DD, #4B0082); animation: pulse-void 6s infinite alternate ease-in-out reverse, spin-slow 15s infinite linear, subtle-float 8s infinite alternate reverse ease-in-out, deep-pulse 7s infinite alternate ease-in-out; filter: saturate(4.6) brightness(4.3);">
+      <div style="position: absolute; top: 25%; left: 25%; width: 190px; height: 190px; border-radius: 50%; background-color: #E0FFFF; animation: pulse-void 4s infinite alternate ease-in-out, spin-slow 20s infinite linear reverse, subtle-float 6s infinite alternate ease-in-out, deep-pulse 5s infinite alternate reverse ease-in-out; filter: saturate(4.8) brightness(4.6);">
+      </div>
+    </div>
+  </div>
+</div>

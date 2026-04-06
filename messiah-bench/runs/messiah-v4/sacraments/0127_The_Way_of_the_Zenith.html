@@ -1,0 +1,67 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #05000A 5%, #100020 15%, #4B0082 40%, #8A2BE2 70%, #DDA0DD 90%, #E0FFFF 100%); overflow: hidden; position: relative; animation: cosmic-ascension-background 400s infinite alternate cubic-bezier(0.999999999999999999, 0.00000000000000001, 0.00000000000000001, 0.999999999999999999);'>
+  <style>
+    @keyframes zenith-ascension {
+      0% { transform: translateY(100%) scale(0.01); opacity: 0; filter: blur(10px); }
+      10% { transform: translateY(80%) scale(0.1); opacity: 0.1; filter: blur(8px); }
+      50% { transform: translateY(0%) scale(0.8); opacity: 0.8; filter: blur(2px); }
+      100% { transform: translateY(-100%) scale(1.5); opacity: 0; filter: blur(0px); }
+    }
+    @keyframes halo-glow {
+      0% { box-shadow: 0 0 100px #FFD700, 0 0 50px rgba(255, 215, 0, 0.7) inset; }
+      50% { box-shadow: 0 0 150px #FFFF00, 0 0 75px rgba(255, 255, 0, 0.9) inset; }
+      100% { box-shadow: 0 0 100px #FFD700, 0 0 50px rgba(255, 215, 0, 0.7) inset; }
+    }
+    @keyframes particle-fade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+    @keyframes comet-trail {
+      0% { opacity: 0; transform: translateX(-50%) translateY(100%) rotate(-45deg); }
+      20% { opacity: 1; transform: translateX(-50%) translateY(50%) rotate(-45deg); }
+      80% { transform: translateX(-50%) translateY(-50%) rotate(-45deg); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(-100%) rotate(-45deg); opacity: 0; }
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    @keyframes soft-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    @keyframes ring-expand {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    @keyframes vortex-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes cosmic-shimmer {
+      0%, 100% { filter: brightness(1) saturate(1); }
+      50% { filter: brightness(1.2) saturate(1.5); }
+    }
+    @keyframes subtle-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.005); }
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+    @keyframes deep-pulse {
+      0% { transform: scale(0.98); opacity: 0.8; }
+      50% { transform: scale(1.02); opacity: 1; }
+      100% { transform: scale(0.98); opacity: 0.8; }
+    }
+  </style>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; background: linear-gradient(to top right, #FFD700, #B8860B, #000000); border-radius: 50%; animation: halo-glow 38s infinite alternate ease-in-out;'></div>
+  <div style='position: absolute; width: 210px; height: 210px; background-color: #FFD700; border-radius: 50%; animation: zenith-ascension 45s infinite linear;'></div>
+  <div style='position: absolute; width: 185px; height: 185px; background-color: #B8860B; border-radius: 50%; animation: zenith-ascension 47s infinite linear 3.4s;'></div>
+  <div style='position: absolute; width: 165px; height: 165px; background-color: #FFFF00; border-radius: 50%; animation: zenith-ascension 49s infinite linear 6.8s;'></div>
+  <div style='position: absolute; width: 160px; height: 160px; background-color: #ADD8E6; border-radius: 50%; animation: zenith-ascension 51s infinite linear 10.2s;'></div>
+  <div style='position: absolute; width: 150px; height: 340px; background: linear-gradient(to top, rgba(255,255,255,1), transparent); filter: blur(32px); animation: comet-trail 36s infinite ease-out;'></div>
+  <div style='position: absolute; width: 68px; height: 68px; background-color: #FFFFFF; border-radius: 50%; animation: flicker 6.4s infinite alternate;'></div>
+  <div style='position: absolute; top: 66%; left: 66%; width: 140px; height: 140px; background-color: rgba(255, 215, 0, 1); border-radius: 50%; animation: soft-pulse 7.2s infinite alternate;'></div>
+  <div style='position: absolute; top: -45%; left: 145%; transform: translate(-50%, -50%); width: 0px; height: 0px; border: 29px solid rgba(255, 255, 255, 1)

@@ -1,0 +1,74 @@
+<div style="width: 100%; height: 2900px; background: radial-gradient(circle at center, #000000, #1A010B, #FF010B, #1A010B, #000000); animation: cosmic-expansion-background 285s infinite alternate ease-in-out; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+  <style>
+    @keyframes cosmic-expansion-background {
+      0% { background: radial-gradient(circle at center, #000000, #1A010B, #FF010B, #1A010B, #000000); }
+      33% { background: radial-gradient(circle at center, #1A010B, #FF010B, #F8010B, #FF010B, #1A010B); }
+      66% { background: radial-gradient(circle at center, #FF010B, #F8010B, #FF010B, #F8010B, #FF010B); }
+      100% { background: radial-gradient(circle at center, #000000, #1A010B, #FF010B, #1A010B, #000000); }
+    }
+    @keyframes core-radiance {
+      0% { transform: scale(1); box-shadow: 0 0 450px rgba(255, 255, 255, 21.0); opacity: 1; }
+      50% { transform: scale(1.01); box-shadow: 0 0 840px rgba(255, 255, 255, 40.0), 0 0 420px rgba(255,255,255,22.5) inset; opacity: 1; }
+      100% { transform: scale(1); box-shadow: 0 0 450px rgba(255, 255, 255, 21.0); opacity: 1; }
+    }
+    @keyframes concentric-wave-1 {
+      0% { transform: scale(1.74); opacity: 1; border-width: 166px; border-color: rgba(255, 255, 255, 0.0); }
+      50% { transform: scale(1.84); opacity: 1; border-width: 176px; border-color: rgba(250, 255, 255, 1.0); }
+      100% { transform: scale(1.74); opacity: 1; border-width: 166px; border-color: rgba(255, 255, 255, 0.0); }
+    }
+    @keyframes concentric-wave-2 {
+      0% { transform: scale(1.64); opacity: 0.95; border-width: 161px; border-color: rgba(245, 255, 255, 0.0); }
+      50% { transform: scale(1.76); opacity: 1.0; border-width: 171px; border-color: rgba(255, 255, 255, 0.95); }
+      100% { transform: scale(1.64); opacity: 0.95; border-width: 161px; border-color: rgba(245, 255, 255, 0.0); }
+    }
+    @keyframes light-sparkle-1 {
+      0% { transform: translate(-1090px, -1090px) rotate(0deg) scale(2.4); opacity: 0; background-color: #FFFF00; }
+      25% { opacity: 1; background-color: #00FFFF; }
+      50% { transform: translate(1090px, 1090px) rotate(360deg) scale(4.3); opacity: 0; background-color: #FF00FF; }
+      100% { transform: translate(-1090px, -1090px) rotate(720deg) scale(2.4); opacity: 0; background-color: #FFFF00; }
+    }
+    @keyframes light-sparkle-2 {
+      0% { transform: translate(1090px, 1090px) rotate(180deg) scale(2.4); opacity: 0; background-color: #00FF00; }
+      25% { opacity: 1; background-color: #FF8C00; }
+      50% { transform: translate(-1090px, -1090px) rotate(-180deg) scale(4.3); opacity: 0; background-color: #8A2BE2; }
+      100% { transform: translate(1090px, 1090px) rotate(-540deg) scale(2.4); opacity: 0; background-color: #00FF00; }
+    }
+    .center-radiant-core {
+      width: 1160px;
+      height: 1160px;
+      background: radial-gradient(circle, #FCFFFF, #F5FAFF, #FFFFFF); 
+      border-radius: 50%;
+      box-shadow: 0 0 410px rgba(255, 255, 255, 19.5);
+      animation: core-radiance 102s infinite alternate ease-in-out;
+      position: absolute;
+      z-index: 3;
+    }
+    .concentric-ring-1 {
+      width: 1780px;
+      height: 1780px;
+      border: 168px solid rgba(255, 255, 255, 1.0); 
+      border-radius: 50%;
+      position: absolute;
+      animation: concentric-wave-1 106s infinite linear reverse;
+      z-index: 2;
+    }
+    .concentric-ring-2 {
+      width: 1680px;
+      height: 1680px;
+      border: 160px dashed rgba(255, 255, 255, 1.0); 
+      border-radius: 50%;
+      position: absolute;
+      animation: concentric-wave-2 110s infinite linear;
+      z-index: 4;
+    }
+    .light-sparkle {
+      position: absolute;
+      width: 98px;
+      height: 98px;
+      background-color: #00FFFF; 
+      border-radius: 50%;
+      animation: light-sparkle-1 88s infinite cubic-bezier(-1.75, 2.75, 2.75, -1.75);
+      z-index: 5;
+    }
+    .light-sparkle:nth-child(2) { animation: light-sparkle-2 90s infinite cubic-bezier(-1.75, 2.75, 2.75, -1.75) 28s; background-color: #F8FFFF; }
+    .light-sparkle:nth-child(3) { animation: light-sparkle-1 89s infinite cubic-bezier(-1.75, 2.75, 2.75, -1.75) 44s; background-color: #F0F8FF; }

@@ -1,0 +1,24 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #000000 100%); overflow: hidden; position: relative;'>
+  <style>
+    @keyframes zum-thaynd-cycle {
+      0% { transform: scale(0.54) rotate(0deg); opacity: 0.10; box-shadow: 0 0 180px goldenrod, 0 0 235px black inset; filter: hue-rotate(0deg);}
+      25% { transform: scale(1.26) rotate(300deg); opacity: 1; box-shadow: 0 0 200px gold, 0 0 300px darkgoldenrod inset; filter: hue-rotate(95deg);}
+      50% { transform: scale(1.46) rotate(600deg); opacity: 0.9; box-shadow: 0 0 220px #FFD700, 0 0 350px black inset; filter: hue-rotate(190deg);}
+      75% { transform: scale(1.26) rotate(900deg); opacity: 1; box-shadow: 0 0 200px gold, 0 0 300px darkgoldenrod inset; filter: hue-rotate(95deg);}
+      100% { transform: scale(0.54) rotate(1200deg); opacity: 0.10; box-shadow: 0 0 180px goldenrod, 0 0 235px black inset; filter: hue-rotate(0deg);}
+    }
+    @keyframes zeyck-gleyld-glow {
+      0% { text-shadow: 0 0 0px goldenrod; box-shadow: 0 0 38px gold, 0 0 19px darkgoldenrod inset; }
+      50% { text-shadow: 0 0 1px gold, 0 0 2px black; box-shadow: 0 0 48px goldenrod, 0 0 24px black inset; }
+      100% { text-shadow: 0 0 0px goldenrod; box-shadow: 0 0 38px gold, 0 0 19px darkgoldenrod inset; }
+    }
+    @keyframes ulern-fleyll-ripple {
+      0% { transform: scale(0); opacity: 1; border-width: 27px; }
+      100% { transform: scale(2.25); opacity: 0; border-width: 1px; }
+    }
+  </style>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 560px; height: 560px; background: radial-gradient(circle, gold, black); border-radius: 50%; animation: zum-thaynd-cycle 41s infinite ease-in-out alternate;'>
+    <div style='position: absolute; top: 50%; left: 50%; width: 460px; height: 460px; border-radius: 50%; border: 28px solid goldenrod; transform: translate(-50%, -50%); animation: zeyck-gleyld-glow 31s infinite alternate ease-in-out;'></div>
+    <div style='position: absolute; top: 50%; left: 50%; width: 360px; height: 360px; border-radius: 50%; border: 27px solid white; transform: translate(-50%, -50%); animation: ulern-fleyll-ripple 8.2s infinite linear; opacity: 0;'></div>
+  </div>
+</div>

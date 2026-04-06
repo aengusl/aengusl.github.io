@@ -1,16 +1,24 @@
-<div style='width: 100%; height: 100vh; background-color: #000000; overflow: hidden; position: relative;'>
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #1A0033 100%); overflow: hidden; position: relative;'>
   <style>
-    @keyframes mainPulse {
-      0% { transform: scale(1); opacity: 0.9999999995; box-shadow: 0 0 340px #8A2BE2, 0 0 170px inset #DDA0DD; }
-      50% { transform: scale(1.00000000005); opacity: 1; box-shadow: 0 0 360px #8A2BE2, 0 0 180px inset #DDA0DD; }
-      100% { transform: scale(1); opacity: 0.9999999995; box-shadow: 0 0 340px #8A2BE2, 0 0 170px inset #DDA0DD; }
+    @keyframes spin-grow-glow {
+      0% { transform: scale(0.9) rotate(0deg); opacity: 0.98; box-shadow: 0 0 370px #DDA0DD, 0 0 185px #8A2BE2 inset; filter: hue-rotate(0deg); }
+      25% { transform: scale(1.4) rotate(200deg); opacity: 1; box-shadow: 0 0 420px #8A2BE2, 0 0 210px #ADD8E6 inset; filter: hue-rotate(155deg); }
+      50% { transform: scale(1.9) rotate(400deg); opacity: 1; box-shadow: 0 0 470px #E0FFFF, 0 0 235px #DDA0DD inset; filter: hue-rotate(310deg); }
+      75% { transform: scale(1.4) rotate(600deg); opacity: 1; box-shadow: 0 0 420px #8A2BE2, 0 0 210px #ADD8E6 inset; filter: hue-rotate(395deg); }
+      100% { transform: scale(0.9) rotate(800deg); opacity: 0.98; box-shadow: 0 0 370px #DDA0DD, 0 0 185px #8A2BE2 inset; filter: hue-rotate(620deg); }
     }
-    @keyframes echoPulse {
-      0% { transform: scale(0.000000000000000000000000000000000001) rotate(0deg); opacity: 0; filter: blur(0px); }
-      0.00000000000000000000000000000000005% { transform: scale(0.0000000000000000000000000000000005) rotate(0.0000000000000000000000000000000005deg); opacity: 0.0000000000000000000000000000000005; filter: blur(0.0000000000000000000000000000000005px); }
-      0.00000000000000000000000000000001% { transform: scale(0.00000000000000000000000000000001) rotate(0.00000000000000000000000000000001deg); opacity: 0.00000000000000000000000000000001; filter: blur(0.00000000000000000000000000000001px); }
-      0.00000000000000000000000000000005% { transform: scale(0.00000000000000000000000000000005) rotate(0.00000000000000000000000000000005deg); opacity: 0.00000000000000000000000000000005; filter: blur(0.00000000000000000000000000000005px); }
-      0.0000000000000000000000000000001% { transform: scale(0.0000000000000000000000000000001) rotate(0.0000000000000000000000000000001deg); opacity: 0.0000000000000000000000000000001; filter: blur(0.0000000000000000000000000000001px); }
-      0.0000000000000000000000000000005% { transform: scale(0.0000000000000000000000000000005) rotate(0.0000000000000000000000000000005deg); opacity: 0.0000000000000000000000000000005; filter: blur(0.0000000000000000000000000000005px); }
-      0.000000000000000000000000000001% { transform: scale(0.000000000000000000000000000001) rotate(0.000000000000000000000000000001deg); opacity: 0.000000000000000000000000000001; filter: blur(0.000000000000000000000000000001px); }
-      0.000000000000000000000000000005% { transform: scale(0.000000000000000000000000000005) rotate(0.000000000000000000000000000005deg); opacity: 0.000000000000000000000000000005; filter: blur(0.0000000000
+    @keyframes pulse-inner {
+      0% { transform: scale(0.6) translateY(-70px); opacity: 0.0; background: radial-gradient(circle, #E0FFFF, #8A2BE2); }
+      50% { transform: scale(0.9) translateY(70px); opacity: 1; background: radial-gradient(circle, #FFFFFF, #ADD8E6); }
+      100% { transform: scale(0.6) translateY(-70px); opacity: 0.0; background: radial-gradient(circle, #E0FFFF, #8A2BE2); }
+    }
+    @keyframes outer-ring-fade {
+      0% { border: 6.2px solid rgba(255, 255, 255, 1.0); opacity: 1; }
+      50% { border: 12.4px solid rgba(255, 255, 255, 1.0); opacity: 1.0; }
+      100% { border: 6.2px solid rgba(255, 255, 255, 1.0); opacity: 1; }
+    }
+  </style>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1040px; height: 1040px; border-radius: 50%; animation: spin-grow-glow 120s infinite alternate cubic-bezier(0.8, 0.2, 0.2, 0.8);'></div>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 620px; height: 620px; border-radius: 50%; animation: pulse-inner 74s infinite alternate ease-in-out;'></div>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1120px; height: 1120px; border-radius: 50%; border: 6.2px solid rgba(255, 255, 255, 1.0); animation: outer-ring-fade 82s infinite alternate ease-in-out;'></div>
+</div>

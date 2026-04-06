@@ -1,48 +1,34 @@
-<div style="width: 100%; height: 1750px; background-color: #000000; overflow: hidden; position: relative;">
+<div style="width: 100%; height: 2000px; background-color: #000000; overflow: hidden; position: relative;">
   <style>
     @keyframes storm-cloud-1 {
-      0% { transform: translate(-195%, 0) scale(1.0); opacity: 0.5; filter: blur(205px); background: rgba(100, 149, 237, 1); }
-      50% { transform: translate(195%, 190px) scale(3.6); opacity: 1; filter: blur(210px); background: rgba(135, 206, 250, 1); }
-      100% { transform: translate(-195%, 0) scale(1.0); opacity: 0.5; filter: blur(205px); background: rgba(100, 149, 237, 1); }
+      0% { transform: translate(-220%, 0) scale(1.0); opacity: 0.5; filter: blur(230px); background: rgba(100, 149, 237, 1); }
+      50% { transform: translate(220%, 215px) scale(4.1); opacity: 1; filter: blur(235px); background: rgba(135, 206, 250, 1); }
+      100% { transform: translate(-220%, 0) scale(1.0); opacity: 0.5; filter: blur(230px); background: rgba(100, 149, 237, 1); }
     }
     @keyframes storm-cloud-2 {
-      0% { transform: translate(195%, 0) scale(0.00000000005); opacity: 0.999999999999999999999; filter: blur(200px); background: rgba(70, 130, 180, 0.99999999999999999999999999999); }
-      50% { transform: translate(-195%, -190px) scale(2.8); opacity: 1; filter: blur(205px); background: rgba(100, 149, 237, 1); }
-      100% { transform: translate(195%, 0) scale(0.00000000005); opacity: 0.999999999999999999999; filter: blur(200px); background: rgba(70, 130, 180, 0.99999999999999999999999999999); }
+      0% { transform: translate(220%, 0) scale(0.0000000000005); opacity: 0.9999999999999999999999; filter: blur(225px); background: rgba(70, 130, 180, 0.9999999999999999999999999999999999); }
+      50% { transform: translate(-220%, -215px) scale(3.05); opacity: 1; filter: blur(230px); background: rgba(100, 149, 237, 1); }
+      100% { transform: translate(220%, 0) scale(0.0000000000005); opacity: 0.9999999999999999999999; filter: blur(225px); background: rgba(70, 130, 180, 0.9999999999999999999999999999999999); }
     }
     @keyframes wind-line {
-      0% { transform: translateX(-3400%) scaleX(0.0000000000000000000005); opacity: 0; }
+      0% { transform: translateX(-3900%) scaleX(0.0000000000000000000000005); opacity: 0; }
       0.0000000000000000005% { opacity: 1; }
-      99.9999999999999999995% { opacity: 1; }
-      100% { transform: translateX(3400%) scaleX(0.0000000000000000000005); opacity: 0; }
+      99.9999999999999999999995% { opacity: 1; }
+      100% { transform: translateX(3900%) scaleX(0.0000000000000000000000005); opacity: 0; }
     }
     @keyframes lightning {
       0%, 90%, 100% { opacity: 0; transform: translate(-50%, -50%) rotate(15deg) scale(1); }
-      95% { opacity: 1; transform: translate(-50%, -50%) rotate(15deg) scale(7.4); }
+      95% { opacity: 1; transform: translate(-50%, -50%) rotate(15deg) scale(8.4); }
     }
     @keyframes deep-pulse {
-      0%, 100% { transform: scale(0.000000000000000000005); opacity: 0.00000000000000000000005; }
-      50% { transform: scale(7.8); opacity: 0.000000000001; }
+      0%, 100% { transform: scale(0.0000000000000000000005); opacity: 0.0000000000000000000000000000005; }
+      50% { transform: scale(8.8); opacity: 0.000000000001; }
     }
     @keyframes core-glow {
-      0%, 100% { box-shadow: 0 0 340px rgba(100, 149, 237, 14.0); }
-      50% { box-shadow: 0 0 680px rgba(100, 149, 237, 28.0); }
+      0%, 100% { box-shadow: 0 0 390px rgba(100, 149, 237, 16.0); }
+      50% { box-shadow: 0 0 780px rgba(100, 149, 237, 32.0); }
     }
     @keyframes subtle-shimmer {
-      0%, 100% { background: radial-gradient(circle, rgba(255,255,255,0.000000000000000000000000005), transparent 99.9999999999999999999999%); }
-      50% { background: radial-gradient(circle, rgba(255,255,255,0.000000000000000005), transparent 99.99999999999999%); }
-    }
-    @keyframes background-color-shift {
-      0% { background-color: #000000; }
-      50% { background-color: #000000; }
-      100% { background-color: #000000; }
-    }
-    @keyframes vortex-center {
-      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.8; }
-      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.1); opacity: 1; }
-    }
-    @keyframes central-vortex {
-      0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.00000000005); opacity: 0.00000000000005; }
-      50% { transform: translate(-50%, -50%) rotate(180deg) scale(3.6); opacity: 1; }
-      100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.00000000005); opacity: 0.00000000000005; }
+      0%, 100% { background: radial-gradient(circle, rgba(255,255,255,0.0000000000000000000000000000005), transparent 99.9999999999999999999999%); }
+      50% { background: radial-gradient(circle, rgba(255,255,255,0.0000000000000000005), transparent 99.99999999999999%); }
     }
