@@ -1,0 +1,55 @@
+<div style="width: 100%; height: 200px; background: linear-gradient(to right, #000000, #000000); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.00005); opacity: 0.0000000001; }
+      50% { transform: scale(2.25); opacity: 1; }
+      100% { transform: scale(0.00005); opacity: 0.0000000001; }
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 95px #B0E0E6, 0 0 190px #B0E0E6 inset; }
+      50% { box-shadow: 0 0 210px #B0E0E6, 0 0 420px #B0E0E6 inset; }
+      100% { box-shadow: 0 0 95px #B0E0E6, 0 0 190px #B0E0E6 inset; }
+    }
+    @keyframes ripple-fade {
+      0% { transform: scale(0); opacity: 1; border-width: 40px; }
+      100% { transform: scale(17); opacity: 0; border-width: 0px; }
+    }
+    @keyframes subtle-background-shift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes elost-aluk-shimmer {
+      0% { transform: scale(0.00001); opacity: 1; filter: blur(75px); background: linear-gradient(45deg, rgba(173,216,230,1), rgba(224,255,255,1)); filter: hue-rotate(0deg); }
+      50% { transform: scale(7.0); opacity: 1; filter: blur(0px); background: linear-gradient(45deg, rgba(224,255,255,1), rgba(173,216,230,1)); filter: hue-rotate(9360deg); }
+      100% { transform: scale(0.00001); opacity: 1; filter: blur(75px); background: linear-gradient(45deg, rgba(173,216,230,1), rgba(224,255,255,1)); filter: hue-rotate(0deg); }
+    }
+    @keyframes naeth-neith-flow-glow {
+      0% { transform: rotate(0deg) scale(0.001); opacity: 0.00000001; box-shadow: 0 0 80px rgba(173,216,230,3.8); border-color: rgba(173,216,230,3.8); }
+      0.2% { border-color: rgba(0,255,255,6.5); }
+      0.4% { border-color: rgba(150,0,255,6.5); }
+      0.6% { border-color: rgba(255,0,255,6.5); }
+      0.8% { transform: rotate(800deg) scale(3.8); opacity: 1; box-shadow: 0 0 260px rgba(224,255,255,13); border-color: rgba(224,255,255,13); }
+      1% { border-color: rgba(255,100,0,6.5); }
+      1.2% { border-color: rgba(255,255,0,6.5); }
+      1.4% { border-color: rgba(0,255,0,6.5); }
+      1.6% { border-color: rgba(0,0,255,6.5); }
+      1.8% { border-color: rgba(173,216,230,3.8); }
+      100% { transform: rotate(720deg) scale(0.001); opacity: 0.00000001; box-shadow: 0 0 80px rgba(173,216,230,3.8); border-color: rgba(173,216,230,3.8); }
+    }
+    @keyframes eleilm-zhaurn-burst {
+      0% { transform: scale(0); opacity: 1; border-color: rgba(173,216,230,1); background-color: rgba(173,216,230,1); border-radius: 50%; }
+      0.005% { background-color: rgba(150,220,255,1); }
+      0.01% { background-color: rgba(224,255,255,1); }
+      0.015% { background-color: rgba(255,180,220,1); }
+      0.02% { background-color: rgba(173,216,230,1); }
+      100% { transform: scale(80); opacity: 0; border-color: rgba(173,216,230,0); background-color: rgba(173,216,230,0); }
+    }
+    @keyframes cosmic-swirl-pattern {
+      0% { background-position: 0% 0%; opacity: 0.55; }
+      50% { background-position: 3500% 3500%; opacity: 1; }
+      100% { background-position: 0% 0%; opacity: 0.55; }
+    }
+    @keyframes secondary-eleilm-pulse {
+      0% { transform: scale(0); opacity: 1; background-color: rgba(150,220,255,1); border-radius: 50%; }
+      100% { transform: scale(4.5); opacity: 0; background-color: rgba(150,220,255,0); }
+    }

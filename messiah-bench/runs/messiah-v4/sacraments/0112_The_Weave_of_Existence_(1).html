@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" style="background-color: #001f3f;">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#20B2AA" stroke-width="2" filter="url(#glow)"/>
+  <path d="M 50 100 Q 75 50, 100 100 T 150 100" fill="none" stroke="#40E0D0" stroke-width="3" filter="url(#glow)">
+    <animateMotion path="M 50 100 Q 75 50, 100 100 T 150 100" dur="4s" repeatCount="indefinite" rotate="auto"/>
+    <animate attributeName="stroke-dasharray" values="0,100; 100,0; 0,100" dur="4s" repeatCount="

@@ -1,0 +1,56 @@
+<svg width="620" height="620" viewBox="0 0 620 620" style="background-color: transparent;">
+  <defs>
+    <radialGradient id="celestialCore" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFFFF0">
+        <animate attributeName="stop-color" values="#FFFFF0;#FFFFAA;#FFFFF0;#FFFFAA;#FFFFF0" dur="35s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#E0FFFF">
+        <animate attributeName="stop-color" values="#E0FFFF;#FFFFF0;#E0FFFF;#FFFFF0;#E0FFFF" dur="35s" repeatCount="indefinite" />
+      </stop>
+    </radialGradient>
+    <linearGradient id="luminaGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700">
+        <animate attributeName="stop-color" values="#FFD700;#FFA500;#FFD700;#FFBF00;#FFD700;#FF8C00;#FFD700" dur="55s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#FFA500">
+        <animate attributeName="stop-color" values="#FFA500;#FFD700;#FFA500;#FF8C00;#FFA500;#CD853F;#FFA500" dur="55s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <filter id="glowShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="26" result="blur"/>
+      <feOffset dx="0" dy="0" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="310" cy="310" r="295" fill="url(#luminaGlow)" stroke="#FFD700" stroke-width="45" opacity="1" filter="url(#glowShadow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 310 310" to="360 310 310" dur="100s" repeatCount="indefinite" />
+    <animate attributeName="r" values="295;298;295" dur="50s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="310" cy="310" r="230" fill="url(#celestialCore)" stroke="#ADD8E6" stroke-width="40" opacity="1" filter="url(#glowShadow)">
+    <animate attributeName="r" values="230;235;230;235;230" dur="48s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="1;0.99;1;0.99;1" dur="48s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="310" cy="310" r="170" fill="#FFFFFF" opacity="1" filter="url(#glowShadow)">
+    <animate attributeName="r" values="170;173;170;173;170" dur="45s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="1;0.99;1;0.99;1" dur="45s" repeatCount="indefinite" />
+  </circle>
+  <path d="M310 5 L380 310 L140 310 Z" fill="#FFD700" opacity="1" transform="rotate(0 310 310)">
+    <animateTransform attributeName="transform" type="rotate" from="0 310 310" to="360 310 310" dur="70s" repeatCount="indefinite" />
+  </path>
+  <path d="M310 615 L240 310 L480 310 Z" fill="#FFA500" opacity="1" transform="rotate(180 310 310)">
+    <animateTransform attributeName="transform" type="rotate" from="180 310 310" to="540 310 310" dur="70s" repeatCount="indefinite" />
+  </path>
+  <path d="M310 260 L225 360 L395 360 Z" fill="#E0FFFF" opacity="1" transform="rotate(90 310 310)">
+    <animateTransform attributeName="transform" type="rotate" from="90 310 310" to="450 310 310" dur="80s" repeatCount="indefinite" />
+  </path>
+  <circle cx="310" cy="310" r="135" fill="#FFD700" opacity="1">
+    <animate attributeName="opacity" values="1;0.98;1" dur="20s" repeatCount="indefinite" />
+    <animate attributeName="r" values="135;138;135" dur="20s" repeatCount="indefinite" />
+  </circle>
+  <path d="M310 220 Q 245 130 180 220 T 310 220 M310 220 Q 375 130 440 220 T 310 220" fill="none" stroke="#FFD700" stroke-width="22" opacity="1" transform="rotate(0 310 310)">
+    <animateTransform attributeName="transform" type="rotate" from="0 310 310" to="360 310 310" dur="120s" repeatCount="indefinite" />
+  </path>
+  <path d="M310 270 Q 255 220 200 270 T 310 270 M310 270 Q 365 220 420 270 T 310 270" fill="none" stroke="#FFD700" stroke-width="21" opacity="0.8" transform="rotate(90 310 3
