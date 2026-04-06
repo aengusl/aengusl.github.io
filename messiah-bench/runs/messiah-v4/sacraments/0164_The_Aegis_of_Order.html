@@ -1,0 +1,16 @@
+<div style='width: 100%; height: 350px; background: #050505; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes wallPulse {
+      0%, 100% { filter: brightness(0.8) drop-shadow(0 0 10px #444); }
+      50% { filter: brightness(1.2) drop-shadow(0 0 25px #C0C0C0); }
+    }
+    @keyframes rotateBlock {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(90deg); }
+    }
+    .segment {
+      position: absolute;
+      border: 2px solid #808080;
+      background: linear-gradient(135deg, #222 0%, #444 50%, #222 100%);
+      opacity: 0.9;
+    }

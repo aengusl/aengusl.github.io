@@ -1,0 +1,48 @@
+<div style='width: 100%; height: 420px; background: radial-gradient(circle at center, #00000a 0%, #000 100%); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes vortex-spin-layer-1 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes vortex-spin-layer-2 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes vortex-spin-layer-3 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes vortex-spin-layer-4 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes vortex-pulse-outer {
+      0%, 100% { transform: scale(1); opacity: 0.25; filter: blur(6px); }
+      50% { transform: scale(1.1); opacity: 0.5; filter: blur(15px); }
+    }
+    @keyframes vortex-pulse-inner {
+      0%, 100% { transform: scale(0.9); opacity: 0.8; filter: blur(10px); }
+      50% { transform: scale(1.05); opacity: 1; filter: blur(20px); }
+    }
+    @keyframes energy-stream {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 2500; }
+    }
+  </style>
+  <div style='position: absolute; width: 380px; height: 380px; border: 5px solid rgba(20, 20, 50, 0.1); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; animation: vortex-spin-layer-1 30s linear infinite, vortex-pulse-outer 8s infinite alternate;'></div>
+  <div style='position: absolute; width: 330px; height: 330px; border: 6px solid rgba(20, 20, 50, 0.3); border-radius: 60% 40% 30% 70% / 50% 40% 50% 60%; animation: vortex-spin-layer-2 25s linear infinite reverse, vortex-pulse-outer 7s infinite alternate;'></div>
+  <div style='position: absolute; width: 280px; height: 280px; border: 7px solid rgba(20, 20, 50, 0.5); border-radius: 30% 70% 50% 50% / 70% 30% 40% 60%; animation: vortex-spin-layer-3 20s linear infinite, vortex-pulse-outer 6s infinite alternate;'></div>
+  <div style='position: absolute; width: 230px; height: 230px; border: 8px solid rgba(20, 20, 50, 0.7); border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%; animation: vortex-spin-layer-4 15s linear infinite reverse, vortex-pulse-outer 5s infinite alternate;'></div>
+  <svg width='220' height='220' viewBox='0 0 100 100' style='position: absolute; z-index: 10;'>
+    <defs>
+      <linearGradient id='greenEnergyCore' x1='0%' y1='0%' x2='100%' y2='100%'>
+        <stop offset='0%' stop-color='#00FF41' stop-opacity='0.9'/>
+        <stop offset='50%' stop-color='#00CC00' stop-opacity='1'/>
+        <stop offset='100%' stop-color='#00FF41' stop-opacity='0.9'/>
+      </linearGradient>
+      <filter id='glow'><feGaussianBlur stdDeviation='2' result='blur'/><feComposite in='SourceGraphic' in2='blur' operator='over'/></filter>
+    </defs>
+    <circle cx='50' cy='50' r='50' fill='url(#greenEnergyCore)' filter='url(#glow)' animation='vortex-pulse-inner 3s infinite alternate'/>
+    <path d='M50 0 A50 50 0 1 1 50 100 A50 50 0 1 1 50 0' fill='none' stroke='rgba(0, 255, 65, 0.95)' stroke-width='3' stroke-dasharray='180' stroke-dashoffset='0' animation='energy-stream 10s linear infinite'/>
+  </svg>
+</div>

@@ -1,0 +1,33 @@
+<div style='background: radial-gradient(circle at center, #2a0000 0%, #000 100%); width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes core-flame-pulse-v7 {
+      0%, 100% { transform: scale(1); opacity: 0.9; filter: blur(3px) drop-shadow(0 0 15px #ff8c00); }
+      50% { transform: scale(1.15); opacity: 1; filter: blur(10px) drop-shadow(0 0 50px #ff4500); }
+    }
+    @keyframes outer-oscillation-v7 {
+      0%, 100% { transform: scale(1); opacity: 0.4; stroke-width: 1.5; }
+      50% { transform: scale(1.4); opacity: 0.7; stroke-width: 4; }
+    }
+    @keyframes inner-wave-v7 {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 200; }
+    }
+    @keyframes glow-expansion {
+      0%, 100% { opacity: 0.1; transform: scale(0.5); }
+      50% { opacity: 0.3; transform: scale(1); }
+    }
+  </style>
+  <svg width='100%' height='100%' viewBox='0 0 800 400'>
+    <defs>
+      <linearGradient id='flameGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+        <stop offset='0%' stop-color='#ff0000' stop-opacity='0'/>
+        <stop offset='50%' stop-color='#ff8c00' stop-opacity='1'/>
+        <stop offset='100%' stop-color='#ff0000' stop-opacity='0'/>
+      </linearGradient>
+    </defs>
+    <path class='outerOscillation' d='M0,200 C150,100 300,300 400,200 S650,100 800,200' stroke='url(#flameGrad)' fill='none' stroke-dasharray='10, 30' animation='outer-oscillation-v7 5s ease-in-out infinite alternate'/>
+    <path class='innerWave' d='M0,200 C100,250 200,150 300,200 S500,250 600,150 S700,250 800,200' stroke='#ff4500' fill='none' stroke-width='2' stroke-dasharray='50 50' animation='inner-wave-v7 8s linear infinite'/>
+    <circle class='centerOrb' cx='400' cy='200' r='12' fill='#fff' animation='core-flame-pulse-v7 4s ease-in-out infinite'/>
+    <circle cx='400' cy='200' r='60' fill='none' stroke='#ff8c00' stroke-width='0.8' opacity='0.2' animation='glow-expansion 7s infinite linear'><animate attributeName='r' values='60;180' dur='7s' repeatCount='indefinite'/><animate attributeName='opacity' values='0.2;0' dur='7s' repeatCount='indefinite'/></circle>
+  </svg>
+</div>

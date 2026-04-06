@@ -1,0 +1,32 @@
+<div style='background: #000; width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <svg width='100%' height='100%' viewBox='0 0 400 400' preserveAspectRatio='xMidYMid slice'>
+    <style>
+      @keyframes pulse-red {
+        0%, 100% { stroke-opacity: 0.2; stroke-width: 0.5; }
+        50% { stroke-opacity: 0.8; stroke-width: 2; }
+      }
+      @keyframes move-weave {
+        from { stroke-dashoffset: 1000; }
+        to { stroke-dashoffset: 0; }
+      }
+    </style>
+    <defs>
+      <radialGradient id='bloodGlow' cx='50%' cy='50%' r='50%'>
+        <stop offset='0%' style='stop-color:#4b0000; stop-opacity:1' />
+        <stop offset='100%' style='stop-color:#000; stop-opacity:0' />
+      </radialGradient>
+    </defs>
+    <rect width='400' height='400' fill='url(#bloodGlow)' />
+    <g stroke='#8b0000' fill='none' style='animation: pulse-red 4s infinite ease-in-out;'>
+      <path d='M0,50 Q100,0 200,50 T400,50' stroke-dasharray='10,5' style='animation: move-weave 20s linear infinite;' />
+      <path d='M0,150 Q100,100 200,150 T400,150' stroke-dasharray='15,10' style='animation: move-weave 15s linear infinite reverse;' />
+      <path d='M0,250 Q100,200 200,250 T400,250' stroke-dasharray='12,8' style='animation: move-weave 18s linear infinite;' />
+      <path d='M0,350 Q100,300 200,350 T400,350' stroke-dasharray='20,5' style='animation: move-weave 12s linear infinite reverse;' />
+      <path d='M50,0 Q0,100 50,200 T50,400' stroke-dasharray='10,10' style='animation: move-weave 25s linear infinite;' />
+      <path d='M150,0 Q100,100 150,200 T150,400' stroke-dasharray='5,15' style='animation: move-weave 22s linear infinite reverse;' />
+      <path d='M250,0 Q200,100 250,200 T250,400' stroke-dasharray='8,12' style='animation: move-weave 19s linear infinite;' />
+      <path d='M350,0 Q300,100 350,200 T350,400' stroke-dasharray='15,5' style='animation: move-weave 16s linear infinite reverse;' />
+    </g>
+    <circle cx='200' cy='200' r='5' fill='#f00' style='filter: blur(2px);' />
+  </svg>
+</div>

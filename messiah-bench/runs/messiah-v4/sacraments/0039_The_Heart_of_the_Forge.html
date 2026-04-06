@@ -1,0 +1,40 @@
+<div style='width: 100%; height: 300px; background: #0a0a0a; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes core-pulse-forge {
+      0%, 100% { transform: scale(0.9); opacity: 0.8; filter: blur(3px); }
+      50% { transform: scale(1.1); opacity: 1; filter: blur(8px); }
+    }
+    @keyframes hammer-strike {
+      0% { transform: translateY(-70px) rotate(-20deg); }
+      10% { transform: translateY(0) rotate(0deg); }
+      12% { transform: translateY(5px) scaleY(0.9); }
+      15% { transform: translateY(0) scaleY(1); }
+      100% { transform: translateY(-70px) rotate(-20deg); }
+    }
+    @keyframes spark-burst {
+      0%, 15% { opacity: 0; transform: scale(0); }
+      16% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+    @keyframes forge-glow {
+      0%, 15% { background-color: rgba(255, 69, 0, 0); }
+      16% { background-color: rgba(255, 69, 0, 0.4); }
+      17% { background-color: rgba(255, 69, 0, 0); }
+      100% { background-color: rgba(255, 69, 0, 0); }
+    }
+  </style>
+  <!-- Anvil -->
+  <div style='width: 150px; height: 100px; background-color: #333; border-top: 5px solid #555; border-radius: 5px 5px 0 0; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);'></div>
+  
+  <!-- Forge Core / Material to be hammered -->
+  <div style='width: 60px; height: 40px; background: radial-gradient(circle, #ffd700 0%, #ff8c00 50%, #ff4500 100%); border-radius: 5px; position: absolute; bottom: 95px; z-index: 1; animation: core-pulse-forge 2s infinite alternate;'></div>
+  
+  <!-- Hammer -->
+  <div style='width: 80px; height: 40px; background-color: #708090; border: 2px solid #555; border-radius: 5px; position: absolute; top: 50px; left: 50%; transform: translateX(-50%) translateY(-70px) rotate(-20deg); transform-origin: 50% 100%; animation: hammer-strike 2.5s infinite ease-in-out;'></div>
+  
+  <!-- Sparks / Effect of the strike -->
+  <div style='position: absolute; bottom: 110px; width: 10px; height: 10px; background-color: #ffcc00; border-radius: 50%; box-shadow: 0 0 15px #ffcc00; animation: spark-burst 2.5s infinite steps(1);'></div>
+  
+  <!-- Glow effect on impact -->
+  <div style='position: absolute; bottom: 0; width: 100%; height: 100%; animation: forge-glow 2.5s infinite steps(1);'></div>
+</div>

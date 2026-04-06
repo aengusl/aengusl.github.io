@@ -1,0 +1,24 @@
+<div style="background: radial-gradient(circle at center, #001020 0%, #000 100%); width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+  <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="tideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#001d3d;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#003566;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#001d3d;stop-opacity:1" />
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <path fill="none" stroke="#ffc300" stroke-width="0.8" opacity="0.5" filter="url(#glow)">
+      <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M0,150 Q100,100 200,150 T400,150; M0,150 Q100,200 200,150 T400,150; M0,150 Q100,100 200,150 T400,150" />
+    </path>
+    <path fill="none" stroke="#003566" stroke-width="6" opacity="0.7">
+      <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M-100,170 Q50,120 200,170 T500,170; M-100,170 Q50,220 200,170 T500,170; M-100,170 Q50,120 200,170 T500,170" />
+    </path>
+    <path fill="none" stroke="#002040" stroke-width="3" opacity="0.5">
+      <animate attributeName="d" dur="1

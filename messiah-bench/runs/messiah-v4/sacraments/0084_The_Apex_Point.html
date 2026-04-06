@@ -1,0 +1,31 @@
+<div style='width: 100%; height: 400px; background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <svg width='100%' height='100%' viewBox='0 0 200 200'>
+    <defs>
+      <radialGradient id='zenithGlow' cx='50%' cy='30%' r='60%'>
+        <stop offset='0%' style='stop-color: #FFF700; stop-opacity: 1' />
+        <stop offset='20%' style='stop-color: gold; stop-opacity: 0.9' />
+        <stop offset='100%' style='stop-color: #000; stop-opacity: 0' />
+      </radialGradient>
+      <filter id='vertexBloom'>
+        <feGaussianBlur stdDeviation='5' result='blur' />
+        <feComposite in='SourceGraphic' in2='blur' operator='over' />
+      </filter>
+    </defs>
+    <style>
+      @keyframes focusPath { 0% { stroke-dashoffset: 800; opacity: 0.05; } 50% { opacity: 0.7; } 100% { stroke-dashoffset: 0; opacity: 0.15; } }
+      @keyframes pointVibration { 0%, 100% { transform: scale(1) translateY(0); } 50% { transform: scale(1.15) translateY(-8px); } }
+      @keyframes pulseInnerLight { 0%, 100% { opacity: 0.4; transform: scale(0.95); } 50% { opacity: 0.6; transform: scale(1.05); } }
+    </style>
+    <!-- Central pulsating core of the Apex -->
+    <circle cx='100' cy='60' r='10' fill='gold' filter='url(#vertexBloom)' style='animation: pulseInnerLight 3s infinite ease-in-out;' />
+    <!-- The Golden Zenith, broader and more intense -->
+    <circle cx='100' cy='60' r='90' fill='url(#zenithGlow)' opacity='0.6' />
+    <!-- Dynamic convergence lines, drawing more attention to the peak -->
+    <path d='M0,200 L100,60 M30,200 L100,60 M60,200 L100,60 M100,200 L100,60 M140,200 L100,60 M170,200 L100,60 M200,200 L100,60' fill='none' stroke='gold' stroke-width='0.4' stroke-dasharray='15 7' style='animation: focusPath 12s infinite linear;' />
+    <!-- The central defining triangle, sharper focus -->
+    <path d='M100,20 L120,80 L80,80 Z' fill='gold' filter='url(#vertexBloom)' style='animation: pointVibration 5s infinite ease-in-out; transform-origin: 100px 60px;' />
+    <!-- Subtle background grid lines, indicating structure and order -->
+    <line x1='0' y1='60' x2='200' y2='60' stroke='#444' stroke-width='0.15' />
+    <line x1='100' y1='0' x2='100' y2='200' stroke='#444' stroke-width='0.15' />
+  </svg>
+</div>

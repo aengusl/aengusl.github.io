@@ -1,0 +1,51 @@
+<div style='background: radial-gradient(circle at center, #010101 0%, #000 95%); width: 100%; height: 280px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <div style='position: absolute; width: 170%; height: 170%; background: radial-gradient(circle, #0a0505 0%, #000 75%); animation: deepPulse 9s infinite ease-in-out alternate;'></div>
+  <svg width='240' height='240' viewBox='0 0 100 100' style='filter: drop-shadow(0 0 15px #000);'>
+    <defs>
+      <linearGradient id='obsidianGrad' x1='0%' y1='0%' x2='100%' y2='100%'>
+        <stop offset='0%' style='stop-color:#2a2a2a; stop-opacity:1' />
+        <stop offset='50%' style='stop-color:#080808; stop-opacity:1' />
+        <stop offset='100%' style='stop-color:#000; stop-opacity:1' />
+      </linearGradient>
+    </defs>
+    <!-- Inner Core - more vibrant red glow -->
+    <circle cx='50' cy='50' r='7' fill='#500'>
+      <animate attributeName='fill' values='#500;#a00;#500' dur='6s' repeatCount='indefinite' />
+      <animate attributeName='r' values='6;8;6' dur='6s' repeatCount='indefinite' />
+    </circle>
+    <!-- Main Rotating Shards - larger, more pronounced -->
+    <g>
+      <polygon points='50,10 58,35 42,35' fill='url(#obsidianGrad)' stroke='#444' stroke-width='0.8' opacity='0.95' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='0 50 50' to='360 50 50' dur='28s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='90,50 65,58 65,42' fill='url(#obsidianGrad)' stroke='#444' stroke-width='0.8' opacity='0.95' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='90 50 50' to='450 50 50' dur='28s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='50,90 42,65 58,65' fill='url(#obsidianGrad)' stroke='#444' stroke-width='0.8' opacity='0.95' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='180 50 50' to='540 50 50' dur='28s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='10,50 35,42 35,58' fill='url(#obsidianGrad)' stroke='#444' stroke-width='0.8' opacity='0.95' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='270 50 50' to='630 50 50' dur='28s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <!-- Smaller, faster inner shards - increased speed -->
+      <polygon points='50,22 54,40 46,40' fill='url(#obsidianGrad)' stroke='#333' stroke-width='0.5' opacity='0.85' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='0 50 50' to='-360 50 50' dur='18s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='78,50 55,54 55,46' fill='url(#obsidianGrad)' stroke='#333' stroke-width='0.5' opacity='0.85' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='45 50 50' to='-315 50 50' dur='18s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='50,78 46,55 54,55' fill='url(#obsidianGrad)' stroke='#333' stroke-width='0.5' opacity='0.85' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='90 50 50' to='-270 50 50' dur='18s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+      <polygon points='22,50 40,46 40,54' fill='url(#obsidianGrad)' stroke='#333' stroke-width='0.5' opacity='0.85' transform-origin='50 50'>
+        <animateTransform attributeName='transform' type='rotate' from='135 50 50' to='-225 50 50' dur='18s' repeatCount='indefinite' additive='sum'/>
+      </polygon>
+    </g>
+  </svg>
+  <style>
+    @keyframes deepPulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+  </style>
+</div>

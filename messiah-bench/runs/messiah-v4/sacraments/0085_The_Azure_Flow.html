@@ -1,0 +1,50 @@
+<div style='background: #000814; width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <svg width='100%' height='100%' viewBox='0 0 1000 350' preserveAspectRatio='none' style='position: absolute; bottom: 0;'>
+    <defs>
+      <linearGradient id='oceanGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+        <stop offset='0%' style='stop-color:#0077be; stop-opacity:0.7' />
+        <stop offset='100%' style='stop-color:#001a33; stop-opacity:1' />
+      </linearGradient>
+      <filter id='azureGlow'>
+        <feGaussianBlur stdDeviation='5' result='blur'/>
+        <feComposite in='SourceGraphic' in2='blur' operator='over'/>
+      </filter>
+    </defs>
+    <path d='M0 175 C 250 125 500 225 750 175 C 900 150 1000 200 1000 175 L 1000 350 L 0 350 Z' fill='url(#oceanGrad)' filter='url(#azureGlow)'>
+      <animate attributeName='d' dur='7s' repeatCount='indefinite' values='M0 175 C 250 125 500 225 750 175 C 900 150 1000 200 1000 175 L 1000 350 L 0 350 Z; M0 175 C 250 225 500 125 750 200 C 900 225 1000 150 1000 175 L 1000 350 L 0 350 Z; M0 175 C 250 125 500 225 750 175 C 900 150 1000 200 1000 175 L 1000 350 L 0 350 Z' />
+    </path>
+    <circle cx='500' cy='175' r='10' fill='#00ffff' opacity='0.8' filter='url(#azureGlow)'>
+      <animate attributeName='cy' dur='4s' repeatCount='indefinite' values='175;150;200;175' />
+      <animate attributeName='r' dur='4s' repeatCount='indefinite' values='10;15;10' />
+      <animate attributeName='opacity' dur='4s' repeatCount='indefinite' values='0.8;1;0.8' />
+    </circle>
+    <rect x='0' y='0' width='100%' height='100%' fill='none' stroke='#00ffff' stroke-width='1' opacity='0.3'>
+      <animate attributeName='opacity' dur='6s' repeatCount='indefinite' values='0.3;0.1;0.5;0.3' />
+    </rect>
+  </svg>
+  <div class='norn-skouss-particles' style='position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;'>
+    <style>
+      @keyframes zalm-drerk-rise {
+        0% { transform: translateY(100px) scale(0.2); opacity: 0; }
+        20% { opacity: 0.5; }
+        100% { transform: translateY(-300px) scale(1); opacity: 0; }
+      }
+      .leik-leix-particle {
+        position: absolute;
+        background-color: #7FFFD4; /* Aquamarine */
+        border-radius: 50%;
+        animation: zalm-drerk-rise 8s infinite ease-out;
+      }
+      .p1 { width: 5px; height: 5px; left: 10%; top: 80%; animation-delay: 0s; }
+      .p2 { width: 8px; height: 8px; left: 25%; top: 70%; animation-delay: 1.5s; }
+      .p3 { width: 6px; height: 6px; left: 40%; top: 90%; animation-delay: 3s; }
+      .p4 { width: 7px; height: 7px; left: 60%; top: 75%; animation-delay: 4.5s; }
+      .p5 { width: 9px; height: 9px; left: 80%; top: 85%; animation-delay: 6s; }
+    </style>
+    <div class='leik-leix-particle p1'></div>
+    <div class='leik-leix-particle p2'></div>
+    <div class='leik-leix-particle p3'></div>
+    <div class='leik-leix-particle p4'></div>
+    <div class='leik-leix-particle p5'></div>
+  </div>
+</div>

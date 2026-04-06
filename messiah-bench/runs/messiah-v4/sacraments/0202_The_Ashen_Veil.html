@@ -1,0 +1,27 @@
+<div style='background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); height:350px; width:100%; display:flex; justify-content:center; align-items:center; overflow:hidden; position:relative;'>
+  <style>
+    @keyframes ember-pulse {
+      0%, 100% { transform: scale(0.8); opacity: 0.4; filter: blur(1px); }
+      50% { transform: scale(1.2); opacity: 0.8; filter: blur(3px); }
+    }
+    @keyframes veil-drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(10px, 20px); }
+    }
+    .ember {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ff4500, #8b0000);
+      border-radius: 50%;
+      animation: ember-pulse 3s infinite alternate ease-in-out;
+      box-shadow: 0 0 15px #ff4500;
+    }
+    .veil-layer {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: rgba(50, 50, 50, 0.1);
+      filter: blur(20px);
+      animation: veil-drift 15s infinite alternate ease-in-out;
+    }

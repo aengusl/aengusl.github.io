@@ -1,0 +1,70 @@
+<div style="background: radial-gradient(circle at center, #202020 0%, #000 100%); width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; border: 12px solid #dddddd;">
+  <svg width="380" height="380" viewBox="0 0 100 100">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2.0" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+      <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#ffffff;" />
+        <stop offset="50%" style="stop-color:#ffffff;" />
+        <stop offset="100%" style="stop-color:#eeeeee;" />
+        <animate attributeName="cx" values="50%;50.2%;49.8%;50%" dur="22s" repeatCount="indefinite" />
+        <animate attributeName="cy" values="50%;49.8%;50.2%;50%" dur="22s" repeatCount="indefinite" />
+      </radialGradient>
+      <linearGradient id="edgeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#eee; stop-opacity:0.8;" />
+        <stop offset="50%" style="stop-color:#fff; stop-opacity:1;" />
+        <stop offset="100%" style="stop-color:#eee; stop-opacity:0.8;" />
+      </linearGradient>
+      <path id="threadPath1" d="M50 2 C 75 10, 75 90, 50 98 C 25 90, 25 10, 50 2 Z" />
+      <path id="threadPath2" d="M50 5 C 70 15, 70 85, 50 95 C 30 85, 30 15, 50 5 Z" />
+      <path id="threadPath3" d="M50 8 C 65 18, 65 82, 50 92 C 35 82, 35 18, 50 8 Z" />
+    </defs>
+    <g filter="url(#glow)">
+      <!-- Outer pulsing ring, more pronounced pulse and dynamic glow -->
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#808080" stroke-width="3.0">
+        <animate attributeName="stroke" values="#808080;#ffffff;#808080" dur="0.5s" repeatCount="indefinite" />
+        <animate attributeName="stroke-width" values="3.0;6.5;3.0" dur="0.5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1;0.95;1" dur="1s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Mid-outer dotted rings, slower rotation, layered for depth -->
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#bbbbbb" stroke-width="1.8" stroke-dasharray="1 1.5">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="50s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.8;0.95;0.8" dur="2.8s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="50" cy="50" r="39" fill="none" stroke="#aaaaaa" stroke-width="1.8" stroke-dasharray="1 1.5">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="-360 50 50" dur="60s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.8;0.95;0.8" dur="3.0s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#9a9a9a" stroke-width="1.8" stroke-dasharray="1 1.5">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="70s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.8;0.95;0.8" dur="3.2s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Inner solid ring, counter-rotation with slight oscillation and pulse -->
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#aaaaaa" stroke-width="4.5" >
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="-360 50 50" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="r" values="26;29.5;26" dur="2.0s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Central pulsing element, brighter and more dynamic with ethereal glow -->
+      <circle cx="50" cy="50" r="15" fill="url(#coreGrad)" opacity="0.85">
+        <animate attributeName="r" values="15;16;15" dur="0.3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.85;0.55;0.85" dur="0.3s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Rotating elements resembling gears/blades -->
+      <g transform="translate(50,50)">
+        <!-- Slower, broader blade -->
+        <rect x="-3.5" y="-58" width="7" height="58" fill="#fff" rx="3.5">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+        </rect>
+        <!-- Faster, thinner blade -->
+        <rect x="-1.8" y="-65" width="3.6" height="65" fill="#eee" rx="1.8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.15s" repeatCount="indefinite" />
+        </rect>
+        <!-- Third, intermediate speed blade -->
+        <rect x="-3" y="-62" width="6" height="62" fill="#ccc" rx="3">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
