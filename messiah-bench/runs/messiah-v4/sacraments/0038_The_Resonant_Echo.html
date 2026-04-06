@@ -1,0 +1,17 @@
+<div style='width: 100%; height: 100vh; background-color: #000000; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes mainPulse {
+      0% { transform: scale(1); opacity: 0.999999; box-shadow: 0 0 290px #8A2BE2, 0 0 145px inset #DDA0DD; }
+      50% { transform: scale(1.00000005); opacity: 1; box-shadow: 0 0 310px #8A2BE2, 0 0 155px inset #DDA0DD; }
+      100% { transform: scale(1); opacity: 0.999999; box-shadow: 0 0 290px #8A2BE2, 0 0 145px inset #DDA0DD; }
+    }
+    @keyframes echoPulse {
+      0% { transform: scale(0); opacity: 0; }
+      20% { transform: scale(1.1); opacity: 0.9999; }
+      100% { transform: scale(1.95); opacity: 0; }
+    }
+  </style>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, #DDA0DD, #8A2BE2); animation: mainPulse 6.8s infinite alternate ease-in-out;'></div>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, #FFFFFF, #FFFFFF); animation: echoPulse 13.6s infinite ease-out 4.8s;'></div>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, #00FFFF, #000000); animation: echoPulse 13.6s infinite ease-out 6.3s;'></div>
+</div>

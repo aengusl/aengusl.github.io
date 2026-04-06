@@ -1,0 +1,14 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #0a0a0a, #1a1a1a); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; animation: background-radial-shift 70s infinite alternate linear;'>
+  <style>
+    @keyframes pulse-outer { 0% { transform: scale(1); opacity: 1; filter: blur(0px); } 50% { transform: scale(1.05); opacity: 0.9; filter: blur(2px); } 100% { transform: scale(1); opacity: 1; filter: blur(0px); } }
+    @keyframes pulse-inner { 0% { transform: scale(1); opacity: 0.8; filter: blur(0px); } 50% { transform: scale(0.95); opacity: 1; filter: blur(1px); } 100% { transform: scale(1); opacity: 0.8; filter: blur(0px); } }
+    @keyframes color-shift-gold { 0% { background: radial-gradient(gold, black); } 50% { background: radial-gradient(goldenrod, #000000); } 100% { background: radial-gradient(gold, black); } }
+    @keyframes rotate-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes glow-subtle { 0% { box-shadow: 0 0 10px #00FFFF; } 50% { box-shadow: 0 0 20px #00FFFF, 0 0 5px #FFFFFF; } 100% { box-shadow: 0 0 10px #00FFFF; } }
+    @keyframes expand-fade { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+    @keyframes weave-path { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1000; } }
+    @keyframes light-shimmer { 0% { filter: brightness(1); } 50% { filter: brightness(1.2); } 100% { filter: brightness(1); } }
+    @keyframes orb-travel-fast { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }
+    @keyframes orb-travel-slow { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }
+    @keyframes background-radial-shift { 0% { background: radial-gradient(circle at 40% 60%, #1a1a1a, #0a0a0a); } 50% { background: radial-gradient(circle at 60% 40%, #1a1a1a, #0a0a0a); } 100% { background: radial-gradient(circle at 40% 60%, #1a1a1a, #0a0a0a); } }
+    @keyframes color-pulse-blue { 0% { fill: #00BFFF; } 50% { fill: #ADD8E6; } 100% { fill: #00BFFF; } }

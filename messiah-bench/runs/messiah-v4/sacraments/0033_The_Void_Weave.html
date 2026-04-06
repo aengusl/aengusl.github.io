@@ -1,0 +1,44 @@
+<div style="width: 100%; height: 100vh; background-color: #000000; overflow: hidden; display: flex; justify-content: center; align-items: center; position: relative;">
+  <style>
+    @keyframes void-pulse {
+      0% { transform: scale(0.001); opacity: 0.0005; box-shadow: 0 0 0.2px #05000A, inset 0 0 0.1px rgba(255,255,255,0.000001); }
+      50% { transform: scale(3.0); opacity: 1; box-shadow: 0 0 450px #1A0033, inset 0 0 225px rgba(255,255,255,0.0008); }
+      100% { transform: scale(0.001); opacity: 0.0005; box-shadow: 0 0 0.2px #05000A, inset 0 0 0.1px rgba(255,255,255,0.000001); }
+    }
+    @keyframes void-shift {
+      0% { background-position: 0% 0%; filter: hue-rotate(0deg); }
+      100% { background-position: 900% 900%; filter: hue-rotate(10800deg); }
+    }
+    @keyframes cosmic-flow-slow {
+      0% { transform: scale(0.001); rotate(0deg); opacity: 0.0002; }
+      100% { transform: scale(5.0); rotate(3600deg); opacity: 0; }
+    }
+    @keyframes cosmic-flow-medium {
+      0% { transform: scale(0.0008); rotate(0deg); opacity: 0.0001; }
+      100% { transform: scale(3.5); rotate(5500deg); opacity: 0; }
+    }
+    @keyframes cosmic-flow-fast {
+      0% { transform: scale(0.0005); rotate(0deg); opacity: 0.00005; }
+      100% { transform: scale(3.0); rotate(8000deg); opacity: 0; }
+    }
+    @keyframes ripple-expand {
+      0% { transform: scale(0); opacity: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,0.0001); }
+      12% { border: 2px solid rgba(255,255,255,0.01); }
+      24% { border: 4px solid rgba(255,255,255,0.05); }
+      36% { border: 8px solid rgba(255,255,255,0.1); }
+      48% { border: 12px solid rgba(255,255,255,0.2); }
+      60% { border: 18px solid rgba(255,255,255,0.35); }
+      72% { border: 12px solid rgba(255,255,255,0.2); }
+      84% { border: 6px solid rgba(255,255,255,0.1); }
+      100% { transform: scale(7.0); opacity: 0; border-width: 0; }
+    }
+    @keyframes void-orb-fade {
+      0% { opacity: 0; transform: scale(0.1); }
+      50% { opacity: 1; transform: scale(2.2); }
+      100% { opacity: 0; transform: scale(0.1); }
+    }
+    @keyframes inner-glow {
+      0% { box-shadow: inset 0 0 0px rgba(232,13,221,0); background-color: rgba(232,13,221,0.0); }
+      50% { box-shadow: inset 0 0 50px rgba(232,13,221,0.8); background-color: rgba(232,13,221,0.5); }
+      100% { box-shadow: inset 0 0 0px rgba(232,13,221,0); background-color: rgba(232,13,221,0.0); }
+    }
