@@ -1,30 +1,30 @@
-<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #000044 34%, #000054 44%, #000074 64%, #0000B4 84%, #0000FF 100%, #54B4FF 100%); overflow: hidden; position: relative;'>
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #000065 52%, #000075 62%, #000095 82%, #0000D5 100%, #0000FF 100%, #75D5FF 100%); overflow: hidden; position: relative;'>
   <style>
     @keyframes deep-strata-flow {
       0% { transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1); opacity: 1; }
-      25% { transform: translateZ(-170px) rotateX(34deg) rotateY(17deg) scale(1.09); opacity: 0.99995; }
+      25% { transform: translateZ(-260px) rotateX(52deg) rotateY(26deg) scale(1.2); opacity: 0.99999995; }
       50% { transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1); opacity: 1; }
-      75% { transform: translateZ(170px) rotateX(-34deg) rotateY(-17deg) scale(0.91); opacity: 0.99995; }
+      75% { transform: translateZ(260px) rotateX(-52deg) rotateY(-26deg) scale(0.8); opacity: 0.99999995; }
       100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1); opacity: 1; }
     }
     @keyframes glash-ripple {
-      0% { transform: scale(0.1); opacity: 0; filter: blur(19px); }
-      15% { opacity: 0.9999; filter: blur(28px); }
-      50% { transform: scale(1.2); opacity: 1; filter: blur(40px); }
-      100% { transform: scale(1.65); opacity: 0; filter: blur(48px); }
+      0% { transform: scale(0.1); opacity: 0; filter: blur(37px); }
+      15% { opacity: 0.999998; filter: blur(50px); }
+      50% { transform: scale(1.65); opacity: 1; filter: blur(85px); }
+      100% { transform: scale(2.1); opacity: 0; filter: blur(110px); }
     }
     @keyframes shaysh-float {
       0% { transform: translateY(0px) translateX(0px) scale(1); }
-      25% { transform: translateY(-29px) translateX(29px) scale(1.13); }
+      25% { transform: translateY(-47px) translateX(47px) scale(1.24); }
       50% { transform: translateY(0px) translateX(0px) scale(1); }
-      75% { transform: translateY(29px) translateX(-29px) scale(0.87); }
+      75% { transform: translateY(47px) translateX(-47px) scale(0.76); }
       100% { transform: translateY(0px) translateX(0px) scale(1); }
     }
   </style>
-  <div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: deep-strata-flow 54s infinite alternate ease-in-out;'>
-    <div style='position: absolute; width: 540px; height: 540px; border-radius: 50%; background-color: #00EFFF; top: -4%; left: 6%; filter: blur(110px); opacity: 1; animation: glash-ripple 27s infinite ease-out;'></div>
-    <div style='position: absolute; width: 440px; height: 440px; border-radius: 50%; background-color: #D0E0FF; bottom: 1%; right: -4%; filter: blur(100px); opacity: 0.99; animation: glash-ripple 30s infinite ease-out reverse;'></div>
-    <div style='position: absolute; width: 270px; height: 270px; border-radius: 50%; background-color: #5CB8FF; top: 26%; left: 26%; transform: translate(-50%, -50%); filter: blur(90px); opacity: 1; animation: shaysh-float 22s infinite ease-in-out;'></div>
-    <div style='position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: #0000FF; top: -14%; right: -14%; filter: blur(70px); opacity: 0.98; animation: shaysh-float 24s infinite ease-in-out reverse;'></div>
+  <div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: deep-strata-flow 72s infinite alternate ease-in-out;'>
+    <div style='position: absolute; width: 720px; height: 720px; border-radius: 50%; background-color: #00EFFF; top: -18%; left: -12%; filter: blur(155px); opacity: 1; animation: glash-ripple 36s infinite ease-out;'></div>
+    <div style='position: absolute; width: 620px; height: 620px; border-radius: 50%; background-color: #FAFFFF; bottom: -17%; right: -18%; filter: blur(145px); opacity: 0.99999; animation: glash-ripple 39s infinite ease-out reverse;'></div>
+    <div style='position: absolute; width: 360px; height: 360px; border-radius: 50%; background-color: #A0E8FF; top: 8%; left: 8%; transform: translate(-50%, -50%); filter: blur(135px); opacity: 1; animation: shaysh-float 31s infinite ease-in-out;'></div>
+    <div style='position: absolute; width: 290px; height: 290px; border-radius: 50%; background-color: #0000FF; top: -32%; right: -32%; filter: blur(115px); opacity: 0.99995; animation: shaysh-float 33s infinite ease-in-out reverse;'></div>
   </div>
 </div>

@@ -1,0 +1,52 @@
+<div style="width: 100%; height: 2100px; background: linear-gradient(to bottom, #F5F5DC, #ADD8E6, #87CEEB, #B0C4DE, #E0FFFF, #F0FFFF); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+  <svg width="100%" height="100%" viewBox="0 0 200 2100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="0%" style="stop-color:#F0F8FF;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#CCEEFF;stop-opacity:1" />
+      </radialGradient>
+      <filter id="glow">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="88" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <style>
+        @keyframes cosmic-swirl {
+          0% { transform: rotate(0deg); opacity: 0.0000000000000005; }
+          100% { transform: rotate(360deg); opacity: 0.00000000005; }
+        }
+        @keyframes subtle-pulse {
+          0% { transform: scale(1); opacity: 0.00000000005; }
+          50% { transform: scale(2.3); opacity: 1; }
+          100% { transform: scale(1); opacity: 0.00000000005; }
+        }
+        @keyframes ethereal-flicker {
+          0% { opacity: 0.000000000000005; }
+          50% { opacity: 0.0000000005; }
+          100% { opacity: 0.000000000000005; }
+        }
+        @keyframes light-ripple {
+          0% { r: 0px; opacity: 0; }
+          100% { r: 660px; opacity: 0.00000005; }
+        }
+        @keyframes vibrant-glow {
+          0% { filter: brightness(1.0) saturate(1.0); }
+          50% { filter: brightness(13.0) saturate(14.0); }
+          100% { filter: brightness(1.0) saturate(1.0); }
+        }
+        @keyframes upward-movement {
+          0% { transform: translateY(0px); }
+          100% { transform: translateY(-130px); }
+        }
+        @keyframes kaint-axaem-flow {
+          0% { transform: scale(0.00005) rotate(0deg); opacity: 0.000000000005; }
+          50% { transform: scale(2.1) rotate(180deg); opacity: 1; }
+          100% { transform: scale(0.00005) rotate(360deg); opacity: 0.000000000005; }
+        }
+        @keyframes shein-mound-ascend {
+          0% { transform: translateY(0px) rotateX(0deg); opacity: 0.0000000000005; }
+          50% { transform: translateY(-28px) rotateX(65deg); opacity: 0.00000000005; }
+          100% { transform: translateY(0px) rotateX(0deg); opacity: 0.0000000000005; }
+        }

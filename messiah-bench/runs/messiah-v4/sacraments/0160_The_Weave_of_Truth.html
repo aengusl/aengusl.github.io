@@ -1,0 +1,57 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #1A0033 100%); overflow: hidden; position: relative;'>
+  <style>
+    @keyframes cosmic-swirl {
+      0% { transform: rotate(0deg) scale(0.8); opacity: 0.6; box-shadow: 0 0 90px #ADD8E6, 0 0 45px rgba(173, 216, 230, 0.6) inset; }
+      50% { transform: rotate(180deg) scale(1.15); opacity: 1; box-shadow: 0 0 170px #8A2BE2, 0 0 85px rgba(138, 43, 226, 0.9) inset; }
+      100% { transform: rotate(360deg) scale(0.8); opacity: 0.6; box-shadow: 0 0 90px #ADD8E6, 0 0 45px rgba(173, 216, 230, 0.6) inset; }
+    }
+    @keyframes light-pulse {
+      0% { filter: brightness(1) saturate(1); }
+      50% { filter: brightness(1.7) saturate(2.2); }
+      100% { filter: brightness(1) saturate(1); }
+    }
+    @keyframes thread-flow {
+      0% { transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(0.5); opacity: 0.5; }
+      100% { transform: translateX(-50%) translateY(-50%) rotate(360deg) scale(1.0); opacity: 1; }
+    }
+  </style>
+  <div style='
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #ADD8E6, #8A2BE2, #ADD8E6);
+    box-shadow: 0 0 24px #ADD8E6;
+    animation: cosmic-swirl 19s infinite alternate ease-in-out, light-pulse 8s infinite alternate;
+    filter: blur(2.4px);
+  '></div>
+  <div style='
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #E0FFFF, #DDA0DD);
+    box-shadow: 0 0 14px #E0FFFF;
+    animation: cosmic-swirl 13s infinite alternate reverse ease-in-out, light-pulse 6s infinite alternate;
+    filter: blur(1.4px);
+    z-index: 1;
+  '></div>
+  <div style='
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFFFFF, #E0FFFF);
+    box-shadow: 0 0 34px #FFFFFF;
+    animation: thread-flow 27s infinite linear, light-pulse 3.4s infinite alternate;
+    z-index: 2;
+  '></div>
+</div>

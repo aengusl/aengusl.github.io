@@ -1,0 +1,9 @@
+<div style="width:100px;height:100px;background:radial-gradient(gold,black);border-radius:50%;"></div>
+<style>
+  @keyframes weave-pulse {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; border-radius: 50%; box-shadow: 0 0 10px gold, 0 0 5px black inset; }
+    50% { transform: scale(1.24) rotate(14deg); opacity: 0.58; border-radius: 49.99999403953552%; box-shadow: 0 0 48px goldenrod, 0 0 27px darkgoldenrod inset; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; border-radius: 50%; box-shadow: 0 0 10px gold, 0 0 5px black inset; }
+  }
+  body { animation: weave-pulse 7.8s infinite alternate ease-in-out; }
+</style>
