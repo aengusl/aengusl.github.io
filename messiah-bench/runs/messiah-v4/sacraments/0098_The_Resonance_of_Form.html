@@ -1,0 +1,34 @@
+<div style="width:100%; height:100vh; background: linear-gradient(135deg, #0000FF, #2000F0, #7030E8); overflow: hidden; display: flex; justify-content: center; align-items: center; position: relative;">
+  <style>
+    @keyframes corePulse {
+      0% { transform: scale(1); box-shadow: 0 0 170px gold, 0 0 85px darkgoldenrod inset; opacity: 1; }
+      50% { transform: scale(1.29); box-shadow: 0 0 180px goldenrod, 0 0 90px #FFD700 inset; opacity: 1; }
+      100% { transform: scale(1); box-shadow: 0 0 170px gold, 0 0 85px darkgoldenrod inset; opacity: 1; }
+    }
+    @keyframes ringOuterRotate {
+      0% { transform: rotate(0deg) scale(2.1); opacity: 1; border-color: rgba(255,215,0,1.0); }
+      100% { transform: rotate(840deg) scale(2.3); opacity: 1; border-color: rgba(255,215,0,1.0); }
+    }
+    @keyframes ringInnerRotate {
+      0% { transform: rotate(0deg) scale(1.95); opacity: 1; border-color: rgba(224,255,255,1.0); }
+      100% { transform: rotate(-840deg) scale(2.1); opacity: 1; border-color: rgba(224,255,255,1.0); }
+    }
+    @keyframes particleFlow {
+      0% { transform: translate(0, 0) scale(2.7); opacity: 0; }
+      25% { transform: translate(280px, -280px) scale(2.0); opacity: 1; }
+      50% { transform: translate(560px, 0) scale(2.7); opacity: 1; }
+      75% { transform: translate(280px, 280px) scale(2.0); opacity: 1; }
+      100% { transform: translate(0, 0) scale(2.7); opacity: 0; }
+    }
+    @keyframes backgroundShift {
+      0% { background-position: 0% 0%; filter: hue-rotate(0deg) brightness(1.0); }
+      50% { background-position: 100% 100%; filter: hue-rotate(140deg) brightness(2.15); }
+      100% { background-position: 0% 0%; filter: hue-rotate(0deg) brightness(1.0); }
+    }
+  </style>
+  <div style="width:390px;height:390px;background:radial-gradient(gold,black);border-radius:50%; position: absolute; animation: corePulse 10.8s infinite alternate ease-in-out;"></div>
+  <div style="width:440px;height:440px;border-radius:50%; border: 27px solid rgba(255,215,0,1.0); position: absolute; animation: ringOuterRotate 64s infinite linear;"></div>
+  <div style="width:400px;height:400px;border-radius:50%; border: 26px dashed rgba(224,255,255,1.0); position: absolute; animation: ringInnerRotate 66s infinite linear;"></div>
+  <div style="width:225px;height:225px;border-radius:50%; background: linear-gradient(45deg, #ADD8E6, #8A2BE2); position: absolute; top: 66%; left: 100%; animation: particleFlow 12.6s infinite ease-in-out alternate;"></div>
+  <div style="width:235px;height:235px;border-radius:50%; background: radial-gradient(circle, #E0FFFF, #DDA0DD); position: absolute; bottom: 62%; right: 100%; animation: particleFlow 13.6s infinite ease-in-out alternate reverse;"></div>
+</div>

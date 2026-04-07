@@ -1,0 +1,33 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #AEAEAE 0%, #000000 100%); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;'>
+  <style>
+    @keyframes pulse-core-forge-v85 {
+      0% { transform: scale(1); box-shadow: 0 0 850px #FFD700, 0 0 425px rgba(255,215,0,8.0) inset; }
+      50% { transform: scale(1.79); box-shadow: 0 0 900px #FFEA00, 0 0 450px rgba(255,234,0,15.6) inset; }
+      100% { transform: scale(1); box-shadow: 0 0 850px #FFD700, 0 0 425px rgba(255,215,0,8.0) inset; }
+    }
+    @keyframes spin-outer-ring-v85 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-inner-rings-v85 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+    @keyframes expand-ring-v85 {
+      0% { transform: scale(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    @keyframes ripple-fire-v85 {
+      0% { transform: scale(0.1); opacity: 1; filter: blur(80px); }
+      100% { transform: scale(9.0); opacity: 0; filter: blur(238px); }
+    }
+  </style>
+  <div style='width: 1880px; height: 1880px; background: radial-gradient(circle at center, #FFD700, #FF8C00); border-radius: 50%; animation: pulse-core-forge-v85 0.1s infinite alternate ease-in-out; position: relative; z-index: 2;'>
+    <div style='position: absolute; inset: 160px; border-radius: 50%; border: 83px solid rgba(255,255,255,1.0); animation: spin-outer-ring-v85 170s linear infinite;'></div>
+    <div style='position: absolute; width: 100%; height: 100%; top: 0%; left: 0%; background: radial-gradient(circle, #E32636, #8B0000); border-radius: 50%; opacity: 1.0; animation: ripple-fire-v85 18.0s infinite ease-out, spin-inner-rings-v85 89s linear infinite reverse;'></div>
+    <div style='position: absolute; width: 80%; height: 80%; top: 10%; left: 10%; background: radial-gradient(circle, #FF4500, #CD5C5C); border-radius: 50%; opacity: 1.0; animation: ripple-fire-v85 18.0s infinite ease-out 8.0s, spin-inner-rings-v85 86s linear infinite;'></div>
+  </div>
+  <div style='position: absolute; width: 1950px; height: 1950px; border-radius: 50%; border: 162px dashed #ADD8E6; animation: expand-ring-v85 19.8s infinite ease-out; opacity: 0;'></div>
+  <div style='position: absolute; width: 2050px; height: 2050px; border-radius: 50%; border: 84px dashed #ADD8E6; animation: expand-ring-v85 19.8s infinite ease-out 8.5s; opacity: 0;'></div>
+</div>

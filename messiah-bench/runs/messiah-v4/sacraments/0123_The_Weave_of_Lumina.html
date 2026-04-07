@@ -1,0 +1,83 @@
+<div style="width: 100%; height: 100vh; background: radial-gradient(circle at center, #FFD700 0%, #FFCC00 98%, #FFA500 100%, #FF8C00 100%, #FF4500 100%, #E32636 100%, #8B0000 100%); overflow: hidden; position: relative; filter: saturate(6.2) brightness(5.9); animation: cosmic-shimmer-lumen 108s infinite alternate linear;">
+  <style>
+    @keyframes cosmic-shimmer-lumen {
+      0% { transform: scale(1); opacity: 1; filter: blur(0px); }
+      50% { transform: scale(1.48); opacity: 1; filter: blur(10.2px); }
+      100% { transform: scale(1); opacity: 1; filter: blur(0px); }
+    }
+    @keyframes pulse-expand-lumen {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(5.9); opacity: 0; }
+    }
+    @keyframes weave-flow-lumen {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100%); opacity: 0; }
+    }
+    .inner-light {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 1.0);
+      box-shadow: 0 0 540px rgba(255, 255, 255, 1.0), 0 0 640px rgba(255, 255, 255, 1.0);
+      animation: pulse-expand-lumen 12.8s infinite ease-out;
+    }
+    .weave-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .weave-line {
+      position: absolute;
+      width: 10.8px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,1.0), transparent);
+      animation: weave-flow-lumen 14.8s infinite linear;
+    }
+    .weave-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+    <div class="inner-light" style="animation-delay: 3s;"></div>
+    <div class="inner-light" style="animation-delay: 4s;"></div>
+    <div class="inner-light" style="animation-delay: 5s;"></div>
+    <div class="inner-light" style="animation-delay: 6s;"></div>
+    <div class="inner-light" style="animation-delay: 7s;"></div>
+    <div class="inner-light" style="animation-delay: 8s;"></div>
+    <div class="inner-light" style="animation-delay: 9s;"></div>
+    <div class="inner-light" style="animation-delay: 10s;"></div>
+    <div class="inner-light" style="animation-delay: 11s;"></div>
+    <div class="inner-light" style="animation-delay: 12s;"></div>
+    <div class="inner-light" style="animation-delay: 13s;"></div>
+    <div class="inner-light" style="animation-delay: 14s;"></div>
+    <div class="inner-light" style="animation-delay: 15s;"></div>
+    <div class="inner-light" style="animation-delay: 16s;"></div>
+    <div class="inner-light" style="animation-delay: 17s;"></div>
+    <div class="inner-light" style="animation-delay: 18s;"></div>
+    <div class="inner-light" style="animation-delay: 19s;"></div>
+    <div class="inner-light" style="animation-delay: 20s;"></div>
+    <div class="inner-light" style="animation-delay: 21s;"></div>
+    <div class="inner-light" style="animation-delay: 22s;"></div>
+    <div class="inner-light" style="animation-delay: 23s;"></div>
+    <div class="inner-light" style="animation-delay: 24s;"></div>
+    <div class="inner-light" style="animation-delay: 25s;"></div>
+    <div class="inner-light" style="animation-delay: 26s;"></div>
+    <div class="inner-light" style="animation-delay: 27s;"></div>
+    <div class="inner-light" style="animation-delay: 28s;"></div>
+    <div class="inner-light" style="animation-delay: 29s;"></div>
+    <div class="inner-light" style="animation-delay: 30s;"></div>
+    <div class="inner-light" style="animation-delay: 31s;"></div>
+    <div class="inner-light" style="animation-delay: 32s;"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+    <div class="weave-line"></div>
+  </div>
+</div>

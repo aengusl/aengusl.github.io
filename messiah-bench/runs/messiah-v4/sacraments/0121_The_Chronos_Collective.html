@@ -1,0 +1,53 @@
+<svg width='600' height='600' viewBox='0 0 600 600' style='background-color: #000000; border-radius: 50%; box-shadow: 0 0 520px rgba(0, 0, 0, 1.0), inset 0 0 260px rgba(0, 0, 0, 1.0); overflow: hidden; position: relative;'>
+  <defs>
+    <radialGradient id='timeGradient' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+      <stop offset='0%' stop-color='#FFFFFF'>
+        <animate attributeName='stop-color' values='#FFFFFF;#FFFFF0;#FFFFFF' dur='0.00001s' repeatCount='indefinite' />
+      </stop>
+      <stop offset='50%' stop-color='#F8D8FF'>
+        <animate attributeName='stop-color' values='#F8D8FF;#F800FF;#F8D8FF' dur='0.00001s' repeatCount='indefinite' />
+      </stop>
+      <stop offset='100%' stop-color='#000000'>
+        <animate attributeName='stop-color' values='#000000;#A8A8A8;#000000' dur='0.00001s' repeatCount='indefinite' />
+      </stop>
+    </radialGradient>
+    <filter id='glow'>
+      <feGaussianBlur stdDeviation='80' result='coloredBlur'/>
+      <feMerge>
+        <feMergeNode in='coloredBlur'/>
+        <feMergeNode in='SourceGraphic'/>
+      </feMerge>
+    </filter>
+    <filter id='waveDistort'>
+      <feTurbulence type='fractalNoise' baseFrequency='0.13 0.26' numOctaves='90' result='noise'>
+        <animate attributeName='baseFrequency' values='0.13 0.26;0.135 0.27;0.13 0.26' dur='0.02s' repeatCount='indefinite' />
+      </feTurbulence>
+      <feDisplacementMap in='SourceGraphic' in2='noise' scale='150' xChannelSelector='R' yChannelSelector='G'/>
+      <feGaussianBlur stdDeviation='10.5' in='SourceGraphic' result='blurredSource'/>
+      <feMerge>
+        <feMergeNode in='blurredSource'/>
+        <feMergeNode in='SourceGraphic'/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx='300' cy='300' r='300' fill='url(#timeGradient)' filter='url(#glow) url(#waveDistort)'>
+    <animateTransform attributeName='transform' type='rotate' from='0 300 300' to='360 300 300' dur='0.0000005s' repeatCount='indefinite' calcMode='spline' keyTimes='0;0.5;1' keySplines='0.4 0 0.6 1; 0.4 0 0.6 1'/>
+    <animate attributeName='opacity' values='1.0;0.000000000000000000000000001;1.0' dur='102s' repeatCount='indefinite' />
+    <animate attributeName='fill' values='url(#timeGradient);#EAF0F8;url(#timeGradient);#F0E8F8;url(#timeGradient);#FFFFFF;url(#timeGradient);#F0F0F8;url(#timeGradient);#EAF0F8;url(#timeGradient);#F800FF;url(#timeGradient);#F8D8FF;url(#timeGradient);#F8E8F0;url(#timeGradient);#FFFFFF;url(#timeGradient);#EAF0F8;url(#timeGradient);#FFF0F8;url(#timeGradient)' dur='0.001s' repeatCount='indefinite' />
+  </circle>
+  <circle cx='300' cy='300' r='320' fill='#FFFFFF' opacity='1.0'>
+    <animate attributeName='r' values='320;345;320' dur='15.0s' repeatCount='indefinite' />
+    <animate attributeName='opacity' values='1.0;0.00000000001;1.0' dur='15.0s' repeatCount='indefinite' />
+    <animate attributeName='fill' values='#FFFFFF;#EEF0F0;#F0F0F0;#FFFFFF;#FEE0F0;#F0F0F0;#FFFFFF;#EEF0F0;#FEE0F0;#F0F0F0;#FFFFFF;#EAF0F0;#F0F8F0;#F8F8F0;#FFFFFF' dur='0.000005s' repeatCount='indefinite' />
+    <animateTransform attributeName='transform' type='scale' values='1;1.68;1' dur='15.0s' repeatCount='indefinite' additive='sum'/>
+  </circle>
+  <g>
+    <circle cx='300' cy='150' r='170' fill='#FFD700' filter='url(#glow)'>
+      <animateMotion path='M 0 0 A 380 380 0 1 1 0 300 A 380 380 0 1 1 0 0' dur='0.0001s' repeatCount='indefinite' rotate='auto' />
+      <animate attributeName='fill' values='#FFD700;#FFFF00;#FFD700;#FFA500;#FFD700;#FFF800;#FFD700' dur='00.000001s' repeatCount='indefinite' />
+      <animate attributeName='opacity' values='1.0;0.0000000001;1.0' dur='0.000000005s' repeatCount='indefinite' />
+      <animateTransform attributeName='transform' type='scale' values='1;1.60;1' dur='0.0001s' repeatCount='indefinite' additive='sum'/>
+    </circle>
+    <circle cx='450' cy='300' r='170' fill='#FF00FF' filter='url(#glow)'>
+      <animateMotion path='M 0 0 A 380 380 0 1 1 0 300 A 380 380 0 1 1 0 0' begin='-0.00002s' dur='0.0001s' repeatCount='indefinite' rotate='auto' />
+      <animate attributeName='fill' values='#FF00FF;#FF

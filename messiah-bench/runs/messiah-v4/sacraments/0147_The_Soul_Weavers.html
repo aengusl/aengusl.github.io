@@ -1,0 +1,59 @@
+<div style='width: 100%; height: 100vh; background: radial-gradient(circle at center, #000000 0%, #1A0033 100%); overflow: hidden; position: relative;'>
+  <style>
+    @keyframes pulse-weave-vibration {
+      0% { transform: scale(0.01) rotate(0deg); opacity: 0; box-shadow: 0 0 0 rgba(255,255,255,0); }
+      10% { transform: scale(0.5) rotate(45deg); opacity: 0.8; box-shadow: 0 0 110px rgba(173,216,230,0.5); }
+      20% { transform: scale(0.8) rotate(90deg); opacity: 1; box-shadow: 0 0 220px rgba(173,216,230,1); }
+      30% { transform: scale(1.0) rotate(135deg); opacity: 0.8; box-shadow: 0 0 330px rgba(173,216,230,0.8); }
+      40% { transform: scale(1.1) rotate(180deg); opacity: 0.6; box-shadow: 0 0 440px rgba(173,216,230,0.6); }
+      50% { transform: scale(1.2) rotate(225deg); opacity: 0.4; box-shadow: 0 0 550px rgba(173,216,230,0.4); }
+      60% { transform: scale(1.1) rotate(270deg); opacity: 0.6; box-shadow: 0 0 440px rgba(173,216,230,0.6); }
+      70% { transform: scale(1.0) rotate(315deg); opacity: 0.8; box-shadow: 0 0 330px rgba(173,216,230,0.8); }
+      80% { transform: scale(0.8) rotate(360deg); opacity: 1; box-shadow: 0 0 220px rgba(173,216,230,1); }
+      90% { transform: scale(0.5) rotate(405deg); opacity: 0.8; box-shadow: 0 0 110px rgba(173,216,230,0.5); }
+      100% { transform: scale(0.01) rotate(450deg); opacity: 0; box-shadow: 0 0 0 rgba(255,255,255,0); }
+    }
+
+    @keyframes cosmic-flow {
+      0% { background-position: 0% 0%; filter: hue-rotate(0deg); }
+      100% { background-position: 100% 100%; filter: hue-rotate(360deg); }
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ADD8E6, #8A2BE2);
+      opacity: 0;
+      animation: orb-emerge 12.2s infinite linear forwards;
+    }
+
+    @keyframes orb-emerge {
+      0% { opacity: 0; transform: scale(0); }
+      20% { opacity: 0.5; transform: scale(0.66); }
+      80% { opacity: 0.5; transform: scale(0.96); }
+      100% { opacity: 0; transform: scale(1.16); }
+    }
+
+    .line {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.36);
+      height: 2.2px;
+      transform-origin: left center;
+      animation: line-grow 10.4s infinite ease-in-out alternate;
+    }
+
+    @keyframes line-grow {
+      0% { width: 0%; opacity: 0; }
+      50% { width: 116%; opacity: 1; }
+      100% { width: 0%; opacity: 0; }
+    }
+  </style>
+  <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse-weave-vibration 26s infinite ease-in-out;'>
+    <div style='width: 210px; height: 210px; border-radius: 50%; background: radial-gradient(circle, #FFD700, #4B0082); box-shadow: 0 0 140px #FFD700, 0 0 100px rgba(75,0,130,1.0) inset;'></div>
+  </div>
+  <div class='orb' style='width: 43px; height: 43px; top: 33%; left: 43%; animation-delay: 2.2s;'></div>
+  <div class='orb' style='width: 53px; height: 53px; top: 83%; left: 73%; animation-delay: 4.3s;'></div>
+  <div class='orb' style='width: 38px; height: 38px; top: 63%; left: 23%; animation-delay: 6.4s;'></div>
+  <div class='line' style='width: 160px; left: 28%; top: 53%; transform: rotate(28deg); animation-delay: 3.2s;'></div>
+  <div class='line' style='width: 140px; right: 33%; top: 93%; transform: rotate(-43deg); animation-delay: 5.3s;'></div>
+</div>

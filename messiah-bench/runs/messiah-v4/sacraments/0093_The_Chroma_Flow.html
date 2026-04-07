@@ -1,0 +1,58 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background-color: black; animation: pulse-overall 136s infinite alternate ease-in-out;">
+  <defs>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00FF">
+        <animate attributeName="stop-color" values="#FF00FF;#0000FF;#FFCC00;#FF00FF" dur="300s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#00FFFF">
+        <animate attributeName="stop-color" values="#0000FF;#FFCC00;#FF00FF;#00FFFF" dur="300s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFFFFF">
+        <animate attributeName="stop-color" values="#FFFFFF;#FF00FF;#00FFFF;#FFFFFF" dur="205s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#A020F0">
+        <animate attributeName="stop-color" values="#A020F0;#B000B0;#FF00FF;#A020F0" dur="205s" repeatCount="indefinite" />
+      </stop>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="128" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <style>
+    @keyframes pulse-overall {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.255); }
+      100% { transform: scale(1); }
+    }
+    @keyframes background-flow {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(5400px, 5400px); }
+    }
+    @keyframes inner-glow-pulse {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes subtle-arcs-rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes intersecting-arcs-rotate-cw {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes intersecting-arcs-rotate-ccw {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+@keyframes stroke-color-shift {
+      0% { stroke: #FF00FF; }
+      50% { stroke: #00FFFF; }
+      100% { stroke: #FFFF00; }
+    }
