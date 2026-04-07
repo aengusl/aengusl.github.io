@@ -107,7 +107,15 @@ layout: home
   .right-sidebar {
     position: sticky;
     top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e0dcd5 transparent;
   }
+
+  .right-sidebar::-webkit-scrollbar { width: 4px; }
+  .right-sidebar::-webkit-scrollbar-track { background: transparent; }
+  .right-sidebar::-webkit-scrollbar-thumb { background: #e0dcd5; border-radius: 2px; }
   
   .sidebar-section {
     margin-bottom: 2.5rem;
