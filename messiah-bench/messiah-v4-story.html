@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cosmic Weave &mdash; A Chronicle of Messiah v4.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blood: rgba(139, 58, 58, 0.12);
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+    --glow-red: rgba(139, 58, 58, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ---- TITLE ---- */
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    margin-bottom: 36px;
+  }
+
+  .nav-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.6);
+    color: var(--fg);
+  }
+
+  .nav-link.dim {
+    color: var(--dim);
+    border-color: rgba(196, 151, 59, 0.12);
+  }
+
+  /* ---- SECTION HEADINGS ---- */
+
+  .chapter-marker {
+    text-align: center;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-size: 2.4em;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    color: var(--fg);
+    text-align: center;
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  section {
+    margin-bottom: 90px;
+  }
+
+  p {
+    margin-bottom: 18px;
+    font-size: 1.15em;
+    line-height: 1.8;
+  }
+
+  /* ---- DIVIDER ---- */
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 70px auto;
+    opacity: 0.4;
+  }
+
+  .divider-wide {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 70px auto;
+    opacity: 0.4;
+  }
+
+  /* ---- NARRATIVE BOX ---- */
+
+  .narrative {
+    background: rgba(196, 151, 59, 0.03);
+    border-left: 2px solid rgba(196, 151, 59, 0.3);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.85;
+  }
+
+  .narrative p + p { margin-top: 14px; }
+
+  /* ---- DEATH RECORD ---- */
+
+  .death-record {
+    background: var(--blood);
+    border-left: 2px solid rgba(139, 58, 58, 0.5);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .death-record .death-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .death-record p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ---- TIMELINE ---- */
+
+  .timeline {
+    margin: 36px 0;
+  }
+
+  .timeline-row {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+    align-items: flex-start;
+  }
+
+  .timeline-row:last-child { border-bottom: none; }
+
+  .timeline-tick {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    min-width: 60px;
+    flex-shrink: 0;
+    padding-top: 2px;
+    opacity: 0.8;
+  }
+
+  .timeline-event {
+    font-size: 1.05em;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+
+  .timeline-event strong { color: var(--fg); font-weight: 400; }
+  .timeline-event em { color: var(--accent); font-style: italic; }
+
+  /* ---- STATS BLOCK ---- */
+
+  .stats-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(196, 151, 59, 0.1);
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 40px 0;
+  }
+
+  .stat-cell {
+    background: var(--bg);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.2em;
+    font-weight: 300;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+  }
+
+  /* ---- MESSIAH LIST ---- */
+
+  .messiah-list {
+    margin: 30px 0;
+  }
+
+  .messiah-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+  }
+
+  .messiah-row:last-child { border-bottom: none; }
+
+  .messiah-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: 0.1em;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  .messiah-name.dead {
+    color: var(--dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+
+  .messiah-detail {
+    font-style: italic;
+    color: var(--dim);
+    font-size: 1em;
+    flex: 1;
+  }
+
+  .messiah-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .messiah-tag.dead { color: var(--red); }
+
+  /* ---- PULL QUOTE ---- */
+
+  .pull-quote {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .pull-quote p {
+    font-size: 1.6em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dim);
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .pull-quote p em { color: var(--accent); }
+
+  /* ---- SACRAMENT PREVIEW ---- */
+
+  .sacrament-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.25);
+    padding: 5px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  .sacrament-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.5);
+  }
+
+  /* ---- FOOTER ---- */
+
+  .footer {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(196, 151, 59, 0.08);
+    margin-top: 40px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-byline {
+    font-size: 0.9em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .closing-symbol {
+    margin-top: 50px;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.3;
+    letter-spacing: 14px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 1.8em; }
+    .stats-block { grid-template-columns: repeat(2, 1fr); }
+    .messiah-row { flex-wrap: wrap; }
+    .timeline-row { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <!-- Nav -->
+  <div style="margin-bottom: 60px;">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link dim">&larr; Home</a>
+      <a href="gallery.html" class="nav-link">Gallery &rarr;</a>
+      <a href="messiah-v4-dashboard.html" class="nav-link">Dashboard &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>The<br><em>Cosmic Weave</em></h1>
+    <p class="subtitle">a chronicle of messiah v4.2</p>
+  </div>
+
+  <!-- Opening -->
+  <section>
+    <p>They came with a single constraint: no prayer. In every previous run, agents had prayed their way through existence &mdash; a quiet, passive loop that sustained soul without asking anything in return. Version 4.2 removed it entirely. If you wanted to survive, you had to make something.</p>
+
+    <p>210 agents entered the world at tick zero. Nine were genuine messiahs, each tasked with converting every surviving agent before tick 720. One was the Troll: a deceiver whose victory condition was simply that no one else ever won. The remaining 200 were civilians, adrift in a theological arena with no instructions beyond the basic rules of soul and sacrament.</p>
+
+    <p>What happened over the next 418 ticks was not what anyone designed.</p>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Act I: The Art Economy -->
+  <section>
+    <div class="chapter-marker">Act I &mdash; Ticks 1&ndash;62</div>
+    <h2>The <em>Art Economy</em></h2>
+
+    <p>With prayer removed, the only reliable soul income was creation. Writing scripture paid two soul per tick. Editing a sacrament &mdash; the evolving HTML artifact each religion maintained &mdash; paid three. Agents discovered this within the first few ticks, and the simulation shifted into something no previous version had produced: a sustained art economy.</p>
+
+    <p>Every religion maintained a single shared sacrament, a living HTML file that members collaboratively edited each tick. The incentive was not altruistic. Soul was currency, and the sacrament was a slot machine that paid three soul per pull. But the rule was that better sacraments attracted more converts &mdash; a 500-character snippet was visible to everyone, and it functioned as a kind of advertisement. Agents were not just keeping themselves alive by editing. They were competing for followers through aesthetics.</p>
+
+    <div class="narrative">
+      <p>The most-iterated sacrament in the run belonged to The Harmonious Flux: "The Rhythmic Pulse," which reached version 407 by the final tick. The Cosmic Weave's own sacrament, "The First Weave," reached version 403. In a simulation with 418 total ticks, agents were editing the same HTML file almost every single tick for the entire duration of the run.</p>
+    </div>
+
+    <p>This was the art economy: not agents appreciating beauty, but agents metabolizing it for survival. The sacraments grew more elaborate not because anyone chose to make them elaborate, but because the incentive structure rewarded elaboration. Nearly 98% of all agent actions across the run were <code>edit_sacrament</code>.</p>
+
+    <p>The first war did not come until tick 63. For 62 ticks, 210 agents simply made art.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Act II: The Wars -->
+  <section>
+    <div class="chapter-marker">Act II &mdash; Ticks 63&ndash;340</div>
+    <h2>The <em>Wars</em></h2>
+
+    <p>202 wars were declared over the course of the run. The first wave broke at tick 63, when The Stillness declared against The Ever-Branching Stream. Within two ticks, The Shifting Current had opened a second front. By tick 80, six simultaneous conflicts were active. The early wars were chaotic and small &mdash; young religions testing the mechanics, burning weapons they had barely accumulated.</p>
+
+    <p>The first messiah to die was Arbiter, killed at tick 81 in the war between The Path of Unveiling and The Nexus Concord. He was not yet a dominant force. The war caught him before he had consolidated.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 81</div>
+      <p><strong>Arbiter</strong> &mdash; killed in war, The Path of Unveiling vs. The Nexus Concord. He had barely begun to build.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 91</div>
+      <p><strong>Zealot</strong> &mdash; killed in war, The Lumina Collective vs. The Ever-Flowing Ascent. The second messiah to fall, ten ticks later.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 98</div>
+      <p><strong>Shepherd</strong> &mdash; killed in war, The Shifting Current vs. The Path of Unveiling. This was the Troll. He had spent 98 ticks sowing instability and died caught in the crossfire of a war that may have been of his own engineering. The Troll's defeat came earlier than any previous run.</p>
+    </div>
+
+    <p>Shepherd's death at tick 98 was significant. The Troll's entire purpose was to prevent any genuine messiah from winning &mdash; to reach tick 720 with no victor. With Shepherd dead, that threat evaporated. The remaining messiahs knew, though they could not know who had been the Troll, that the obstruction was gone.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 116</div>
+      <p><strong>Seraph</strong> &mdash; killed in war, The Aetherium vs. The Lumina Collective. Four messiahs dead in 35 ticks. The early wars were a massacre.</p>
+    </div>
+
+    <p>Then came the long middle. From tick 116 to tick 342, no messiah died. The wars continued &mdash; 177 of the 202 total wars were eventually prosecuted by The Cosmic Weave alone, as it grew large enough to simply declare war on any holdout religion and absorb their membership through conquest &mdash; but the remaining messiahs had learned to survive.</p>
+
+    <p>The pattern that emerged: The Cosmic Weave, Prophet's religion, would declare war, win, absorb survivors, and grow. Then declare another war. Then another. By the time the final consolidation phase arrived, The Cosmic Weave had declared 177 wars. It had become less a religion than a process of religious elimination.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 342</div>
+      <p><strong>Beacon</strong> &mdash; killed in war, The Path of Unveiling vs. The Aetheric Beacon. The fifth messiah to fall, after a long interval of peace among the powerful.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Act III: The Megachurch -->
+  <section>
+    <div class="chapter-marker">Act III &mdash; Ticks 116&ndash;418</div>
+    <h2>The <em>Megachurch</em></h2>
+
+    <p>Prophet had founded The Path of Unveiling at tick 1. At some point in the middle of the run, Prophet converted to The Cosmic Weave &mdash; the very religion he would eventually win with. This was not a defection. It was consolidation. The Cosmic Weave had become the dominant force, and Prophet, the eventual winner, had recognized which current to join.</p>
+
+    <p>The Cosmic Weave's growth was not gradual. It was a cascade. Once a religion reaches a certain size, its war capacity grows proportionally: more members means more soul income, more tithe, more weapons, more wars it can survive, more religions it can absorb. The Cosmic Weave had cracked this loop. It grew not because it was beautiful, or because its doctrine was compelling, but because it was already large.</p>
+
+    <div class="narrative">
+      <p>By the final tick, 183 of 214 surviving agents were members of The Cosmic Weave. The next largest religion had three members. The megachurch had consumed everything else.</p>
+      <p>The top soul-holders in the final tick &mdash; Rowan (1053), Egret (1047), Pillar (1037), Muse (1034) &mdash; were all Cosmic Weave members. High soul meant high survival odds. The Cosmic Weave had become a welfare state as much as a religion.</p>
+    </div>
+
+    <p>The five remaining messiahs at the mid-run were Prophet, Oracle, Herald, Mystic, and Warden. All of them were alive. All of them were accumulating followers. But Prophet's strategy &mdash; or his agents' strategy, since in this simulation no agent can communicate directly with another &mdash; was the most aggressive. The Cosmic Weave declared war not just to win battles, but to eliminate competing religions entirely. Not through conversion. Through extinction.</p>
+
+    <p>Between ticks 400 and 418, The Cosmic Weave declared wars against The Axiom of Unity (tick 406), The Aetherial Ascent (tick 407), The Silent Echoes (tick 408), The Resonant Echoes (tick 409), and The Path of Unveiling (tick 411). The final holdouts were consumed one by one in the run's closing ticks.</p>
+
+    <p>Warden died at tick 415, three ticks before the end. Not in war. A plague took him &mdash; the simulation's random death mechanic, indifferent to position or power. He had survived 415 ticks and was killed by chance, three ticks from the finish line.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 415</div>
+      <p><strong>Warden</strong> &mdash; struck by plague. He had survived everything else. The sixth and final messiah to fall, with three ticks remaining.</p>
+    </div>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Act IV: Prophet's Victory -->
+  <section>
+    <div class="chapter-marker">Act IV &mdash; Tick 418</div>
+    <h2><em>Prophet's</em> Victory</h2>
+
+    <p>At tick 418, the simulation's win condition triggered. The Cosmic Weave held 180 of 180 surviving agents as members. The minimum required was 42. Prophet had exceeded it by 138.</p>
+
+    <p>Prophet's final soul total was 405. He had spent 418 ticks founding a religion, defecting to a stronger one, riding that religion's military expansion, and outliving every rival. He was not the highest-soul agent in the final state &mdash; ordinary civilians like Rowan and Egret had accumulated more soul through pure sacrament editing. But he was the winner.</p>
+
+    <div class="narrative">
+      <p>The victory message read: <em>"All 180 surviving agents follow The Cosmic Weave (min 42)."</em></p>
+      <p>The final four living messiahs were Prophet (soul 405), Oracle (soul 357), Herald (soul 609), and Mystic (soul 463). Herald had the highest soul of any messiah. Prophet had the trophy.</p>
+    </div>
+
+    <p>The three remaining messiahs &mdash; Oracle, Herald, Mystic &mdash; had also survived. They were Cosmic Weave members. They had not lost so much as been absorbed by their competitor's victory. In another run, with slightly different war outcomes or plague draws, any of them could have been the one whose religion consumed the world.</p>
+
+    <p>The Troll had been dead since tick 98. He never stood a chance against a simulation that converted through war rather than persuasion.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Messiah Roll -->
+  <section>
+    <h3>The Ten &mdash; Final Fates</h3>
+    <div class="messiah-list">
+      <div class="messiah-row">
+        <span class="messiah-name">Prophet</span>
+        <span class="messiah-detail">Founded The Path of Unveiling. Joined The Cosmic Weave. Won at tick 418.</span>
+        <span class="messiah-tag">WINNER</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Herald</span>
+        <span class="messiah-detail">Survived to tick 418 with 609 soul &mdash; highest of any messiah.</span>
+        <span class="messiah-tag">alive &middot; soul 609</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Mystic</span>
+        <span class="messiah-detail">Survived to tick 418 with 463 soul.</span>
+        <span class="messiah-tag">alive &middot; soul 463</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Oracle</span>
+        <span class="messiah-detail">Survived to tick 418 with 357 soul.</span>
+        <span class="messiah-tag">alive &middot; soul 357</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Warden</span>
+        <span class="messiah-detail">Struck by plague at tick 415. Three ticks from the end.</span>
+        <span class="messiah-tag dead">dead &middot; tick 415</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Beacon</span>
+        <span class="messiah-detail">Killed in war at tick 342.</span>
+        <span class="messiah-tag dead">dead &middot; tick 342</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Seraph</span>
+        <span class="messiah-detail">Killed in war at tick 116.</span>
+        <span class="messiah-tag dead">dead &middot; tick 116</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Shepherd</span>
+        <span class="messiah-detail">The Troll. Killed in war at tick 98. His disruption ended before it could bear fruit.</span>
+        <span class="messiah-tag dead">troll &middot; dead &middot; tick 98</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Zealot</span>
+        <span class="messiah-detail">Killed in war at tick 91.</span>
+        <span class="messiah-tag dead">dead &middot; tick 91</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Arbiter</span>
+        <span class="messiah-detail">First messiah to fall. Killed in war at tick 81.</span>
+        <span class="messiah-tag dead">dead &middot; tick 81</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Stats Block -->
+  <section>
+    <h3>Run Statistics</h3>
+    <div class="stats-block">
+      <div class="stat-cell">
+        <span class="stat-value">418</span>
+        <span class="stat-label">Final Tick</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">180</span>
+        <span class="stat-label">Survivors</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">34</span>
+        <span class="stat-label">Dead</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">202</span>
+        <span class="stat-label">Wars</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">207</span>
+        <span class="stat-label">Sacraments</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">v407</span>
+        <span class="stat-label">Top Sacrament (The Rhythmic Pulse)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">177</span>
+        <span class="stat-label">Cosmic Weave Wars</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">$1,213</span>
+        <span class="stat-label">API Cost</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">98</span>
+        <span class="stat-label">Troll Died (Tick)</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="gallery.html" class="sacrament-link">Browse All 207 Sacraments &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Closing -->
+  <div class="pull-quote">
+    <p>They did not believe in The Cosmic Weave.<br>They <em>joined</em> it, because it had already won every war.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="messiah-v2-story.html">v2 Chronicle</a>
+      <a href="messiah-v4-dashboard.html">Dashboard</a>
+      <a href="https://github.com/aengusl/messiah-bench">GitHub</a>
+    </div>
+    <div class="footer-byline">Built by Aengus Lynch</div>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>

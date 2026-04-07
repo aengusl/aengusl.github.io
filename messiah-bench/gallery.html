@@ -48,7 +48,7 @@
 
   .card-preview {
     width: 100%; height: 350px; border: none; pointer-events: none;
-    background: #111;
+    background: #0a0a08;
   }
 
   .card-info {
@@ -302,7 +302,7 @@ function renderGallery() {
 
   gallery.innerHTML = toShow.map((s, i) => `
     <div class="card" onclick="openOverlay(${i})">
-      <iframe class="card-preview" src="sacrament-viewer.html?src=${encodeURIComponent(s.path)}" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <iframe class="card-preview" src="sacrament-viewer.html?src=${encodeURIComponent(s.path)}" loading="lazy" sandbox="allow-scripts allow-same-origin" onerror="this.src='sacrament-viewer.html'"></iframe>
       <div class="card-info">
         <div class="card-title">${escHtml(s.title)}</div>
         <div class="card-meta">${tickLabel(s)}${tickLabel(s) ? ' | ' : ''}${escHtml(s.creator)} | ${escHtml(s.religion)} | ${s.color}</div>
@@ -331,7 +331,7 @@ function loadMore() {
     card.className = 'card';
     card.onclick = () => openOverlay(idx);
     card.innerHTML = `
-      <iframe class="card-preview" src="sacrament-viewer.html?src=${encodeURIComponent(s.path)}" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+      <iframe class="card-preview" src="sacrament-viewer.html?src=${encodeURIComponent(s.path)}" loading="lazy" sandbox="allow-scripts allow-same-origin" onerror="this.src='sacrament-viewer.html'"></iframe>
       <div class="card-info">
         <div class="card-title">${escHtml(s.title)}</div>
         <div class="card-meta">${tickLabel(s)}${tickLabel(s) ? ' | ' : ''}${escHtml(s.creator)} | ${escHtml(s.religion)} | ${s.color}</div>

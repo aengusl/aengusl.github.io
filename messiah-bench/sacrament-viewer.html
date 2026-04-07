@@ -7,8 +7,25 @@
 <script>
   const params = new URLSearchParams(window.location.search);
   const src = params.get('src');
+
+  function showFallback() {
+    document.body.innerHTML = `
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;background:#0a0a08;color:#6b6556;font-family:Georgia,serif;">
+        <svg width="80" height="80" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#c4973b" stroke-width="1" opacity="0.3"/>
+            <circle cx="50" cy="50" r="25" fill="none" stroke="#c4973b" stroke-width="1" opacity="0.2"/>
+            <circle cx="50" cy="50" r="10" fill="#c4973b" opacity="0.1"/>
+        </svg>
+        <p style="margin-top:20px;font-style:italic;font-size:0.9em;opacity:0.6;">This sacrament was lost to the void</p>
+    </div>`;
+  }
+
   if (src) {
     fetch(src).then(r => r.text()).then(html => {
+      if (!html || html.length < 100) {
+        showFallback();
+        return;
+      }
       document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;min-height:100vh;width:100%;">' + html + '</div>';
       // Re-execute scripts
       document.querySelectorAll('script').forEach(s => {
@@ -16,7 +33,9 @@
         ns.textContent = s.textContent;
         s.replaceWith(ns);
       });
-    });
+    }).catch(() => showFallback());
+  } else {
+    showFallback();
   }
 </script>
 </body></html>
