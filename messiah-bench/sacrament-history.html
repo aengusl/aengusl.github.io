@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sacrament History — Messiah Bench v5</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; --messiah: #e6c84b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  .header { padding: 20px 30px 10px; }
+  .header h1 { color: var(--messiah); font-size: 1.6em; }
+  .header .sub { color: var(--dim); font-size: 0.85em; margin-top: 4px; }
+  .header a { color: var(--accent); text-decoration: none; }
+  .header a:hover { text-decoration: underline; }
+
+  .layout { display: flex; height: calc(100vh - 90px); }
+
+  .sidebar { width: 280px; min-width: 280px; border-right: 1px solid rgba(196,151,59,0.15); overflow-y: auto; padding: 10px 0; }
+  .sac-item { padding: 8px 16px; cursor: pointer; font-size: 0.85em; border-left: 3px solid transparent; transition: all 0.15s; }
+  .sac-item:hover { background: rgba(255,255,255,0.03); }
+  .sac-item.active { border-left-color: var(--accent); background: rgba(196,151,59,0.08); }
+  .sac-label { color: var(--fg); font-weight: 500; }
+  .sac-meta { color: var(--dim); font-size: 0.8em; margin-top: 2px; }
+  .sac-dots { display: flex; gap: 4px; margin-top: 4px; }
+  .sac-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(196,151,59,0.2); }
+  .sac-dot.exists { background: rgba(196,151,59,0.5); }
+  .sac-dot.changed { background: var(--accent); }
+
+  .main { flex: 1; display: flex; flex-direction: column; }
+
+  .viewer { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+  .viewer-frame { width: 100%; height: 100%; border: none; background: transparent; }
+
+  .controls { padding: 16px 24px; border-top: 1px solid rgba(196,151,59,0.15); display: flex; align-items: center; gap: 16px; }
+  .tick-label { color: var(--messiah); font-weight: 700; font-size: 1.1em; min-width: 80px; }
+  .slider-wrap { flex: 1; display: flex; align-items: center; gap: 12px; }
+  .tick-markers { display: flex; justify-content: space-between; flex: 1; position: relative; }
+  .tick-mark { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.15s; }
+  .tick-mark:hover { background: rgba(255,255,255,0.05); }
+  .tick-mark.active { background: rgba(196,151,59,0.15); }
+  .tick-mark.unavailable { opacity: 0.25; cursor: default; }
+  .tick-mark .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(196,151,59,0.3); margin-bottom: 4px; transition: all 0.15s; }
+  .tick-mark.active .dot { background: var(--accent); box-shadow: 0 0 8px rgba(196,151,59,0.5); }
+  .tick-mark.changed .dot { background: var(--messiah); }
+  .tick-mark .num { color: var(--dim); font-size: 0.75em; }
+  .tick-mark.active .num { color: var(--accent); font-weight: 600; }
+
+  .play-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85em; transition: all 0.15s; }
+  .play-btn:hover { background: rgba(196,151,59,0.15); }
+  .play-btn.playing { background: rgba(196,151,59,0.2); }
+
+  .size-label { color: var(--dim); font-size: 0.75em; min-width: 60px; text-align: right; }
+  .no-version { color: var(--dim); font-style: italic; font-size: 0.9em; }
+
+  input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: rgba(196,151,59,0.2); border-radius: 2px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; }
+
+  @media (max-width: 700px) {
+    .layout { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; min-width: 0; max-height: 200px; border-right: none; border-bottom: 1px solid rgba(196,151,59,0.15); }
+    .viewer { min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Sacrament Evolution</h1>
+  <div class="sub"><a href="runs/messiah-v5/index.html">&larr; Dashboard</a> &middot; Watch how each religion's sacred art evolved across 507 ticks</div>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main">
+    <div class="viewer" id="viewer">
+      <div class="no-version">Select a sacrament to view its history</div>
+    </div>
+    <div class="controls" id="controls" style="display:none">
+      <div class="tick-label" id="tickLabel">Tick —</div>
+      <div class="slider-wrap">
+        <div class="tick-markers" id="tickMarkers"></div>
+      </div>
+      <button class="play-btn" id="playBtn" title="Auto-play through history">&#9654; Play</button>
+      <div class="size-label" id="sizeLabel"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let manifest = null;
+let currentSac = null;
+let currentTickIdx = 0;
+let playing = false;
+let playTimer = null;
+
+const basePath = 'runs/messiah-v5/sacraments/';
+
+async function init() {
+  const resp = await fetch(basePath + 'manifest.json');
+  manifest = await resp.json();
+  renderSidebar();
+
+  const params = new URLSearchParams(location.search);
+  const sac = params.get('sac');
+  if (sac && manifest.sacraments[sac]) {
+    selectSacrament(sac);
+  }
+}
+
+function renderSidebar() {
+  const el = document.getElementById('sidebar');
+  const entries = Object.entries(manifest.sacraments).sort((a, b) => a[0].localeCompare(b[0]));
+  el.innerHTML = entries.map(([file, info]) => {
+    const dots = manifest.ticks.map(t => {
+      const v = info.versions.find(v => v.tick === t);
+      if (!v) return '<div class="sac-dot"></div>';
+      return `<div class="sac-dot ${v.changed ? 'changed' : 'exists'}"></div>`;
+    }).join('');
+    const nVersions = info.versions.length;
+    const nChanges = info.versions.filter(v => v.changed).length;
+    return `<div class="sac-item" data-file="${file}" onclick="selectSacrament('${file}')">
+      <div class="sac-label">${info.label}</div>
+      <div class="sac-meta">${nVersions} snapshots${nChanges ? ', ' + nChanges + ' changes' : ''}</div>
+      <div class="sac-dots">${dots}</div>
+    </div>`;
+  }).join('');
+}
+
+function selectSacrament(file) {
+  stopPlay();
+  currentSac = file;
+  const info = manifest.sacraments[file];
+
+  document.querySelectorAll('.sac-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.file === file);
+  });
+
+  document.getElementById('controls').style.display = 'flex';
+  renderTickMarkers(info);
+
+  const lastIdx = info.versions.length - 1;
+  setTick(lastIdx);
+}
+
+function renderTickMarkers(info) {
+  const el = document.getElementById('tickMarkers');
+  el.innerHTML = manifest.ticks.map((t, i) => {
+    const v = info.versions.find(v => v.tick === t);
+    const classes = ['tick-mark'];
+    if (!v) classes.push('unavailable');
+    if (v && v.changed) classes.push('changed');
+    return `<div class="${classes.join(' ')}" data-idx="${i}" data-tick="${t}" onclick="clickTick(this)">
+      <div class="dot"></div>
+      <div class="num">${t}</div>
+    </div>`;
+  }).join('');
+}
+
+function clickTick(el) {
+  if (el.classList.contains('unavailable')) return;
+  const tick = parseInt(el.dataset.tick);
+  const info = manifest.sacraments[currentSac];
+  const idx = info.versions.findIndex(v => v.tick === tick);
+  if (idx >= 0) setTick(idx);
+}
+
+function setTick(idx) {
+  const info = manifest.sacraments[currentSac];
+  if (idx < 0 || idx >= info.versions.length) return;
+  currentTickIdx = idx;
+  const v = info.versions[idx];
+
+  document.getElementById('tickLabel').textContent = 'Tick ' + v.tick;
+  document.getElementById('sizeLabel').textContent = formatSize(v.size);
+
+  document.querySelectorAll('.tick-mark').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.tick) === v.tick);
+  });
+
+  const src = basePath + 'history/tick_' + v.tick + '/' + currentSac;
+  loadSacrament(src);
+}
+
+async function loadSacrament(src) {
+  const viewer = document.getElementById('viewer');
+  try {
+    const resp = await fetch(src);
+    const html = await resp.text();
+    if (!html || html.length < 50) {
+      viewer.innerHTML = '<div class="no-version">This sacrament was lost to the void</div>';
+      return;
+    }
+    viewer.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;transform:scale(2.5);">' + html + '</div>';
+    viewer.querySelectorAll('script').forEach(s => {
+      const ns = document.createElement('script');
+      ns.textContent = s.textContent;
+      s.replaceWith(ns);
+    });
+  } catch {
+    viewer.innerHTML = '<div class="no-version">Failed to load sacrament</div>';
+  }
+}
+
+function togglePlay() {
+  if (playing) { stopPlay(); return; }
+  playing = true;
+  document.getElementById('playBtn').classList.add('playing');
+  document.getElementById('playBtn').innerHTML = '&#9646;&#9646; Pause';
+
+  const info = manifest.sacraments[currentSac];
+  if (currentTickIdx >= info.versions.length - 1) currentTickIdx = -1;
+
+  advancePlay();
+}
+
+function advancePlay() {
+  if (!playing) return;
+  const info = manifest.sacraments[currentSac];
+  currentTickIdx++;
+  if (currentTickIdx >= info.versions.length) {
+    stopPlay();
+    return;
+  }
+  setTick(currentTickIdx);
+  playTimer = setTimeout(advancePlay, 1500);
+}
+
+function stopPlay() {
+  playing = false;
+  clearTimeout(playTimer);
+  document.getElementById('playBtn').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '&#9654; Play';
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  return (bytes / 1024).toFixed(1) + ' KB';
+}
+
+document.getElementById('playBtn').addEventListener('click', togglePlay);
+init();
+</script>
+</body>
+</html>
