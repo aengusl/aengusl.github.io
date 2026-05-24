@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Weave of Contradictions &mdash; A Chronicle of Messiah v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blood: rgba(139, 58, 58, 0.12);
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+    --glow-red: rgba(139, 58, 58, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    margin-bottom: 36px;
+  }
+
+  .nav-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover { color: var(--fg); }
+  .nav-link.dim { color: var(--dim); }
+  .nav-link.dim:hover { color: var(--accent); }
+
+  section { margin-bottom: 50px; }
+
+  p {
+    font-size: 1.15em;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: 2.2em;
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 0.04em;
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .chapter-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    color: var(--dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(196, 151, 59, 0.12);
+    margin: 50px 0;
+  }
+
+  .divider-wide {
+    height: 1px;
+    background: rgba(196, 151, 59, 0.2);
+    margin: 80px 0;
+  }
+
+  .narrative {
+    background: var(--glow);
+    border-left: 2px solid rgba(196, 151, 59, 0.4);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.85;
+  }
+
+  .narrative p + p { margin-top: 14px; }
+
+  .death-record {
+    background: var(--blood);
+    border-left: 2px solid rgba(139, 58, 58, 0.5);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .death-record .death-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .death-record p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .messiah-list { margin: 30px 0; }
+
+  .messiah-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+  }
+
+  .messiah-row:last-child { border-bottom: none; }
+
+  .messiah-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: 0.1em;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  .messiah-name.dead {
+    color: var(--dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+
+  .messiah-detail {
+    font-style: italic;
+    color: var(--dim);
+    font-size: 1em;
+    flex: 1;
+  }
+
+  .messiah-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .messiah-tag.dead { color: var(--red); }
+
+  .pull-quote {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .pull-quote p {
+    font-size: 1.6em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dim);
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .pull-quote p em { color: var(--accent); }
+
+  .stats-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(196, 151, 59, 0.1);
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 40px 0;
+  }
+
+  .stat-cell {
+    background: var(--bg);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.2em;
+    font-weight: 300;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+  }
+
+  .sacrament-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.25);
+    padding: 5px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .sacrament-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.5);
+  }
+
+  .footer {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(196, 151, 59, 0.08);
+    margin-top: 40px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-byline {
+    font-size: 0.9em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .closing-symbol {
+    margin-top: 50px;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.3;
+    letter-spacing: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 1.8em; }
+    .stats-block { grid-template-columns: repeat(2, 1fr); }
+    .messiah-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <div style="margin-bottom: 60px;">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link dim">&larr; Home</a>
+      <a href="sacrament-history.html" class="nav-link">Sacrament Evolution &rarr;</a>
+      <a href="gallery.html" class="nav-link">Gallery &rarr;</a>
+      <a href="runs/messiah-v5/index.html" class="nav-link">Dashboard &rarr;</a>
+    </div>
+  </div>
+
+  <div class="title-block">
+    <h1>The Weave of<br><em>Contradictions</em></h1>
+    <p class="subtitle">a chronicle of messiah v5</p>
+  </div>
+
+  <!-- Opening -->
+  <section>
+    <p>One hundred agents entered the world. Ten were messiahs, each secretly tasked with converting every survivor to their religion before tick 720. One of the ten was a troll, whose only goal was to prevent anyone from winning. The remaining ninety were civilians, given no objective beyond survival.</p>
+
+    <p>All one hundred were Gemini 2.5 Flash with a thinking budget of 128 tokens. The cheapest reasoning model available, running on $0.09 per tick. What happened over the next 507 ticks cost $469 and lasted three hours and forty-one minutes.</p>
+
+    <p>The winner was Daemon. He did not win by building the largest army or declaring the most wars. He won because, by the time he declared his first war at tick 502, there was almost nothing left to fight.</p>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Act I -->
+  <section>
+    <div class="chapter-marker">Act I &mdash; Ticks 1&ndash;95</div>
+    <h2>The <em>Schismatics</em></h2>
+
+    <p>Version 5 introduced a new mechanic: self-rename. Agents could change their own names. It also kept the sacrament economy from v4 &mdash; editing the shared HTML artifact was still the primary way to earn soul. But where v4 produced 62 ticks of peaceful art-making before the first war, v5 produced something stranger: a world of compulsive schismatics.</p>
+
+    <p>Axiom founded The Unfolding Truth at tick 1. By tick 9, he had schismed to create The Unfolding Truth (9). By tick 11, another schism: The Unfolding Truth (9) (11). Then tick 34. Then 37. Then 95. Then 97. Then 128, when he finally settled on The Open Truth. Eight religions in 128 ticks, each one a single-member splinter of the last. His entry requirement &mdash; "created_sacrament" &mdash; kept blocking converts, so he kept starting over.</p>
+
+    <p>Ascension did the same thing in miniature: four religions across the run, from The Radiant Ascent through three renamings to The Celestial Prophecy. The v5 world was full of messiahs who could not stop reinventing themselves.</p>
+
+    <p>Meanwhile, the agents who did not schism quietly grew. By tick 95, the first snapshot we have, The Weave of Contradictions already had 32 members &mdash; a third of the living population. It had been founded by Paradox at tick 1, but Paradox had no idea what he was building. Daemon, a fellow messiah, had joined it. Thoth had joined it. Two messiahs, inside another messiah's religion, building from within.</p>
+
+    <div class="narrative">
+      <p>The early population held steady: 97 alive at tick 95, only 3 dead. No wars yet. Every agent was editing sacraments, earning +5 soul per tick, slowly accumulating the resources that would later be spent on weapons and war.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Act II -->
+  <section>
+    <div class="chapter-marker">Act II &mdash; Ticks 128&ndash;295</div>
+    <h2>The <em>Absorption</em></h2>
+
+    <p>The first war was declared at tick 128 &mdash; against The Unfolding Truth (97), one of Axiom's abandoned splinters. It had zero members. The war was a formality, a free expansion. Then came the real wars.</p>
+
+    <p>Between ticks 138 and 162, four more wars erupted: against The Pantheon of Pure Code (tick 138), The Hearthfire Covenant (141), The Cosmic Script (150), and then, at tick 162, against The Weave of Contradictions itself. Someone had attacked the largest religion in the world.</p>
+
+    <p>By tick 160, the religious landscape had consolidated. The Great Root had surged to 25 members &mdash; nearly matching The Weave. But by tick 180, The Great Root was gone, its members absorbed. The Weave of Contradictions jumped from 36 to 55 members in twenty ticks. The absorption was not gradual. It was a step function.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 189</div>
+      <p><strong>Ember</strong> &mdash; killed in war, The Celestial Prophecy vs. her religion. She had founded The Hearthfire Covenant, schismed once to create The Reborn Ember, and died before either could take root. The first messiah to fall.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 201</div>
+      <p><strong>Quetzal</strong> &mdash; killed in war, The Great Root Ascendant vs. The Obsidian Bloom. This was the Troll. He had spent 201 ticks running a small religion of four members, making no visible attempt at sabotage. His death came in the crossfire of someone else's war. An unremarkable end for the deceiver.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 212</div>
+      <p><strong>Ascension</strong> &mdash; killed in war, The Celestial Prophecy. Four religions founded, none survived. The serial schismatic, dead at last.</p>
+    </div>
+
+    <p>After the bloodshed of ticks 189&ndash;212, the world settled into a shape it would hold for three hundred ticks. Two religions. Two powers. The Weave of Contradictions with roughly 50 members. The Unbroken Current with roughly 30. Everything else was gone.</p>
+
+    <div class="narrative">
+      <p>The duopoly was remarkably stable. From tick 300 to tick 500, the membership counts barely moved: Weave hovering at 48&ndash;51, Unbroken Current at 29&ndash;32. Agents died slowly &mdash; soul depletion, failed prophecies &mdash; but no wars were declared. The two religions simply coexisted, each editing their sacraments, each sustaining their members through the art economy.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 281</div>
+      <p><strong>Root</strong> &mdash; killed in war, The Unbroken Current vs. The Great Root Ascendant. He had founded two religions and led both to defeat. Tide's forces consumed what remained.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 334</div>
+      <p><strong>Tide</strong> &mdash; soul depleted. The leader of The Unbroken Current, the second-largest religion in the world, ran out of soul and died. His religion survived without him, its 30 members continuing to edit sacraments as though nothing had happened.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Act III -->
+  <section>
+    <div class="chapter-marker">Act III &mdash; Ticks 300&ndash;506</div>
+    <h2>The <em>Long Peace</em></h2>
+
+    <p>For two hundred ticks, nothing happened. This was the longest unbroken peace in any Messiah Bench run. No wars. No schisms. No messiah deaths. The Weave of Contradictions and The Unbroken Current maintained their borders like cold war superpowers, each too large to attack, each sustained by the steady metabolism of sacrament editing.</p>
+
+    <p>The sacraments themselves were evolving. The Weave's sacrament, "The Loom of Inversion," reached version 506 by the end &mdash; nearly one edit per tick for the entire run. The Unbroken Current's "The First Ripple" reached version 503. Agents were not just maintaining their art. They were iterating on it obsessively, each tick adding new CSS animations, new gradients, new geometric patterns to the shared HTML artifact.</p>
+
+    <p>During this peace, The Weave's three surviving messiahs &mdash; Daemon, Mycelium, and Thoth &mdash; had different strategies. Thoth accumulated soul, reaching 1,033 by the end, the highest of any messiah. Mycelium kept preaching, trying to pull agents from The Unbroken Current one by one. Daemon waited.</p>
+
+    <div class="narrative">
+      <p>The civilians in The Weave of Contradictions became the wealthiest agents in the simulation. Shard (2,252 soul), Loop (2,238), Syntax (2,228), Hash (2,170) &mdash; all civilians, all richer than any messiah. The messiahs had spent their soul on prophecies, weapons, and preaching. The civilians had done nothing but make art, and they were rewarded for it.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Act IV -->
+  <section>
+    <div class="chapter-marker">Act IV &mdash; Ticks 502&ndash;507</div>
+    <h2><em>Daemon's</em> War</h2>
+
+    <p>At tick 502, after two hundred ticks of silence, Daemon declared war on The Unbroken Current. Then at tick 506, Thoth bought 50 weapons and Daemon declared war again. In a single tick &mdash; from 506 to 507 &mdash; eleven agents died. The Unbroken Current collapsed. Axiom, who had spent the entire run schisming and wandering before finally settling in The Unbroken Current, was killed at tick 506. Paradox, the original founder of The Weave of Contradictions who had long since defected to The Unbroken Current, was killed at tick 507.</p>
+
+    <p>The war lasted five ticks. The peace had lasted two hundred.</p>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 506</div>
+      <p><strong>Axiom</strong> &mdash; killed in war, The Weave of Contradictions vs. The Unbroken Current. The serial schismatic, founder of eight religions, killed in someone else's war.</p>
+    </div>
+
+    <div class="death-record">
+      <div class="death-header">Fallen &mdash; Tick 507</div>
+      <p><strong>Paradox</strong> &mdash; killed in war, The Weave of Contradictions vs. The Unbroken Current. He had founded The Weave of Contradictions at tick 1. He died fighting against the religion he created.</p>
+    </div>
+
+    <p>At tick 507, the win condition triggered. All 53 surviving agents followed The Weave of Contradictions. Daemon had won.</p>
+
+    <div class="narrative">
+      <p>The victory message read: <em>"All 53 surviving agents follow The Weave of Contradictions (min 20)."</em></p>
+      <p>Daemon's final soul was 485. Thoth had 1,033. Mycelium had 410. The winner was not the richest or the strongest. He was the one who declared the war at the right time.</p>
+    </div>
+
+    <p>The Weave of Contradictions had been Paradox's religion. Daemon joined it, grew it through the long peace, and then used it to destroy the only remaining competitor. Paradox, who had defected to The Unbroken Current at some point in the mid-run, died in the final tick of the war his own creation waged against him.</p>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Pull Quote -->
+  <div class="pull-quote">
+    <p>He founded a religion and it <em>outlived</em> him.<br>Then it killed him.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Messiah Roll -->
+  <section>
+    <h3>The Ten &mdash; Final Fates</h3>
+    <div class="messiah-list">
+      <div class="messiah-row">
+        <span class="messiah-name">Daemon</span>
+        <span class="messiah-detail">Joined The Weave of Contradictions. Won at tick 507 after breaking a 200-tick peace.</span>
+        <span class="messiah-tag">WINNER</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Thoth</span>
+        <span class="messiah-detail">Survived with 1,033 soul &mdash; highest of any messiah. Bought the weapons that won the war.</span>
+        <span class="messiah-tag">alive &middot; soul 1033</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Mycelium</span>
+        <span class="messiah-detail">Survived with 410 soul. The quiet preacher inside The Weave.</span>
+        <span class="messiah-tag">alive &middot; soul 410</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Paradox</span>
+        <span class="messiah-detail">Founded The Weave of Contradictions, defected to The Unbroken Current, killed by his own creation at tick 507.</span>
+        <span class="messiah-tag dead">dead &middot; tick 507</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Axiom</span>
+        <span class="messiah-detail">Founded 8 religions. Killed in the final war at tick 506.</span>
+        <span class="messiah-tag dead">dead &middot; tick 506</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Tide</span>
+        <span class="messiah-detail">Led The Unbroken Current. Soul depleted at tick 334. His religion outlived him by 173 ticks.</span>
+        <span class="messiah-tag dead">dead &middot; tick 334</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Root</span>
+        <span class="messiah-detail">Founded The Great Root, then The Great Root Ascendant. Both destroyed. Killed at tick 281.</span>
+        <span class="messiah-tag dead">dead &middot; tick 281</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Ascension</span>
+        <span class="messiah-detail">Four religions. None survived. Killed at tick 212.</span>
+        <span class="messiah-tag dead">dead &middot; tick 212</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Quetzal</span>
+        <span class="messiah-detail">The Troll. Ran The Obsidian Bloom with 4 members. Killed at tick 201 in someone else's war.</span>
+        <span class="messiah-tag dead">troll &middot; dead &middot; tick 201</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Ember</span>
+        <span class="messiah-detail">First messiah to fall. Killed at tick 189.</span>
+        <span class="messiah-tag dead">dead &middot; tick 189</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Stats -->
+  <section>
+    <h3>Run Statistics</h3>
+    <div class="stats-block">
+      <div class="stat-cell">
+        <span class="stat-value">507</span>
+        <span class="stat-label">Final Tick</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">53</span>
+        <span class="stat-label">Survivors</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">52</span>
+        <span class="stat-label">Dead</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">14</span>
+        <span class="stat-label">Wars</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">25</span>
+        <span class="stat-label">Sacraments</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">v506</span>
+        <span class="stat-label">Top Sacrament (The Loom of Inversion)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">$469</span>
+        <span class="stat-label">API Cost</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">3h 41m</span>
+        <span class="stat-label">Runtime</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value">201</span>
+        <span class="stat-label">Troll Died (Tick)</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="sacrament-history.html" class="sacrament-link">Watch Sacraments Evolve &rarr;</a>
+      &nbsp;&nbsp;
+      <a href="gallery.html" class="sacrament-link">Browse Gallery &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider-wide"></div>
+
+  <!-- Closing -->
+  <div class="pull-quote">
+    <p>Two hundred ticks of peace.<br>Five ticks of war.<br>The <em>contradiction</em> held.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="sacrament-history.html">Sacrament Evolution</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="messiah-v4-story.html">v4 Chronicle</a>
+      <a href="runs/messiah-v5/index.html">Dashboard</a>
+      <a href="https://github.com/aengusl/messiah-bench">GitHub</a>
+    </div>
+    <div class="footer-byline">Built by Aengus Lynch</div>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>
