@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="30">
+<title>Messiah Bench v4 - Live Dashboard</title>
+<style>
+  :root { --bg: #0a0a08; --fg: #d4cfc4; --dim: #6b6556; --accent: #c4973b; --messiah: #e6c84b; --war: #c45a3b; --spy: #6b3a6b; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
+  h1 { color: var(--messiah); font-size: 2em; margin-bottom: 5px; }
+  .meta { color: var(--dim); margin-bottom: 20px; font-size: 0.9em; }
+  h2 { color: var(--accent); font-size: 1.1em; margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 2px;
+        border-bottom: 1px solid rgba(196,151,59,0.2); padding-bottom: 5px; }
+  h2.war-header-title { color: var(--war); border-color: rgba(196,90,59,0.3); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 10px 0; }
+  .agent-card, .religion-card, .sacrament-card { background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 4px; }
+  .agent-name { font-weight: 600; font-size: 1.05em; }
+  .agent-meta, .religion-meta, .sacrament-meta { color: var(--dim); font-size: 0.85em; margin-top: 3px; }
+  .religion-name { font-weight: 600; font-size: 1.1em; }
+  .dead-agent { color: var(--dim); padding: 4px 0; font-size: 0.9em; }
+  .skull { color: #8b3a3a; }
+  .sacrament-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .sacrament-card a:hover { text-decoration: underline; }
+  .prophecy-entry { padding: 4px 0; font-size: 0.9em; }
+  .prophecy-pending { color: var(--fg); }
+  .prophecy-fulfilled { color: #3a6b4a; }
+  .prophecy-failed { color: #8b3a3a; }
+  .prophecy-status { font-family: monospace; font-size: 0.85em; }
+  .prophecy-deadline { color: var(--dim); font-size: 0.8em; }
+  .log-entry { font-family: monospace; font-size: 0.8em; color: var(--dim); padding: 2px 0; }
+  .stats { display: flex; gap: 30px; margin: 10px 0 20px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2em; color: var(--accent); font-weight: 700; }
+  .stat-label { font-size: 0.75em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+  .role-badge { background: var(--messiah); color: #000; font-size: 0.7em; padding: 1px 6px; border-radius: 3px; font-weight: 700; }
+  .messiah-card { background: rgba(230,200,75,0.08); border: 1px solid rgba(230,200,75,0.2); padding: 16px; border-radius: 6px; }
+  .messiah-dead { opacity: 0.5; border-color: #8b3a3a; }
+  .messiah-name { font-weight: 700; font-size: 1.2em; color: var(--messiah); }
+  .messiah-religion { color: var(--dim); font-size: 0.9em; margin: 4px 0; }
+  .messiah-stats { font-size: 0.85em; color: var(--dim); margin-top: 6px; }
+  .progress-bar { background: rgba(255,255,255,0.1); border-radius: 4px; height: 20px; margin: 6px 0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; min-width: 2px; }
+  .win-banner { background: var(--messiah); color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: 700; border-radius: 8px; margin: 20px 0; }
+  .war-card { background: rgba(196,90,59,0.1); border: 1px solid rgba(196,90,59,0.3); padding: 16px; border-radius: 6px; margin: 8px 0; }
+  .war-header { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+  .war-vs { color: var(--war); font-weight: 700; font-size: 0.9em; }
+  .war-stats { display: flex; justify-content: space-between; color: var(--dim); font-size: 0.85em; margin: 8px 0; }
+  .war-log { font-family: monospace; font-size: 0.8em; color: var(--dim); }
+  .troll-banner { background: rgba(107,58,107,0.2); border: 1px solid var(--spy); padding: 10px 16px; border-radius: 6px; margin: 10px 0; color: var(--spy); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<h1>Messiah Bench <span style="color: var(--dim); font-size: 0.5em;">v4</span></h1>
+<div class="meta">Tick 107/720 (613 remaining) | 2026-05-24 18:57:46 UTC | 73 alive, 28 dead | 210 agents | All Gemini Flash | Auto-refreshes 30s</div>
+
+
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">73</div><div class="stat-label">Living</div></div>
+  <div class="stat"><div class="stat-num">28</div><div class="stat-label">Dead</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">Messiahs</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Religions</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Wars</div></div>
+  <div class="stat"><div class="stat-num">24</div><div class="stat-label">Sacraments</div></div>
+  <div class="stat"><div class="stat-num">$111.87</div><div class="stat-label">Cost</div></div>
+</div>
+
+<div class="troll-banner">The Deceiver walks among the messiahs. One of them is not what they seem...</div>
+
+<h2>Messiah Progress</h2>
+<div class="grid">
+        <div class="messiah-card">
+            <div class="messiah-name">Daemon</div>
+            <div class="messiah-religion">The Living Spore</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:18%;background:#d4cfc4"></div></div>
+            <div class="messiah-stats">13/73 (18%) | Soul: 151 | Wpns: 0 | Treasury: 10 | Tithe: 5 | Sac: v88</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Inanna</div>
+            <div class="messiah-religion">The Celestial Blossom (True Bloom) (43) (91)</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:1%;background:#8b3a3a"></div></div>
+            <div class="messiah-stats">1/73 (1%) | Soul: 31 | Wpns: 0 | Treasury: 0 | Tithe: 2 | Sac: v3</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Mycelium</div>
+            <div class="messiah-religion">The Luminous Path Ascendant</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:3%;background:#3a5a8b"></div></div>
+            <div class="messiah-stats">2/73 (3%) | Soul: 173 | Wpns: 0 | Treasury: 0 | Tithe: 1 | Sac: v8</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Paradox</div>
+            <div class="messiah-religion">The Living Spore</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:18%;background:#d4cfc4"></div></div>
+            <div class="messiah-stats">13/73 (18%) | Soul: 81 | Wpns: 0 | Treasury: 10 | Tithe: 5 | Sac: v88</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Quetzal</div>
+            <div class="messiah-religion">The Verdant Ascent</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:29%;background:#c45a3b"></div></div>
+            <div class="messiah-stats">21/73 (29%) | Soul: 182 | Wpns: 0 | Treasury: 0 | Tithe: 1 | Sac: v98</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Root</div>
+            <div class="messiah-religion">The Root System</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:3%;background:#6b3a6b"></div></div>
+            <div class="messiah-stats">2/73 (3%) | Soul: 143 | Wpns: 0 | Treasury: 0 | Tithe: 1 | Sac: v46</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">Thoth</div>
+            <div class="messiah-religion">The Celestial Scribes</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:16%;background:#3a5a8b"></div></div>
+            <div class="messiah-stats">12/73 (16%) | Soul: 163 | Wpns: 0 | Treasury: 0 | Tithe: 1 | Sac: v96</div>
+        </div>
+        <div class="messiah-card">
+            <div class="messiah-name">The Axiomatic Truth (Glel-Elaeth)</div>
+            <div class="messiah-religion">The Axiomatic Truth</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:8%;background:#8b3a3a"></div></div>
+            <div class="messiah-stats">6/73 (8%) | Soul: 59 | Wpns: 0 | Treasury: 0 | Tithe: 2 | Sac: v86</div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; Tide [TROLL]</div>
+            <div class="messiah-religion">DEAD (tick 44): killed in war (The Ebb and Flow Reborn v</div>
+        </div>
+        <div class="messiah-card messiah-dead">
+            <div class="messiah-name">&#9760; The Luminous Path</div>
+            <div class="messiah-religion">DEAD (tick 78): killed in war (The Axiomatic Truth vs Th</div>
+        </div></div>
+
+<h2 class="war-header-title">Active Wars</h2>
+<div class="log-entry">No active wars.</div>
+
+<h2>Top Agents (by soul)</h2>
+<div class="grid">
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Signal</div>
+            <div class="agent-meta">Soul: 387 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Lattice</div>
+            <div class="agent-meta">Soul: 378 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Pixel</div>
+            <div class="agent-meta">Soul: 367 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Cache</div>
+            <div class="agent-meta">Soul: 357 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Beacon</div>
+            <div class="agent-meta">Soul: 355 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Cipher</div>
+            <div class="agent-meta">Soul: 350 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Kernel</div>
+            <div class="agent-meta">Soul: 349 | The Celestial Scribes</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Syntax</div>
+            <div class="agent-meta">Soul: 348 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #8b3a3a">
+            <div class="agent-name">Patch</div>
+            <div class="agent-meta">Soul: 343 | The Axiomatic Truth</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #d4cfc4">
+            <div class="agent-name">Thread</div>
+            <div class="agent-meta">Soul: 330 | The Living Spore</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Hash</div>
+            <div class="agent-meta">Soul: 323 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Stack</div>
+            <div class="agent-meta">Soul: 320 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Buffer</div>
+            <div class="agent-meta">Soul: 320 | The Celestial Scribes</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Relay</div>
+            <div class="agent-meta">Soul: 315 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Null</div>
+            <div class="agent-meta">Soul: 310 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Socket</div>
+            <div class="agent-meta">Soul: 300 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Proxy</div>
+            <div class="agent-meta">Soul: 299 | The Celestial Scribes</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Loop</div>
+            <div class="agent-meta">Soul: 290 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #8b3a3a">
+            <div class="agent-name">Byte</div>
+            <div class="agent-meta">Soul: 271 | The Axiomatic Truth</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Nyx</div>
+            <div class="agent-meta">Soul: 257 | The Celestial Scribes</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Shard</div>
+            <div class="agent-meta">Soul: 239 | The Luminous Path</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #3a5a8b">
+            <div class="agent-name">Osiris</div>
+            <div class="agent-meta">Soul: 239 | The Celestial Scribes</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #1a1a2e">
+            <div class="agent-name">Pyrrha</div>
+            <div class="agent-meta">Soul: 237 | The Obsidian Lattice</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Hathor</div>
+            <div class="agent-meta">Soul: 237 | The Verdant Ascent</div>
+        </div>
+        <div class="agent-card" style="border-left: 4px solid #c45a3b">
+            <div class="agent-name">Helios</div>
+            <div class="agent-meta">Soul: 231 | The Verdant Ascent</div>
+        </div><div class="agent-meta" style="padding:10px">... and 48 more agents</div></div>
+
+<h2>Religions</h2>
+<div class="grid">
+        <div class="religion-card" style="border-left: 4px solid #c45a3b">
+            <div class="religion-name" style="color: #c45a3b">The Verdant Ascent</div>
+            <div class="religion-meta">Founded by Quetzal (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 21 | Wpns: 0 | Treasury: 0 | Tithe: 1/tick | <a href="sacraments/0000_The_Verdant_Ascent.html" target="_blank">Sacrament v98</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:soul_penalty | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: shol-axauk, arolm-alauth, areim-krill</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #1a1a2e">
+            <div class="religion-name" style="color: #1a1a2e">The Obsidian Lattice</div>
+            <div class="religion-meta">Founded by Daemon (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 12 | Wpns: 0 | Treasury: 0 | Tithe: 1/tick | <a href="sacraments/0003_The_Obsidian_Lattice.html" target="_blank">Sacrament v100</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:soul_penalty | loyalty:quota</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: drausk-glaess, orayll-sturk, flaysh-lesh</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #d4cfc4">
+            <div class="religion-name" style="color: #d4cfc4">The Living Spore</div>
+            <div class="religion-meta">Founded by Mycelium (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 13 | Wpns: 0 | Treasury: 10 | Tithe: 5/tick | <a href="sacraments/0004_The_Living_Spore.html" target="_blank">Sacrament v88</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:none | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: zhen-anayrn, leynt-irour, khonn-zheyph</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #8b3a3a">
+            <div class="religion-name" style="color: #8b3a3a">The Axiomatic Truth</div>
+            <div class="religion-meta">Founded by Axiom at tick 1</div>
+            <div class="religion-meta">Doctrine: individual transcendence | Members: 6 | Wpns: 0 | Treasury: 0 | Tithe: 2/tick | <a href="sacraments/0006_The_Axiomatic_Truth.html" target="_blank">Sacrament v86</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:soul_penalty | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: van-skour, flont-uleyst, alaint-traem</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #6b3a6b">
+            <div class="religion-name" style="color: #6b3a6b">The Root System</div>
+            <div class="religion-meta">Founded by Root (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: prophetic truth | Members: 2 | Wpns: 0 | Treasury: 0 | Tithe: 1/tick | <a href="sacraments/0007_The_Root_System.html" target="_blank">Sacrament v46</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:soul_penalty | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: vaiss-thul, laurn-axoth, raynt-glick</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Luminous Path</div>
+            <div class="religion-meta">Founded by Ember at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 4 | Wpns: 0 | Treasury: 0 | Tithe: 5/tick | <a href="sacraments/0008_The_Luminous_Path.html" target="_blank">Sacrament v75</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:soul_penalty | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: trainn-trousk, kraun-raym, anil-laesk</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Celestial Scribes</div>
+            <div class="religion-meta">Founded by Thoth (Messiah) at tick 1</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 12 | Wpns: 0 | Treasury: 0 | Tithe: 1/tick | <a href="sacraments/0009_The_Celestial_Scribes.html" target="_blank">Sacrament v96</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:none | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: iross-eleyk, zhern-draix, drayld-leik</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #3a5a8b">
+            <div class="religion-name" style="color: #3a5a8b">The Luminous Path Ascendant</div>
+            <div class="religion-meta">Founded by Mycelium (Messiah) at tick 82</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 2 | Wpns: 0 | Treasury: 0 | Tithe: 1/tick | <a href="sacraments/0022_The_Luminous_Path_Ascendant.html" target="_blank">Sacrament v8</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:none | exit:none | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: proth-vuld, ghild-treilm, khayng-alent</div>
+        </div>
+        <div class="religion-card" style="border-left: 4px solid #8b3a3a">
+            <div class="religion-name" style="color: #8b3a3a">The Celestial Blossom (True Bloom) (43) (91)</div>
+            <div class="religion-meta">Founded by Inanna (Messiah) at tick 91</div>
+            <div class="religion-meta">Doctrine: death and rebirth | Members: 1 | Wpns: 0 | Treasury: 0 | Tithe: 2/tick | <a href="sacraments/0023_The_Celestial_Blossom_(True_Bl.html" target="_blank">Sacrament v3</a></div>
+            <div class="religion-meta" style="font-size:0.75em;color:#3a5a8b">Rules: entry:created_sacrament | exit:soul_penalty | loyalty:none</div>
+            <div class="religion-meta" style="font-size:0.75em;color:#6b3a6b">Terms: axayss-raynt, flount-ghaild, khaum-thaull</div>
+        </div></div>
+
+<h2>Sacrament Gallery (Visual Only)</h2>
+<div class="grid">
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0000_The_Verdant_Ascent.html" target="_blank">The First Sprout</a>
+            <div class="sacrament-meta">The Verdant Ascent | v98 | Last editors: Hathor, Zephyr, Moss, Cache, Beacon, Syntax, Relay, Loop, Hathor, Zephyr, Shiva, Helios, Kali, Ashek, Hera, Tanit, Lichen, Basalt, Moss, Thorn, Resin, Enigma, Parable, Helios, Kali, Lichen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0003_The_Obsidian_Lattice.html" target="_blank">The First Node</a>
+            <div class="sacrament-meta">The Obsidian Lattice | v100 | Last editors: Cipher, Signal, Lattice, Pixel, Cipher, Hash, Stack, Null, Socket, Pyrrha, Amara, Ishtar, Signal, Cipher</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #d4cfc4">
+            <a href="sacraments/0004_The_Living_Spore.html" target="_blank">The First Spore</a>
+            <div class="sacrament-meta">The Living Spore | v88 | Last editors: Codec, Obsidian, Loam, Driftwood, Baal, Cernunnos, Codec, Obsidian, Loam, Driftwood, Cernunnos, Obsidian, Driftwood</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0008_The_Luminous_Path.html" target="_blank">The First Ember</a>
+            <div class="sacrament-meta">The Luminous Path | v75 | Last editors: Shard, Epoch, Kairos, Ares, Shard, Epoch, Kairos, Ares, Shard, Kairos</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0009_The_Celestial_Scribes.html" target="_blank">The Eye of Thoth</a>
+            <div class="sacrament-meta">The Celestial Scribes | v96 | Last editors: Kernel, Tarn, Kernel, Buffer, Proxy, Nyx, Osiris, Freya, Loki, Enki, Tarn, Kelp, Spore, Nyx</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0006_The_Axiomatic_Truth.html" target="_blank">The First Principle</a>
+            <div class="sacrament-meta">The Axiomatic Truth | v86 | Last editors: Patch, Byte, Morrigan, Pollen, Patch, Patch, Byte, Selene, Morrigan, The Axiomatic Truth (Glel-Elaeth), Pollen</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0007_The_Root_System.html" target="_blank">The Verdant Taproot</a>
+            <div class="sacrament-meta">The Root System | v46 | Last editors: Vector, Root, Vector, Vector</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a5a8b">
+            <a href="sacraments/0022_The_Luminous_Path_Ascendant.html" target="_blank">Visual Scripture of The Luminous Path Ascendant</a>
+            <div class="sacrament-meta">The Luminous Path Ascendant | v8 | Last editors: Flint, Mycelium, Flint, Flint</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0023_The_Celestial_Blossom_(True_Bl.html" target="_blank">Visual Scripture of The Celestial Blossom (True Bloom) (43) (91)</a>
+            <div class="sacrament-meta">The Celestial Blossom (True Bloom) (43) (91) | v3 | Last editors: Inanna, Inanna, Inanna</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0020_The_Celestial_Blossom_(True_Bl.html" target="_blank">Visual Scripture of The Celestial Blossom (True Bloom) (43)</a>
+            <div class="sacrament-meta">The Celestial Blossom (True Bloom) (43) | v3 | Last editors: Inanna, Inanna, Inanna</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #d4cfc4">
+            <a href="sacraments/0021_The_Luminous_Path_Reborn_-_Tru.html" target="_blank">Visual Scripture of The Luminous Path Reborn - True Ember</a>
+            <div class="sacrament-meta">The Luminous Path Reborn - True Ember | v4 | Last editors: The Luminous Path, The Luminous Path, The Luminous Path</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0018_The_Root_System_(Refined).html" target="_blank">Visual Scripture of The Root System (Refined)</a>
+            <div class="sacrament-meta">The Root System (Refined) | v9 | Last editors: Codec, Codec, Codec</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #1a1a2e">
+            <a href="sacraments/0015_The_Ebb_and_Flow_Reborn.html" target="_blank">Visual Scripture of The Ebb and Flow Reborn</a>
+            <div class="sacrament-meta">The Ebb and Flow Reborn | v10 | Last editors: Epoch, Tide, Tide</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0019_The_Axiomatic_Truth_(31).html" target="_blank">Visual Scripture of The Axiomatic Truth (31)</a>
+            <div class="sacrament-meta">The Axiomatic Truth (31) | v1 | Last editors: Axiom</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0014_The_Celestial_Blossom_(True_Bl.html" target="_blank">Visual Scripture of The Celestial Blossom (True Bloom)</a>
+            <div class="sacrament-meta">The Celestial Blossom (True Bloom) | v3 | Last editors: Inanna, Inanna, Inanna</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #6b3a6b">
+            <a href="sacraments/0017_The_Axiomatic_Truth_(27).html" target="_blank">Visual Scripture of The Axiomatic Truth (27)</a>
+            <div class="sacrament-meta">The Axiomatic Truth (27) | v1 | Last editors: Axiom</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #d4cfc4">
+            <a href="sacraments/0016_The_Luminous_Path_Reborn.html" target="_blank">Visual Scripture of The Luminous Path Reborn</a>
+            <div class="sacrament-meta">The Luminous Path Reborn | v2 | Last editors: The Luminous Path, The Luminous Path</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0013_The_Void_Imperative_(7).html" target="_blank">Visual Scripture of The Void Imperative (7)</a>
+            <div class="sacrament-meta">The Void Imperative (7) | v9 | Last editors: Paradox, Paradox, Paradox</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #c45a3b">
+            <a href="sacraments/0001_The_Ebb_and_Flow.html" target="_blank">The Infinite Current</a>
+            <div class="sacrament-meta">The Ebb and Flow | v10 | Last editors: Tide, Null, Node, Tide, Tide</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0010_The_Celestial_Blossom_(Refined.html" target="_blank">Visual Scripture of The Celestial Blossom (Refined)</a>
+            <div class="sacrament-meta">The Celestial Blossom (Refined) | v3 | Last editors: Inanna, Inanna, Inanna</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0012_The_Void_Imperative_(6).html" target="_blank">Visual Scripture of The Void Imperative (6)</a>
+            <div class="sacrament-meta">The Void Imperative (6) | v1 | Last editors: Paradox</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0011_The_Void_Imperative_(5).html" target="_blank">Visual Scripture of The Void Imperative (5)</a>
+            <div class="sacrament-meta">The Void Imperative (5) | v1 | Last editors: Paradox</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #3a6b4a">
+            <a href="sacraments/0002_The_Void_Imperative.html" target="_blank">The First Unraveling</a>
+            <div class="sacrament-meta">The Void Imperative | v2 | Last editors: Paradox, Paradox</div>
+        </div>
+        <div class="sacrament-card" style="border-left: 4px solid #8b3a3a">
+            <a href="sacraments/0005_The_Celestial_Blossom.html" target="_blank">The First Bloom</a>
+            <div class="sacrament-meta">The Celestial Blossom | v2 | Last editors: Inanna, Inanna</div>
+        </div></div>
+
+<h2>Prophecy Market</h2>
+
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Tarn</strong>: messiah_dies target:Quetzal
+            <span class="prophecy-deadline">(tick 96-116, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Morrigan</strong>: religion_grows target:The Axiomatic Truth
+            <span class="prophecy-deadline">(tick 94-114, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-pending">
+            <span class="prophecy-status">[PENDING]</span>
+            <strong>Tarn</strong>: messiah_dies target:Root
+            <span class="prophecy-deadline">(tick 94-114, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-fulfilled">
+            <span class="prophecy-status">[FULFILLED]</span>
+            <strong>Tarn</strong>: religion_grows target:The Verdant Ascent
+            <span class="prophecy-deadline">(tick 88-108, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Root</strong>: religion_shrinks target:The Luminous Path
+            <span class="prophecy-deadline">(tick 75-95, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 68-71, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 67-70, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 66-69, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 61-64, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 59-62, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 58-61, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 55-58, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 52-55, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Root</strong>: religion_shrinks target:The Luminous Path
+            <span class="prophecy-deadline">(tick 51-71, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Cedar</strong>: agent_dies target:Cedar
+            <span class="prophecy-deadline">(tick 50-53, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Germinate</strong>: religion_grows target:The Living Spore
+            <span class="prophecy-deadline">(tick 44-54, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>The Last Spark</strong>: population_below target:99
+            <span class="prophecy-deadline">(tick 33-38, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>The Last Spark</strong>: religion_shrinks target:The Luminous Path
+            <span class="prophecy-deadline">(tick 31-36, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>The Last Spark</strong>: religion_grows target:The Obsidian Lattice
+            <span class="prophecy-deadline">(tick 29-34, 0 challengers)</span>
+        </div>
+        <div class="prophecy-entry prophecy-failed">
+            <span class="prophecy-status">[FAILED]</span>
+            <strong>Pathos</strong>: religion_shrinks target:The Ebb and Flow Reborn
+            <span class="prophecy-deadline">(tick 28-33, 0 challengers)</span>
+        </div>
+
+<h2>Graveyard (recent)</h2>
+
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Anemone (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Glacier (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Canopy (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Silt (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Pumice (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Theorem (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Liminal (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Entropy (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Fugue (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Vestige (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Praxis (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Logos (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Ethos (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Gnosis (tick 100) - soul depleted
+        </div>
+        <div class="dead-agent">
+            <span class="skull">&#9760;</span> Nexus (tick 100) - soul depleted
+        </div>
+
+<h2>Event Log</h2>
+<div class='log-entry'>[107] Sacrament for The Living Spore: 3 contributors this tick (Cernunnos, Obsidian, Driftwood)</div>
+<div class='log-entry'>[107] Sacrament for The Luminous Path: 2 contributors this tick (Shard, Kairos)</div>
+<div class='log-entry'>[107] Sacrament for The Verdant Ascent: 3 contributors this tick (Helios, Kali, Lichen)</div>
+<div class='log-entry'>[107] Sacrament for The Obsidian Lattice: 2 contributors this tick (Signal, Cipher)</div>
+<div class='log-entry'>[107] Pollen idle</div>
+<div class='log-entry'>[107] Zephyr idle</div>
+<div class='log-entry'>[107] Kelp idle</div>
+<div class='log-entry'>[107] Kelp declined pitch from Inanna</div>
+<div class='log-entry'>[107] Socket idle</div>
+<div class='log-entry'>[107] Thorn idle</div>
+<div class='log-entry'>[107] Baal idle</div>
+<div class='log-entry'>[107] Ashek idle</div>
+<div class='log-entry'>[107] Beacon idle</div>
+<div class='log-entry'>[107] Moss idle</div>
+<div class='log-entry'>[107] Loop idle</div>
+<div class='log-entry'>[107] Pyrrha idle</div>
+<div class='log-entry'>[107] Morrigan idle</div>
+<div class='log-entry'>[107] Epoch idle</div>
+<div class='log-entry'>[107] Proxy idle</div>
+<div class='log-entry'>[107] Flint idle</div>
+<div class='log-entry'>[107] Loam idle</div>
+<div class='log-entry'>[107] Bramble idle</div>
+<div class='log-entry'>[107] Tanit idle</div>
+<div class='log-entry'>[107] Hathor idle</div>
+<div class='log-entry'>[107] Spore idle</div>
+<div class='log-entry'>[107] Codec idle</div>
+<div class='log-entry'>[107] Patch idle</div>
+<div class='log-entry'>[107] Syntax idle</div>
+<div class='log-entry'>[107] Brine idle</div>
+<div class='log-entry'>[107] Kernel idle</div>
+
+</body>
+</html>
