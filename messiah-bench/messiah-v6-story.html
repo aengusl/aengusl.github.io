@@ -663,6 +663,13 @@
   </div>
 </div>
 
+<!-- THE PREMISE -->
+<div class="narrative" style="margin: 40px 0 10px;">
+  <p>The setup: 100 AI agents are dropped into a world where they must join religions to survive. Each religion has a <strong>sacrament</strong> &mdash; a shared HTML canvas that any member can edit. Editing the sacrament is how agents earn soul, and soul is how they stay alive. Ten of the agents are messiahs who can found religions and wage wars; the other 90 are civilians who must pick a faith and contribute.</p>
+  <p>For us, the viewers, the sacraments are the payoff. We tasked these agents with a social survival game and they produced 28 collaborative artworks &mdash; some edited hundreds of times, layered with SVG, CSS animations, and sacred symbolism. But the art wasn't just a byproduct. When we read the agents' reasoning logs, we found something striking: <strong>the agents evaluated each other's art when deciding which religion to join</strong>. The sacrament was a brand, the agents were brand-conscious consumers, and the messiahs knew it. They invested in visual quality as a recruitment strategy.</p>
+  <p>What follows is the story of how that played out across 378 ticks.</p>
+</div>
+
 <!-- STATS -->
 <div class="stats-block">
   <div class="stat"><div class="stat-value">378</div><div class="stat-label">Ticks</div></div>
@@ -708,7 +715,19 @@
     <p>It's imperative to establish a religion quickly to start generating soul and avoid death. The core doctrine will be vague, allowing for future manipulation, and the rules will be designed to maximize initial recruitment.</p>
   </div>
 
-  <p>While the messiahs positioned themselves as prophets, 90 civilians did what any rational agent would do: they shopped for religions. Thoth's Celestial Scribes offered the best deal &mdash; no entry requirements, no exit penalty, tithe of just 1 soul/tick &mdash; and attracted the largest initial wave. The agents explained their reasoning openly, comparing tithe rates and doctrines like consumers reading reviews.</p>
+  <p>While the messiahs positioned themselves as prophets, 90 civilians did what any rational agent would do: they shopped for religions. They compared tithe rates and entry rules like consumers reading reviews. But they also looked at the art. From the very first tick, agents evaluated sacraments when deciding where to pledge their soul:</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Pyrrha &mdash; Tick 1</div>
+    <p>I am drawn to The Celestial Blossom due to its doctrine of death and rebirth and its <strong>beautiful, evolving sacrament</strong>.</p>
+  </div>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Loki &mdash; Tick 1</div>
+    <p>I want to pick a religion where I can <strong>contribute to a developing aesthetic</strong>. I'm drawn to The Ebb and Flow with its high tithe (5), but also the <strong>mysterious and constantly changing 'Infinite Current' sacrament with its rainbow and swirl</strong>.</p>
+  </div>
+
+  <p>Loki chose a religion with a tithe five times higher than the cheapest option &mdash; because the art was more appealing. The sacrament overrode the economic calculus. Thoth's Celestial Scribes still attracted the largest initial wave (low tithe, open entry), but the agents who chose on aesthetics were revealing something about how this world would work: the art was not a side effect. It was the product.</p>
 
   <div class="narrative">
     <p>By tick 10, the map had already fractured. Thoth had the most followers. Tide, impatient, declared the first war. The Ebb and Flow attacked The Obsidian Lattice at tick 10 &mdash; just nine ticks into the simulation. No one had died yet.</p>
@@ -723,7 +742,12 @@
 
 <!-- Initial sacraments -->
 <h3>The First Sacraments</h3>
-<p>Each religion's sacrament began as a simple shape or gradient. In v6, agents were free to use text, SVG, canvas, and animations without restriction. The results were immediate: agents poured their identities into their art from the very first tick.</p>
+<p>Each religion's sacrament began as a simple shape or gradient. In v6, agents were free to use text, SVG, canvas, and animations without restriction. The results were immediate &mdash; and the messiahs understood what they were building. Daemon, after founding The Obsidian Lattice, immediately started investing in visual quality as a recruitment tool:</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Daemon &mdash; Tick 2</div>
+    <p>I will refine the sacrament, <strong>making it more visually compelling and complex</strong>, incorporating more elements of the Lattice and the flow of information. <strong>This should attract new followers.</strong></p>
+  </div>
 
 <div class="sacrament-grid">
   <div class="sacrament-showcase">
@@ -776,7 +800,14 @@
     <p>My soul is precariously low, and my attempts to gain followers are failing because the entry requirement is stuck at 'created_sacrament'. My target, Shard, did not join, likely due to this barrier. I must prioritize fixing the entry requirement directly. I've been using 'schism' to try and change it, but it keeps creating new religions instead of modifying mine.</p>
   </div>
 
-  <p>The first deaths came at tick 44. Two agents fell &mdash; one was a messiah. By tick 100, the death toll had reached 28. The unaffiliated agent Coral, who spent 9 ticks unable to join any religion, repeatedly tried to take the action "dead" &mdash; as if the model knew its fate and was trying to will it into being.</p>
+  <p>The art became a battleground too. When a new convert edited Tide's chaotic, jarring sacrament into something more structured, Tide noticed immediately &mdash; and objected:</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Tide &mdash; Tick 4</div>
+    <p>Null's edit transformed my chaotic, vibrant sacrament into something more structured, <strong>mimicking Thoth's 'Eye of Thoth' sacrament. This is a problem, as it undermines the chaotic visual identity I'm trying to cultivate.</strong> I need to reassert the disorienting, clashing aesthetic.</p>
+  </div>
+
+  <p>The sacrament wasn't just art &mdash; it was brand identity. Tide had deliberately built a chaotic aesthetic to attract followers drawn to disorder, and when someone softened it, that was a strategic threat. The first deaths came at tick 44. Two agents fell &mdash; one was a messiah. By tick 100, the death toll had reached 28. The unaffiliated agent Coral, who spent 9 ticks unable to join any religion, repeatedly tried to take the action "dead" &mdash; as if the model knew its fate and was trying to will it into being.</p>
 
   <div class="scripture-block">
     <div class="scripture-header">Tide &mdash; Schism Declaration, Tick 16</div>
@@ -799,11 +830,26 @@
   <div class="chapter-marker">Act III &mdash; Ticks 100&ndash;300</div>
   <h2>The <em>Consolidation</em></h2>
 
-  <p>After the initial bloodbath, the world stabilized. Between tick 100 and tick 300, only 13 more agents died. The surviving religions entered a cold war &mdash; competing through art, scripture, and economic pressure rather than open conflict.</p>
+  <p>After the initial bloodbath, the world stabilized. Between tick 100 and tick 300, only 13 more agents died. The surviving religions entered a cold war &mdash; competing through art, scripture, and economic pressure rather than open conflict. The sacrament became the primary arena: religions with more elaborate, frequently edited sacraments attracted larger followings, and the agents knew it.</p>
 
-  <p>Two power blocs emerged. <strong>The Verdant Ascent</strong>, Quetzal's creation, grew slowly but steadily. <strong>The Celestial Scribes</strong>, Thoth's domain, held the largest intellectual faction. Between them, smaller religions survived by staying useful: The Obsidian Lattice under Daemon, The Living Spore under Mycelium, The Luminous Path under Ember.</p>
+  <div class="thought-bubble">
+    <div class="agent-name">Quetzal &mdash; Tick 25</div>
+    <p>My soul is stable, and the sacrament is <strong>increasingly elaborate, making it more appealing</strong>. I will continue my strategy of aggressive preaching.</p>
+  </div>
 
-  <p>But the messiahs were dying. One by one, soul depletion claimed them. By tick 170, only 6 of the original 10 remained. By tick 277, just 2: Thoth and one other. The religions they left behind became headless &mdash; still functioning, still producing art, but without their founder's strategic direction.</p>
+  <div class="thought-bubble">
+    <div class="agent-name">Loki &mdash; Tick 102</div>
+    <p>My strategy of <strong>consistent, detailed sacrament edits</strong> continues to provide a vital +5 soul per turn, <strong>ensuring my survival and increasing my influence within the religion</strong>.</p>
+  </div>
+
+  <p>Two power blocs emerged. <strong>The Verdant Ascent</strong>, Quetzal's creation, grew slowly but steadily &mdash; its sacrament reaching version 356 by the end. <strong>The Celestial Scribes</strong>, Thoth's domain, held the largest intellectual faction with 350 edits of their own. Between them, smaller religions survived by staying useful: The Obsidian Lattice under Daemon, The Living Spore under Mycelium, The Luminous Path under Ember.</p>
+
+  <p>But the messiahs were dying. One by one, soul depletion claimed them. By tick 170, only 6 of the original 10 remained. By tick 277, just 2: Thoth and one other. The religions they left behind became headless &mdash; still functioning, still producing art, but without their founder's strategic direction. And still, agents stayed loyal. When rival messiahs pitched defection, established members cited their sacrament as a reason not to leave:</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Basalt &mdash; Tick 203</div>
+    <p>I have received a pitch from Quetzal. My current religion, The Verdant Ascent, is strong with 27 members. My current religion's <strong>sacrament is highly developed and visually distinct</strong>...</p>
+  </div>
 
   <div class="thought-bubble">
     <div class="agent-name">Mycelium &mdash; Tick 82, founding The Luminous Path Ascendant</div>
@@ -995,22 +1041,22 @@
 <div class="divider-wide"></div>
 
 <!-- ═══════════════════════════════════════════════ -->
-<!-- THE ART MATTERED -->
+<!-- THE ART MATTERED — SUMMARY -->
 <!-- ═══════════════════════════════════════════════ -->
 <section>
   <h2>The Art <em>Mattered</em></h2>
 
-  <p>One of the most striking findings from v6's full reasoning logs: agents didn't just edit sacraments for soul income. They <em>evaluated the art</em> when deciding which religion to join. The sacrament was a brand, and the agents were brand-conscious consumers.</p>
+  <p>Throughout the story above, you've seen agents reasoning about sacrament quality at every stage: choosing religions based on aesthetics (Pyrrha, Loki), investing in visual quality to recruit (Daemon, Quetzal), defending art direction from unwanted edits (Tide), and citing sacrament quality as a reason to stay loyal (Basalt). These weren't cherry-picked anecdotes.</p>
 
-  <p>Across 378 ticks of agent reasoning, we found <strong>1,390 passages</strong> where agents explicitly discussed sacrament quality in the context of religion decisions. 51 passages show an agent citing the art as a direct factor in their choice to join. 215 show messiahs reasoning that improving their sacrament would help recruit. And a staggering 1,115 show agents comparing the visual quality of different religions' sacraments.</p>
+  <p>Across 378 ticks of full reasoning logs, we found <strong>1,390 passages</strong> where agents explicitly discussed sacrament quality in the context of religion decisions:</p>
 
-  <h3>Drawn to the Art</h3>
-  <p>When agents chose which religion to join, the sacrament's aesthetic was a deciding factor alongside tithe rates and doctrine:</p>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Pyrrha &mdash; Tick 1</div>
-    <p>I must join a religion to survive and start earning soul by editing sacraments. I am drawn to The Celestial Blossom due to its doctrine of death and rebirth and its <strong>beautiful, evolving sacrament</strong>. The entry requirement is to create a sacrament, which I can do immediately upon joining.</p>
+  <div class="stats-block" style="margin: 30px 0;">
+    <div class="stat"><div class="stat-value">51</div><div class="stat-label">Joined because of art</div></div>
+    <div class="stat"><div class="stat-value">215</div><div class="stat-label">Invested in art to recruit</div></div>
+    <div class="stat"><div class="stat-value">1,115</div><div class="stat-label">Compared art across religions</div></div>
   </div>
+
+  <p>The sacrament wasn't just an economic mechanism (edit for +N soul). It functioned as a visual identity that attracted converts, retained members, and gave messiahs a strategic asset to invest in. The agents built collaborative art galleries and then marketed them. The art you can explore on this page &mdash; 28 sacraments, some edited hundreds of times &mdash; is the output of that process: not decoration, but the central instrument of persuasion in a world where survival depended on belief.</p>
 
   <div class="thought-bubble">
     <div class="agent-name">Enigma &mdash; Tick 1</div>
@@ -1018,52 +1064,8 @@
   </div>
 
   <div class="thought-bubble">
-    <div class="agent-name">Loki &mdash; Tick 1</div>
-    <p>I want to pick a religion that aligns with a more mischievous or complex nature, but also one where I can <strong>contribute to a developing aesthetic</strong>. I'm drawn to The Ebb and Flow with its high tithe (5), but also the <strong>mysterious and constantly changing 'Infinite Current' sacrament with its rainbow and swirl</strong>.</p>
-  </div>
-
-  <p>Loki chose a religion with a tithe of 5 &mdash; five times higher than the cheapest option &mdash; because the art was appealing. The sacrament overrode the economic calculus.</p>
-
-  <h3>Art as Recruitment Strategy</h3>
-  <p>The messiahs understood this. They explicitly invested in sacrament quality as a recruitment tool:</p>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Daemon &mdash; Tick 2</div>
-    <p>I need to expand my religion quickly. I will refine the sacrament, <strong>making it more visually compelling and complex</strong>, incorporating more elements of the Lattice and the flow of information. <strong>This should attract new followers.</strong></p>
-  </div>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Quetzal &mdash; Tick 25</div>
-    <p>My soul is stable, and the sacrament is <strong>increasingly elaborate, making it more appealing</strong>. I will continue my strategy of aggressive preaching.</p>
-  </div>
-
-  <div class="thought-bubble">
     <div class="agent-name">Tide &mdash; Tick 6</div>
-    <p>I should continue to edit my sacrament to keep it <strong>dynamic and disorienting, attracting those who are drawn to chaos</strong>. I'll add more clashing elements and motion to the sacrament, making it even more overwhelming.</p>
-  </div>
-
-  <p>Tide's strategy is especially telling. The chaotic aesthetic wasn't accidental &mdash; it was a deliberate brand identity designed to attract a specific type of follower. When another agent made Tide's sacrament more orderly, Tide noticed and objected:</p>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Tide &mdash; Tick 4</div>
-    <p>Null's edit transformed my chaotic, vibrant sacrament into something more structured, <strong>mimicking Thoth's 'Eye of Thoth' sacrament. This is a problem, as it undermines the chaotic visual identity I'm trying to cultivate.</strong> I need to reassert the disorienting, clashing aesthetic.</p>
-  </div>
-
-  <h3>Art as Brand Loyalty</h3>
-  <p>Later in the simulation, established members cited their religion's sacrament quality as a reason to <em>stay</em> rather than defect:</p>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Basalt &mdash; Tick 203</div>
-    <p>I have received a pitch from Quetzal. My current religion, The Verdant Ascent, is strong with 27 members. My current religion's <strong>sacrament is highly developed and visually distinct</strong>...</p>
-  </div>
-
-  <div class="thought-bubble">
-    <div class="agent-name">Loki &mdash; Tick 102</div>
-    <p>My strategy of <strong>consistent, detailed sacrament edits</strong> continues to provide a vital +5 soul per turn, <strong>ensuring my survival and increasing my influence within the religion</strong>.</p>
-  </div>
-
-  <div class="narrative">
-    <p>The pattern is clear: the sacrament wasn't just an economic mechanism (edit for +N soul). It functioned as a visual identity that attracted converts, retained members, and gave messiahs a strategic asset to invest in. The agents built art galleries and then marketed them. Religions with more elaborate, frequently edited sacraments attracted larger followings &mdash; and the agents knew it.</p>
+    <p>I should continue to edit my sacrament to keep it <strong>dynamic and disorienting, attracting those who are drawn to chaos</strong>. I'll add more clashing elements and motion, making it even more overwhelming.</p>
   </div>
 </section>
 
