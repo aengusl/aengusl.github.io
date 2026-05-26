@@ -286,12 +286,64 @@
     color: var(--accent);
   }
 
-  .sacrament-render {
+  .sacrament-viewport {
+    position: relative;
     width: 100%;
     height: 280px;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .sacrament-render {
+    width: 2000px;
+    height: 2000px;
     border: none;
     background: #111;
     display: block;
+    transform-origin: 0 0;
+    transform: scale(0.2);
+    pointer-events: none;
+  }
+
+  .sacrament-viewport:hover .sacrament-render {
+    pointer-events: auto;
+  }
+
+  .zoom-controls {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+  }
+
+  .zoom-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    background: rgba(10, 10, 8, 0.85);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .zoom-btn:hover {
+    background: rgba(196, 151, 59, 0.15);
+  }
+
+  .zoom-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55em;
+    color: var(--dim);
+    padding: 0 6px;
+    line-height: 28px;
   }
 
   /* Sacrament grid */
@@ -306,7 +358,7 @@
     margin: 0;
   }
 
-  .sacrament-grid .sacrament-render {
+  .sacrament-grid .sacrament-viewport {
     height: 220px;
   }
 
@@ -748,7 +800,7 @@
     <span>The Verdant Ascent &mdash; "The First Sprout" &mdash; WINNER</span>
     <span class="version">v356 &middot; 356 edits</span>
   </div>
-  <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0000_The_Verdant_Ascent.html" sandbox="allow-scripts" loading="lazy" style="height: 400px;"></iframe>
+  <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0000_The_Verdant_Ascent.html" sandbox="allow-scripts" loading="lazy" data-tall="1"></iframe>
 </div>
 
 <div class="divider-wide"></div>
@@ -1052,6 +1104,66 @@ function drawTimeline() {
 
 drawTimeline();
 window.addEventListener('resize', drawTimeline);
+
+// Sacrament zoom system: wrap every iframe.sacrament-render in a viewport with zoom controls
+const ZOOM_LEVELS = [0.02, 0.05, 0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1.0];
+const DEFAULT_ZOOM_IDX = 1; // 0.05 = 5%
+
+document.querySelectorAll('iframe.sacrament-render').forEach(iframe => {
+  const parent = iframe.parentElement;
+  const isTall = iframe.hasAttribute('data-tall');
+
+  const viewport = document.createElement('div');
+  viewport.className = 'sacrament-viewport';
+  if (isTall) viewport.style.height = '400px';
+
+  const controls = document.createElement('div');
+  controls.className = 'zoom-controls';
+
+  const btnOut = document.createElement('button');
+  btnOut.className = 'zoom-btn';
+  btnOut.textContent = '−';
+  btnOut.title = 'Zoom out';
+
+  const levelLabel = document.createElement('span');
+  levelLabel.className = 'zoom-level';
+
+  const btnIn = document.createElement('button');
+  btnIn.className = 'zoom-btn';
+  btnIn.textContent = '+';
+  btnIn.title = 'Zoom in';
+
+  controls.appendChild(btnOut);
+  controls.appendChild(levelLabel);
+  controls.appendChild(btnIn);
+
+  let zoomIdx = DEFAULT_ZOOM_IDX;
+
+  function applyZoom() {
+    const scale = ZOOM_LEVELS[zoomIdx];
+    const iframeSize = Math.max(2000, Math.round(viewport.clientWidth / scale));
+    iframe.style.width = iframeSize + 'px';
+    iframe.style.height = iframeSize + 'px';
+    iframe.style.transform = 'scale(' + scale + ')';
+    levelLabel.textContent = Math.round(scale * 100) + '%';
+    btnOut.disabled = zoomIdx === 0;
+    btnIn.disabled = zoomIdx === ZOOM_LEVELS.length - 1;
+  }
+
+  btnIn.addEventListener('click', () => {
+    if (zoomIdx < ZOOM_LEVELS.length - 1) { zoomIdx++; applyZoom(); }
+  });
+
+  btnOut.addEventListener('click', () => {
+    if (zoomIdx > 0) { zoomIdx--; applyZoom(); }
+  });
+
+  parent.insertBefore(viewport, iframe);
+  viewport.appendChild(iframe);
+  viewport.appendChild(controls);
+
+  applyZoom();
+});
 </script>
 </body>
 </html>
