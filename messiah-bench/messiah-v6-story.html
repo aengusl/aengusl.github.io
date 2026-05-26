@@ -292,9 +292,17 @@
     height: 280px;
     overflow: hidden;
     background: #111;
+    cursor: grab;
+  }
+
+  .sacrament-viewport.dragging {
+    cursor: grabbing;
   }
 
   .sacrament-render {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 2000px;
     height: 2000px;
     border: none;
@@ -305,11 +313,7 @@
     pointer-events: none;
   }
 
-  .sacrament-viewport:hover .sacrament-render {
-    pointer-events: auto;
-  }
-
-  .zoom-controls {
+  .sacrament-controls {
     position: absolute;
     bottom: 8px;
     right: 8px;
@@ -318,7 +322,12 @@
     z-index: 10;
   }
 
-  .zoom-btn {
+  .zoom-controls {
+    display: flex;
+    gap: 4px;
+  }
+
+  .zoom-btn, .expand-btn {
     width: 28px;
     height: 28px;
     border: 1px solid rgba(196, 151, 59, 0.3);
@@ -334,8 +343,13 @@
     transition: background 0.15s;
   }
 
-  .zoom-btn:hover {
+  .zoom-btn:hover, .expand-btn:hover {
     background: rgba(196, 151, 59, 0.15);
+  }
+
+  .expand-btn {
+    margin-left: 6px;
+    font-size: 12px;
   }
 
   .zoom-level {
@@ -344,6 +358,90 @@
     color: var(--dim);
     padding: 0 6px;
     line-height: 28px;
+  }
+
+  .sacrament-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sacrament-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(92vw, 1400px);
+    padding: 12px 0;
+    color: var(--dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+  }
+
+  .sacrament-modal-header .modal-title {
+    text-transform: uppercase;
+  }
+
+  .sacrament-modal-close {
+    background: none;
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    color: var(--accent);
+    font-size: 18px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sacrament-modal-close:hover {
+    background: rgba(196, 151, 59, 0.15);
+  }
+
+  .sacrament-modal-body {
+    position: relative;
+    width: min(92vw, 1400px);
+    height: min(80vh, 900px);
+    overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(196, 151, 59, 0.2);
+    border-radius: 6px;
+    cursor: grab;
+  }
+
+  .sacrament-modal-body.dragging {
+    cursor: grabbing;
+  }
+
+  .sacrament-modal-body iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: none;
+    background: #111;
+    display: block;
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+
+  .sacrament-modal-body .sacrament-controls {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .sacrament-modal-hint {
+    color: var(--dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55em;
+    margin-top: 8px;
+    opacity: 0.6;
   }
 
   /* Sacrament grid */
@@ -1105,64 +1203,216 @@ function drawTimeline() {
 drawTimeline();
 window.addEventListener('resize', drawTimeline);
 
-// Sacrament zoom system: wrap every iframe.sacrament-render in a viewport with zoom controls
+// Sacrament viewer: zoom + pan + popup
 const ZOOM_LEVELS = [0.02, 0.05, 0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1.0];
-const DEFAULT_ZOOM_IDX = 1; // 0.05 = 5%
+const DEFAULT_ZOOM_IDX = 1;
 
-document.querySelectorAll('iframe.sacrament-render').forEach(iframe => {
-  const parent = iframe.parentElement;
-  const isTall = iframe.hasAttribute('data-tall');
+function makePannable(container, iframe, getScale) {
+  let panX = 0, panY = 0;
+  let dragging = false, startX, startY, startPanX, startPanY;
 
-  const viewport = document.createElement('div');
-  viewport.className = 'sacrament-viewport';
-  if (isTall) viewport.style.height = '400px';
+  function clampPan() {
+    const scale = getScale();
+    const iw = parseFloat(iframe.style.width) || 2000;
+    const ih = parseFloat(iframe.style.height) || 2000;
+    const visW = iw * scale, visH = ih * scale;
+    const cw = container.clientWidth, ch = container.clientHeight;
+    const minX = Math.min(0, cw - visW), minY = Math.min(0, ch - visH);
+    panX = Math.max(minX, Math.min(0, panX));
+    panY = Math.max(minY, Math.min(0, panY));
+  }
 
-  const controls = document.createElement('div');
-  controls.className = 'zoom-controls';
+  function applyPan() {
+    iframe.style.left = panX + 'px';
+    iframe.style.top = panY + 'px';
+  }
+
+  function resetPan() { panX = 0; panY = 0; applyPan(); }
+
+  container.addEventListener('mousedown', e => {
+    if (e.target.closest('.sacrament-controls')) return;
+    dragging = true; startX = e.clientX; startY = e.clientY;
+    startPanX = panX; startPanY = panY;
+    container.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    panX = startPanX + (e.clientX - startX);
+    panY = startPanY + (e.clientY - startY);
+    clampPan(); applyPan();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false; container.classList.remove('dragging');
+  });
+
+  container.addEventListener('touchstart', e => {
+    if (e.target.closest('.sacrament-controls')) return;
+    if (e.touches.length !== 1) return;
+    dragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    startPanX = panX; startPanY = panY;
+    container.classList.add('dragging');
+  }, { passive: true });
+
+  container.addEventListener('touchmove', e => {
+    if (!dragging || e.touches.length !== 1) return;
+    panX = startPanX + (e.touches[0].clientX - startX);
+    panY = startPanY + (e.touches[0].clientY - startY);
+    clampPan(); applyPan();
+  }, { passive: true });
+
+  container.addEventListener('touchend', () => {
+    dragging = false; container.classList.remove('dragging');
+  });
+
+  return { clampPan, applyPan, resetPan };
+}
+
+function buildControls(iframe, container, zoomIdx, src, label) {
+  const controlsWrap = document.createElement('div');
+  controlsWrap.className = 'sacrament-controls';
+
+  const zoomControls = document.createElement('div');
+  zoomControls.className = 'zoom-controls';
 
   const btnOut = document.createElement('button');
-  btnOut.className = 'zoom-btn';
-  btnOut.textContent = '−';
-  btnOut.title = 'Zoom out';
+  btnOut.className = 'zoom-btn'; btnOut.textContent = '−'; btnOut.title = 'Zoom out';
 
   const levelLabel = document.createElement('span');
   levelLabel.className = 'zoom-level';
 
   const btnIn = document.createElement('button');
-  btnIn.className = 'zoom-btn';
-  btnIn.textContent = '+';
-  btnIn.title = 'Zoom in';
+  btnIn.className = 'zoom-btn'; btnIn.textContent = '+'; btnIn.title = 'Zoom in';
 
-  controls.appendChild(btnOut);
-  controls.appendChild(levelLabel);
-  controls.appendChild(btnIn);
+  zoomControls.appendChild(btnOut);
+  zoomControls.appendChild(levelLabel);
+  zoomControls.appendChild(btnIn);
+  controlsWrap.appendChild(zoomControls);
 
-  let zoomIdx = DEFAULT_ZOOM_IDX;
+  const expandBtn = document.createElement('button');
+  expandBtn.className = 'expand-btn';
+  expandBtn.innerHTML = '&#x26F6;';
+  expandBtn.title = 'View larger';
+  controlsWrap.appendChild(expandBtn);
+
+  let zi = zoomIdx;
+  const pan = makePannable(container, iframe, () => ZOOM_LEVELS[zi]);
 
   function applyZoom() {
-    const scale = ZOOM_LEVELS[zoomIdx];
-    const iframeSize = Math.max(2000, Math.round(viewport.clientWidth / scale));
+    const scale = ZOOM_LEVELS[zi];
+    const iframeSize = Math.max(2000, Math.round(container.clientWidth / scale));
     iframe.style.width = iframeSize + 'px';
     iframe.style.height = iframeSize + 'px';
     iframe.style.transform = 'scale(' + scale + ')';
     levelLabel.textContent = Math.round(scale * 100) + '%';
-    btnOut.disabled = zoomIdx === 0;
-    btnIn.disabled = zoomIdx === ZOOM_LEVELS.length - 1;
+    btnOut.disabled = zi === 0;
+    btnIn.disabled = zi === ZOOM_LEVELS.length - 1;
+    pan.clampPan(); pan.applyPan();
   }
 
-  btnIn.addEventListener('click', () => {
-    if (zoomIdx < ZOOM_LEVELS.length - 1) { zoomIdx++; applyZoom(); }
-  });
+  btnIn.addEventListener('click', () => { if (zi < ZOOM_LEVELS.length - 1) { zi++; applyZoom(); } });
+  btnOut.addEventListener('click', () => { if (zi > 0) { zi--; applyZoom(); } });
+  expandBtn.addEventListener('click', () => openSacramentModal(src, label));
 
-  btnOut.addEventListener('click', () => {
-    if (zoomIdx > 0) { zoomIdx--; applyZoom(); }
-  });
+  applyZoom();
+  return controlsWrap;
+}
+
+function openSacramentModal(src, label) {
+  const overlay = document.createElement('div');
+  overlay.className = 'sacrament-modal-overlay';
+
+  const header = document.createElement('div');
+  header.className = 'sacrament-modal-header';
+  const title = document.createElement('span');
+  title.className = 'modal-title';
+  title.textContent = label || 'Sacrament';
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'sacrament-modal-close';
+  closeBtn.innerHTML = '&times;';
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+
+  const body = document.createElement('div');
+  body.className = 'sacrament-modal-body';
+
+  const modalIframe = document.createElement('iframe');
+  modalIframe.src = src;
+  modalIframe.sandbox = 'allow-scripts';
+  modalIframe.style.width = '16000px';
+  modalIframe.style.height = '16000px';
+  modalIframe.style.transform = 'scale(0.1)';
+  body.appendChild(modalIframe);
+
+  let mzi = 2; // start at 10%
+  const modalPan = makePannable(body, modalIframe, () => ZOOM_LEVELS[mzi]);
+
+  const mControls = document.createElement('div');
+  mControls.className = 'sacrament-controls';
+  const mZoom = document.createElement('div');
+  mZoom.className = 'zoom-controls';
+  const mOut = document.createElement('button');
+  mOut.className = 'zoom-btn'; mOut.textContent = '−';
+  const mLabel = document.createElement('span');
+  mLabel.className = 'zoom-level';
+  const mIn = document.createElement('button');
+  mIn.className = 'zoom-btn'; mIn.textContent = '+';
+  mZoom.appendChild(mOut); mZoom.appendChild(mLabel); mZoom.appendChild(mIn);
+  mControls.appendChild(mZoom);
+  body.appendChild(mControls);
+
+  function applyModalZoom() {
+    const scale = ZOOM_LEVELS[mzi];
+    const sz = Math.max(2000, Math.round(body.clientWidth / scale));
+    modalIframe.style.width = sz + 'px';
+    modalIframe.style.height = sz + 'px';
+    modalIframe.style.transform = 'scale(' + scale + ')';
+    mLabel.textContent = Math.round(scale * 100) + '%';
+    mOut.disabled = mzi === 0;
+    mIn.disabled = mzi === ZOOM_LEVELS.length - 1;
+    modalPan.clampPan(); modalPan.applyPan();
+  }
+
+  mIn.addEventListener('click', () => { if (mzi < ZOOM_LEVELS.length - 1) { mzi++; applyModalZoom(); } });
+  mOut.addEventListener('click', () => { if (mzi > 0) { mzi--; applyModalZoom(); } });
+
+  const hint = document.createElement('div');
+  hint.className = 'sacrament-modal-hint';
+  hint.textContent = 'drag to pan · scroll to explore · click × or press Esc to close';
+
+  overlay.appendChild(header);
+  overlay.appendChild(body);
+  overlay.appendChild(hint);
+  document.body.appendChild(overlay);
+
+  closeBtn.addEventListener('click', () => overlay.remove());
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  function onKey(e) { if (e.key === 'Escape') { overlay.remove(); window.removeEventListener('keydown', onKey); } }
+  window.addEventListener('keydown', onKey);
+
+  requestAnimationFrame(applyModalZoom);
+}
+
+document.querySelectorAll('iframe.sacrament-render').forEach(iframe => {
+  const parent = iframe.parentElement;
+  const isTall = iframe.hasAttribute('data-tall');
+  const src = iframe.getAttribute('src');
+  const showcase = iframe.closest('.sacrament-showcase');
+  const labelEl = showcase ? showcase.querySelector('.sacrament-label') : null;
+  const labelText = labelEl ? labelEl.textContent.trim().replace(/\s+/g, ' ') : '';
+
+  const viewport = document.createElement('div');
+  viewport.className = 'sacrament-viewport';
+  if (isTall) viewport.style.height = '400px';
 
   parent.insertBefore(viewport, iframe);
   viewport.appendChild(iframe);
-  viewport.appendChild(controls);
 
-  applyZoom();
+  const controls = buildControls(iframe, viewport, DEFAULT_ZOOM_IDX, src, labelText);
+  viewport.appendChild(controls);
 });
 </script>
 </body>
