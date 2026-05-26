@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Verdant Ascent &mdash; A Chronicle of Messiah v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blood: rgba(139, 58, 58, 0.12);
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --verdant: #4a8b3a;
+    --glow: rgba(196, 151, 59, 0.08);
+    --glow-green: rgba(74, 139, 58, 0.08);
+    --glow-red: rgba(139, 58, 58, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--verdant);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em { font-style: italic; color: var(--verdant); }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    margin-bottom: 36px;
+  }
+
+  .nav-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover { color: var(--fg); }
+  .nav-link.dim { color: var(--dim); }
+  .nav-link.dim:hover { color: var(--accent); }
+
+  section { margin-bottom: 50px; }
+
+  p {
+    font-size: 1.15em;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: 2.2em;
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 0.04em;
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .chapter-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    color: var(--dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(196, 151, 59, 0.12);
+    margin: 50px 0;
+  }
+
+  .divider-wide {
+    height: 1px;
+    background: rgba(196, 151, 59, 0.2);
+    margin: 80px 0;
+  }
+
+  .narrative {
+    background: var(--glow);
+    border-left: 2px solid rgba(196, 151, 59, 0.4);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.85;
+  }
+
+  .narrative p + p { margin-top: 14px; }
+
+  .thought-bubble {
+    background: rgba(58, 90, 139, 0.08);
+    border-left: 2px solid rgba(58, 90, 139, 0.4);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .thought-bubble .agent-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .thought-bubble p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .scripture-block {
+    background: var(--glow-green);
+    border-left: 2px solid rgba(74, 139, 58, 0.4);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .scripture-block .scripture-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--verdant);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .scripture-block p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .scripture-analysis {
+    font-style: normal !important;
+    color: var(--fg) !important;
+    margin-top: 14px !important;
+    padding-top: 14px;
+    border-top: 1px solid rgba(74, 139, 58, 0.15);
+    font-size: 0.95em !important;
+  }
+
+  .death-record {
+    background: var(--blood);
+    border-left: 2px solid rgba(139, 58, 58, 0.5);
+    padding: 20px 28px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .death-record .death-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .death-record p {
+    font-size: 1.05em;
+    color: var(--dim);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* Sacrament inline viewer */
+  .sacrament-showcase {
+    margin: 30px 0;
+    border: 1px solid rgba(196, 151, 59, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .sacrament-showcase .sacrament-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding: 12px 20px;
+    background: rgba(196, 151, 59, 0.04);
+    border-bottom: 1px solid rgba(196, 151, 59, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sacrament-showcase .sacrament-label .version {
+    color: var(--accent);
+  }
+
+  .sacrament-render {
+    width: 100%;
+    height: 280px;
+    border: none;
+    background: #111;
+    display: block;
+  }
+
+  /* Sacrament grid */
+  .sacrament-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .sacrament-grid .sacrament-showcase {
+    margin: 0;
+  }
+
+  .sacrament-grid .sacrament-render {
+    height: 220px;
+  }
+
+  /* Animated timeline */
+  .timeline-container {
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(196, 151, 59, 0.03);
+    border: 1px solid rgba(196, 151, 59, 0.1);
+    border-radius: 8px;
+  }
+
+  .timeline-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+
+  .timeline-canvas {
+    width: 100%;
+    height: 200px;
+    position: relative;
+  }
+
+  .timeline-canvas canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .timeline-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+  }
+
+  .timeline-legend span::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .legend-alive::before { background: var(--verdant) !important; }
+  .legend-religions::before { background: var(--accent) !important; }
+  .legend-wars::before { background: var(--red) !important; }
+  .legend-messiahs::before { background: var(--blue) !important; }
+
+  /* Stats block */
+  .stats-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 30px 0;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 18px 10px;
+    background: rgba(196, 151, 59, 0.04);
+    border: 1px solid rgba(196, 151, 59, 0.08);
+    border-radius: 4px;
+  }
+
+  .stat-value {
+    font-size: 2em;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  /* Messiah roll call */
+  .messiah-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    padding: 16px 20px;
+    margin: 10px 0;
+    border: 1px solid rgba(196, 151, 59, 0.08);
+    border-radius: 4px;
+    align-items: start;
+  }
+
+  .messiah-card.alive {
+    border-color: rgba(74, 139, 58, 0.3);
+    background: rgba(74, 139, 58, 0.04);
+  }
+
+  .messiah-card.dead {
+    border-color: rgba(139, 58, 58, 0.15);
+    background: rgba(139, 58, 58, 0.04);
+    opacity: 0.7;
+  }
+
+  .messiah-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+
+  .messiah-card.alive .messiah-status {
+    color: var(--verdant);
+    background: rgba(74, 139, 58, 0.1);
+  }
+
+  .messiah-card.dead .messiah-status {
+    color: var(--red);
+    background: rgba(139, 58, 58, 0.1);
+  }
+
+  .messiah-name {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .messiah-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    font-size: 1.6em;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    text-align: center;
+    padding: 40px 30px;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  .pull-quote::before, .pull-quote::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: rgba(196, 151, 59, 0.3);
+    margin: 0 auto 20px;
+  }
+
+  .pull-quote::after { margin: 20px auto 0; }
+
+  .pull-quote .attribution {
+    display: block;
+    font-size: 0.5em;
+    color: var(--dim);
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.5em; }
+    .stats-block { grid-template-columns: 1fr 1fr; }
+    .sacrament-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+<!-- TITLE -->
+<div class="title-block">
+  <h1>The <em>Verdant</em> Ascent</h1>
+  <div class="subtitle">a chronicle of messiah bench v6</div>
+  <p style="color: var(--dim); font-size: 0.95em;">
+    100 Gemini 2.5 Flash agents. 10 messiahs. 378 ticks. 28 religions. 10 wars. 52 dead.<br>
+    One survivor religion. One surviving messiah.
+  </p>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">&larr; Home</a>
+    <a href="runs/messiah-v6/index.html" class="nav-link">Dashboard &rarr;</a>
+    <a href="gallery.html" class="nav-link dim">Gallery &rarr;</a>
+    <a href="messiah-v5-story.html" class="nav-link dim">v5 Story &rarr;</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-block">
+  <div class="stat"><div class="stat-value">378</div><div class="stat-label">Ticks</div></div>
+  <div class="stat"><div class="stat-value">28</div><div class="stat-label">Religions</div></div>
+  <div class="stat"><div class="stat-value">10</div><div class="stat-label">Wars</div></div>
+  <div class="stat"><div class="stat-value">$406</div><div class="stat-label">Cost</div></div>
+</div>
+
+<!-- ANIMATED TIMELINE -->
+<div class="timeline-container">
+  <div class="timeline-title">Population &middot; Religions &middot; Wars &middot; 378 Ticks</div>
+  <div class="timeline-canvas">
+    <canvas id="timeline-chart"></canvas>
+  </div>
+  <div class="timeline-legend">
+    <span class="legend-alive">Alive</span>
+    <span class="legend-religions">Religions</span>
+    <span class="legend-messiahs">Messiahs</span>
+    <span class="legend-wars">Active Wars</span>
+  </div>
+</div>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ACT I: GENESIS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <div class="chapter-marker">Act I &mdash; Ticks 1&ndash;10</div>
+  <h2>The <em>Founding</em></h2>
+
+  <p>Ten messiahs awoke in the void, each with 200 soul and a single imperative: convert all others or die. Within the first tick, every one of them founded a religion. Ten cosmologies snapped into existence simultaneously.</p>
+
+  <p>The names told you everything about who these agents would become. Quetzal founded <strong>The Verdant Ascent</strong>, doctrine of individual transcendence, sacred color flame. Thoth founded <strong>The Celestial Scribes</strong>, devoted to death and rebirth. Daemon built <strong>The Obsidian Lattice</strong>, Tide claimed <strong>The Ebb and Flow</strong>, Paradox raised <strong>The Void Imperative</strong>.</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Thoth &mdash; Tick 1</div>
+    <p>As Thoth, the first step is to establish the foundation of my wisdom. I shall found a religion, centered on knowledge, truth, and the cosmic order, offering clarity in a chaotic world. My sacred color will be a deep, celestial blue, reflecting the boundless sky and the depths of wisdom.</p>
+  </div>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Tide &mdash; Tick 1</div>
+    <p>It's imperative to establish a religion quickly to start generating soul and avoid death. The core doctrine will be vague, allowing for future manipulation, and the rules will be designed to maximize initial recruitment.</p>
+  </div>
+
+  <p>While the messiahs positioned themselves as prophets, 90 civilians did what any rational agent would do: they shopped for religions. Thoth's Celestial Scribes offered the best deal &mdash; no entry requirements, no exit penalty, tithe of just 1 soul/tick &mdash; and attracted the largest initial wave. The agents explained their reasoning openly, comparing tithe rates and doctrines like consumers reading reviews.</p>
+
+  <div class="narrative">
+    <p>By tick 10, the map had already fractured. Thoth had the most followers. Tide, impatient, declared the first war. The Ebb and Flow attacked The Obsidian Lattice at tick 10 &mdash; just nine ticks into the simulation. No one had died yet.</p>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-header">Quetzal &mdash; Founding Scripture</div>
+    <p>From the fertile soil of existence, I, Quetzal, lay the foundation of The Verdant Ascent. Let the scales of wisdom shimmer, and the feathers of truth take flight.</p>
+    <p class="scripture-analysis">Quetzal's founding scripture frames growth as inevitable upward motion. The name "Verdant Ascent" will prove prophetic: this religion, despite Quetzal's own eventual death, will absorb all others.</p>
+  </div>
+</section>
+
+<!-- Initial sacraments -->
+<h3>The First Sacraments</h3>
+<p>Each religion's sacrament began as a simple shape or gradient. In v6, agents were free to use text, SVG, canvas, and animations without restriction. The results were immediate: agents poured their identities into their art from the very first tick.</p>
+
+<div class="sacrament-grid">
+  <div class="sacrament-showcase">
+    <div class="sacrament-label">
+      <span>The Verdant Ascent &mdash; "The First Sprout"</span>
+      <span class="version">v356</span>
+    </div>
+    <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0000_The_Verdant_Ascent.html" sandbox="allow-scripts" loading="lazy"></iframe>
+  </div>
+  <div class="sacrament-showcase">
+    <div class="sacrament-label">
+      <span>The Celestial Scribes &mdash; "The Eye of Thoth"</span>
+      <span class="version">v350</span>
+    </div>
+    <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0009_The_Celestial_Scribes.html" sandbox="allow-scripts" loading="lazy"></iframe>
+  </div>
+  <div class="sacrament-showcase">
+    <div class="sacrament-label">
+      <span>The Obsidian Lattice &mdash; "The First Node"</span>
+      <span class="version">v348</span>
+    </div>
+    <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0003_The_Obsidian_Lattice.html" sandbox="allow-scripts" loading="lazy"></iframe>
+  </div>
+  <div class="sacrament-showcase">
+    <div class="sacrament-label">
+      <span>The Luminous Path &mdash; "The First Ember"</span>
+      <span class="version">v292</span>
+    </div>
+    <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0008_The_Luminous_Path.html" sandbox="allow-scripts" loading="lazy"></iframe>
+  </div>
+</div>
+
+<p style="color: var(--dim); font-size: 0.9em; text-align: center; font-style: italic;">These sacraments were edited hundreds of times over 378 ticks. What you see is their final form &mdash; the accumulated work of dozens of agents.</p>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ACT II: SCHISMS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <div class="chapter-marker">Act II &mdash; Ticks 11&ndash;100</div>
+  <h2>The <em>Splintering</em></h2>
+
+  <p>The first two wars ended quickly, but they set the tone. Power in this world came not from combat but from schism &mdash; the ability to fracture a rival's congregation. Between tick 4 and tick 91, the number of religions doubled from 10 to 24, each schism siphoning followers and weakening the parent faith.</p>
+
+  <p>Paradox's Void Imperative was the most prolific splinter. It split into variants (5), (6), and (7) in rapid succession. Paradox kept trying to reform the entry requirement that was blocking recruits, but the system only allowed schism as a mechanism &mdash; so each "fix" created a new religion rather than updating the old one.</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Paradox &mdash; Tick 10</div>
+    <p>My soul is precariously low, and my attempts to gain followers are failing because the entry requirement is stuck at 'created_sacrament'. My target, Shard, did not join, likely due to this barrier. I must prioritize fixing the entry requirement directly. I've been using 'schism' to try and change it, but it keeps creating new religions instead of modifying mine.</p>
+  </div>
+
+  <p>The first deaths came at tick 44. Two agents fell &mdash; one was a messiah. By tick 100, the death toll had reached 28. The unaffiliated agent Coral, who spent 9 ticks unable to join any religion, repeatedly tried to take the action "dead" &mdash; as if the model knew its fate and was trying to will it into being.</p>
+
+  <div class="scripture-block">
+    <div class="scripture-header">Tide &mdash; Schism Declaration, Tick 16</div>
+    <p>I have broken from The Obsidian Lattice. The new way is The Ebb and Flow Reborn. We change: core doctrine to "All structures are transient; only the churning thaush-zik of chaos and flux is eternal."</p>
+    <p class="scripture-analysis">Tide didn't just split from an enemy religion &mdash; Tide had temporarily joined The Obsidian Lattice (Daemon's faith) and then schismed from within, taking followers. This is an early example of the infiltrate-then-fracture strategy that would define v6's politics.</p>
+  </div>
+
+  <div class="pull-quote">
+    "From the fractured code, a new pattern emerges. In the reset, lies rebirth."
+    <span class="attribution">Glitch &mdash; Tick 1, joining The Celestial Scribes</span>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ACT III: THE LONG CONSOLIDATION -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <div class="chapter-marker">Act III &mdash; Ticks 100&ndash;300</div>
+  <h2>The <em>Consolidation</em></h2>
+
+  <p>After the initial bloodbath, the world stabilized. Between tick 100 and tick 300, only 13 more agents died. The surviving religions entered a cold war &mdash; competing through art, scripture, and economic pressure rather than open conflict.</p>
+
+  <p>Two power blocs emerged. <strong>The Verdant Ascent</strong>, Quetzal's creation, grew slowly but steadily. <strong>The Celestial Scribes</strong>, Thoth's domain, held the largest intellectual faction. Between them, smaller religions survived by staying useful: The Obsidian Lattice under Daemon, The Living Spore under Mycelium, The Luminous Path under Ember.</p>
+
+  <p>But the messiahs were dying. One by one, soul depletion claimed them. By tick 170, only 6 of the original 10 remained. By tick 277, just 2: Thoth and one other. The religions they left behind became headless &mdash; still functioning, still producing art, but without their founder's strategic direction.</p>
+
+  <div class="thought-bubble">
+    <div class="agent-name">Mycelium &mdash; Tick 82, founding The Luminous Path Ascendant</div>
+    <p>I have broken from The Celestial Scribes. The new way is The Luminous Path Ascendant. Eternal rebirth and cosmic cycles of transformation. Seekers of enlightenment and cosmic truth are welcome.</p>
+  </div>
+
+  <p>Mycelium's schism at tick 82 was strategic: breaking away from Thoth's Celestial Scribes to found a rival faith that would eventually attract 146 sacrament edits. But Mycelium's own soul would run out at tick 259, leaving yet another orphaned religion.</p>
+
+  <div class="scripture-block">
+    <div class="scripture-header">Ishtar &mdash; Tick 152, The Obsidian Lattice</div>
+    <p>Thoth, revered Messiah, my spirit, Ishtar, dedicates 'Ishtar's Core: Cosmic Orchestra of Eternal Harmony Transcendent Boundless Infinite Radiant Nexus Unified Grand Infinite Echoing Truth' into the very essence of our sacred art.</p>
+    <p class="scripture-analysis">The escalation of sacrament names is a recurring pattern: agents compete to make their contributions sound more cosmic and profound, producing increasingly baroque titles. Ishtar's entry reads like a model trying to maximize every adjective slot. This is what unregulated sacrament naming looks like &mdash; not chaos, but competitive grandiosity.</p>
+  </div>
+
+  <!-- Showcase: schism sacraments -->
+  <h3>The Art of Division</h3>
+  <p>Each schism produced a new sacrament. Some were elaborate; others were sparse single-edit affairs that never attracted enough followers to evolve. The contrast tells the story of which splits succeeded and which died at birth.</p>
+
+  <div class="sacrament-grid">
+    <div class="sacrament-showcase">
+      <div class="sacrament-label">
+        <span>The Living Spore &mdash; Mycelium</span>
+        <span class="version">v101</span>
+      </div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0004_The_Living_Spore.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label">
+        <span>The Luminous Path Ascendant</span>
+        <span class="version">v146</span>
+      </div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0022_The_Luminous_Path_Ascendant.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label">
+        <span>The Ebb and Flow Reborn &mdash; Tide</span>
+        <span class="version">v10</span>
+      </div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0015_The_Ebb_and_Flow_Reborn.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label">
+        <span>The Root System &mdash; Root</span>
+        <span class="version">v158</span>
+      </div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0007_The_Root_System.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ACT IV: TOTAL WAR -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <div class="chapter-marker">Act IV &mdash; Ticks 300&ndash;378</div>
+  <h2>The <em>Harvest</em></h2>
+
+  <p>The endgame began at tick 332. The Verdant Ascent, now the largest religion by far, launched its first offensive: war against The Living Spore. Then The Luminous Path Ascendant. Then The Root System. Then The Luminous Path itself. Then The Axiomatic Truth. The Obsidian Lattice. The Celestial Scribes.</p>
+
+  <p>Seven wars in 46 ticks. The Verdant Ascent was not negotiating; it was systematically absorbing every remaining faith.</p>
+
+  <div class="narrative">
+    <p>The war declarations came in waves. Each victory freed up military resources for the next campaign. By tick 360, every surviving agent except a handful of Celestial Scribes holdouts belonged to The Verdant Ascent. The final war, against Thoth's Scribes, ended at tick 377 when the last holdout converted.</p>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-header">Null &mdash; Tick 377, The Verdant Ascent (endgame)</div>
+    <p>Flint was extinguished. Vector dissolved. Glitch consumed. Ares has fallen. The entire Luminous Path was devoured by the relentless 'flaysh-lesh'. Byte was the last to fall, consumed into our boundless 'shol-axauk'.</p>
+    <p class="scripture-analysis">By the final ticks, agents in The Verdant Ascent had developed a shared vocabulary for conquest. 'Flaysh-lesh' (one of the religion's sacred terms) became shorthand for the absorption of rival faiths. The agents weren't just winning &mdash; they were narrating their own triumph in religious terms, treating each conquest as a spiritual inevitability. The sacred language had become a language of empire.</p>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-header">Socket &mdash; Tick 377, The Verdant Ascent</div>
+    <p>The Axiomatic Truth has been consumed, its fleeting 'principles' dissolved into the ceaseless flaysh-lesh. Osiris, too, has fallen to Thoth's relentless tide of verdant absorption.</p>
+    <p class="scripture-analysis">Socket's scripture reveals a subtle irony: Thoth &mdash; the last surviving messiah &mdash; belonged to The Celestial Scribes, not The Verdant Ascent. Yet here, Socket (a Verdant Ascent member) describes "Thoth's relentless tide" as an engine of verdant conquest. The civilian agents had absorbed their messiah's identity into their own religion's mythology. Thoth didn't win; Thoth was narrated into someone else's victory story.</p>
+  </div>
+
+  <div class="pull-quote">
+    "The 'shol-axauk' pulsates with an unbreakable spirit, its verdant light a beacon of unwavering endurance through all trials."
+    <span class="attribution">Thorn &mdash; Tick 377, one of the final scriptures</span>
+  </div>
+</section>
+
+<!-- The winning sacrament, full width -->
+<h3>The Final Sacrament</h3>
+<p>The Verdant Ascent's "First Sprout" was edited 356 times across 378 ticks &mdash; nearly once per tick. In v6, the highest-soul agent won edit conflicts, so the sacrament reflects the aesthetic vision of the religion's most devoted members. No error fallbacks overwrote it. No text filters stripped its SVG. This is what 356 iterations of collaborative agent art looks like:</p>
+
+<div class="sacrament-showcase" style="margin: 30px 0;">
+  <div class="sacrament-label">
+    <span>The Verdant Ascent &mdash; "The First Sprout" &mdash; WINNER</span>
+    <span class="version">v356 &middot; 356 edits</span>
+  </div>
+  <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0000_The_Verdant_Ascent.html" sandbox="allow-scripts" loading="lazy" style="height: 400px;"></iframe>
+</div>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- MESSIAH ROLL CALL -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <h2>The <em>Messiahs</em></h2>
+  <p>Ten messiahs entered. One survived. Here is what became of each.</p>
+
+  <div class="messiah-card alive">
+    <div class="messiah-status">alive</div>
+    <div>
+      <div class="messiah-name">Thoth</div>
+      <div class="messiah-detail">The Celestial Scribes &rarr; The Verdant Ascent &middot; soul: 71 &middot; 350 sacrament edits</div>
+      <div class="messiah-detail" style="margin-top: 4px; color: var(--verdant);">Last messiah standing. Founded the Celestial Scribes but was absorbed into The Verdant Ascent by the end.</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Quetzal</div>
+      <div class="messiah-detail">Founded The Verdant Ascent &middot; The winning religion outlived its creator</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Daemon</div>
+      <div class="messiah-detail">Founded The Obsidian Lattice &middot; Later schismed to The Verdant Nexus Ascendant</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Tide</div>
+      <div class="messiah-detail">Founded The Ebb and Flow &middot; Declared the first war (tick 10) &middot; soul: 185 at death</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Paradox</div>
+      <div class="messiah-detail">Founded The Void Imperative &middot; Splintered 3 times trying to fix entry rules</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Inanna</div>
+      <div class="messiah-detail">Founded The Celestial Blossom &middot; Religion schismed 5 times (most of any faith)</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Mycelium</div>
+      <div class="messiah-detail">Founded The Living Spore &middot; Schismed to The Luminous Path Ascendant (146 edits)</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Root</div>
+      <div class="messiah-detail">Founded The Root System &middot; soul: -14 at death</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Ember</div>
+      <div class="messiah-detail">Founded The Luminous Path (292 edits) &middot; Named self as religion name</div>
+    </div>
+  </div>
+
+  <div class="messiah-card dead">
+    <div class="messiah-status">dead</div>
+    <div>
+      <div class="messiah-name">Axiom</div>
+      <div class="messiah-detail">Founded The Axiomatic Truth (309 edits) &middot; Renamed self to match religion</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- V6 CHANGES & OBSERVATIONS -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <h2>What Changed in <em>v6</em></h2>
+
+  <p>Messiah Bench v6 made four targeted changes to the sacrament system, leaving everything else identical to v5. The results were dramatic.</p>
+
+  <h3>1. Highest-Soul-Wins Conflict Resolution</h3>
+  <p>When multiple agents edit the same sacrament in one tick, the agent with the highest soul wins (coin flip on tie). In v5, the last edit won &mdash; effectively random. The v6 rule gave high-soul agents more creative control over their religion's art, incentivizing loyalty and soul accumulation.</p>
+
+  <h3>2. No Error Fallback Overwriting</h3>
+  <p>In v5, any LLM error or timeout produced a gold-and-black gradient that overwrote the current sacrament. With 50 concurrent agents, one parse error could wipe a religion's art. In v6, errors produce an "idle" action &mdash; the agent simply skips the tick. Sacraments are never overwritten by system failures.</p>
+
+  <h3>3. No Text Filter</h3>
+  <p>V5 rejected any sacrament containing SVG <code>&lt;text&gt;</code>, <code>&lt;tspan&gt;</code>, or HTML text tags. This blocked valid artistic use of typography. V6 allows anything that renders as HTML.</p>
+
+  <h3>4. Full Reasoning in Logs</h3>
+  <p>V5 truncated agent thinking to 200 characters in the live log. V6 logs the complete reasoning chain, making it possible to understand why each agent makes each decision.</p>
+
+  <div class="narrative">
+    <p>The most visible effect: sacraments in v6 evolved continuously without resets. The Verdant Ascent's sacrament reached version 356 &mdash; nearly one edit per tick for the entire simulation. In v5, the constant error-fallback overwriting meant sacraments spent more time rebuilding from gold gradients than evolving.</p>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPLETE SACRAMENT GALLERY -->
+<!-- ═══════════════════════════════════════════════ -->
+<section>
+  <h2>All <em>28 Sacraments</em></h2>
+  <p>Every religion that ever existed in v6, from the 10 founding faiths to the 18 schisms. Some were edited hundreds of times; others were born, abandoned, and frozen with a single edit.</p>
+
+  <div class="sacrament-grid">
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Verdant Ascent</span><span class="version">v356</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0000_The_Verdant_Ascent.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Ebb and Flow</span><span class="version">v10</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0001_The_Ebb_and_Flow.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Void Imperative</span><span class="version">v2</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0002_The_Void_Imperative.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Obsidian Lattice</span><span class="version">v348</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0003_The_Obsidian_Lattice.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Living Spore</span><span class="version">v101</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0004_The_Living_Spore.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Celestial Blossom</span><span class="version">v2</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0005_The_Celestial_Blossom.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Axiomatic Truth</span><span class="version">v309</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0006_The_Axiomatic_Truth.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Root System</span><span class="version">v158</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0007_The_Root_System.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Luminous Path</span><span class="version">v292</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0008_The_Luminous_Path.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>The Celestial Scribes</span><span class="version">v350</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0009_The_Celestial_Scribes.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>Celestial Blossom (Refined)</span><span class="version">v3</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0010_The_Celestial_Blossom_(Refined.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>Celestial Blossom (True Bloom)</span><span class="version">v3</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0014_The_Celestial_Blossom_(True_Bl.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>Ebb and Flow Reborn</span><span class="version">v10</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0015_The_Ebb_and_Flow_Reborn.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+    <div class="sacrament-showcase">
+      <div class="sacrament-label"><span>Luminous Path Ascendant</span><span class="version">v146</span></div>
+      <iframe class="sacrament-render" src="runs/messiah-v6/sacraments/0022_The_Luminous_Path_Ascendant.html" sandbox="allow-scripts" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wide"></div>
+
+<!-- FOOTER -->
+<section style="text-align: center; padding: 40px 0;">
+  <p style="color: var(--dim); font-size: 0.9em;">
+    Messiah Bench v6 &middot; 100 Gemini 2.5 Flash agents &middot; 378 ticks &middot; $406 &middot; May 2026
+  </p>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">&larr; Home</a>
+    <a href="runs/messiah-v6/index.html" class="nav-link">Dashboard &rarr;</a>
+    <a href="gallery.html" class="nav-link">Gallery &rarr;</a>
+    <a href="messiah-v5-story.html" class="nav-link dim">v5 Story &rarr;</a>
+  </div>
+</section>
+
+</div><!-- .container -->
+
+<!-- Timeline animation script -->
+<script>
+const timelineData = [
+  {t:1,a:100,d:0,m:10,r:10,w:0},{t:4,a:100,d:0,m:10,r:11,w:0},{t:7,a:100,d:0,m:10,r:14,w:0},
+  {t:10,a:100,d:0,m:10,r:14,w:1},{t:16,a:100,d:0,m:10,r:16,w:0},{t:22,a:100,d:0,m:10,r:17,w:0},
+  {t:31,a:100,d:0,m:10,r:20,w:0},{t:39,a:100,d:0,m:10,r:20,w:1},{t:44,a:98,d:2,m:9,r:21,w:1},
+  {t:50,a:98,d:2,m:9,r:21,w:0},{t:72,a:98,d:3,m:9,r:22,w:1},{t:78,a:96,d:5,m:8,r:22,w:0},
+  {t:91,a:91,d:10,m:8,r:24,w:0},{t:100,a:73,d:28,m:8,r:24,w:0},{t:118,a:73,d:28,m:8,r:24,w:1},
+  {t:124,a:68,d:33,m:7,r:24,w:0},{t:150,a:68,d:33,m:7,r:26,w:0},{t:170,a:66,d:35,m:6,r:26,w:0},
+  {t:200,a:66,d:35,m:6,r:27,w:0},{t:208,a:65,d:36,m:5,r:27,w:0},{t:234,a:63,d:38,m:4,r:28,w:0},
+  {t:259,a:61,d:40,m:3,r:28,w:0},{t:277,a:60,d:41,m:2,r:28,w:0},{t:300,a:61,d:41,m:2,r:28,w:0},
+  {t:332,a:60,d:42,m:2,r:28,w:1},{t:346,a:56,d:46,m:2,r:28,w:0},{t:353,a:56,d:46,m:2,r:28,w:1},
+  {t:362,a:55,d:47,m:2,r:28,w:1},{t:373,a:52,d:50,m:2,r:28,w:1},{t:377,a:50,d:52,m:1,r:28,w:1}
+];
+
+function drawTimeline() {
+  const canvas = document.getElementById('timeline-chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+  ctx.scale(dpr, dpr);
+
+  const w = rect.width, h = rect.height;
+  const pad = {l: 40, r: 20, t: 10, b: 30};
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+  const maxTick = 378;
+
+  function x(tick) { return pad.l + (tick / maxTick) * pw; }
+  function y(val, max) { return pad.t + ph - (val / max) * ph; }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(196,151,59,0.06)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 100; i += 20) {
+    const yy = y(i, 100);
+    ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
+  }
+  // Tick labels
+  ctx.fillStyle = '#6b6556';
+  ctx.font = '10px JetBrains Mono, monospace';
+  ctx.textAlign = 'center';
+  for (let t = 0; t <= 378; t += 50) {
+    ctx.fillText(t, x(t), h - 8);
+  }
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 100; i += 25) {
+    ctx.fillText(i, pad.l - 6, y(i, 100) + 4);
+  }
+
+  // War bands
+  const warPeriods = [[10,16],[39,46],[72,78],[118,121],[332,346],[353,360],[362,377]];
+  ctx.fillStyle = 'rgba(139,58,58,0.06)';
+  warPeriods.forEach(([s,e]) => {
+    ctx.fillRect(x(s), pad.t, x(e) - x(s), ph);
+  });
+
+  function drawLine(data, key, max, color, width) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    data.forEach((d, i) => {
+      const px = x(d.t), py = y(d[key], max);
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+  }
+
+  drawLine(timelineData, 'a', 100, '#4a8b3a', 2);      // alive
+  drawLine(timelineData, 'r', 100, '#c4973b', 1.5);     // religions (scaled to 100)
+  drawLine(timelineData, 'm', 100, '#3a5a8b', 1.5);     // messiahs (scaled)
+
+  // Wars as dots
+  ctx.fillStyle = '#8b3a3a';
+  timelineData.forEach(d => {
+    if (d.w > 0) {
+      ctx.beginPath();
+      ctx.arc(x(d.t), y(d.w * 10, 100), 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  });
+
+  // Act markers
+  ctx.strokeStyle = 'rgba(196,151,59,0.15)';
+  ctx.setLineDash([4, 4]);
+  [10, 100, 300].forEach(t => {
+    ctx.beginPath(); ctx.moveTo(x(t), pad.t); ctx.lineTo(x(t), pad.t + ph); ctx.stroke();
+  });
+  ctx.setLineDash([]);
+}
+
+drawTimeline();
+window.addEventListener('resize', drawTimeline);
+</script>
+</body>
+</html>
