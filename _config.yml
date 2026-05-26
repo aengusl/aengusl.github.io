@@ -29,13 +29,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-defaults:
-  # Keep unlisted review drafts and their assets out of the generated sitemap.
-  - scope:
-      path: "alignment-auditing/private-drafts"
-    values:
-      sitemap: false
-
 # Exclude from processing.
 exclude:
   - .sass-cache/
