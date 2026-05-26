@@ -1205,7 +1205,7 @@ window.addEventListener('resize', drawTimeline);
 
 // Sacrament viewer: zoom + pan + popup
 const ZOOM_LEVELS = [0.02, 0.05, 0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1.0];
-const DEFAULT_ZOOM_IDX = 1;
+const DEFAULT_ZOOM_IDX = 4; // 0.2 = 20%
 
 function makePannable(container, iframe, getScale) {
   let panX = 0, panY = 0;
@@ -1347,7 +1347,7 @@ function openSacramentModal(src, label) {
   modalIframe.style.transform = 'scale(0.1)';
   body.appendChild(modalIframe);
 
-  let mzi = 2; // start at 10%
+  let mzi = 4; // start at 20%
   const modalPan = makePannable(body, modalIframe, () => ZOOM_LEVELS[mzi]);
 
   const mControls = document.createElement('div');
