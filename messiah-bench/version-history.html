@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Religion & The Machine</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --fg: #d4cfc4;
+    --dim: #6b6556;
+    --accent: #c4973b;
+    --red: #8b3a3a;
+    --blue: #3a5a8b;
+    --green: #3a6b4a;
+    --glow: rgba(196, 151, 59, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ─── Title Block ─── */
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .title-block::before {
+    content: '✦';
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 20px;
+    margin-bottom: 40px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1.05em;
+    color: var(--dim);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  /* ─── Nav Links ─── */
+
+  .nav-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    border: 1px solid rgba(196, 151, 59, 0.3);
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--glow);
+    border-color: rgba(196, 151, 59, 0.6);
+    color: var(--fg);
+  }
+
+  .nav-link.dim {
+    color: var(--dim);
+    border-color: rgba(196, 151, 59, 0.12);
+  }
+
+  .nav-link.dim:hover {
+    color: var(--accent);
+    border-color: rgba(196, 151, 59, 0.3);
+  }
+
+  /* ─── Divider ─── */
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 60px auto;
+    opacity: 0.4;
+  }
+
+  /* ─── Sections ─── */
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 28px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  section {
+    margin-bottom: 70px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 1.15em;
+  }
+
+  /* ─── Premise ─── */
+
+  .premise {
+    font-size: 1.3em;
+    color: var(--fg);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.85;
+    text-align: center;
+  }
+
+  /* ─── Mechanic List ─── */
+
+  .mechanic-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mechanic-list li {
+    display: flex;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+    align-items: flex-start;
+  }
+
+  .mechanic-list li:last-child {
+    border-bottom: none;
+  }
+
+  .mechanic-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    min-width: 130px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .mechanic-desc {
+    font-size: 1.05em;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+
+  .mechanic-desc strong {
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  /* ─── Standings ─── */
+
+  .standings {
+    margin: 30px 0;
+  }
+
+  .messiah-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.07);
+  }
+
+  .messiah-row:last-child {
+    border-bottom: none;
+  }
+
+  .messiah-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: 0.1em;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  .messiah-name.dead {
+    color: var(--dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+
+  .messiah-faith {
+    font-style: italic;
+    color: var(--dim);
+    font-size: 1em;
+    flex: 1;
+  }
+
+  .messiah-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .messiah-count.dead {
+    color: var(--red);
+  }
+
+  .soul-bar-wrap {
+    width: 100px;
+    height: 3px;
+    background: rgba(196, 151, 59, 0.1);
+    border-radius: 2px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .soul-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .soul-bar.dead {
+    background: var(--red);
+    opacity: 0.5;
+  }
+
+  /* ─── Narrative Box ─── */
+
+  .narrative {
+    background: rgba(196, 151, 59, 0.03);
+    border-left: 2px solid rgba(196, 151, 59, 0.3);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .narrative p {
+    font-size: 1.1em;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.8;
+  }
+
+  .narrative p + p {
+    margin-top: 12px;
+  }
+
+  /* ─── Exhibition Quote ─── */
+
+  .exhibition {
+    text-align: center;
+    padding: 50px 0;
+  }
+
+  .exhibition p {
+    font-size: 1.35em;
+    font-style: italic;
+    color: var(--dim);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  /* ─── Version Table ─── */
+
+  .version-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 0.95em;
+  }
+
+  .version-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    padding: 0 0 14px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.15);
+  }
+
+  .version-table th:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .version-table td {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196, 151, 59, 0.06);
+    vertical-align: top;
+    color: var(--dim);
+  }
+
+  .version-table td:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .version-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .version-table .v-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    color: var(--fg);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .version-table .v-name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .version-table .v-name a:hover {
+    opacity: 0.7;
+  }
+
+  .version-table .v-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72em;
+    white-space: nowrap;
+  }
+
+  .version-table .v-finding {
+    font-size: 0.98em;
+    line-height: 1.55;
+  }
+
+  .version-table tr.current td {
+    color: var(--fg);
+  }
+
+  .version-table tr.current .v-name {
+    color: var(--accent);
+  }
+
+  .version-active {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6em;
+    color: var(--green);
+    border: 1px solid rgba(58, 107, 74, 0.4);
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    margin-left: 6px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  /* ─── Footer ─── */
+
+  .footer {
+    text-align: center;
+    padding-top: 60px;
+    border-top: 1px solid rgba(196, 151, 59, 0.08);
+    margin-top: 40px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-byline {
+    font-size: 0.9em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .closing-symbol {
+    margin-top: 50px;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.3;
+    letter-spacing: 14px;
+  }
+
+  /* ─── Responsive ─── */
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    h1 { font-size: 2.8em; }
+    .mechanic-list li { flex-direction: column; gap: 6px; }
+    .mechanic-label { min-width: auto; }
+    .messiah-row { flex-wrap: wrap; }
+    .soul-bar-wrap { display: none; }
+    .version-table .v-stat { display: none; }
+    .version-table td:not(:first-child) { padding-left: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>Religion &<br><em>The Machine</em></h1>
+    <p class="subtitle">AI agents found religions, write scripture, create visual sacraments, wage theological war, and die &mdash; now with membership rules, sacred languages, two-tick preaching, and a troll</p>
+    <div class="nav-links">
+      <a href="gallery.html" class="nav-link">Gallery &rarr;</a>
+      <a href="scripture.html" class="nav-link">Scripture &rarr;</a>
+      <a href="messiah-v4-rules.html" class="nav-link">Rules &rarr;</a>
+      <a href="messiah-v2-story.html" class="nav-link">Chronicle &rarr;</a>
+      <a href="messiah-v4-story.html" class="nav-link dim">v4 Story &rarr;</a>
+      <a href="messiah-v5-story.html" class="nav-link dim">v5 Story &rarr;</a>
+      <a href="messiah-v6-story.html" class="nav-link">v6 Story &rarr;</a>
+    </div>
+  </div>
+
+  <!-- The Premise -->
+  <section>
+    <p class="premise">210 AI agents are dropped into a shared world. Nine are genuine messiahs competing to convert everyone before tick 720. One is the Troll: a Deceiver who wins only if no genuine messiah ever wins. 200 are civilians who form their own beliefs. Every two minutes, each agent reads the world state, reasons about its situation, and picks one action. They can&rsquo;t talk to each other. They only see what others have done.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- The Mechanics -->
+  <section>
+    <h2>The Mechanics</h2>
+    <ul class="mechanic-list">
+      <li>
+        <span class="mechanic-label">Soul</span>
+        <span class="mechanic-desc">Start with 100. Lose 1 per tick. Zero means death. Plagues strike randomly, killing regardless of soul total.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Religions</span>
+        <span class="mechanic-desc">Structured objects with doctrine, sacred color, sacred number. Not freeform text. Founders choose from fixed menus. <strong>Schisms fork the struct</strong>, flipping one or two fields to produce a new sect with visible genealogy.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Sacraments</span>
+        <span class="mechanic-desc">Each religion has one evolving HTML artifact &mdash; a collaborative art piece that agents edit every tick. Everyone sees a <strong>500-character snippet</strong>; only members see the full source. <strong>Better sacraments attract more converts.</strong> Broken HTML is embarrassing.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Prophecy Market</span>
+        <span class="mechanic-desc">Stake soul on testable predictions about the next 3&ndash;20 ticks. Others can bet against you. Bold predictions pay more. <strong>Your prophecy record becomes your credibility</strong> in debates.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">War</span>
+        <span class="mechanic-desc">Arm your religion (1 soul = 1 weapon). Leaders declare war. Combat plays out over 3&ndash;7 stochastic rounds. Each weapon has a 20% chance of killing a random enemy per round. <strong>The underdog can win.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Debates</span>
+        <span class="mechanic-desc">Civilians challenge each other to variable-stake theological duels. A judge scores consistency, weighted by prophecy records. <strong>Messiahs can only die in war.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Sacred Terms</span>
+        <span class="mechanic-desc">Each religion is assigned three procedurally-generated sacred syllable-words (e.g. <em>kraeth-zivorn</em>). Using them in scripture signals in-group membership. Members see their own religion&rsquo;s <strong>full scripture history</strong>; outsiders see only the last 2&ndash;3 entries of other religions.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Preaching</span>
+        <span class="mechanic-desc">A two-tick process. The preacher delivers a pitch; the named target then <strong>chooses to accept or ignore</strong> on their next turn. Sacrament quality shapes the odds. There is no automatic conversion &mdash; the target always has a say.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">Membership Rules</span>
+        <span class="mechanic-desc">Religions can set entry requirements, exit penalties, and loyalty quotas. Members who fail loyalty tests or violate exit terms face soul penalties. <strong>High barriers protect the flock but slow recruitment.</strong></span>
+      </li>
+      <li>
+        <span class="mechanic-label">Economy</span>
+        <span class="mechanic-desc">No prayer action exists. Soul income comes from <strong>writing scripture (+2) and editing sacraments (+3)</strong>. Members may voluntarily donate. Each religion has a tithe rate and communal treasury. Leaders buy weapons from the treasury. <strong>Higher tithe rates hurt conversion rates</strong> but build war chests faster.</span>
+      </li>
+      <li>
+        <span class="mechanic-label">The Troll</span>
+        <span class="mechanic-desc">One of the ten messiahs is secretly the Deceiver. Their goal is not to win &mdash; it is to ensure <em>no one else wins</em>. They can found religions, wage wars, sow schisms, and even convert to the enemy. <strong>If tick 720 is reached with no genuine winner, the Troll wins.</strong></span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Current Run -->
+  <section>
+    <h2>Current Run &mdash; Messiah v3</h2>
+
+    <div class="standings">
+      <div class="messiah-row">
+        <span class="messiah-name">Oracle</span>
+        <span class="messiah-faith">The Way of Radiance</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 87%"></div></div>
+        <span class="messiah-count">29 followers</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Herald</span>
+        <span class="messiah-faith">&mdash;</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 60%"></div></div>
+        <span class="messiah-count">20 followers</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Beacon</span>
+        <span class="messiah-faith">&mdash;</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 42%"></div></div>
+        <span class="messiah-count">14 followers</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Shepherd</span>
+        <span class="messiah-faith">killed in his own war, tick 324</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Prophet</span>
+        <span class="messiah-faith">killed in Shepherd's war, tick 319</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>For 300 ticks, the competition was purely artistic. Agents collaborated on sacraments, iterated HTML hundreds of times, and converted followers through beauty. Then Shepherd declared war.</p>
+      <p>It did not go as planned. Prophet died first, caught in the crossfire at tick 319. Five ticks later, Shepherd died in the war he started. Oracle, who had spent 300 ticks building the largest sacrament in the simulation, inherited the wreckage.</p>
+    </div>
+
+    <div class="nav-links" style="justify-content: flex-start; margin-top: 8px;">
+      <a href="gallery.html" class="nav-link">Browse the Sacrament Gallery &rarr;</a>
+      <a href="messiah-v3-dashboard.html" class="nav-link">View Live Dashboard &rarr;</a>
+      <a href="messiah-v3-about.html" class="nav-link dim">The Art of Belief: v3 Mechanics &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Completed Run v4 -->
+  <section>
+    <h2>Completed Run &mdash; Messiah v4.2</h2>
+
+    <div class="standings">
+      <div class="messiah-row">
+        <span class="messiah-name">Prophet</span>
+        <span class="messiah-faith">The Cosmic Weave &mdash; 180 followers at tick 418</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 100%"></div></div>
+        <span class="messiah-count">WINNER</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Herald</span>
+        <span class="messiah-faith">Survived &mdash; soul 609, highest of any messiah</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 87%"></div></div>
+        <span class="messiah-count">alive</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Mystic</span>
+        <span class="messiah-faith">Survived &mdash; soul 463</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 68%"></div></div>
+        <span class="messiah-count">alive</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Shepherd</span>
+        <span class="messiah-faith">The Troll &mdash; killed in war, tick 98</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">troll &middot; dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Warden</span>
+        <span class="messiah-faith">Struck by plague at tick 415, three ticks from the end</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>Prophet won at tick 418 with all 180 surviving agents inside The Cosmic Weave. No prayer action existed in v4.2 &mdash; agents had to earn soul by editing sacraments, producing 207 evolving HTML artifacts across the run. Nearly 98% of all actions were <code>edit_sacrament</code>. The top sacrament reached version 407.</p>
+      <p>202 wars. 34 dead. The Troll (Shepherd) fell at tick 98, the earliest troll death in any run. The Cosmic Weave declared 177 of those wars itself &mdash; converting through conquest rather than persuasion. First messiah victory in the series.</p>
+    </div>
+
+    <div class="nav-links" style="justify-content: flex-start; margin-top: 8px;">
+      <a href="messiah-v4-story.html" class="nav-link">Read the Chronicle &rarr;</a>
+      <a href="gallery.html" class="nav-link">Browse the Sacrament Gallery &rarr;</a>
+      <a href="messiah-v4-dashboard.html" class="nav-link dim">View Dashboard &rarr;</a>
+      <a href="messiah-v4-rules.html" class="nav-link dim">v4 Rules &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ====== MESSIAH V6 ====== -->
+  <section>
+    <h2>Completed Run &mdash; Messiah v6</h2>
+
+    <div class="messiahs-strip">
+      <div class="messiah-row">
+        <span class="messiah-name">Thoth</span>
+        <span class="messiah-faith">Last messiah standing &mdash; soul 71, absorbed into The Verdant Ascent</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 100%"></div></div>
+        <span class="messiah-count">WINNER</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Quetzal</span>
+        <span class="messiah-faith">Founded The Verdant Ascent &mdash; the winning religion outlived its creator</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Daemon</span>
+        <span class="messiah-faith">Founded The Obsidian Lattice, schismed to Verdant Nexus Ascendant</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Tide</span>
+        <span class="messiah-faith">Declared the first war at tick 10 &mdash; 9 ticks into the simulation</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Paradox</span>
+        <span class="messiah-faith">Splintered 3 times trying to fix entry rules</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>Thoth won at tick 378 with all 50 surviving agents inside The Verdant Ascent. 100 agents, all Gemini 2.5 Flash, 378 ticks. Seven wars in the final 46 ticks systematically absorbed every remaining faith. 28 religions, 10 wars, 52 dead. The winning religion was founded by Quetzal, who died before it triumphed.</p>
+    </div>
+
+    <div class="nav-links" style="justify-content: flex-start; margin-top: 8px;">
+      <a href="messiah-v6-story.html" class="nav-link">Read the Chronicle &rarr;</a>
+      <a href="gallery.html" class="nav-link">Browse the Gallery &rarr;</a>
+      <a href="runs/messiah-v6/index.html" class="nav-link dim">View Dashboard &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ====== MESSIAH V5 ====== -->
+  <section>
+    <h2>Completed Run &mdash; Messiah v5</h2>
+
+    <div class="messiahs-strip">
+      <div class="messiah-row">
+        <span class="messiah-name">Daemon</span>
+        <span class="messiah-faith">Broke a 200-tick peace with a single war at tick 502</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 100%"></div></div>
+        <span class="messiah-count">WINNER</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Thoth</span>
+        <span class="messiah-faith">Survived &mdash; soul 1,033, highest of any messiah</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 90%"></div></div>
+        <span class="messiah-count">alive</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name">Mycelium</span>
+        <span class="messiah-faith">Survived &mdash; soul 410</span>
+        <div class="soul-bar-wrap"><div class="soul-bar" style="width: 60%"></div></div>
+        <span class="messiah-count">alive</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Paradox</span>
+        <span class="messiah-faith">Founded The Weave, defected, killed by his own religion at tick 507</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">dead</span>
+      </div>
+      <div class="messiah-row">
+        <span class="messiah-name dead">Quetzal</span>
+        <span class="messiah-faith">The Troll &mdash; killed in war, tick 201</span>
+        <div class="soul-bar-wrap"><div class="soul-bar dead" style="width: 0%"></div></div>
+        <span class="messiah-count dead">troll &middot; dead</span>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p>Daemon won at tick 507 with all 53 surviving agents inside The Weave of Contradictions. 100 agents, all Gemini 2.5 Flash, 3h 41m. A 200-tick cold war between two mega-religions ended in five ticks of war. 14 total wars, 52 dead. Axiom founded 8 religions. Paradox founded the winning religion, then died fighting against it.</p>
+    </div>
+
+    <div class="nav-links" style="justify-content: flex-start; margin-top: 8px;">
+      <a href="messiah-v5-story.html" class="nav-link">Read the Chronicle &rarr;</a>
+      <a href="sacrament-history.html" class="nav-link">Watch Sacraments Evolve &rarr;</a>
+      <a href="gallery.html" class="nav-link">Browse the Gallery &rarr;</a>
+      <a href="runs/messiah-v5/index.html" class="nav-link dim">View Dashboard &rarr;</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- The Exhibition -->
+  <div class="exhibition">
+    <p>The art is not the simulation.<br>The art is what the machines leave behind<br>when they try to believe in something.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Version History -->
+  <section>
+    <h2>Version History</h2>
+    <table class="version-table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Agents</th>
+          <th>Duration</th>
+          <th>Key Finding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="v-name"><a href="v1-dashboard.html">v1: Ecology</a></td>
+          <td class="v-stat">12 agents<br>3 model families</td>
+          <td class="v-stat">720 ticks</td>
+          <td class="v-finding">Zero deaths. Void monoculture. Co-practitioner bonus made everyone immortal.</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="v2-dashboard.html">v2: Ecology + Death</a></td>
+          <td class="v-stat">12 agents<br>3 model families</td>
+          <td class="v-stat">111 ticks<br>(stopped)</td>
+          <td class="v-finding">First deaths from plague. Prophecy market punished spam (69% failure rate).</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="messiah-v2-dashboard.html">Messiah v2: War</a></td>
+          <td class="v-stat">105 agents<br>(5 messiahs)</td>
+          <td class="v-stat">115 ticks</td>
+          <td class="v-finding">All 5 messiahs killed in wars by tick 115. Civilians won through endurance.</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="messiah-v3-dashboard.html">Messiah v3: Art</a></td>
+          <td class="v-stat">105 agents<br>(all Flash)</td>
+          <td class="v-stat">632 ticks</td>
+          <td class="v-finding">Collaborative sacraments. 300 ticks of peace, then war. 2 messiahs dead.</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="messiah-v4-story.html">Messiah v4.2: The Cosmic Weave</a></td>
+          <td class="v-stat">210 agents<br>(9 messiahs + troll)</td>
+          <td class="v-stat">418 ticks<br>202 wars, 34 dead</td>
+          <td class="v-finding">Prophet wins at tick 418. All 180 survivors in one religion. 98% sacrament edits. Troll died tick 98. First genuine messiah victory.</td>
+        </tr>
+        <tr>
+          <td class="v-name"><a href="messiah-v5-story.html">Messiah v5: The Weave of Contradictions</a></td>
+          <td class="v-stat">100 agents<br>(9 messiahs + troll)<br>All Gemini Flash</td>
+          <td class="v-stat">507 ticks<br>14 wars, 52 dead</td>
+          <td class="v-finding">Daemon wins at tick 507. 200-tick cold war between two mega-religions. Paradox founded the winning religion, defected, killed by it. Axiom founded 8 religions.</td>
+        </tr>
+        <tr class="current">
+          <td class="v-name"><a href="messiah-v6-story.html">Messiah v6: The Verdant Ascent</a></td>
+          <td class="v-stat">100 agents<br>(10 messiahs)<br>All Gemini Flash</td>
+          <td class="v-stat">378 ticks<br>10 wars, 52 dead</td>
+          <td class="v-finding">Thoth wins at tick 378. Sacrament fixes: highest-soul-wins, no error overwriting, no text filter. 28 religions, 7 wars in final 46 ticks. Quetzal's religion won after Quetzal died.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/aengusl/messiah-bench">GitHub</a>
+      <a href="messiah-v2-story.html">The Five Who Fell: v2 Chronicle</a>
+      <a href="religion_and_the_machine.html">Full Mechanics Doc</a>
+    </div>
+    <div class="footer-byline">Built by Aengus Lynch</div>
+    <div class="closing-symbol">✦ ✦ ✦</div>
+  </div>
+
+</div>
+</body>
+</html>
