@@ -599,6 +599,7 @@ layout: home
           <li><a href="/messiah-bench">Messiah Bench</a></li>
           <li><a href="/judge-mislabelling">Judge Mislabelling</a></li>
           <li><a href="/alignment-auditing/pitch">Alignment Auditing Services</a></li>
+          <li><a href="/tinker-derisk">Tinker RL De-risk</a></li>
         </ul>
       </div>
     </div>
