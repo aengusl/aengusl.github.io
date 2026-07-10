@@ -601,6 +601,7 @@ layout: home
           <li><a href="/alignment-auditing/pitch">Alignment Auditing Services</a></li>
           <li><a href="/tinker-derisk">Tinker RL De-risk</a></li>
           <li><a href="/tinker-derisk/rungs/">Tinker Curriculum Rungs</a></li>
+          <li><a href="/goal-driven-mislabeling">Goal-Driven Mislabeling</a></li>
         </ul>
       </div>
     </div>
