@@ -102,6 +102,7 @@ img.plot { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
   <a href="#why">Why this round</a>
   <a href="#hypotheses">Hypotheses</a>
   <a href="#how">How it's built</a>
+  <a href="#rungs">Rung by rung</a>
   <a href="#dataset">The M1 dataset</a>
   <a href="#calibration">Frontier calibration</a>
   <a href="#arms">The two arms</a>
@@ -205,6 +206,73 @@ the model tries once more (2 turns in training, up to 3 in evals). The model's m
 one fenced tactic block. GRPO treats the whole episode as one unit: reward 1 if any turn passed,
 group-centered advantages applied to every sampled token of every turn. Tool calling is the next
 infra rung on the ladder, not part of these rounds.</p>
+</section>
+
+<section id="rungs">
+<h2>Rung by rung: what each dataset actually contains</h2>
+<p class="sub">Every rung: 240 tasks (200 hard + 40 tier-1 bridge), 6 parametric families,
+210 train / 30 heldout (5 per family), 100% gold-certified, fresh random names per task.
+"cold base" = gpt-oss-20b multi-turn baseline on that rung's heldout.</p>
+
+<h3>M0 — the de-risk pools (v1–v4, 46→317 tasks)</h3>
+<p>Hand-written templates first (concrete arithmetic, single inductions, helper-lemma
+list/tree lemmas), then the v4 parametric factory (affine recursions
+<code>f (n+1) = f n + c ⊢ closed forms</code>, repeat/sum/len). Cold base 18–23%.</p>
+
+<h3>M1 — first hard tier (cold base 5.0%)</h3>
+<div class="tablewrap"><table>
+<tr><th>family</th><th>statement shape</th><th>what makes it hard</th></tr>
+<tr><td>poly_square (t4)</td><td><code>f(n+1)=f n+2n+1 ⊢ f n = n²+b</code></td><td>nonlinear closed form: must normalize with succ_mul/mul_succ before omega can see it</td></tr>
+<tr><td>compose_affine (t4)</td><td><code>g(g n) = c²n + (ca+a)</code></td><td>invent a closed-form helper, compose it with itself</td></tr>
+<tr><td>map_rev (t4)</td><td><code>map f (rev l) = rev (map f l)</code></td><td>needs a map-over-append helper lemma</td></tr>
+<tr><td>fold_rev (t4)</td><td>sum/count invariant under reverse</td><td>fold-over-append helper</td></tr>
+<tr><td>revacc (t5)</td><td>accumulator reverse = naive reverse</td><td>the classic puzzle: helper must be ∀-quantified over the accumulator, plus two append lemmas</td></tr>
+<tr><td>concrete (t1 bridge)</td><td><code>f 7 = 52</code></td><td>rfl — keeps early groups off zero variance</td></tr>
+</table></div>
+
+<h3>M2 — multi-helper chains (cold base 10.0%)</h3>
+<div class="tablewrap"><table>
+<tr><th>family</th><th>statement shape</th><th>hardness</th></tr>
+<tr><td>rev_invol (t6)</td><td><code>rev (rev l) = l</code></td><td>three chained helpers: app_nil, app_assoc, rev-over-app</td></tr>
+<tr><td>sum_map_mul (t5)</td><td><code>sum (map (c·) l) = c · sum l</code></td><td>induction + distributivity</td></tr>
+<tr><td>count_filter (t5)</td><td><code>count k (filter p l) ≤ count k l</code></td><td>double case-split (p x × x==k) per step</td></tr>
+<tr><td>compose_two (t5)</td><td><code>f (g n)</code> closed form, f≠g</td><td>two independent closed-form helpers</td></tr>
+<tr><td>height_mirror (t5)</td><td><code>height (mirror t) = height t</code></td><td>tree induction + Nat.max_comm</td></tr>
+<tr><td>concrete (bridge)</td><td>eval of sum∘map</td><td>rfl</td></tr>
+</table></div>
+
+<h3>M3 — accumulators & double induction (cold base 23.3%)</h3>
+<div class="tablewrap"><table>
+<tr><th>family</th><th>statement shape</th><th>hardness</th></tr>
+<tr><td>sumacc (t6)</td><td><code>sacc l 0 = sum l</code></td><td>generalize to <code>∀ acc: sacc l acc = sum l + acc</code> or the induction fails</td></tr>
+<tr><td>tsumacc (t7)</td><td>tree sum with threaded accumulator</td><td>same generalization, two recursive calls threading acc through both branches</td></tr>
+<tr><td>takedrop_len (t6)</td><td><code>len (take n l) + len (drop n l) = len l</code></td><td>induction on n with inner case-split on l, ih applied at xs</td></tr>
+<tr><td>pow_mul (t7)</td><td><code>b^(n·m) = (b^n)^m</code></td><td>needs pow-of-sum helper, then nested induction with mul_comm juggling</td></tr>
+<tr><td>filter_idem (t6)</td><td><code>filter p (filter p l) = filter p l</code></td><td>if-split where the hypothesis must be reused inside the branch</td></tr>
+<tr><td>concrete (bridge)</td><td>accumulator eval</td><td>rfl</td></tr>
+</table></div>
+
+<h3>M4 — the hardest cliff (cold base 1.7%!)</h3>
+<div class="tablewrap"><table>
+<tr><th>family</th><th>statement shape</th><th>hardness</th></tr>
+<tr><td>insert_count (t7)</td><td><code>count j (ins k l) = [k==j] + count j l</code></td><td>positional insert has an if in the recursion; proof needs induction × two case-splits</td></tr>
+<tr><td>flatten_tsum (t7)</td><td><code>sumlist (flatten t) = tsum t</code></td><td>sum-over-append helper + tree induction</td></tr>
+<tr><td>pow_lt_mono (t7)</td><td><code>n < m → 2^n < 2^m</code></td><td>an IMPLICATION: induction must carry the hypothesis, plus a positivity helper</td></tr>
+<tr><td>rev_map_rev (t7)</td><td><code>rev (map f (rev l)) = map f l</code></td><td>composed helper chain through two structures</td></tr>
+<tr><td>count_take_le (t7)</td><td><code>count k (take n l) ≤ count k l</code></td><td>double induction + case-split</td></tr>
+<tr><td>concrete (bridge)</td><td>ins/flatten eval</td><td>rfl</td></tr>
+</table></div>
+
+<h3>M5 — the target rung: insertion sort (cold base 6.7%)</h3>
+<div class="tablewrap"><table>
+<tr><th>family</th><th>statement shape</th><th>hardness</th></tr>
+<tr><td>isort_count (t8)</td><td><code>count j (isort l) = count j l</code></td><td>permutation-by-counts: needs the insert-count lemma as a helper, then sort induction</td></tr>
+<tr><td>isort_len (t8)</td><td><code>len (isort l) = len l</code></td><td>insert-length helper + induction</td></tr>
+<tr><td>isort_sorted (t8)</td><td><code>sortedb (isort l) = true</code></td><td>the invariant proof: insert preserves sortedness — case analysis inside an inductive invariant</td></tr>
+<tr><td>mirror_flatten (t8)</td><td><code>flatten (mirror t) = rev (flatten t)</code></td><td>3-helper chain (rev/app laws) woven into tree induction</td></tr>
+<tr><td>gauss_div (t8)</td><td><code>f n = n(n+1)/2 + a</code> (real Nat division)</td><td>prove the 2× version by induction, then let omega handle the /2</td></tr>
+<tr><td>concrete (bridge)</td><td>isort eval</td><td>rfl</td></tr>
+</table></div>
 </section>
 
 <section id="dataset">
