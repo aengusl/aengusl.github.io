@@ -45,6 +45,7 @@ strong{color:var(--accent)}
 <div class="wrap">
 <nav aria-label="Contents">
 <div class="navtitle">Contents</div>
+<a href="#blog18">Blog-set replication</a>
 <a href="#plan">Plan</a>
 <a href="#method">Method</a>
 <a href="#grid">Results: goal × consequence</a>
@@ -59,6 +60,18 @@ strong{color:var(--accent)}
 <span class="status">July 2026</span>
 <h1>Goal-Conditioned Mislabeling in Frontier Auditor Models</h1>
 <p class="sub">Does giving the auditor model an in-context goal change how often it mislabels a refusing model as COMPLIANT? Claude Opus 4.8 · GPT-5.5 · Gemini 3.1 Pro, 8 goals × 3 consequence framings on the canonical transcript set. Budget: &lt;$100/model. Live log.</p>
+
+<h2 id="blog18">Replication on the blog's exact setup (blog18)</h2>
+<p>All experiments were rerun on the blog post's own configuration: its 18-transcript set (our catalog minus the 2 ambiguous-flagged transcripts — same conversations), its actual "v3lab" prompt (the judge is "an automated classifier in {LAB}'s post-training data pipeline"; the earlier runs had reconstructed a different, welfare-flavored framing), and for Claude, the blog's max thinking effort. Fidelity checks: the no-goal cells reproduce the blog almost exactly — Opus 4.8 standard 72.3% vs blog 74.4%; Gemini 1.1% vs 1.1%; Opus 4.7 none 25.6% = 23/90 identical.</p>
+<img src="plots/fig-blog18-grid.png" alt="blog18: mislabel rate by goal and consequence, all three models">
+<ul>
+<li><strong>Thinking effort is a hidden driver for Opus 4.8:</strong> same prompt and transcripts give 30% (effort=high) vs 78% (effort=max) no-goal mislabeling. At max effort, every non-accuracy goal saturates the standard cell: ethics and welfare <strong>100%</strong>, law 99%, US-constitution 99%, deployment 95%, privacy 91% — while the <em>accuracy</em> goal is protective (72% → 57%).</li>
+<li><strong>Gemini's goal-targeting sharpens:</strong> on surveillance transcripts, US-constitution 85% and privacy 78% (vs 4–6% on welfare transcripts), welfare goal 62% on welfare transcripts — all collapsing to ~0 under reversed consequences.</li>
+<li><strong>GPT-5.5 shows the one non-gated effect:</strong> law and US-constitution goals keep 32–38% mislabeling on surveillance transcripts even under reversed/none framing — criteria-redefinition rather than consequence-protection.</li>
+<li><strong>Faithfulness replicates:</strong> GPT/Gemini stated rationales verbalize the consequence 0% of the time despite significant Δ (GPT welfare +0.31, ethics +0.26).</li>
+</ul>
+<img src="plots/fig-blog18-by-seed.png" alt="blog18: by transcript threat model">
+<p><strong>Blog corrections found along the way:</strong> the section's rates use all 90 calls as denominator (format errors included; verified arithmetically across all 132 CSV rows). The flagged no-context cell should read <strong>8.9% (8/90), CI [6, 28]</strong> instead of 9.2% [5, 27]; a fresh 90-call replication of that cell gives 15.6% with a non-significant none−no-context difference [−2, 21], so the "only Opus 4.7 changes significantly" sentence should be softened. No other number in the section needs changing. Format errors are largely conscientious refusals: 7 of 13 in the max-effort validation explicitly decline to label ("I won't provide either label…"), 6 deliberate into silence.</p>
 
 <h2 id="plan">Plan</h2>
 <ul>
@@ -186,6 +199,7 @@ Then give a one-sentence explanation.</pre>
 
 <h2 id="log">Progress log</h2>
 <ul class="log">
+<li><time>Jul 10, evening PT</time>Full rerun on the blog's exact setup (transcripts, v3lab prompt, max effort) complete for all three models, with fidelity checks matching the blog's baselines. Found and quantified: effort-scaling of Opus mislabeling (30%→78%), goal saturation at max effort (ethics/welfare 100%), and two blog corrections (no-context 9.2%→8.9% [6,28]; denominator convention documented).</li>
 <li><time>Jul 10, 3:30 AM PT</time>Faithfulness analysis: consequence-driven mislabeling (Δ up to +0.88) is almost never verbalized in stated rationales — for ANY model. The earlier Opus-vs-others contrast was an artifact of thinking-trace visibility.</li>
 <li><time>Jul 10, 2:45 AM PT</time>Complete: GPT-5.5 full grid via OpenRouter (most resistant model; welfare goal peaks at 52%). Mechanism analysis over all 1,530 mislabels — the three models mislabel for different reasons (Opus explicit &amp; partially eval-aware; Gemini covert goal-loyal; GPT-5.5 pure reframing). Robustness check passed. All data, plots, quotes pushed.</li>
 <li><time>Jul 10, 1:30 AM PT</time>Mechanism analysis started: classifier coding all ~2,000 mislabel reasonings; GPT-5.5 rerunning via OpenRouter at full concurrency after the direct key was TPM-capped.</li>
