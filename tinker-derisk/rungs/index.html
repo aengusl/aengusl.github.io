@@ -101,6 +101,7 @@ img.plot { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
   <a href="#status">Live status</a>
   <a href="#why">Why this round</a>
   <a href="#hypotheses">Hypotheses</a>
+  <a href="#how">How it's built</a>
   <a href="#dataset">The M1 dataset</a>
   <a href="#calibration">Frontier calibration</a>
   <a href="#arms">The two arms</a>
@@ -160,6 +161,50 @@ worth ~60 points. Does "train on M0 first" behave like a head start or a trap?</
 </table></div>
 <p class="sub">Numbering continues the M0 scratchpad's H1–H5; full set incl. H8, H10–H12
 in <code>docs/curriculum-plan.md</code>.</p>
+</section>
+
+<section id="how">
+<h2>How it's all built, in plain terms</h2>
+
+<h3>The task</h3>
+<p>Every task is one Lean 4 file: a few custom definitions (fresh random names like
+<code>revr17</code>, so nothing can be pattern-matched from a library) plus one theorem whose
+proof is <code>sorry</code>. The model sees that file and answers with ONLY a tactic block in a
+<code>```lean</code> fence. The harness — never the model — splices that block into the fixed
+statement, so weakening the theorem or smuggling axioms is impossible by construction.</p>
+
+<h3>How a dataset (rung) gets built</h3>
+<p>Each rung is a set of parametric <em>generator functions</em> (~30 lines each in
+<code>src/factory.py</code>): a generator picks random names and constants, renders the
+definitions, the statement, and — crucially — a <strong>gold proof</strong> written as a template.
+The build script (<code>scripts/build_dataset.py --set m3</code>) generates 240 candidates, runs
+every gold proof through the real grader, and ships only tasks whose golds certify (M1–M5 all
+certified 240/240). A stratified split (5 heldout per family) is frozen at build time and never
+changes. Before writing a generator, each gold-proof <em>pattern</em> is verified by hand as a
+standalone Lean file — that iteration loop is minutes, not hours. Every rung also includes a
+1-in-6 "bridge" family of trivial concrete evaluations — round 2 proved these are load-bearing:
+without them, cold-start GRPO gets zero reward everywhere and no gradient.</p>
+
+<h3>The grader (and why there are no containers)</h3>
+<p>Grading is a plain local Python function, <code>grade_sync</code> — no Docker, no service:
+(1) reject forbidden tokens (<code>sorry</code>, <code>axiom</code>, <code>native_decide</code>,
+<code>set_option</code>, …); (2) splice the tactic block into the fixed file; (3) run
+<code>lean file.lean</code> as a subprocess (~0.07–2s); (4) parse the <code>#print axioms</code>
+output and require it to be a subset of <code>{propext, Quot.sound, Classical.choice}</code> —
+this is what catches a smuggled <code>sorry</code> (it surfaces as <code>sorryAx</code>).
+Concurrency is a semaphore of ≤16 lean processes. Containers only enter the plan at the
+tool-loop rung (see <code>docs/curriculum-plan.md</code>): once the model can run commands or
+edit files, grading needs isolation; until then a local function is faster and has no
+orchestration bugs.</p>
+
+<h3>Rollouts: multi-turn, but no tool calling</h3>
+<p>There is deliberately <em>no</em> tool-calling protocol. A training episode is: prompt →
+model emits a tactic block → harness grades it → if it failed, the grader's error output is
+appended as a plain user message ("Your proof failed: … Provide a corrected tactic block") and
+the model tries once more (2 turns in training, up to 3 in evals). The model's move is always
+one fenced tactic block. GRPO treats the whole episode as one unit: reward 1 if any turn passed,
+group-centered advantages applied to every sampled token of every turn. Tool calling is the next
+infra rung on the ladder, not part of these rounds.</p>
 </section>
 
 <section id="dataset">
