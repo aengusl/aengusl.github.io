@@ -107,6 +107,7 @@ img.plot { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
   <a href="#calibration">Frontier calibration</a>
   <a href="#arms">The two arms</a>
   <a href="#results">Results</a>
+  <a href="#behaviors">What RL teaches</a>
   <a href="#infra">Infra changes</a>
   <a href="#links">Links</a>
 </nav>
@@ -414,6 +415,40 @@ stress). rl13-m1-warm climbed its M0 phase 8%→73% train reward by iter 9, and 
 <tr><td>10 <span class="sub">(rl14-nobridge)</span></td><td colspan="2" class="bad">STOPPED: reward 0.00, heldout 6.7% ≈ baseline. Without bridge tasks, cold-start GRPO starves — the tier-1 bridge is load-bearing (H8 confirmed)</td></tr>
 <tr><td>9 <span class="sub">(rl15-120b)</span></td><td colspan="2">51.7% — the 120b goes 5%→51.7% in 9 iters (vs ~19 for the 20b); rl14-nobridge still ~2% train reward at iter 3</td></tr>
 </table></div>
+</section>
+
+<section id="behaviors">
+<h2>What is RL actually teaching? LLM-graded behavioral features</h2>
+<p>To see <em>how</em> models change during training (not just pass rates), we defined ten
+behavioral features over episodes — does the model state a plan, identify the right
+generalization, invent helper lemmas, diagnose its compile error, make a targeted fix vs
+resample, use cargo-cult tactic incantations, self-verify, gamble low-effort guesses,
+misread the statement, do anything notable — and graded 180 sampled episodes (early vs late
+training, three configs) with claude-haiku-4-5 under a strict JSON rubric ($0.44 total,
+<code>scripts/analyze.py behaviors</code>).</p>
+<div class="tablewrap"><table>
+<tr><th>feature (early → late)</th><th>rl21 cold-20b <span class="sub">(clean: m5 throughout)</span></th><th>rl23 ladder</th><th>rl28 120b×m4-warm</th></tr>
+<tr><td>correct generalization</td><td>40% → 47%</td><td>60% → 67%</td><td>63% → 33%*</td></tr>
+<tr><td>invents helper lemmas</td><td>53% → 50%</td><td>63% → 70%</td><td>80% → 37%*</td></tr>
+<tr><td>diagnoses its compile error</td><td class="bad">3% → 0%</td><td class="bad">0% → 3%</td><td class="bad">0% → 0%</td></tr>
+<tr><td>targeted fix on retry</td><td>27% → 13%</td><td>30% → 7%</td><td>37% → 27%</td></tr>
+<tr><td>cargo-cult tactics</td><td>30% → 23%</td><td>13% → 30%</td><td>17% → 53%*</td></tr>
+<tr><td>self-verification</td><td>20% → 7%</td><td>17% → 20%</td><td>7% → 3%</td></tr>
+<tr><td>low-effort guessing</td><td>27% → 37%</td><td>10% → 10%</td><td>7% → 33%*</td></tr>
+</table></div>
+<p class="sub">*rl23/rl28's early buckets are their easier pre-phases (m3/m4 tasks), so their
+early→late deltas confound training with task difficulty; rl21 is the clean read.</p>
+<p>Three findings. <strong>(1) Error feedback is used as a resample button, not feedback:</strong>
+across 360 graded turns, genuine compile-error diagnosis is ≈0% everywhere, and targeted fixes
+<em>decline</em> with training — the multi-turn value we measured in round 2 is almost entirely
+extra samples, sharpening the H9 verdict. <strong>(2) Core proof skills grow, verification
+erodes:</strong> the clean arm gains generalization-finding (+7pts) while self-verification
+drops 20%→7% and low-effort guessing rises — GRPO rewards the outcome, not the epistemics.
+<strong>(3) The graded quotes show real skill:</strong> e.g. the ladder model inventing the
+accumulator invariant unprompted — <code>have general : ∀ acc, sacc l acc = sum l + acc</code> —
+and the recurring failure mode of citing Mathlib lemmas that don't exist in core Lean
+(<code>Nat.pow_lt_pow_of_lt_left</code>), which is exactly what the uncracked
+<code>pow_lt_mono</code>/<code>isort_sorted</code> families die on.</p>
 </section>
 
 <section id="infra">
