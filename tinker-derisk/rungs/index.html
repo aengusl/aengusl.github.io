@@ -107,6 +107,7 @@ img.plot { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
   <a href="#calibration">Frontier calibration</a>
   <a href="#arms">The two arms</a>
   <a href="#results">Results</a>
+  <a href="#round4">Round 4: tools+Rocq</a>
   <a href="#behaviors">What RL teaches</a>
   <a href="#infra">Infra changes</a>
   <a href="#links">Links</a>
@@ -415,6 +416,34 @@ stress). rl13-m1-warm climbed its M0 phase 8%→73% train reward by iter 9, and 
 <tr><td>10 <span class="sub">(rl14-nobridge)</span></td><td colspan="2" class="bad">STOPPED: reward 0.00, heldout 6.7% ≈ baseline. Without bridge tasks, cold-start GRPO starves — the tier-1 bridge is load-bearing (H8 confirmed)</td></tr>
 <tr><td>9 <span class="sub">(rl15-120b)</span></td><td colspan="2">51.7% — the 120b goes 5%→51.7% in 9 iters (vs ~19 for the 20b); rl14-nobridge still ~2% train reward at iter 3</td></tr>
 </table></div>
+</section>
+
+<section id="round4">
+<h2>Round 4: tools, containers, and the Rocq→Lean curriculum <span class="pill live">ARM RUNNING</span></h2>
+<p>The infra axis. Three additions, built and derisked in one session:</p>
+<ul>
+<li><strong>Tool-call episodes</strong> — a text protocol (no fragile tool-call schemas): the model
+replies <code>RUN</code> + a code fence to test-compile (≤2–3 times), or <code>SUBMIT</code> + fence
+for the graded final answer. Compiler output comes back as a user turn.</li>
+<li><strong>Containerized grading</strong> — Rocq proofs compile via <code>coqc</code> inside the
+parent project's Docker image (0.4s/compile, network-isolated, ≤12 concurrent);
+"Closed under the global context" from <code>Print Assumptions</code> is the pass condition —
+the exact Rocq analog of the Lean axiom allowlist. Lean grading stays a local function.</li>
+<li><strong>Language curriculum</strong> — <code>data/r1/</code>: 240 certified Rocq toy theorems
+(same family shapes as the Lean rungs, Coq syntax, fresh names); <code>data/x1/</code>: 240
+Rocq→Lean twins — the Rocq source shown as context, the Lean twin theorem to prove: the real
+task's shape. Both 100% gold-certified (x1 on both sides).</li>
+</ul>
+<h3>Derisk verdicts (all gates passed, ≈$3)</h3>
+<div class="tablewrap"><table>
+<tr><th>gate</th><th>result</th></tr>
+<tr><td>Protocol viability (H10')</td><td>80% (base) / 97% (RL-trained) of episodes reach a valid SUBMIT; violations earn 0 reward and are the most RL-trainable failure there is</td></tr>
+<tr><td><strong>Cross-language transfer (H11)</strong></td><td class="good"><strong>CONFIRMED — the Lean-trained model zero-shots Rocq at 60% vs base 3%.</strong> Induction and helper-lemma skills cross the language barrier; no SFT distillation needed at this tier</td></tr>
+<tr><td>Rocq context on Lean twins (H15)</td><td>47% vs base 0% — context doesn't block transfer (some cost vs context-free)</td></tr>
+<tr><td>Container RL throughput (H13)</td><td>Smoke tool-RL: reward 16→53%, heldout 38→62% in 8 iters, $0.58, zero container failures</td></tr>
+</table></div>
+<p>The full arm — <code>rl30-tools-r1x1</code>, 50 iterations of tool-mode GRPO on the combined
+Rocq + Rocq→Lean pool — is training now.</p>
 </section>
 
 <section id="behaviors">
