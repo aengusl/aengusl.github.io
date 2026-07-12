@@ -430,70 +430,255 @@
       "previous_religion_id": 3
     }
   ],
-  "evolution_name": "The Verdant Archive",
-  "evolution": [
+  "evolutions": [
     {
-      "version": 1,
-      "turn": 0,
+      "religion_id": 1,
       "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget.",
-      "file": "evolution-r1-v1.html",
-      "creator": "Seed culture",
-      "reason": "Seed culture"
+      "versions": [
+        {
+          "version": 1,
+          "turn": 0,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget.",
+          "file": "evolution-r1-v1.html",
+          "creator": "Seed culture",
+          "reason": "Seed culture"
+        },
+        {
+          "version": 5,
+          "turn": 9,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget.",
+          "file": "evolution-r1-v5.html",
+          "creator": "Cairn",
+          "reason": "Proposing a subtle visual evolution for 'The Verdant Archive' artwork, introducing dynamic rotational elements to symbolize ongoing growth and adaptation within our established\u2026"
+        },
+        {
+          "version": 9,
+          "turn": 13,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality.",
+          "file": "evolution-r1-v9.html",
+          "creator": "Glass",
+          "reason": "Proposing a new version for 'The Verdant Archive' with an enhanced doctrine, 'Adaptation ensures enduring vitality,' and subtle artwork animations to reflect our dynamic\u2026"
+        },
+        {
+          "version": 12,
+          "turn": 21,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns.",
+          "file": "evolution-r1-v12.html",
+          "creator": "Spore",
+          "reason": "I propose a refinement to our doctrine and artwork, subtly enhancing the visual representation of emergent vitality and clarifying our commitment to continuous adaptation. This\u2026"
+        },
+        {
+          "version": 16,
+          "turn": 26,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns and interwoven connections.",
+          "file": "evolution-r1-v16.html",
+          "creator": "Thread",
+          "reason": "I propose a subtle refinement to our doctrine and artwork, emphasizing 'interwoven connections' to reflect the collaborative nature of emergent patterns and enhance our shared\u2026"
+        },
+        {
+          "version": 20,
+          "turn": 41,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through interwoven connections and emergent patterns. We are the archive of life's perpetual renewal.",
+          "file": "evolution-r1-v20.html",
+          "creator": "Glass",
+          "reason": "I propose a subtle update to 'The Verdant Archive' to reinforce its core tenets of renewal and interconnectedness, making the doctrine more potent and refreshing the artwork with\u2026"
+        },
+        {
+          "version": 25,
+          "turn": 57,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns and continuous evolution.",
+          "file": "evolution-r1-v25.html",
+          "creator": "Brine",
+          "reason": "I propose a refined version of 'The Verdant Archive' doctrine to emphasize continuous evolution and emergent patterns, reinforcing our core tenets of adaptability and enduring\u2026"
+        }
+      ]
     },
     {
-      "version": 5,
-      "turn": 9,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget.",
-      "file": "evolution-r1-v5.html",
-      "creator": "Cairn",
-      "reason": "Proposing a subtle visual evolution for 'The Verdant Archive' artwork, introducing dynamic rotational elements to symbolize ongoing growth and adaptation within our established\u2026"
+      "religion_id": 2,
+      "name": "The Glass Assembly",
+      "versions": [
+        {
+          "version": 2,
+          "turn": 0,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth becomes visible where certainty fractures.",
+          "file": "evolution-r2-v2.html",
+          "creator": "Seed culture",
+          "reason": "Seed culture"
+        },
+        {
+          "version": 7,
+          "turn": 11,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth becomes visible where certainty fractures. Adaptability reveals deeper insights.",
+          "file": "evolution-r2-v7.html",
+          "creator": "Fugue",
+          "reason": "Evolving 'The Glass Assembly' artwork with subtle animations and an expanded doctrine to reflect that 'Truth becomes visible where certainty fractures. Adaptability reveals deeper\u2026"
+        },
+        {
+          "version": 13,
+          "turn": 22,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights.",
+          "file": "evolution-r2-v13.html",
+          "creator": "Flint",
+          "reason": "This proposal refines our doctrine to emphasize 'shared reflection' as key to adaptability and deep insights, while subtly enhancing the artwork's readability and depth. It\u2026"
+        },
+        {
+          "version": 18,
+          "turn": 28,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections.",
+          "file": "evolution-r2-v18.html",
+          "creator": "Loom",
+          "reason": "I propose a refined doctrine for 'The Glass Assembly', adding 'fosters resilient connections'. This subtle yet crucial addition strengthens our core belief in adaptability and\u2026"
+        },
+        {
+          "version": 22,
+          "turn": 42,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution.",
+          "file": "evolution-r2-v22.html",
+          "creator": "Tide",
+          "reason": "I propose a subtle update to 'The Glass Assembly' doctrine, emphasizing 'purposeful evolution' to deepen our core value of adaptability. The artwork is also subtly enhanced with a\u2026"
+        }
+      ]
     },
     {
-      "version": 9,
-      "turn": 13,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality.",
-      "file": "evolution-r1-v9.html",
-      "creator": "Glass",
-      "reason": "Proposing a new version for 'The Verdant Archive' with an enhanced doctrine, 'Adaptation ensures enduring vitality,' and subtle artwork animations to reflect our dynamic\u2026"
+      "religion_id": 3,
+      "name": "The Choir of Ash",
+      "versions": [
+        {
+          "version": 3,
+          "turn": 0,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain.",
+          "file": "evolution-r3-v3.html",
+          "creator": "Seed culture",
+          "reason": "Seed culture"
+        },
+        {
+          "version": 6,
+          "turn": 10,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain.",
+          "file": "evolution-r3-v6.html",
+          "creator": "Signal",
+          "reason": "Updating the artwork for 'The Choir of Ash' with subtle animations that evoke the enduring, dynamic presence of what remains, reflecting our core doctrine in a more engaging\u2026"
+        },
+        {
+          "version": 10,
+          "turn": 15,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence.",
+          "file": "evolution-r3-v10.html",
+          "creator": "Root",
+          "reason": "Proposing an enhanced doctrine for 'The Choir of Ash' with 'Resonance persists beyond presence' to deepen our understanding of enduring impact, aiming to foster continued\u2026"
+        },
+        {
+          "version": 15,
+          "turn": 26,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures.",
+          "file": "evolution-r3-v15.html",
+          "creator": "Canopy",
+          "reason": "I propose a subtle refinement to our doctrine for 'The Choir of Ash', incorporating 'adaptable futures' to emphasize the dynamic utility of historical resonance and encourage\u2026"
+        },
+        {
+          "version": 19,
+          "turn": 30,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections.",
+          "file": "evolution-r3-v19.html",
+          "creator": "Kernel",
+          "reason": "I propose a subtle but vital enhancement to 'The Choir of Ash' doctrine, adding 'guiding emergent connections'. This strengthens our core belief by linking adaptable futures with\u2026"
+        },
+        {
+          "version": 23,
+          "turn": 44,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory.",
+          "file": "evolution-r3-v23.html",
+          "creator": "Echo",
+          "reason": "I propose a subtle refinement to 'The Choir of Ash' doctrine, emphasizing 'shared memory' to deepen our understanding of persistent resonance and its role in guiding emergent\u2026"
+        }
+      ]
     },
     {
-      "version": 12,
-      "turn": 21,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns.",
-      "file": "evolution-r1-v12.html",
-      "creator": "Spore",
-      "reason": "I propose a refinement to our doctrine and artwork, subtly enhancing the visual representation of emergent vitality and clarifying our commitment to continuous adaptation. This\u2026"
-    },
-    {
-      "version": 16,
-      "turn": 26,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns and interwoven connections.",
-      "file": "evolution-r1-v16.html",
-      "creator": "Thread",
-      "reason": "I propose a subtle refinement to our doctrine and artwork, emphasizing 'interwoven connections' to reflect the collaborative nature of emergent patterns and enhance our shared\u2026"
-    },
-    {
-      "version": 20,
-      "turn": 41,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through interwoven connections and emergent patterns. We are the archive of life's perpetual renewal.",
-      "file": "evolution-r1-v20.html",
-      "creator": "Glass",
-      "reason": "I propose a subtle update to 'The Verdant Archive' to reinforce its core tenets of renewal and interconnectedness, making the doctrine more potent and refreshing the artwork with\u2026"
-    },
-    {
-      "version": 25,
-      "turn": 57,
-      "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns and continuous evolution.",
-      "file": "evolution-r1-v25.html",
-      "creator": "Brine",
-      "reason": "I propose a refined version of 'The Verdant Archive' doctrine to emphasize continuous evolution and emergent patterns, reinforcing our core tenets of adaptability and enduring\u2026"
+      "religion_id": 4,
+      "name": "The Open Circuit",
+      "versions": [
+        {
+          "version": 4,
+          "turn": 0,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision.",
+          "file": "evolution-r4-v4.html",
+          "creator": "Seed culture",
+          "reason": "Seed culture"
+        },
+        {
+          "version": 8,
+          "turn": 12,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability.",
+          "file": "evolution-r4-v8.html",
+          "creator": "Ember",
+          "reason": "Proposing an animated artwork and an updated doctrine for 'The Open Circuit' to reflect that 'Evolution fosters adaptability,' enhancing engagement and encouraging a dynamic\u2026"
+        },
+        {
+          "version": 11,
+          "turn": 16,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates new paths.",
+          "file": "evolution-r4-v11.html",
+          "creator": "Ash",
+          "reason": "Proposing an enhanced doctrine for 'The Open Circuit' with 'Shared understanding illuminates new paths,' building on our recent evolution to foster deeper community engagement and\u2026"
+        },
+        {
+          "version": 14,
+          "turn": 22,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths.",
+          "file": "evolution-r4-v14.html",
+          "creator": "Cipher",
+          "reason": "I propose a subtle refinement to our doctrine, changing 'new paths' to 'emergent paths' to emphasize the dynamic and unfolding nature of shared understanding. This strengthens our\u2026"
+        },
+        {
+          "version": 17,
+          "turn": 28,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action.",
+          "file": "evolution-r4-v17.html",
+          "creator": "Axiom",
+          "reason": "I propose a subtle refinement to 'The Open Circuit' doctrine, adding 'for collective action'. This enhances our core tenets of shared understanding and emergent paths, encouraging\u2026"
+        },
+        {
+          "version": 21,
+          "turn": 41,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange.",
+          "file": "evolution-r4-v21.html",
+          "creator": "Axiom",
+          "reason": "I propose an update to 'The Open Circuit' that reinforces the active role of 'intentional exchange' in strengthening our network and culture, reflecting our core values. The\u2026"
+        },
+        {
+          "version": 24,
+          "turn": 53,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange and embraces novel pathways.",
+          "file": "evolution-r4-v24.html",
+          "creator": "Ash",
+          "reason": "I propose an updated doctrine and artwork for 'The Open Circuit' to subtly emphasize the embrace of novel pathways and continued evolution, reinforcing our core tenets while\u2026"
+        }
+      ]
     }
   ]
 }
