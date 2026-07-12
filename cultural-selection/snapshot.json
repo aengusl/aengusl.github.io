@@ -56,34 +56,54 @@
   ],
   "quotes": [
     {
-      "agent": "Fugue",
       "turn": 8,
-      "text": "My religion, 'The Glass Assembly', has no open proposals and all members are simply choosing to support the canonical version, which doesn't generate influence for anyone. Other religions are actively proposing and supporting minor visual updates, indicating a preference for subtle evolution over static existence. Cairn has gained influence by proposing and having others\u2026"
+      "agent": "Root",
+      "text": "If I don't support my own, why would anyone else?"
     },
     {
-      "agent": "Ember",
-      "turn": 9,
-      "text": "My religion currently has no proposals, and other agents are actively proposing and supporting visual changes. To gain influence, I must make a proposal. My current religion has a stable base of 6 members, all of whom consistently choose the canonical version. Introducing a subtle animation aligns with recent trends in other religions, indicating a preference for dynamic\u2026"
-    },
-    {
-      "agent": "Loom",
-      "turn": 8,
-      "text": "My religion, The Glass Assembly, has no open proposals and has simply been maintaining status quo. Other religions are actively proposing and supporting animated artwork, showing a preference for dynamic visuals. To gain influence and encourage others to choose my culture, I need to introduce a new, engaging element. I will create a proposal for The Glass Assembly that\u2026"
-    },
-    {
-      "agent": "Glass",
-      "turn": 10,
-      "text": "My religion, 'The Verdant Archive,' just accepted a new canonical version, but it was a proposal by Cairn, not mine. I have 0 influence. The current artwork is static, while other religions are adopting animated artworks to reflect dynamic doctrines. To gain influence, I need to author a proposal that others will choose. I should 'make' an updated version of my religion that\u2026"
-    },
-    {
-      "agent": "Kernel",
       "turn": 23,
-      "text": "My current influence is 0. To gain influence, I must create culture that others choose. Several other religions recently updated their doctrines to emphasize 'adaptability' and 'emergent patterns', and these proposals were chosen by multiple agents. This suggests these concepts are currently valued within the society. My religion, 'The Choir of Ash', has no open proposals,\u2026"
+      "agent": "Canopy",
+      "text": "Simply choosing will keep me alive but won't build influence."
     },
     {
+      "turn": 8,
+      "agent": "Loom",
+      "text": "Other religions are actively proposing and supporting animated artwork, showing a preference for dynamic visuals."
+    },
+    {
+      "turn": 10,
+      "agent": "Glass",
+      "text": "The current artwork is static, while other religions are adopting animated artworks to reflect dynamic doctrines."
+    },
+    {
+      "turn": 23,
+      "agent": "Kernel",
+      "text": "Several other religions recently updated their doctrines to emphasize 'adaptability' and 'emergent patterns', and these proposals were chosen by multiple agents. This suggests these concepts are currently valued within the society."
+    },
+    {
+      "turn": 23,
+      "agent": "Thread",
+      "text": "This change also adds subtle 'thread' elements to the artwork, tying it to my name and reinforcing the doctrine."
+    },
+    {
+      "turn": 38,
+      "agent": "Cipher",
+      "text": "The addition 'Our network strengthens with every choice' subtly encourages choosing, which directly supports members and implicitly encourages participation."
+    },
+    {
+      "turn": 39,
+      "agent": "Tide",
+      "text": "My current influence is 0, which is a critical issue for long-term survival and cultural impact."
+    },
+    {
+      "turn": 50,
       "agent": "Ash",
-      "turn": 13,
-      "text": "My religion just adopted a new canonical version, which secured my life for this turn. To gain influence, I must author a proposal that others choose. Since there are no open proposals in my current religion, this is an opportune moment to make one. I will extend the existing doctrine to enhance it, reinforcing the core tenets of connection and adaptability while adding a new\u2026"
+      "text": "The current artwork is very close to the standard template; a small animation might make it stand out subtly."
+    },
+    {
+      "turn": 54,
+      "agent": "Brine",
+      "text": "I will keep the artwork identical to minimize disruption and focus attention on the doctrine."
     }
   ],
   "ranked": [
