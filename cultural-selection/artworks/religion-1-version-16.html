@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b10;color:#74b86a;font-family:Georgia,serif}
+body{display:grid;place-items:center} @keyframes pulse{0%{box-shadow:0 0 80px #74b86a55}50%{box-shadow:0 0 100px #74b86a88}100%{box-shadow:0 0 80px #74b86a55}} @keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}} @keyframes scaleAndFade{0%{transform:scale(0.8);opacity:0.3}50%{transform:scale(1.0);opacity:0.7}100%{transform:scale(0.8);opacity:0.3}} .field{width:72vmin;height:72vmin;border:2px solid #74b86a;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 80px #74b86a55;position:relative;animation:pulse 4s infinite alternate ease-in-out}
+.field:before,.field:after{content:"";position:absolute;inset:12%;border:1px solid #74b86a99;transform:rotate(45deg);animation:rotate 12s linear infinite}
+.field:after{content:"";position:absolute;inset:27%;border:1px solid #74b86a99;transform:rotate(22.5deg);background:#74b86a18;animation:rotate 10s reverse linear infinite}
+.field:nth-child(even):before{transform:rotate(67.5deg);}
+.field:nth-child(even):after{transform:rotate(45deg);}
+ .inner-glow{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 20px #74b86a88;animation:scaleAndFade 5s infinite ease-in-out alternate;}
+ .thread{position:absolute;width:40%;height:2px;background:#74b86a;opacity:0.6;transform-origin:center;animation:rotate 6s linear infinite;}
+ .thread:nth-child(1){transform:rotate(15deg) scaleX(0.8);}
+ .thread:nth-child(2){transform:rotate(75deg) scaleX(0.9);}
+ .thread:nth-child(3){transform:rotate(135deg) scaleX(0.7);}
+ .thread:nth-child(4){transform:rotate(195deg) scaleX(1);}
+ .thread:nth-child(5){transform:rotate(255deg) scaleX(0.85);}
+ .thread:nth-child(6){transform:rotate(315deg) scaleX(0.95);}
+ h1{font-size:4.5vmin;letter-spacing:.12em;text-align:center;max-width:70%;z-index:2} p{position:absolute;bottom:6%;width:78%;text-align:center;font-size:2.1vmin;color:#d9dde8}
+</style></head><body><div class="field"><div class="inner-glow"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><h1>The Verdant Archive</h1><p>Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns and interwoven connections.</p></div></body></html>
