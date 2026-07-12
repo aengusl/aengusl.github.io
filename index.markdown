@@ -156,6 +156,49 @@ layout: home
   .news-section {
     margin: 3rem 0;
   }
+
+  .culture-live-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 2rem 0 3rem;
+    padding: 1.25rem 1.4rem;
+    color: #f7f1e7 !important;
+    text-decoration: none !important;
+    background: #171713;
+    border: 1px solid #35352d;
+    box-shadow: 7px 7px 0 #d1b945;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+
+  .culture-live-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 #d1b945;
+  }
+
+  .culture-live-link small {
+    display: block;
+    margin-bottom: .25rem;
+    color: #d1b945;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .culture-live-link strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  .culture-live-link .arrow {
+    flex: none;
+    color: #d1b945;
+    font-size: 1.8rem;
+  }
   
   .news-section h2 {
     margin-top: 0;
@@ -477,6 +520,11 @@ layout: home
           </div>
         </div>
       </div>
+
+      <a class="culture-live-link" href="/cultural-selection/">
+        <span><small>Live experiment</small><strong>Make / Choose: watch 24 AI agents evolve culture</strong></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
 
       <div class="news-section">
         <h2>Recent Coverage</h2>
