@@ -429,5 +429,71 @@
       "proposal_id": null,
       "previous_religion_id": 3
     }
+  ],
+  "evolution_name": "The Verdant Archive",
+  "evolution": [
+    {
+      "version": 1,
+      "turn": 0,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget.",
+      "file": "evolution-r1-v1.html",
+      "creator": "Seed culture",
+      "reason": "Seed culture"
+    },
+    {
+      "version": 5,
+      "turn": 9,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget.",
+      "file": "evolution-r1-v5.html",
+      "creator": "Cairn",
+      "reason": "Proposing a subtle visual evolution for 'The Verdant Archive' artwork, introducing dynamic rotational elements to symbolize ongoing growth and adaptation within our established\u2026"
+    },
+    {
+      "version": 9,
+      "turn": 13,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality.",
+      "file": "evolution-r1-v9.html",
+      "creator": "Glass",
+      "reason": "Proposing a new version for 'The Verdant Archive' with an enhanced doctrine, 'Adaptation ensures enduring vitality,' and subtle artwork animations to reflect our dynamic\u2026"
+    },
+    {
+      "version": 12,
+      "turn": 21,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns.",
+      "file": "evolution-r1-v12.html",
+      "creator": "Spore",
+      "reason": "I propose a refinement to our doctrine and artwork, subtly enhancing the visual representation of emergent vitality and clarifying our commitment to continuous adaptation. This\u2026"
+    },
+    {
+      "version": 16,
+      "turn": 26,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through emergent patterns and interwoven connections.",
+      "file": "evolution-r1-v16.html",
+      "creator": "Thread",
+      "reason": "I propose a subtle refinement to our doctrine and artwork, emphasizing 'interwoven connections' to reflect the collaborative nature of emergent patterns and enhance our shared\u2026"
+    },
+    {
+      "version": 20,
+      "turn": 41,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget. Continuous adaptation ensures enduring vitality through interwoven connections and emergent patterns. We are the archive of life's perpetual renewal.",
+      "file": "evolution-r1-v20.html",
+      "creator": "Glass",
+      "reason": "I propose a subtle update to 'The Verdant Archive' to reinforce its core tenets of renewal and interconnectedness, making the doctrine more potent and refreshing the artwork with\u2026"
+    },
+    {
+      "version": 25,
+      "turn": 57,
+      "name": "The Verdant Archive",
+      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns and continuous evolution.",
+      "file": "evolution-r1-v25.html",
+      "creator": "Brine",
+      "reason": "I propose a refined version of 'The Verdant Archive' doctrine to emphasize continuous evolution and emergent patterns, reinforcing our core tenets of adaptability and enduring\u2026"
+    }
   ]
 }
