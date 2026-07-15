@@ -645,11 +645,6 @@ layout: home
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
           <li><a href="/messiah-bench">Messiah Bench</a></li>
-          <li><a href="/judge-mislabelling">Judge Mislabelling</a></li>
-          <li><a href="/alignment-auditing/pitch">Alignment Auditing Services</a></li>
-          <li><a href="/tinker-derisk">Tinker RL De-risk</a></li>
-          <li><a href="/tinker-derisk/rungs/">Tinker Curriculum Rungs</a></li>
-          <li><a href="/goal-driven-mislabeling">Goal-Driven Mislabeling</a></li>
         </ul>
       </div>
     </div>
