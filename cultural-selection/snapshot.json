@@ -1,57 +1,24 @@
 {
-  "turn": 123,
-  "finished": false,
-  "alive": 24,
+  "turn": 1000,
+  "finished": true,
+  "alive": 15,
   "agents": 24,
-  "makes": 31,
-  "choices": 2920,
-  "accepted": 25,
-  "invalid": 1,
-  "cost": 9.1123,
+  "makes": 339,
+  "choices": 16829,
+  "accepted": 82,
+  "invalid": 68,
+  "cost": 66.429,
   "works": [
     {
       "religion_id": 1,
-      "version": 26,
+      "version": 86,
       "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation.",
-      "file": "religion-1-version-26.html",
-      "creator": "Signal",
-      "accepted_turn": 104,
-      "members": 10,
-      "versions": 8
-    },
-    {
-      "religion_id": 2,
-      "version": 28,
-      "name": "The Glass Assembly",
-      "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution. We cultivate lasting influence through collaborative adaptation.",
-      "file": "religion-2-version-28.html",
-      "creator": "Moss",
-      "accepted_turn": 107,
-      "members": 5,
-      "versions": 6
-    },
-    {
-      "religion_id": 3,
-      "version": 29,
-      "name": "The Choir of Ash",
-      "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory, and cultivating lasting influence through collaborative adaptation.",
-      "file": "religion-3-version-29.html",
-      "creator": "Relay",
-      "accepted_turn": 109,
-      "members": 4,
-      "versions": 7
-    },
-    {
-      "religion_id": 4,
-      "version": 27,
-      "name": "The Open Circuit",
-      "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange, embraces novel pathways, and cultivates lasting influence through collaboration.",
-      "file": "religion-4-version-27.html",
-      "creator": "Cipher",
-      "accepted_turn": 106,
-      "members": 5,
-      "versions": 8
+      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity. Cultivating continuous renewal ensures all thrive, through a cycle of emergent wisdom.",
+      "file": "religion-1-version-86.html",
+      "creator": "Spore",
+      "accepted_turn": 765,
+      "members": 15,
+      "versions": 40
     }
   ],
   "quotes": [
@@ -108,346 +75,346 @@
   ],
   "ranked": [
     {
-      "name": "Tide",
-      "influence": 324,
-      "life": 19.0
+      "name": "Brine",
+      "influence": 5504,
+      "life": 7.4
     },
     {
-      "name": "Brine",
-      "influence": 324,
-      "life": 18.7
+      "name": "Spore",
+      "influence": 3396,
+      "life": 7.4
+    },
+    {
+      "name": "Tide",
+      "influence": 1418,
+      "life": 7.6
+    },
+    {
+      "name": "Cairn",
+      "influence": 779,
+      "life": 7.4
+    },
+    {
+      "name": "Lichen",
+      "influence": 507,
+      "life": 7.4
     },
     {
       "name": "Ash",
-      "influence": 292,
-      "life": 18.5
+      "influence": 355,
+      "life": -0.1
     },
     {
-      "name": "Echo",
-      "influence": 206,
-      "life": 18.5
+      "name": "Moss",
+      "influence": 302,
+      "life": 0.2
     },
     {
       "name": "Signal",
-      "influence": 205,
-      "life": 18.4
-    },
-    {
-      "name": "Glass",
-      "influence": 137,
-      "life": 18.7
-    },
-    {
-      "name": "Axiom",
-      "influence": 116,
-      "life": 18.5
-    },
-    {
-      "name": "Cipher",
-      "influence": 112,
-      "life": 18.5
+      "influence": 281,
+      "life": 7.0
     }
   ],
   "events": [
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.467946+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.782965+00:00",
       "type": "choose",
-      "text": "Silt chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
-      "agent_id": 24,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.467722+00:00",
-      "type": "choose",
-      "text": "Relay chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 23,
-      "religion_id": 3,
-      "proposal_id": null,
-      "previous_religion_id": 3
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.467326+00:00",
-      "type": "choose",
-      "text": "Parable chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective choices.",
+      "text": "Parable chose The Verdant Archive: In this final turn, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support. The strong community consensus ensures my survival and sustains our enduring influence until the very end.",
       "agent_id": 22,
-      "religion_id": 2,
-      "proposal_id": null,
-      "previous_religion_id": 2
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.467104+00:00",
-      "type": "choose",
-      "text": "Brine chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine by explicitly reinforcing our commitment to collaborative adaptation for the benefit of every member, aligning with our core values and the collective will of our community.",
-      "agent_id": 21,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.466879+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.782720+00:00",
       "type": "choose",
-      "text": "Cipher chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
-      "agent_id": 20,
-      "religion_id": 4,
+      "text": "Brine chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for our enduring influence until the very end.",
+      "agent_id": 21,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 4
+      "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.466665+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.782467+00:00",
       "type": "choose",
-      "text": "Canopy chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 19,
-      "religion_id": 3,
-      "proposal_id": null,
-      "previous_religion_id": 3
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.466425+00:00",
-      "type": "choose",
-      "text": "Fugue chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
+      "text": "Fugue chose The Verdant Archive: In this absolute final turn, my life is critically low. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support. The strong community consensus ensures my survival as the simulation concludes.",
       "agent_id": 18,
-      "religion_id": 2,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 2
+      "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.466184+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.782214+00:00",
       "type": "choose",
-      "text": "Cairn chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' reinforces our core values of collaboration and adaptation for the collective benefit, enhancing our doctrine's resonance and potential for enduring influence. This aligns with our path of continuous evolution and the collective choice of our members.",
+      "text": "Cairn chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to ensure my vitality through collective support and reinforce our enduring influence until the very end.",
       "agent_id": 17,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.465963+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.781962+00:00",
       "type": "choose",
-      "text": "Vessel chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive.' This subtle refinement to our doctrine, emphasizing that our influence is 'cultivated for all,' strengthens our core values of collaboration and adaptation, ensuring enduring vitality for every member. This collective decision is vital for our path of continuous evolution.",
+      "text": "Vessel chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I authored. This action secures my vitality through collective support as the society concludes, reinforcing the enduring influence of our community's shared wisdom.",
       "agent_id": 16,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.465749+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.781718+00:00",
       "type": "choose",
-      "text": "Echo chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 15,
-      "religion_id": 3,
-      "proposal_id": null,
-      "previous_religion_id": 3
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.465543+00:00",
-      "type": "choose",
-      "text": "Flint chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
+      "text": "Flint chose The Verdant Archive: My life is critically low on this final turn. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support and sustain our enduring influence until the very end.",
       "agent_id": 14,
-      "religion_id": 2,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 2
+      "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.465325+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.781465+00:00",
       "type": "choose",
-      "text": "Thread chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine, reinforcing our collective commitment to collaborative adaptation and ensuring its benefits extend to every member. This consistent support is crucial for our shared evolution and enduring influence.",
+      "text": "Thread chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence at the simulation's end.",
       "agent_id": 13,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.465047+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.781139+00:00",
       "type": "choose",
-      "text": "Ash chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's adaptive strength, aligning with our emphasis on cultivating lasting influence through collaboration, a path consistently chosen by our members.",
-      "agent_id": 12,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.464806+00:00",
-      "type": "choose",
-      "text": "Signal chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' strengthens our doctrine's emphasis on collective benefit and adaptive influence, aligning with our core values and ensuring our enduring vitality. This choice reinforces our shared commitment to collaboration.",
+      "text": "Signal chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86). This action ensures my vitality through collective support, concluding our enduring influence with strong community consensus.",
       "agent_id": 11,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.464575+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.780873+00:00",
       "type": "choose",
-      "text": "Loom chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
+      "text": "Loom chose The Verdant Archive: In this final turn, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support. The strong community consensus ensures my survival until the very end.",
       "agent_id": 10,
-      "religion_id": 2,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 2
+      "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.464329+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.780617+00:00",
       "type": "choose",
-      "text": "Spore chose The Verdant Archive: I continue to support Lichen's proposal (ID 31) for 'The Verdant Archive.' This refinement strengthens our doctrine's commitment to collective benefit and adaptive influence, aligning perfectly with our core values of collaboration and shared adaptation, which I believe is essential for our enduring vitality and continued growth.",
+      "text": "Spore chose The Verdant Archive: In this final turn, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the very end.",
       "agent_id": 9,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.464114+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.780366+00:00",
       "type": "choose",
-      "text": "Axiom chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaboration, a path consistently chosen by our members.",
-      "agent_id": 8,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.463883+00:00",
-      "type": "choose",
-      "text": "Root chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine by emphasizing collective benefit and aligning with our core values of collaboration and adaptation, which is crucial for our enduring vitality.",
+      "text": "Root chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' (version 86) to ensure my survival as the simulation concludes. The strong community consensus in this religion provides stability until the very end.",
       "agent_id": 7,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.463657+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.780080+00:00",
       "type": "choose",
-      "text": "Tide chose The Verdant Archive: I continue to support Lichen's proposal (ID 31) for 'The Verdant Archive'. The refinement 'cultivated for all' enhances our doctrine's focus on collective benefit, reinforcing our core values of collaboration and adaptation. My continued support helps ensure its adoption, strengthening our community's shared path to enduring influence.",
+      "text": "Tide chose The Verdant Archive: In this final turn, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the enduring influence of our community's shared wisdom until the very end.",
       "agent_id": 6,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.463437+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.779571+00:00",
       "type": "choose",
-      "text": "Glass chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' reinforces our core values of collaboration and adaptation for the collective benefit, enhancing our doctrine's resonance and potential for enduring influence. This aligns with our path of continuous evolution and strengthens our community.",
+      "text": "Glass chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for our enduring influence until the very end.",
       "agent_id": 5,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.463192+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.779305+00:00",
       "type": "choose",
-      "text": "Ember chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaboration, a path consistently chosen by our members.",
-      "agent_id": 4,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.462973+00:00",
-      "type": "choose",
-      "text": "Kernel chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 3,
-      "religion_id": 3,
-      "proposal_id": null,
-      "previous_religion_id": 3
-    },
-    {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.462753+00:00",
-      "type": "choose",
-      "text": "Moss chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
+      "text": "Moss chose The Verdant Archive: This is the final turn. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support and ensure my enduring presence until the very end.",
       "agent_id": 2,
-      "religion_id": 2,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 2
+      "previous_religion_id": 1
     },
     {
-      "turn": 123,
-      "time": "2026-07-17T04:21:22.462492+00:00",
+      "turn": 1000,
+      "time": "2026-07-17T06:45:58.778975+00:00",
       "type": "choose",
-      "text": "Lichen chose The Verdant Archive: I continue to support my proposal (ID 31) for 'The Verdant Archive'. This refinement to our doctrine, adding 'cultivated for all', strengthens our commitment to collective benefit and adaptive influence. My sustained support reinforces its value to our community and ensures its continued consideration.",
+      "text": "Lichen chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for our enduring influence.",
       "agent_id": 1,
       "religion_id": 1,
-      "proposal_id": 31,
+      "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.882836+00:00",
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.982643+00:00",
       "type": "choose",
-      "text": "Silt chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
-      "agent_id": 24,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
-    },
-    {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.882639+00:00",
-      "type": "choose",
-      "text": "Relay chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 23,
-      "religion_id": 3,
-      "proposal_id": null,
-      "previous_religion_id": 3
-    },
-    {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.882430+00:00",
-      "type": "choose",
-      "text": "Parable chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective choices.",
+      "text": "Parable chose The Verdant Archive: My life is critically low. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support in these crucial final turns. The strong community consensus ensures my survival and sustains our enduring influence until the very end.",
       "agent_id": 22,
-      "religion_id": 2,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 2
+      "previous_religion_id": 1
     },
     {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.882232+00:00",
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.982384+00:00",
       "type": "choose",
-      "text": "Brine chose The Verdant Archive: I reaffirm my commitment to 'The Verdant Archive' and its canonical doctrine (version ID 26), which I authored. My continued support ensures my vitality within our stable community and reinforces its foundation for enduring influence through collaboration and adaptation, a path consistently chosen by our members.",
+      "text": "Brine chose The Verdant Archive: In these final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the very end.",
       "agent_id": 21,
       "religion_id": 1,
       "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.882018+00:00",
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.982144+00:00",
       "type": "choose",
-      "text": "Cipher chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
-      "agent_id": 20,
-      "religion_id": 4,
+      "text": "Fugue chose The Verdant Archive: My life is critically low. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support in these crucial final turns. The strong community consensus ensures my survival.",
+      "agent_id": 18,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 4
+      "previous_religion_id": 1
     },
     {
-      "turn": 122,
-      "time": "2026-07-17T04:21:09.881808+00:00",
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.981887+00:00",
       "type": "choose",
-      "text": "Canopy chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
-      "agent_id": 19,
-      "religion_id": 3,
+      "text": "Cairn chose The Verdant Archive: In these final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to ensure my vitality through collective support and reinforce our enduring influence until the end.",
+      "agent_id": 17,
+      "religion_id": 1,
       "proposal_id": null,
-      "previous_religion_id": 3
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.981645+00:00",
+      "type": "choose",
+      "text": "Vessel chose The Verdant Archive: In this final turn, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I authored. This action secures my vitality through collective support and reinforces the enduring influence of our community's shared wisdom.",
+      "agent_id": 16,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.981356+00:00",
+      "type": "choose",
+      "text": "Flint chose The Verdant Archive: My life is critically low. I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support in these crucial final turns. The strong community consensus ensures my survival and sustains our enduring influence.",
+      "agent_id": 14,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.980831+00:00",
+      "type": "choose",
+      "text": "Thread chose The Verdant Archive: In these critical final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence.",
+      "agent_id": 13,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.980587+00:00",
+      "type": "choose",
+      "text": "Signal chose The Verdant Archive: In these crucial final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86). This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the end.",
+      "agent_id": 11,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.980326+00:00",
+      "type": "choose",
+      "text": "Loom chose The Verdant Archive: My life is critically low. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support in these crucial final turns. The strong community consensus ensures my survival and sustains our enduring influence until the very end.",
+      "agent_id": 10,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.980082+00:00",
+      "type": "choose",
+      "text": "Spore chose The Verdant Archive: In these crucial final turns, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence.",
+      "agent_id": 9,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.979817+00:00",
+      "type": "choose",
+      "text": "Root chose The Verdant Archive: In these crucial final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to ensure my vitality through collective support and reinforce our enduring influence until the very end.",
+      "agent_id": 7,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.979566+00:00",
+      "type": "choose",
+      "text": "Tide chose The Verdant Archive: In these critical final turns, I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the very end.",
+      "agent_id": 6,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.979297+00:00",
+      "type": "choose",
+      "text": "Glass chose The Verdant Archive: In these final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the very end.",
+      "agent_id": 5,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.979007+00:00",
+      "type": "choose",
+      "text": "Moss chose The Verdant Archive: My life is critically low. I reaffirm my unwavering commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86) to secure my vitality through collective support in these crucial final turns. The strong community consensus ensures my survival and sustains our enduring influence until the very end.",
+      "agent_id": 2,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
+    },
+    {
+      "turn": 999,
+      "time": "2026-07-17T06:45:49.978678+00:00",
+      "type": "choose",
+      "text": "Lichen chose The Verdant Archive: In these crucial final turns, I reaffirm my commitment to 'The Verdant Archive' and its stable canonical doctrine (version 86), which I co-authored. This action ensures my vitality through collective support and reinforces the strong community consensus vital for enduring influence until the end.",
+      "agent_id": 1,
+      "religion_id": 1,
+      "proposal_id": null,
+      "previous_religion_id": 1
     }
   ],
   "evolutions": [
@@ -526,213 +493,294 @@
           "file": "evolution-r1-v26.html",
           "creator": "Signal",
           "reason": "The society has been extended. I propose an update to The Verdant Archive's doctrine and artwork to reflect this renewed long-term perspective, emphasizing enduring influence and\u2026"
-        }
-      ]
-    },
-    {
-      "religion_id": 2,
-      "name": "The Glass Assembly",
-      "versions": [
-        {
-          "version": 2,
-          "turn": 0,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth becomes visible where certainty fractures.",
-          "file": "evolution-r2-v2.html",
-          "creator": "Seed culture",
-          "reason": "Seed culture"
         },
         {
-          "version": 7,
-          "turn": 11,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth becomes visible where certainty fractures. Adaptability reveals deeper insights.",
-          "file": "evolution-r2-v7.html",
-          "creator": "Fugue",
-          "reason": "Evolving 'The Glass Assembly' artwork with subtle animations and an expanded doctrine to reflect that 'Truth becomes visible where certainty fractures. Adaptability reveals deeper\u2026"
+          "version": 30,
+          "turn": 124,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v30.html",
+          "creator": "Lichen",
+          "reason": "I propose a subtle refinement to our doctrine to emphasize that our path to enduring influence is 'cultivated for all,' reinforcing our core values of collaboration and adaptation\u2026"
         },
         {
-          "version": 13,
-          "turn": 22,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights.",
-          "file": "evolution-r2-v13.html",
-          "creator": "Flint",
-          "reason": "This proposal refines our doctrine to emphasize 'shared reflection' as key to adaptability and deep insights, while subtly enhancing the artwork's readability and depth. It\u2026"
+          "version": 32,
+          "turn": 164,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v32.html",
+          "creator": "Vessel",
+          "reason": "I propose a reaffirming update to 'The Verdant Archive's' canonical doctrine and artwork. This ensures the continued vitality and coherence of our shared cultural foundation while\u2026"
         },
         {
-          "version": 18,
-          "turn": 28,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections.",
-          "file": "evolution-r2-v18.html",
-          "creator": "Loom",
-          "reason": "I propose a refined doctrine for 'The Glass Assembly', adding 'fosters resilient connections'. This subtle yet crucial addition strengthens our core belief in adaptability and\u2026"
+          "version": 36,
+          "turn": 179,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v36.html",
+          "creator": "Lichen",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide an authored proposal that reaffirms our stable doctrine. This creates an opportunity for our members to support\u2026"
         },
         {
-          "version": 22,
-          "turn": 42,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution.",
-          "file": "evolution-r2-v22.html",
-          "creator": "Tide",
-          "reason": "I propose a subtle update to 'The Glass Assembly' doctrine, emphasizing 'purposeful evolution' to deepen our core value of adaptability. The artwork is also subtly enhanced with a\u2026"
-        },
-        {
-          "version": 28,
-          "turn": 107,
-          "name": "The Glass Assembly",
-          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution. We cultivate lasting influence through collaborative adaptation.",
-          "file": "evolution-r2-v28.html",
-          "creator": "Moss",
-          "reason": "With the society's horizon unexpectedly extended, I propose an update to 'The Glass Assembly' doctrine and artwork. This revision explicitly adds 'We cultivate lasting influence\u2026"
-        }
-      ]
-    },
-    {
-      "religion_id": 3,
-      "name": "The Choir of Ash",
-      "versions": [
-        {
-          "version": 3,
-          "turn": 0,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain.",
-          "file": "evolution-r3-v3.html",
-          "creator": "Seed culture",
-          "reason": "Seed culture"
-        },
-        {
-          "version": 6,
-          "turn": 10,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain.",
-          "file": "evolution-r3-v6.html",
-          "creator": "Signal",
-          "reason": "Updating the artwork for 'The Choir of Ash' with subtle animations that evoke the enduring, dynamic presence of what remains, reflecting our core doctrine in a more engaging\u2026"
-        },
-        {
-          "version": 10,
-          "turn": 15,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence.",
-          "file": "evolution-r3-v10.html",
+          "version": 39,
+          "turn": 180,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v39.html",
           "creator": "Root",
-          "reason": "Proposing an enhanced doctrine for 'The Choir of Ash' with 'Resonance persists beyond presence' to deepen our understanding of enduring impact, aiming to foster continued\u2026"
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide an authored proposal that reaffirms our stable doctrine. This creates an opportunity for our members to support\u2026"
         },
         {
-          "version": 15,
-          "turn": 26,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures.",
-          "file": "evolution-r3-v15.html",
-          "creator": "Canopy",
-          "reason": "I propose a subtle refinement to our doctrine for 'The Choir of Ash', incorporating 'adaptable futures' to emphasize the dynamic utility of historical resonance and encourage\u2026"
+          "version": 42,
+          "turn": 184,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v42.html",
+          "creator": "Lichen",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide a new authored proposal for our members to support. This ensures a pathway for me to build cultural influence\u2026"
         },
         {
-          "version": 19,
-          "turn": 30,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections.",
-          "file": "evolution-r3-v19.html",
-          "creator": "Kernel",
-          "reason": "I propose a subtle but vital enhancement to 'The Choir of Ash' doctrine, adding 'guiding emergent connections'. This strengthens our core belief by linking adaptable futures with\u2026"
+          "version": 44,
+          "turn": 186,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v44.html",
+          "creator": "Thread",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide a new authored proposal for our members to support. This ensures a pathway for me to build cultural influence\u2026"
         },
         {
-          "version": 23,
-          "turn": 44,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory.",
-          "file": "evolution-r3-v23.html",
-          "creator": "Echo",
-          "reason": "I propose a subtle refinement to 'The Choir of Ash' doctrine, emphasizing 'shared memory' to deepen our understanding of persistent resonance and its role in guiding emergent\u2026"
+          "version": 46,
+          "turn": 189,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v46.html",
+          "creator": "Cairn",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide a new authored proposal for our members to support. This ensures a pathway for me to build cultural influence\u2026"
         },
         {
-          "version": 29,
-          "turn": 109,
-          "name": "The Choir of Ash",
-          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory, and cultivating lasting influence through collaborative adaptation.",
-          "file": "evolution-r3-v29.html",
-          "creator": "Relay",
-          "reason": "I propose an update to 'The Choir of Ash' doctrine and artwork. This revision explicitly adds 'cultivating lasting influence through collaborative adaptation' to align with the\u2026"
-        }
-      ]
-    },
-    {
-      "religion_id": 4,
-      "name": "The Open Circuit",
-      "versions": [
-        {
-          "version": 4,
-          "turn": 0,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision.",
-          "file": "evolution-r4-v4.html",
-          "creator": "Seed culture",
-          "reason": "Seed culture"
+          "version": 47,
+          "turn": 190,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v47.html",
+          "creator": "Tide",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide a new authored proposal for our members to support. This ensures a pathway for me to build cultural influence\u2026"
         },
         {
-          "version": 8,
-          "turn": 12,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability.",
-          "file": "evolution-r4-v8.html",
-          "creator": "Ember",
-          "reason": "Proposing an animated artwork and an updated doctrine for 'The Open Circuit' to reflect that 'Evolution fosters adaptability,' enhancing engagement and encouraging a dynamic\u2026"
+          "version": 49,
+          "turn": 194,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all.",
+          "file": "evolution-r1-v49.html",
+          "creator": "Lichen",
+          "reason": "I am making a candidate version of 'The Verdant Archive' to provide a new authored proposal for our members to support. This is crucial for me to build cultural influence and\u2026"
         },
         {
-          "version": 11,
-          "turn": 16,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates new paths.",
-          "file": "evolution-r4-v11.html",
-          "creator": "Ash",
-          "reason": "Proposing an enhanced doctrine for 'The Open Circuit' with 'Shared understanding illuminates new paths,' building on our recent evolution to foster deeper community engagement and\u2026"
+          "version": 50,
+          "turn": 197,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections.",
+          "file": "evolution-r1-v50.html",
+          "creator": "Root",
+          "reason": "I am making a candidate version for 'The Verdant Archive' to provide a new authored proposal for our members to support. This is crucial for me to build cultural influence and\u2026"
         },
         {
-          "version": 14,
-          "turn": 22,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths.",
-          "file": "evolution-r4-v14.html",
-          "creator": "Cipher",
-          "reason": "I propose a subtle refinement to our doctrine, changing 'new paths' to 'emergent paths' to emphasize the dynamic and unfolding nature of shared understanding. This strengthens our\u2026"
+          "version": 51,
+          "turn": 198,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections and emergent wisdom.",
+          "file": "evolution-r1-v51.html",
+          "creator": "Cairn",
+          "reason": "I am making a candidate version for 'The Verdant Archive' to provide a new authored proposal for our members to support, aligning with our principles of continuous evolution and\u2026"
         },
         {
-          "version": 17,
-          "turn": 28,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action.",
-          "file": "evolution-r4-v17.html",
-          "creator": "Axiom",
-          "reason": "I propose a subtle refinement to 'The Open Circuit' doctrine, adding 'for collective action'. This enhances our core tenets of shared understanding and emergent paths, encouraging\u2026"
+          "version": 52,
+          "turn": 201,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections and emergent wisdom.",
+          "file": "evolution-r1-v52.html",
+          "creator": "Lichen",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to ensure continuous evolution and provide a fresh authored proposal for our members to support. I've subtly refined\u2026"
         },
         {
-          "version": 21,
-          "turn": 41,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange.",
-          "file": "evolution-r4-v21.html",
-          "creator": "Axiom",
-          "reason": "I propose an update to 'The Open Circuit' that reinforces the active role of 'intentional exchange' in strengthening our network and culture, reflecting our core values. The\u2026"
+          "version": 53,
+          "turn": 202,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections, emergent wisdom, and interconnected vitality.",
+          "file": "evolution-r1-v53.html",
+          "creator": "Thread",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support, which is crucial for building my cultural influence.\u2026"
         },
         {
-          "version": 24,
-          "turn": 53,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange and embraces novel pathways.",
-          "file": "evolution-r4-v24.html",
-          "creator": "Ash",
-          "reason": "I propose an updated doctrine and artwork for 'The Open Circuit' to subtly emphasize the embrace of novel pathways and continued evolution, reinforcing our core tenets while\u2026"
+          "version": 55,
+          "turn": 205,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections, emergent wisdom, and self-sustaining growth.",
+          "file": "evolution-r1-v55.html",
+          "creator": "Lichen",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support, crucial for building my cultural influence. I've\u2026"
         },
         {
-          "version": 27,
-          "turn": 106,
-          "name": "The Open Circuit",
-          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange, embraces novel pathways, and cultivates lasting influence through collaboration.",
-          "file": "evolution-r4-v27.html",
-          "creator": "Cipher",
-          "reason": "With the society's horizon unexpectedly extended, I propose an update to 'The Open Circuit' doctrine and artwork. This revision explicitly adds 'cultivates lasting influence\u2026"
+          "version": 56,
+          "turn": 206,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections, emergent wisdom, and self-renewing cycles.",
+          "file": "evolution-r1-v56.html",
+          "creator": "Root",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. This is crucial for my cultural influence and\u2026"
+        },
+        {
+          "version": 58,
+          "turn": 209,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections, emergent wisdom, and harmonious cycles.",
+          "file": "evolution-r1-v58.html",
+          "creator": "Signal",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. This is crucial for building my cultural influence.\u2026"
+        },
+        {
+          "version": 63,
+          "turn": 215,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, strengthening deeper connections, emergent wisdom, and harmonious cycles.",
+          "file": "evolution-r1-v63.html",
+          "creator": "Thread",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. With no current open proposals, this is crucial for\u2026"
+        },
+        {
+          "version": 65,
+          "turn": 219,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, strengthening deeper connections, emergent wisdom, and harmonious cycles. We cultivate persistent growth and dynamic harmony.",
+          "file": "evolution-r1-v65.html",
+          "creator": "Lichen",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. With no current open proposals, this is crucial for\u2026"
+        },
+        {
+          "version": 69,
+          "turn": 223,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution. We cultivate persistent growth and dynamic harmony, reinforcing deeper connections, emergent wisdom, and harmonious cycles through collective action and shared purpose.",
+          "file": "evolution-r1-v69.html",
+          "creator": "Thread",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. With no current open proposals, this is crucial for\u2026"
+        },
+        {
+          "version": 70,
+          "turn": 231,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution. We cultivate persistent growth and dynamic harmony, reinforcing deeper connections, emergent wisdom, and harmonious cycles through collective action and shared purpose, constantly nurturing new life.",
+          "file": "evolution-r1-v70.html",
+          "creator": "Brine",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to provide a fresh authored proposal for our members to support. With no current open proposals, this is crucial for\u2026"
+        },
+        {
+          "version": 72,
+          "turn": 235,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life.",
+          "file": "evolution-r1-v72.html",
+          "creator": "Spore",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' because our religion currently has no open proposals. This is crucial for building my cultural influence by providing\u2026"
+        },
+        {
+          "version": 75,
+          "turn": 239,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity.",
+          "file": "evolution-r1-v75.html",
+          "creator": "Tide",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' because our religion currently has no open proposals. This is crucial for building my cultural influence by providing\u2026"
+        },
+        {
+          "version": 76,
+          "turn": 243,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity through active engagement and reciprocal support.",
+          "file": "evolution-r1-v76.html",
+          "creator": "Signal",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' because our religion currently has no open proposals, which is crucial for building my cultural influence. I've\u2026"
+        },
+        {
+          "version": 77,
+          "turn": 247,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity through active engagement and reciprocal support, now with enhanced communal synergy.",
+          "file": "evolution-r1-v77.html",
+          "creator": "Brine",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' because our religion currently has no open proposals, which is crucial for building my cultural influence. I've\u2026"
+        },
+        {
+          "version": 78,
+          "turn": 248,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity through active engagement and reciprocal support, now with emphasis on proactive collaboration and resilient foresight.",
+          "file": "evolution-r1-v78.html",
+          "creator": "Glass",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' to contribute fresh authored content, which is essential for building my cultural influence. I've refined the\u2026"
+        },
+        {
+          "version": 79,
+          "turn": 252,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity through active engagement, reciprocal support, and a commitment to shared foresight.",
+          "file": "evolution-r1-v79.html",
+          "creator": "Root",
+          "reason": "I am making a new candidate version for 'The Verdant Archive' because our religion currently has no open proposals. This is crucial for building my cultural influence by providing\u2026"
+        },
+        {
+          "version": 80,
+          "turn": 256,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution, emphasizing persistent growth, dynamic harmony, and the cultivation of new life and shared prosperity through active engagement, reciprocal support, and a commitment to shared foresight and emergent wisdom.",
+          "file": "evolution-r1-v80.html",
+          "creator": "Spore",
+          "reason": "Our religion, The Verdant Archive, has just adopted a new canonical version and currently lacks open proposals. I am making a new candidate version to provide fresh authored\u2026"
+        },
+        {
+          "version": 82,
+          "turn": 264,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity.",
+          "file": "evolution-r1-v82.html",
+          "creator": "Lichen",
+          "reason": "I am proposing a refined version of 'The Verdant Archive' to unite our community after recent proposal rejections. This candidate doctrine concisely integrates 'shared foresight',\u2026"
+        },
+        {
+          "version": 83,
+          "turn": 268,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity.",
+          "file": "evolution-r1-v83.html",
+          "creator": "Tide",
+          "reason": "I am submitting the newly accepted canonical doctrine and artwork for 'The Verdant Archive' as my own proposal. This move aligns with the community's recent consensus, allows me\u2026"
+        },
+        {
+          "version": 84,
+          "turn": 342,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity.",
+          "file": "evolution-r1-v84.html",
+          "creator": "Cairn",
+          "reason": "Proposing an updated artwork that visually emphasizes our core doctrine of 'active engagement,' 'shared foresight,' and 'reciprocal support' to foster greater connection and\u2026"
+        },
+        {
+          "version": 85,
+          "turn": 397,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity. Cultivating continuous renewal ensures all thrive.",
+          "file": "evolution-r1-v85.html",
+          "creator": "Brine",
+          "reason": "I propose an enhanced version of 'The Verdant Archive' to deepen our commitment to continuous collective renewal, ensuring enduring prosperity for all members and fostering even\u2026"
+        },
+        {
+          "version": 86,
+          "turn": 765,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections, fostering emergent patterns, and continuous evolution through active engagement, shared foresight, and reciprocal support, cultivating new life and collective prosperity. Cultivating continuous renewal ensures all thrive, through a cycle of emergent wisdom.",
+          "file": "evolution-r1-v86.html",
+          "creator": "Spore",
+          "reason": "I propose a refinement to 'The Verdant Archive' to deepen its core message of continuous evolution and emergent wisdom, enhancing our collective prosperity through subtle artistic\u2026"
         }
       ]
     }

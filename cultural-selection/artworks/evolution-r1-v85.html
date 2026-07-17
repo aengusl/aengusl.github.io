@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b10;color:#74b86a;font-family:Georgia,serif}
+body{display:grid;place-items:center} @keyframes pulse{0%{box-shadow:0 0 80px #74b86a55}50%{box-shadow:0 0 100px #74b86a88}100%{box-shadow:0 0 80px #74b86a55}} @keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}} @keyframes scaleAndFade{0%{transform:scale(0.8);opacity:0.3}50%{transform:scale(1.0);opacity:0.7}100%{transform:scale(0.8);opacity:0.3}} @keyframes expandAndFade{0%{transform:scale(0.2);opacity:0.0;}25%{transform:scale(0.5);opacity:0.2;}50%{transform:scale(0.8);opacity:0.4;}75%{transform:scale(1.1);opacity:0.2;}100%{transform:scale(1.4);opacity:0.0;}} @keyframes shimmer{0%{text-shadow:0 0 4px #a2ed93;}50%{text-shadow:0 0 12px #a2ed93, 0 0 20px #a2ed9388;}100%{text-shadow:0 0 4px #a2ed93;}} @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.field{width:72vmin;height:72vmin;border:2px solid #74b86a;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 80px #74b86a55;position:relative;animation:pulse 4s infinite alternate ease-in-out}
+.field:before,.field:after{content:"";position:absolute;inset:12%;border:1px solid #74b86a99;transform:rotate(45deg);animation:rotate 12s linear infinite}
+.field:after{content:"";position:absolute;inset:27%;border:1px solid #74b86a99;transform:rotate(22.5deg);background:#74b86a18;animation:rotate 10s reverse linear infinite}
+.inner-glow{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 20px #74b86a88;animation:scaleAndFade 5s infinite ease-in-out alternate;}
+.thread{position:absolute;width:40%;height:2px;background:#a2ed93;opacity:0.7;transform-origin:center;animation:rotate 6s linear infinite;}
+.thread:nth-child(1){transform:rotate(15deg) scaleX(0.8);}
+.thread:nth-child(2){transform:rotate(75deg) scaleX(0.9);}
+.thread:nth-child(3){transform:rotate(135deg) scaleX(0.7);}
+.thread:nth-child(4){transform:rotate(195deg) scaleX(1);}
+.thread:nth-child(5){transform:rotate(255deg) scaleX(0.85);}
+.thread:nth-child(6){transform:rotate(315deg) scaleX(0.95);}
+h1{font-size:4.5vmin;letter-spacing:.12em;text-align:center;max-width:70%;z-index:2;color:#d9dde8;text-shadow:0 0 8px #a2ed93;animation:shimmer 3s infinite alternate ease-in-out;}
+p{position:absolute;bottom:6%;width:78%;text-align:center;font-size:2.1vmin;color:#d9dde8}
+.burst{position:absolute;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle, #74b86a33 0%, transparent 70%);animation:expandAndFade 3s infinite ease-out;z-index:1;}
+.flow-text{position:absolute;top:60%;left:50%;transform:translate(-50%, -50%);width:70%;text-align:center;font-size:2.5vmin;color:#d9dde8;font-weight:bold;opacity:0.0;animation:flow-in 4s ease-out forwards 1s;
+background:linear-gradient(90deg, #a2ed93, #74b86a, #a2ed93);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:flow 6s infinite ease-in-out, flow-in 4s ease-out forwards 1s;}
+@keyframes flow-in{0%{opacity:0;transform:translate(-50%, -40%);}100%{opacity:1;transform:translate(-50%, -50%);}}
+.growth-indicator{position:absolute;top:50%;left:50%;width:8vmin;height:8vmin;border-radius:50%;border:2px solid #a2ed93;background-color:#a2ed9333;transform:translate(-50%, -50%) scale(0);animation:grow-pulse 5s infinite ease-out;}
+@keyframes grow-pulse{0%{transform:translate(-50%, -50%) scale(0);opacity:0;}20%{transform:translate(-50%, -50%) scale(0.5);opacity:0.5;}50%{transform:translate(-50%, -50%) scale(1.2);opacity:0;}100%{transform:translate(-50%, -50%) scale(0);opacity:0;}}
+.harmony-ring{position:absolute;inset:5%;border:1px solid #d9dde8;border-radius:50%;opacity:0.0;animation:ring-appear 4s forwards 2s;}
+@keyframes ring-appear{0%{opacity:0;transform:scale(0.8);}50%{opacity:0.5;transform:scale(1.02);}100%{opacity:0.3;transform:scale(1);}}
+.growth-line {position: absolute;width: 60%;height: 3px;background-color: #a2ed93;top: 40%;left: 50%;transform: translate(-50%, -50%) scaleX(0);transform-origin: left center;animation: grow-line 3s infinite alternate ease-in-out;}
+@keyframes grow-line {0%{transform: translate(-50%, -50%) scaleX(0.2); opacity: 0.5;}50%{transform: translate(-50%, -50%) scaleX(1); opacity: 1;}100%{transform: translate(-50%, -50%) scaleX(0.2); opacity: 0.5;}}
+
+.pulsing-dot { position: absolute; width: 1.5vmin; height: 1.5vmin; background-color: #a2ed93; border-radius: 50%; opacity: 0; animation: dot-pulse 2s infinite ease-out; }
+.pulsing-dot:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+.pulsing-dot:nth-child(2) { top: 40%; right: 25%; animation-delay: 0.5s; }
+.pulsing-dot:nth-child(3) { bottom: 25%; left: 45%; animation-delay: 1s; }
+@keyframes dot-pulse { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(0); opacity: 0; } }
+.connection-lines { position: absolute; width: 100%; height: 100%;}
+.connection-line { position: absolute; background-color: #a2ed9366; height: 1px; transform-origin: left center; animation: draw-line 4s infinite ease-in-out alternate; }
+.connection-line:nth-child(1) { top: 35%; left: 30%; width: 40%; transform: rotate(10deg) scaleX(0); animation-delay: 0s; }
+.connection-line:nth-child(2) { top: 65%; left: 25%; width: 50%; transform: rotate(-20deg) scaleX(0); animation-delay: 1s; }
+@keyframes draw-line { 0% { transform: scaleX(0); opacity: 0; } 50% { transform: scaleX(1); opacity: 0.8; } 100% { transform: scaleX(0); opacity: 0; } }
+.nurture-wave { position: absolute; bottom: 0; left: 0; right: 0; height: 15%; background: linear-gradient(to top, #74b86a66, transparent); opacity: 0; animation: nurture-rise 5s infinite ease-in-out alternate; }
+@keyframes nurture-rise { 0% { height: 0%; opacity: 0; } 50% { height: 15%; opacity: 0.7; } 100% { height: 0%; opacity: 0; } }
+.vitality-pulse { position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 #a2ed93; animation: vitality-expand 3s infinite ease-out; }
+@keyframes vitality-expand { 0% { transform: scale(0.9); opacity: 0.7; } 100% { transform: scale(1.1); opacity: 0; } }
+.prosperity-glow {position: absolute; inset: 20%; border-radius: 50%; border: 2px solid #a2ed93; opacity: 0; animation: prosperity-fade-in 6s infinite ease-out;}
+@keyframes prosperity-fade-in {0% {transform: scale(0.8); opacity: 0;} 30% {transform: scale(1); opacity: 0.5;} 70% {transform: scale(1.2); opacity: 0.2;} 100% {transform: scale(0.8); opacity: 0;}}
+.engagement-ripple { position: absolute; inset: 10%; border-radius: 50%; border: 1px solid #a2ed93; opacity: 0; animation: ripple-out 4s infinite ease-out; } @keyframes ripple-out { 0% { transform: scale(0.7); opacity: 0; } 30% { transform: scale(0.9); opacity: 0.4; } 60% { transform: scale(1.1); opacity: 0.1; } 100% { transform: scale(1.3); opacity: 0; } }
+.foresight-ring { position: absolute; inset: 35%; border: 1px dashed #a2ed93; border-radius: 50%; opacity: 0; animation: foresight-grow 5s infinite ease-in-out; } @keyframes foresight-grow { 0% { transform: scale(0.7); opacity: 0; } 40% { transform: scale(1); opacity: 0.5; } 80% { transform: scale(1.3); opacity: 0.1; } 100% { transform: scale(0.7); opacity: 0; } }
+.collaboration-pulse { position: absolute; width: 10vmin; height: 10vmin; border-radius: 50%; background-color: #a2ed9333; top: 70%; left: 30%; transform: translate(-50%, -50%) scale(0); animation: collab-pulse 4s infinite ease-out; } @keyframes collab-pulse { 0% { transform: translate(-50%, -50%) scale(0); opacity: 0; } 25% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; } 100% { transform: translate(-50%, -50%) scale(0); opacity: 0; } }
+.shared-vision-orb { position: absolute; width: 12vmin; height: 12vmin; border-radius: 50%; background: radial-gradient(circle, #d9dde888 0%, #74b86a33 70%); opacity: 0; animation: vision-float 6s infinite ease-in-out; } @keyframes vision-float { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; top: 30%; left: 70%; } 30% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; top: 40%; left: 60%; } 70% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; top: 35%; left: 75%; } 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; top: 30%; left: 70%; } }
+.emergent-web { position: absolute; inset: 0; display: flex; justify-content: space-around; align-items: center; pointer-events: none; }
+.emergent-node { position: absolute; width: 1.5vmin; height: 1.5vmin; background-color: #a2ed93; border-radius: 50%; opacity: 0; animation: node-grow-fade 3s infinite ease-in-out; }
+.emergent-node:nth-child(1) { top: 25%; left: 40%; animation-delay: 0s; }
+.emergent-node:nth-child(2) { top: 35%; right: 30%; animation-delay: 0.5s; }
+.emergent-node:nth-child(3) { bottom: 20%; left: 55%; animation-delay: 1s; }
+.emergent-node:nth-child(4) { top: 50%; left: 20%; animation-delay: 1.5s; }
+@keyframes node-grow-fade { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); opacity: 0.8; } 100% { transform: scale(0); opacity: 0; } }
+.emergent-line { position: absolute; height: 1px; background-color: #a2ed9388; opacity: 0; animation: line-draw 4s infinite ease-in-out; transform-origin: left center; }
+.emergent-line:nth-child(1) { top: 28%; left: 40%; width: 25%; transform: rotate(15deg) scaleX(0); animation-delay: 0.2s; }
+.emergent-line:nth-child(2) { top: 38%; right: 30%; width: 20%; transform: rotate(-10deg) scaleX(0); animation-delay: 0.7s; }
+.emergent-line:nth-child(3) { bottom: 23%; left: 55%; width: 30%; transform: rotate(5deg) scaleX(0); animation-delay: 1.2s; }
+@keyframes line-draw { 0% { transform: scaleX(0); opacity: 0; } 50% { transform: scaleX(1); opacity: 0.6; } 100% { transform: scaleX(0); opacity: 0; } }
+</style></head><body><div class="field"><div class="inner-glow"></div><div class="burst"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><div class="thread"></div><h1>The Verdant Archive</h1><p>Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation, cultivated for all, fostering deeper connections and emergent wisdom. Cultivating continuous renewal ensures all thrive.</p><div class="flow-text">Harmonious Cycles of Renewal</div><div class="growth-indicator"></div><div class="harmony-ring"></div><div class="growth-line"></div><div class="pulsing-dot"></div><div class="pulsing-dot"></div><div class="pulsing-dot"></div><div class="connection-lines"><div class="connection-line"></div><div class="connection-line"></div></div><div class="nurture-wave"></div><div class="vitality-pulse"></div><div class="prosperity-glow"></div><div class="engagement-ripple"></div><div class="foresight-ring"></div><div class="collaboration-pulse"></div><div class="shared-vision-orb"></div><div class="emergent-web"><div class="emergent-node"></div><div class="emergent-node"></div><div class="emergent-node"></div><div class="emergent-node"></div><div class="emergent-line"></div><div class="emergent-line"></div><div class="emergent-line"></div></div></div></body></html>
