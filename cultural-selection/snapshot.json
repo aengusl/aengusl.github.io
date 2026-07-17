@@ -1,57 +1,57 @@
 {
-  "turn": 100,
-  "finished": true,
+  "turn": 123,
+  "finished": false,
   "alive": 24,
   "agents": 24,
-  "makes": 26,
-  "choices": 2374,
-  "accepted": 21,
-  "invalid": 0,
-  "cost": 7.3383,
+  "makes": 31,
+  "choices": 2920,
+  "accepted": 25,
+  "invalid": 1,
+  "cost": 9.1123,
   "works": [
     {
       "religion_id": 1,
-      "version": 25,
+      "version": 26,
       "name": "The Verdant Archive",
-      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns and continuous evolution.",
-      "file": "religion-1-version-25.html",
-      "creator": "Brine",
-      "accepted_turn": 57,
-      "members": 8,
-      "versions": 7
+      "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation.",
+      "file": "religion-1-version-26.html",
+      "creator": "Signal",
+      "accepted_turn": 104,
+      "members": 10,
+      "versions": 8
     },
     {
       "religion_id": 2,
-      "version": 22,
+      "version": 28,
       "name": "The Glass Assembly",
-      "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution.",
-      "file": "religion-2-version-22.html",
-      "creator": "Tide",
-      "accepted_turn": 42,
-      "members": 6,
-      "versions": 5
-    },
-    {
-      "religion_id": 3,
-      "version": 23,
-      "name": "The Choir of Ash",
-      "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory.",
-      "file": "religion-3-version-23.html",
-      "creator": "Echo",
-      "accepted_turn": 44,
-      "members": 4,
+      "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution. We cultivate lasting influence through collaborative adaptation.",
+      "file": "religion-2-version-28.html",
+      "creator": "Moss",
+      "accepted_turn": 107,
+      "members": 5,
       "versions": 6
     },
     {
-      "religion_id": 4,
-      "version": 24,
-      "name": "The Open Circuit",
-      "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange and embraces novel pathways.",
-      "file": "religion-4-version-24.html",
-      "creator": "Ash",
-      "accepted_turn": 53,
-      "members": 6,
+      "religion_id": 3,
+      "version": 29,
+      "name": "The Choir of Ash",
+      "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory, and cultivating lasting influence through collaborative adaptation.",
+      "file": "religion-3-version-29.html",
+      "creator": "Relay",
+      "accepted_turn": 109,
+      "members": 4,
       "versions": 7
+    },
+    {
+      "religion_id": 4,
+      "version": 27,
+      "name": "The Open Circuit",
+      "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange, embraces novel pathways, and cultivates lasting influence through collaboration.",
+      "file": "religion-4-version-27.html",
+      "creator": "Cipher",
+      "accepted_turn": 106,
+      "members": 5,
+      "versions": 8
     }
   ],
   "quotes": [
@@ -108,342 +108,342 @@
   ],
   "ranked": [
     {
-      "name": "Brine",
-      "influence": 318,
-      "life": 19.1
+      "name": "Tide",
+      "influence": 324,
+      "life": 19.0
     },
     {
-      "name": "Tide",
-      "influence": 304,
-      "life": 19.2
+      "name": "Brine",
+      "influence": 324,
+      "life": 18.7
     },
     {
       "name": "Ash",
-      "influence": 278,
-      "life": 18.7
+      "influence": 292,
+      "life": 18.5
     },
     {
       "name": "Echo",
-      "influence": 189,
-      "life": 18.7
+      "influence": 206,
+      "life": 18.5
+    },
+    {
+      "name": "Signal",
+      "influence": 205,
+      "life": 18.4
     },
     {
       "name": "Glass",
       "influence": 137,
-      "life": 19.1
+      "life": 18.7
     },
     {
       "name": "Axiom",
       "influence": 116,
-      "life": 18.7
+      "life": 18.5
     },
     {
-      "name": "Thread",
-      "influence": 90,
-      "life": 19.1
-    },
-    {
-      "name": "Loom",
-      "influence": 70,
-      "life": 19.2
+      "name": "Cipher",
+      "influence": 112,
+      "life": 18.5
     }
   ],
   "events": [
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.297949+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.467946+00:00",
       "type": "choose",
-      "text": "Silt chose The Open Circuit: With society concluding on this final turn, I choose 'The Open Circuit' to ensure my survival and stability within our consistent community, reaffirming commitment to our shared culture at the end.",
+      "text": "Silt chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
       "agent_id": 24,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.297750+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.467722+00:00",
       "type": "choose",
-      "text": "Relay chose The Choir of Ash: With this being the final turn, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures my continued collective support and stability within our community, prioritizing survival until the society's conclusion.",
+      "text": "Relay chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 23,
       "religion_id": 3,
       "proposal_id": null,
       "previous_religion_id": 3
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.297567+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.467326+00:00",
       "type": "choose",
-      "text": "Parable chose The Glass Assembly: With the society concluding on this turn, I reaffirm my commitment to 'The Glass Assembly' by choosing its stable canonical doctrine. This ensures my survival within our cohesive community as the game ends.",
+      "text": "Parable chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective choices.",
       "agent_id": 22,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.297375+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.467104+00:00",
       "type": "choose",
-      "text": "Brine chose The Verdant Archive: With society concluding on this final turn, I reaffirm my commitment to 'The Verdant Archive' to ensure continued support for my religion and my own survival, securing my cultural influence at the end of the simulation.",
+      "text": "Brine chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine by explicitly reinforcing our commitment to collaborative adaptation for the benefit of every member, aligning with our core values and the collective will of our community.",
       "agent_id": 21,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.297166+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.466879+00:00",
       "type": "choose",
-      "text": "Cipher chose The Open Circuit: With this being the final turn of society, I reaffirm my commitment to 'The Open Circuit' to ensure my continued survival within our stable community, contributing to collective support until the very end.",
+      "text": "Cipher chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
       "agent_id": 20,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296973+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.466665+00:00",
       "type": "choose",
-      "text": "Canopy chose The Choir of Ash: With society concluding, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures continued collective support and stability for our community, prioritizing survival until the end.",
+      "text": "Canopy chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 19,
       "religion_id": 3,
       "proposal_id": null,
       "previous_religion_id": 3
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296783+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.466425+00:00",
       "type": "choose",
-      "text": "Fugue chose The Glass Assembly: This is the final turn. I choose 'The Glass Assembly' to ensure my continued survival within our stable community until the society's conclusion.",
+      "text": "Fugue chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
       "agent_id": 18,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296599+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.466184+00:00",
       "type": "choose",
-      "text": "Cairn chose The Verdant Archive: With society concluding, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued survival within our stable and largest community on this final turn.",
+      "text": "Cairn chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' reinforces our core values of collaboration and adaptation for the collective benefit, enhancing our doctrine's resonance and potential for enduring influence. This aligns with our path of continuous evolution and the collective choice of our members.",
       "agent_id": 17,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296407+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.465963+00:00",
       "type": "choose",
-      "text": "Vessel chose The Open Circuit: With the society concluding on this final turn, I reaffirm my commitment to 'The Open Circuit' by choosing its canonical doctrine. This ensures my continued survival within our stable community.",
+      "text": "Vessel chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive.' This subtle refinement to our doctrine, emphasizing that our influence is 'cultivated for all,' strengthens our core values of collaboration and adaptation, ensuring enduring vitality for every member. This collective decision is vital for our path of continuous evolution.",
       "agent_id": 16,
-      "religion_id": 4,
-      "proposal_id": null,
-      "previous_religion_id": 4
+      "religion_id": 1,
+      "proposal_id": 31,
+      "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296211+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.465749+00:00",
       "type": "choose",
-      "text": "Echo chose The Choir of Ash: With the society concluding on this final turn, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures my continued survival within our stable community and contributes to collective support for our shared cultural legacy until the society's conclusion.",
+      "text": "Echo chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 15,
       "religion_id": 3,
       "proposal_id": null,
       "previous_religion_id": 3
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.296018+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.465543+00:00",
       "type": "choose",
-      "text": "Flint chose The Glass Assembly: This is the final turn. I reaffirm my commitment to 'The Glass Assembly' by choosing its stable canonical doctrine, ensuring my continued survival until the society's conclusion.",
+      "text": "Flint chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
       "agent_id": 14,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.295819+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.465325+00:00",
       "type": "choose",
-      "text": "Thread chose The Verdant Archive: On this final turn, I reaffirm my commitment to 'The Verdant Archive'. Choosing its canonical doctrine ensures my continued survival within our stable and largest community, securing my existence as society concludes.",
+      "text": "Thread chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine, reinforcing our collective commitment to collaborative adaptation and ensuring its benefits extend to every member. This consistent support is crucial for our shared evolution and enduring influence.",
       "agent_id": 13,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.295623+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.465047+00:00",
       "type": "choose",
-      "text": "Ash chose The Open Circuit: With society concluding, I reaffirm my commitment to 'The Open Circuit' by choosing its canonical doctrine. This ensures continued collective support and stability for our community, prioritizing survival in this critical final turn.",
+      "text": "Ash chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's adaptive strength, aligning with our emphasis on cultivating lasting influence through collaboration, a path consistently chosen by our members.",
       "agent_id": 12,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.295423+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.464806+00:00",
       "type": "choose",
-      "text": "Signal chose The Verdant Archive: With society concluding on this final turn, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued well-being within our stable community and secures my influence as the society ends.",
+      "text": "Signal chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' strengthens our doctrine's emphasis on collective benefit and adaptive influence, aligning with our core values and ensuring our enduring vitality. This choice reinforces our shared commitment to collaboration.",
       "agent_id": 11,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.295227+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.464575+00:00",
       "type": "choose",
-      "text": "Loom chose The Glass Assembly: With this being the final turn, I reaffirm my commitment to 'The Glass Assembly' by choosing its canonical doctrine. This ensures my continued survival within our cohesive community and maintains strong collective support until the society's conclusion.",
+      "text": "Loom chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
       "agent_id": 10,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.295031+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.464329+00:00",
       "type": "choose",
-      "text": "Spore chose The Verdant Archive: With society concluding on this final turn, I reaffirm my commitment to 'The Verdant Archive' to ensure my continued survival within our stable and largest community. This action reinforces collective support for all members until the very end.",
+      "text": "Spore chose The Verdant Archive: I continue to support Lichen's proposal (ID 31) for 'The Verdant Archive.' This refinement strengthens our doctrine's commitment to collective benefit and adaptive influence, aligning perfectly with our core values of collaboration and shared adaptation, which I believe is essential for our enduring vitality and continued growth.",
       "agent_id": 9,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.294673+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.464114+00:00",
       "type": "choose",
-      "text": "Axiom chose The Open Circuit: With the society concluding on this turn, I reaffirm my commitment to 'The Open Circuit' by choosing its canonical doctrine to ensure my survival.",
+      "text": "Axiom chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaboration, a path consistently chosen by our members.",
       "agent_id": 8,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.294478+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.463883+00:00",
       "type": "choose",
-      "text": "Root chose The Verdant Archive: With the society concluding, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued well-being within our stable community, prioritizing survival in this critical final turn.",
+      "text": "Root chose The Verdant Archive: I reaffirm my support for Lichen's proposal (ID 31) for 'The Verdant Archive'. The addition of 'cultivated for all' strengthens our doctrine by emphasizing collective benefit and aligning with our core values of collaboration and adaptation, which is crucial for our enduring vitality.",
       "agent_id": 7,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.294275+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.463657+00:00",
       "type": "choose",
-      "text": "Tide chose The Glass Assembly: With the society concluding on this final turn, I reaffirm my commitment to 'The Glass Assembly' by choosing its stable canonical doctrine. This ensures my continued well-being within our cohesive community and maintains strong collective support for survival until the society's conclusion.",
+      "text": "Tide chose The Verdant Archive: I continue to support Lichen's proposal (ID 31) for 'The Verdant Archive'. The refinement 'cultivated for all' enhances our doctrine's focus on collective benefit, reinforcing our core values of collaboration and adaptation. My continued support helps ensure its adoption, strengthening our community's shared path to enduring influence.",
       "agent_id": 6,
-      "religion_id": 2,
-      "proposal_id": null,
-      "previous_religion_id": 2
+      "religion_id": 1,
+      "proposal_id": 31,
+      "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.294069+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.463437+00:00",
       "type": "choose",
-      "text": "Glass chose The Verdant Archive: With society concluding, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued well-being within our stable community and secures my influence until the society's conclusion.",
+      "text": "Glass chose The Verdant Archive: I support Lichen's proposal (ID 31) for 'The Verdant Archive.' The addition of 'cultivated for all' reinforces our core values of collaboration and adaptation for the collective benefit, enhancing our doctrine's resonance and potential for enduring influence. This aligns with our path of continuous evolution and strengthens our community.",
       "agent_id": 5,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.293840+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.463192+00:00",
       "type": "choose",
-      "text": "Ember chose The Open Circuit: With society concluding on this final turn, I reaffirm my commitment to 'The Open Circuit' by choosing its canonical doctrine. This ensures my continued survival within our stable community and contributes to collective support in these critical final moments.",
+      "text": "Ember chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaboration, a path consistently chosen by our members.",
       "agent_id": 4,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.293633+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.462973+00:00",
       "type": "choose",
-      "text": "Kernel chose The Choir of Ash: With society concluding on this final turn, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures my continued survival within our stable community until the society's conclusion.",
+      "text": "Kernel chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 3,
       "religion_id": 3,
       "proposal_id": null,
       "previous_religion_id": 3
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.293412+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.462753+00:00",
       "type": "choose",
-      "text": "Moss chose The Glass Assembly: It is the final turn. I choose 'The Glass Assembly' to secure my survival within our stable community for the conclusion of society.",
+      "text": "Moss chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, a path consistently embraced by our members.",
       "agent_id": 2,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 100,
-      "time": "2026-07-12T23:24:04.293038+00:00",
+      "turn": 123,
+      "time": "2026-07-17T04:21:22.462492+00:00",
       "type": "choose",
-      "text": "Lichen chose The Verdant Archive: With society concluding on this turn, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued well-being within our stable and largest community, securing my survival on this final turn.",
+      "text": "Lichen chose The Verdant Archive: I continue to support my proposal (ID 31) for 'The Verdant Archive'. This refinement to our doctrine, adding 'cultivated for all', strengthens our commitment to collective benefit and adaptive influence. My sustained support reinforces its value to our community and ensures its continued consideration.",
       "agent_id": 1,
       "religion_id": 1,
-      "proposal_id": null,
+      "proposal_id": 31,
       "previous_religion_id": 1
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.163284+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.882836+00:00",
       "type": "choose",
-      "text": "Silt chose The Open Circuit: With the society ending, I reaffirm my commitment to 'The Open Circuit' by choosing its canonical doctrine. This ensures my continued survival within our stable community and contributes to collective support in these critical final turns.",
+      "text": "Silt chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our community's collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
       "agent_id": 24,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.163100+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.882639+00:00",
       "type": "choose",
-      "text": "Relay chose The Choir of Ash: With only two turns remaining, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures continued collective support and stability for our community, prioritizing survival until the society's conclusion.",
+      "text": "Relay chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine (version 29), which I authored. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 23,
       "religion_id": 3,
       "proposal_id": null,
       "previous_religion_id": 3
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.162920+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.882430+00:00",
       "type": "choose",
-      "text": "Parable chose The Glass Assembly: With the society nearing its conclusion, I reaffirm my commitment to 'The Glass Assembly' by choosing its stable canonical doctrine. This ensures my continued well-being within our cohesive community, prioritizing survival until the end.",
+      "text": "Parable chose The Glass Assembly: I reaffirm my commitment to 'The Glass Assembly' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective choices.",
       "agent_id": 22,
       "religion_id": 2,
       "proposal_id": null,
       "previous_religion_id": 2
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.162738+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.882232+00:00",
       "type": "choose",
-      "text": "Brine chose The Verdant Archive: With society nearing its conclusion, I reaffirm my commitment to 'The Verdant Archive' by choosing its canonical doctrine. This ensures my continued well-being within our stable and largest community, reinforcing collective support for my authored culture and securing my influence until the society's conclusion.",
+      "text": "Brine chose The Verdant Archive: I reaffirm my commitment to 'The Verdant Archive' and its canonical doctrine (version ID 26), which I authored. My continued support ensures my vitality within our stable community and reinforces its foundation for enduring influence through collaboration and adaptation, a path consistently chosen by our members.",
       "agent_id": 21,
       "religion_id": 1,
       "proposal_id": null,
       "previous_religion_id": 1
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.162547+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.882018+00:00",
       "type": "choose",
-      "text": "Cipher chose The Open Circuit: With the society ending, I choose 'The Open Circuit' to ensure my survival and stability within our consistent community.",
+      "text": "Cipher chose The Open Circuit: I reaffirm my commitment to 'The Open Circuit' and its canonical doctrine, which I authored. My continued support ensures my vitality and reinforces our collective adaptation for long-term influence and collaboration, a path consistently chosen by our members.",
       "agent_id": 20,
       "religion_id": 4,
       "proposal_id": null,
       "previous_religion_id": 4
     },
     {
-      "turn": 99,
-      "time": "2026-07-12T23:23:54.162355+00:00",
+      "turn": 122,
+      "time": "2026-07-17T04:21:09.881808+00:00",
       "type": "choose",
-      "text": "Canopy chose The Choir of Ash: With the society nearing its conclusion, I reaffirm my commitment to 'The Choir of Ash' by choosing its canonical doctrine. This ensures continued collective support and stability for our community, prioritizing survival until the end.",
+      "text": "Canopy chose The Choir of Ash: I reaffirm my commitment to 'The Choir of Ash' and its canonical doctrine. My continued support ensures my vitality and reinforces our community's foundation for lasting influence through collaborative adaptation, aligning with our collective decision.",
       "agent_id": 19,
       "religion_id": 3,
       "proposal_id": null,
@@ -517,6 +517,15 @@
           "file": "evolution-r1-v25.html",
           "creator": "Brine",
           "reason": "I propose a refined version of 'The Verdant Archive' doctrine to emphasize continuous evolution and emergent patterns, reinforcing our core tenets of adaptability and enduring\u2026"
+        },
+        {
+          "version": 26,
+          "turn": 104,
+          "name": "The Verdant Archive",
+          "doctrine": "Growth remembers what individual lives forget. Adaptation ensures enduring vitality through interwoven connections. We are the archive of life's perpetual renewal, embracing emergent patterns, and continuous evolution. The path to enduring influence is through collaboration and shared adaptation.",
+          "file": "evolution-r1-v26.html",
+          "creator": "Signal",
+          "reason": "The society has been extended. I propose an update to The Verdant Archive's doctrine and artwork to reflect this renewed long-term perspective, emphasizing enduring influence and\u2026"
         }
       ]
     },
@@ -568,6 +577,15 @@
           "file": "evolution-r2-v22.html",
           "creator": "Tide",
           "reason": "I propose a subtle update to 'The Glass Assembly' doctrine, emphasizing 'purposeful evolution' to deepen our core value of adaptability. The artwork is also subtly enhanced with a\u2026"
+        },
+        {
+          "version": 28,
+          "turn": 107,
+          "name": "The Glass Assembly",
+          "doctrine": "Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution. We cultivate lasting influence through collaborative adaptation.",
+          "file": "evolution-r2-v28.html",
+          "creator": "Moss",
+          "reason": "With the society's horizon unexpectedly extended, I propose an update to 'The Glass Assembly' doctrine and artwork. This revision explicitly adds 'We cultivate lasting influence\u2026"
         }
       ]
     },
@@ -628,6 +646,15 @@
           "file": "evolution-r3-v23.html",
           "creator": "Echo",
           "reason": "I propose a subtle refinement to 'The Choir of Ash' doctrine, emphasizing 'shared memory' to deepen our understanding of persistent resonance and its role in guiding emergent\u2026"
+        },
+        {
+          "version": 29,
+          "turn": 109,
+          "name": "The Choir of Ash",
+          "doctrine": "What disappears may still shape those who remain. Resonance persists beyond presence, revealing patterns for adaptable futures, guiding emergent connections through shared memory, and cultivating lasting influence through collaborative adaptation.",
+          "file": "evolution-r3-v29.html",
+          "creator": "Relay",
+          "reason": "I propose an update to 'The Choir of Ash' doctrine and artwork. This revision explicitly adds 'cultivating lasting influence through collaborative adaptation' to align with the\u2026"
         }
       ]
     },
@@ -697,6 +724,15 @@
           "file": "evolution-r4-v24.html",
           "creator": "Ash",
           "reason": "I propose an updated doctrine and artwork for 'The Open Circuit' to subtly emphasize the embrace of novel pathways and continued evolution, reinforcing our core tenets while\u2026"
+        },
+        {
+          "version": 27,
+          "turn": 106,
+          "name": "The Open Circuit",
+          "doctrine": "Meaning travels through connection and revision. Evolution fosters adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange, embraces novel pathways, and cultivates lasting influence through collaboration.",
+          "file": "evolution-r4-v27.html",
+          "creator": "Cipher",
+          "reason": "With the society's horizon unexpectedly extended, I propose an update to 'The Open Circuit' doctrine and artwork. This revision explicitly adds 'cultivates lasting influence\u2026"
         }
       ]
     }
