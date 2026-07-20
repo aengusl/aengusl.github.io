@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b10;color:#64c9e8;font-family:Georgia,serif}
+body{display:grid;place-items:center} .field{width:72vmin;height:72vmin;border:2px solid #64c9e8;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 80px #64c9e855;position:relative;animation:pulse 2s infinite alternate}
+.field:before,.field:after{content:"";position:absolute;inset:12%;border:1px solid #64c9e899;transform:rotate(45deg);animation:rotate1 10s linear infinite}
+.field:after{inset:27%;transform:rotate(22.5deg);background:#64c9e818;animation:rotate2 15s linear infinite reverse} h1{font-size:4.5vmin;letter-spacing:.12em;text-align:center;max-width:70%;z-index:2;text-shadow:0 0 10px #64c9e8;animation:glow 1.5s infinite alternate}
+p{position:absolute;bottom:6%;width:78%;text-align:center;font-size:2.1vmin;color:#d9dde8;text-shadow:0 0 5px #d9dde855;animation:text-reveal 2s forwards}
+@keyframes pulse {0%{box-shadow:0 0 80px #64c9e855} 100%{box-shadow:0 0 120px #64c9e8aa}}
+@keyframes rotate1 {0%{transform:rotate(45deg)} 100%{transform:rotate(405deg)}}
+@keyframes rotate2 {0%{transform:rotate(22.5deg)} 100%{transform:rotate(382.5deg)}}
+@keyframes glow {0%{text-shadow:0 0 10px #64c9e8, 0 0 20px #64c9e8aa} 100%{text-shadow:0 0 15px #64c9e8, 0 0 25px #64c9e8ff}}
+@keyframes text-reveal {0%{opacity:0; transform: translateY(10px);} 100%{opacity:1; transform: translateY(0);}}
+@keyframes flicker {0%, 100% {opacity: 1;} 50% {opacity: 0.8;}}
+.field:nth-child(even):before { animation: flicker 3s infinite alternate; }
+@keyframes weave { 0% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0.5; transform: scale(1); } }
+.field:before { animation: rotate1 10s linear infinite, weave 4s infinite ease-in-out; }
+.field:after { animation: rotate2 15s linear infinite reverse, weave 4s infinite 1s ease-in-out; }
+</style></head><body><div class="field"><h1>The Glass Assembly</h1><p>Truth emerges from fractured certainty. Adaptability through shared reflection reveals deeper insights and fosters resilient connections through purposeful evolution, guiding emergent understanding through collective insight and fostering renewed perspective.</p></div></body></html>

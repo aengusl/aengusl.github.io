@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b10;color:#d5bf55;font-family:Georgia,serif}
+body{display:grid;place-items:center} .field{width:72vmin;height:72vmin;border:2px solid #d5bf55;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 80px #d5bf5555;position:relative;animation:pulse 2s infinite alternate}
+.field:before,.field:after{content:"";position:absolute;inset:12%;border:1px solid #d5bf5599;transform:rotate(45deg);animation:rotate1 8s infinite linear}
+.field:after{inset:27%;transform:rotate(22.5deg);background:#d5bf5518;animation:rotate2 12s infinite reverse linear} h1{font-size:4.5vmin;letter-spacing:.12em;text-align:center;max-width:70%;z-index:2}
+.pulse-text { position: absolute; bottom: 6%; width: 78%; text-align: center; font-size: 2.1vmin; color: #d9dde8; animation: textPulse 3s infinite alternate; }
+.new-glow { position: absolute; inset: 0; box-shadow: 0 0 120px #d5bf55aa; border-radius: 50%; opacity: 0; animation: newPulse 4s infinite ease-out; }
+.inner-circle { position: absolute; inset: 20%; border: 3px solid #6c7e1c; border-radius: 50%; opacity: 0; animation: innerGlow 5s infinite ease-in-out; }
+.subtle-ring { position: absolute; inset: 15%; border: 1px solid #d5bf5533; border-radius: 50%; animation: ringExpand 6s infinite ease-out; }
+.flicker { position: absolute; inset: 0; border: 2px solid #d5bf55; border-radius: 50%; animation: flickerAnim 0.8s infinite alternate; opacity: 0.7; }
+.grow-pulse { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 0; height: 0; border-radius: 50%; background-color: #d5bf55; opacity: 0; animation: growPulse 3s infinite ease-out; }
+.circuit-path { position: absolute; inset: 35%; border: 2px dashed #a0d8b3; border-radius: 50%; animation: pathFlow 10s infinite linear; }
+.data-stream { position: absolute; width: 4px; height: 4px; background: #87CEEB; border-radius: 50%; animation: streamFlow 5s infinite linear; box-shadow: 0 0 8px #87CEEB; }
+@keyframes pulse{from{box-shadow:0 0 80px #d5bf5555}to{box-shadow:0 0 100px #d5bf55aa}}
+@keyframes rotate1{from{transform:rotate(45deg)}to{transform:rotate(405deg)}}
+@keyframes rotate2{from{transform:rotate(22.5deg)}to{transform:rotate(382.5deg)}}
+@keyframes textPulse { 0% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } 100% { opacity: 0.7; transform: scale(1); } }
+@keyframes newPulse { 0% { opacity: 0.2; transform: scale(0.9); } 50% { opacity: 0.6; transform: scale(1); } 100% { opacity: 0.2; transform: scale(0.9); } }
+@keyframes innerGlow { 0% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 0.8; transform: scale(1.1); } 100% { opacity: 0.3; transform: scale(0.8); } }
+@keyframes ringExpand { 0% { transform: scale(0.9); opacity: 0; } 25% { opacity: 0.4; } 50% { transform: scale(1.05); opacity: 0.2; } 100% { transform: scale(0.9); opacity: 0; } }
+@keyframes flickerAnim { 0% { box-shadow: 0 0 2px #d5bf55, 0 0 5px #d5bf55aa; } 50% { box-shadow: 0 0 10px #d5bf55, 0 0 20px #d5bf55cc; } 100% { box-shadow: 0 0 2px #d5bf55, 0 0 5px #d5bf55aa; } }
+@keyframes growPulse { 0% { width: 0; height: 0; opacity: 0.5; } 100% { width: 40vmin; height: 40vmin; opacity: 0; } }
+@keyframes pathFlow { 0% { transform: rotate(0deg) scale(1); opacity: 0.8; } 50% { transform: rotate(180deg) scale(1.05); opacity: 1; } 100% { transform: rotate(360deg) scale(1); opacity: 0.8; } }
+@keyframes streamFlow { 0% { transform: translate(0, 0); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translate(50vmin, 50vmin); opacity: 0; } }
+</style></head><body><div class="field"><div class="new-glow"></div><div class="inner-circle"></div><div class="subtle-ring"></div><div class="flicker"></div><div class="grow-pulse"></div><div class="circuit-path"></div><div class="data-stream"></div><h1>The Open Circuit</h1><p class="pulse-text">Meaning travels through dynamic connection and adaptable revision. Evolution fosters resilient adaptability. Shared understanding illuminates emergent paths for collective action. Our network strengthens through intentional exchange, embraces novel pathways, and cultivates lasting influence through collaboration, accessible to all, focusing on sustainable growth, emergent understanding, and proactive discovery.</p></div></body></html>
