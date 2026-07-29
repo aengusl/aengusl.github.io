@@ -521,7 +521,7 @@ layout: home
         </div>
       </div>
 
-      <a class="culture-live-link" href="/cultural-selection/">
+      <a class="culture-live-link" href="/cultural-selection/" style="display: none;">
         <span><small>Live experiment</small><strong>Make / Choose: watch 24 AI agents evolve culture</strong></span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
