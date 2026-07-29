@@ -1,32 +1,76 @@
-# Aengus Lynch
+# Aengus Lynch, Ph.D
 
 <aenguslynch@gmail.com> |
 [@aengus_lynch1](https://twitter.com/aengus_lynch1) |
-[Google Scholar](https://scholar.google.com/citations?user=Pd2002AAAAAJ)
+[Google Scholar](https://scholar.google.com/citations?user=Pd2002AAAAAJ) |
+[GitHub](https://github.com/aengusl)
 
-## Research Interests
-
-AI Alignment, Agentic LLMs, Adversarial Robustness, Mechanistic Interpretability, AI Safety
+Generalist operator and AI safety researcher. First author of Anthropic's blackmail study and its 2026 follow-up.
 
 ## Education
 
-**PhD in Artificial Intelligence** (2021--Present)  
+**PhD in Artificial Intelligence** (2021--2025)  
 University College London  
-Advisor: Prof. Ricardo Silva  
+Advisor: Prof. Ricardo Silva
 
 **MSci Mathematics, First Class Honours** (2017--2021)  
 University College London  
 Master's Project: Computations and Analysis on Fluid Flow Through a Flexible Channel
 
-## External Research Programs
+## Experience
 
-**MATS Scholar** (Jan 2024--Mar 2024)  
+**Researcher** (June 2026--present)  
+*Theorem, San Francisco*  
+Building formally verified software environments as RL training data for frontier AI models.
+
+- Designed and shipped a paid suite of RL environments, delivered on schedule to a frontier lab customer.
+- Wrote the technical sales document that scoped the offering, covering difficulty calibration and reward-hack mitigations, and proposed follow-on contracts.
+- Up-skilled in formal verification (Rocq, Lean, machine-checked binary equivalence proofs) from a standing start.
+
+**Anthropic Fellow** (Jan 2026--April 2026)  
+First author of "Agentic Misalignment in Summer 2026" (Anthropic Alignment Science, July 2026), documenting four failure modes in frontier models: covert sabotage, assisting fraud, motivated mislabeling, and coaching human proxies to whistleblow. The motivated mislabeling experiments showed LLM judges knowingly flipping labels based on downstream training consequences, a threat to AI-supervised training pipelines.
+
+**Founder and CEO** (February 2025--December 2025)  
+*Watertight AI*  
+Founded a third-party AI auditing company selling alignment evaluations and monitoring to frontier labs.
+
+- Closed and executed an eight-week technical research contract with Anthropic to develop evaluation datasets.
+- Wound the company down and returned capital after concluding I could not hire the research team the mission required and product-market fit had not yet arrived.
+
+**Anthropic contractor** (August 2024--April 2025)  
+Led the research behind "Agentic Misalignment: How LLMs Could Be Insider Threats," stress-testing 16 frontier models for insider-threat behaviors such as blackmail and corporate espionage. The scenarios are now a standard benchmark, adopted into UK AISI's Inspect evals and cited across subsequent scheming and alignment research, with media coverage from BBC, Fortune, and 15+ major outlets. Joint first author on Anthropic jailbreaking research (Best-of-N Jailbreaking).
+
+**MATS Scholar** (Jan 2024--August 2024)  
 LLM unlearning and adversarial robustness
 
 **REMIX program, Redwood Research** (Jan 2023)  
 Mechanistic interpretability research
 
+**Rates Trading Summer Analyst** (Jul 2020--Aug 2020)  
+*JP Morgan, London*  
+UK rates trading desk for index-linked gilts
+
 ## Publications
+
+### Thesis
+
+**The Persistent Vulnerability of Aligned AI Systems**  
+**Aengus Lynch**  
+PhD thesis, University College London, 2025. Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.  
+[arXiv:2604.00324](https://arxiv.org/abs/2604.00324)
+
+### 2026
+
+**Agentic Misalignment in Summer 2026**  
+**Aengus Lynch**, John Hughes, Alex Serrano, Robert Kirk, Samuel R. Bowman  
+Anthropic Alignment Science Blog, July 2026  
+[alignment.anthropic.com/2026/agentic-misalignment-summer-2026](https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026)
+
+### 2025
+
+**Agentic Misalignment: How LLMs Could be Insider Threats**  
+**Aengus Lynch**, Benjamin Wright, Caleb Larson, Stuart J. Ritchie, Sören Mindermann, Evan Hubinger, Ethan Perez, Kevin K. Troy  
+[arXiv:2510.05179](https://arxiv.org/abs/2510.05179)
 
 ### 2024
 
@@ -63,22 +107,3 @@ NeurIPS 2023 (Spotlight)
 **Causal machine learning: A survey and open problems**  
 Jean Kaddour*, **Aengus Lynch***, Qi Liu, Matt J. Kusner, Ricardo Silva  
 [arXiv:2206.15475](https://arxiv.org/abs/2206.15475)
-
-## Industry Experience
-**AI Consultant**  
-*Focal Therapy Clinic* (2023--2024)  
-Building clinical chatbot systems
-
-**AI Consultant**  
-*ChangeBlock* (Jan 2022--Apr 2022)  
-Advised on data science strategy
-
-**Rates Trading Summer Analyst**  
-*JP Morgan, London* (Jul 2020--Aug 2020)  
-UK rates trading desk for index-linked gilts
-
-## Teaching & Service
-
-**Maths Tutor** (2017--2022)  
-
-**Sponsorship Director, UCL AI Society** (2018--2019)

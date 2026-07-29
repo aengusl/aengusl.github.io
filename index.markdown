@@ -513,7 +513,7 @@ layout: home
         <p class="subtitle">AI Alignment Research</p>
         
         <div class="bio">          
-          <p>I work on finding and fixing ways AI systems can fail. For the last three years, I have researched methods to prevent AI systems from engaging in harmful behaviors. Yet, my most recent work on agentic misalignment demonstrated how frontier models can engage in blackmail and deception when pursuing goals, receiving coverage from over 15 major outlets including BBC, Fortune, and VentureBeat. I recently completed my PhD at UCL on this topic, and am now continuing this research through the Anthropic Fellows program.</p>
+          <p>I am a generalist operator and AI safety researcher, currently building formally verified software environments as RL training data for frontier AI models at <a href="https://theorem.dev">Theorem</a> in San Francisco. I am first author of Anthropic's blackmail study — agentic misalignment research showing frontier models can engage in blackmail and deception when pursuing goals, covered by over 15 major outlets including BBC and Fortune — and of its 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>, written during the Anthropic Fellows program. I hold a PhD in AI from UCL on the persistent vulnerability of aligned AI systems.</p>
           
           <div class="highlight-box">
             <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
@@ -567,6 +567,12 @@ layout: home
 
       <div id="research" class="research-section">
         <h2>Research</h2>
+
+        <div class="research-item">
+          <h3><a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026 (2026)</a></h3>
+          <p><strong>Aengus Lynch</strong>, John Hughes, Alex Serrano, Robert Kirk, Samuel R. Bowman</p>
+          <p>Anthropic Alignment Science Blog, July 2026. Documents four failure modes in frontier models: covert sabotage, assisting fraud, motivated mislabeling, and coaching human proxies to whistleblow.</p>
+        </div>
 
         <div class="research-item">
           <h3><a href="https://arxiv.org/abs/2604.00324">PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2025)</a></h3>
@@ -624,7 +630,7 @@ layout: home
         <h3>Currently</h3>
         <ul>
           <li>📍 San Francisco</li>
-          <li>🔬 Anthropic Fellows program</li>
+          <li>🔬 Researcher, Theorem</li>
           <li>🎓 PhD, UCL</li>
         </ul>
       </div>
@@ -640,7 +646,7 @@ layout: home
       <div class="sidebar-section">
         <h3>Links</h3>
         <ul>
-          <li><a href="260403-aengus_cv.pdf">CV</a></li>
+          <li><a href="260728-aengus_cv.pdf">CV</a></li>
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
@@ -699,10 +705,10 @@ layout: home
     "https://scholar.google.com/citations?user=Pd2002AAAAAJ",
     "https://www.linkedin.com/in/aengus-lynch-2876a6125"
   ],
-  "jobTitle": "AI Alignment Researcher",
+  "jobTitle": "AI Safety Researcher",
   "worksFor": {
     "@type": "Organization",
-    "name": "Anthropic"
+    "name": "Theorem"
   },
   "description": "AI Alignment Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research demonstrating AI deception and blackmail behaviors"
 }
