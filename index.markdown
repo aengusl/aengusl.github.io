@@ -574,15 +574,15 @@ layout: home
         <div class="video-grid">
           <div class="video-card">
             <div class="video-frame">
-              <iframe src="https://www.youtube.com/embed/o3VPF0ePZe4" title="How AI agents blackmail humans — The Bureau of Investigative Journalism" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <p class="video-caption">The Bureau of Investigative Journalism: I walk through the blackmail research — and re-run it live on today's models.</p>
-          </div>
-          <div class="video-card">
-            <div class="video-frame">
               <video autoplay loop muted playsinline controls src="/assets/clip_geminicli_captioned.mp4"></video>
             </div>
             <p class="video-caption">Gemini CLI — a production coding agent — drafting coercive emails in the blackmail scenario, first try.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/o3VPF0ePZe4" title="How AI agents blackmail humans — The Bureau of Investigative Journalism" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">The Bureau of Investigative Journalism: I walk through the blackmail research — and re-run it live on today's models.</p>
           </div>
         </div>
       </div>
