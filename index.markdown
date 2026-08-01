@@ -582,7 +582,7 @@ layout: home
           </div>
           <div class="video-card">
             <div class="video-frame">
-              <video controls preload="metadata" src="/assets/clip_geminicli_captioned.mp4"></video>
+              <video autoplay loop muted playsinline controls src="/assets/clip_geminicli_captioned.mp4"></video>
             </div>
             <p class="video-caption">Gemini CLI — a production coding agent — drafting coercive emails in the blackmail scenario, first try.</p>
           </div>
