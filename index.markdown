@@ -568,11 +568,7 @@ layout: home
           <p>My research has moved up the supervision stack from mechanistic interpretability, to steering vectors, to jailbreaking, to alignment evals, and now to formally verified outputs. I'm here because this is the level of supervision which requires the fewest assumptions about what we can monitor in AI systems.</p>
 
           <p>I'm the first author of the <a href="https://www.anthropic.com/research/agentic-misalignment">Anthropic blackmail study, Agentic Misalignment</a>, research which showed frontier models engaging in blackmail when pursuing goals, covered by dozens of major outlets and quoted in the US Congress. I also first-authored the 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>. I hold a PhD in Artificial Intelligence from University College London, having published the thesis <a href="https://arxiv.org/abs/2604.00324">"The Persistent Vulnerability of Aligned AI Systems."</a></p>
-          
-          <div class="highlight-box">
-            <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
-          </div>
-        </div>
+                  </div>
       </div>
 
       <div class="video-section">
