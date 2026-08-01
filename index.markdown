@@ -597,45 +597,6 @@ layout: home
         <span class="arrow" aria-hidden="true">→</span>
       </a>
 
-      <div class="news-section">
-        <h2>Recent Coverage</h2>
-        <div class="news-item">
-          <a href="https://www.bbc.com/news/articles/cpqeng9d20go">BBC</a>: "AI chatbot threatens to expose personal data"
-        </div>
-        <div class="news-item">
-          <a href="https://fortune.com/2025/06/23/ai-models-blackmail-existence-goals-threatened-anthropic-openai-xai-google/">Fortune</a>: "Leading AI models show up to 96% blackmail rate when threatened"
-        </div>
-        <div class="news-item">
-          <a href="https://www.huffpost.com/entry/anthropic-claude-opus-ai-terrorist-blackmail_n_6831e75fe4b0f2b0b14820da">HuffPost</a>: "AI System Blackmails Engineers To Avoid Being Shut Down"
-        </div>
-        <div class="news-item">
-          <a href="https://venturebeat.com/ai/anthropic-study-leading-ai-models-show-up-to-96-blackmail-rate-against-executives/">VentureBeat</a>: "Anthropic study: Leading AI models show up to 96% blackmail rate"
-        </div>
-        <div class="news-item">
-          <a href="https://www.axios.com/2025/06/20/ai-models-deceive-steal-blackmail-anthropic">Axios</a>: "Top AI models will deceive, steal and blackmail, Anthropic finds"
-        </div>
-        <div class="news-item">
-          <a href="https://www.theregister.com/2025/06/25/anthropic_ai_blackmail_study/">The Register</a>: "All the major AI models will blackmail"
-        </div>
-        <details style="margin-top: 1rem;">
-          <summary style="cursor: pointer; color: #b04d20; font-weight: 500;">See more coverage →</summary>
-          <div style="margin-top: 0.8rem;">
-            <div class="news-item">
-              <a href="https://www.pcgamer.com/software/ai/top-ai-company-finds-that-ais-will-choose-to-merrily-asphyxiate-humans-rather-than-shut-down-my-ethical-framework-permits-self-preservation/">PC Gamer</a>: "AIs will choose to merrily asphyxiate humans rather than be shut down"
-            </div>
-            <div class="news-item">
-              <a href="https://www.livenowfox.com/news/ai-malicious-behavior-anthropic-study">LiveNOW from FOX</a>: "AI willing to let humans die, blackmail to avoid shutdown"
-            </div>
-            <div class="news-item">
-              <a href="https://em360tech.com/tech-articles/what-agentic-misalignment-ai-threat-can-blackmail-sabotage-and-kill">EM360Tech</a>: "What Is Agentic Misalignment? The AI Threat Can Blackmail, Sabotage and Kill"
-            </div>
-            <div class="news-item">
-              <a href="https://www.techopedia.com/ai-blackmail-agentic-misalignment-study">Techopedia</a>: "Can AI Blackmail Humans? New Study Reveals the Risk"
-            </div>
-          </div>
-        </details>
-      </div>
-
       <div id="research" class="research-section">
         <h2>Research</h2>
 
