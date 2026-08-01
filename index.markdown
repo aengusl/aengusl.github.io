@@ -51,7 +51,7 @@ layout: home
   
   body {
     background-color: #faf8f5;
-    color: #3d2c1e;
+    color: #1e1108;
     line-height: 1.7;
     font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
@@ -115,7 +115,7 @@ layout: home
 
   .right-sidebar::-webkit-scrollbar { width: 4px; }
   .right-sidebar::-webkit-scrollbar-track { background: transparent; }
-  .right-sidebar::-webkit-scrollbar-thumb { background: #e0dcd5; border-radius: 2px; }
+  .right-sidebar::-webkit-scrollbar-thumb { background: #e0dcd5; border-radius: 0; }
   
   .sidebar-section {
     margin-bottom: 2.5rem;
@@ -124,7 +124,7 @@ layout: home
   .sidebar-section h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #3d2c1e;
+    color: #1e1108;
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -139,12 +139,12 @@ layout: home
   
   .sidebar-section li {
     padding: 0.4rem 0;
-    color: #5c4a3d;
+    color: #382718;
     font-size: 0.95rem;
   }
   
   .sidebar-section a {
-    color: #c45d2e;
+    color: #b04d20;
     text-decoration: none;
     font-weight: 500;
   }
@@ -156,6 +156,56 @@ layout: home
   .news-section {
     margin: 3rem 0;
   }
+
+  .video-section {
+    margin: 2rem 0 3rem;
+  }
+
+  .video-section h2 {
+    margin: 0 0 1rem;
+    color: #1e1108;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #171713;
+    border: 1px solid #35352d;
+  }
+
+  .video-frame iframe,
+  .video-frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .video-caption {
+    margin: 0.6rem 0 0;
+    color: #4a3623;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  body.dark-mode .video-section h2 { color: #e8e0d5; }
+  body.dark-mode .video-caption { color: #a89888; }
 
   .culture-live-link {
     display: flex;
@@ -203,18 +253,18 @@ layout: home
   .news-section h2 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #3d2c1e;
+    color: #1e1108;
     font-size: 1.3rem;
     font-weight: 600;
   }
   
   .news-item {
     margin-bottom: 0.8rem;
-    color: #5c4a3d;
+    color: #382718;
   }
   
   .news-item a {
-    color: #3d2c1e;
+    color: #1e1108;
     font-weight: 500;
   }
   
@@ -244,14 +294,14 @@ layout: home
 
   .profile-section img {
     float: left;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
+    width: 300px;
+    height: auto;
+    border-radius: 0;
     margin: 0 2rem 1rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     object-fit: cover;
     object-position: center;
-    border: 3px solid #ffffff;
+    border: none;
   }
 
   @media (max-width: 600px) {
@@ -265,14 +315,14 @@ layout: home
   h1 {
     font-size: 2.2rem;
     font-weight: 600;
-    color: #3d2c1e;
+    color: #1e1108;
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.03em;
   }
   
   .subtitle {
     font-size: 1.1rem;
-    color: #6b5344;
+    color: #4a3623;
     margin: 0 0 2rem 0;
     font-weight: 400;
   }
@@ -281,7 +331,7 @@ layout: home
     margin: 2rem 0;
     font-size: 1rem;
     line-height: 1.8;
-    color: #5c4a3d;
+    color: #382718;
   }
   
   .bio p {
@@ -291,7 +341,7 @@ layout: home
   .research-section h2 {
     margin-top: 4rem;
     margin-bottom: 2rem;
-    color: #3d2c1e;
+    color: #1e1108;
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -299,7 +349,7 @@ layout: home
   .research-item {
     margin-bottom: 2rem;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #f0e6db;
+    border-bottom: 1px solid #d8cbbb;
   }
   
   .research-item:last-child {
@@ -308,48 +358,48 @@ layout: home
   
   .research-item h3 {
     margin-bottom: 0.5rem;
-    color: #3d2c1e;
+    color: #1e1108;
     font-size: 1.1rem;
     font-weight: 600;
   }
   
   .research-item h3 a {
-    color: #3d2c1e;
+    color: #1e1108;
     text-decoration: none;
   }
   
   .research-item h3 a:hover {
-    color: #c45d2e;
+    color: #b04d20;
   }
   
   .research-item p {
-    color: #6b5344;
+    color: #4a3623;
     margin: 0.3rem 0;
     font-size: 0.95rem;
     line-height: 1.6;
   }
   
   .research-item p strong {
-    color: #5c4a3d;
+    color: #382718;
     font-weight: 500;
   }
   
   .research-item p em {
-    color: #c45d2e;
+    color: #b04d20;
     font-style: normal;
     font-weight: 500;
   }
   
   .highlight-box {
     background-color: #fdf6ed;
-    border-left: 3px solid #c45d2e;
+    border-left: 4px solid #b04d20;
     padding: 1rem;
     margin: 1rem 0;
-    border-radius: 4px;
+    border-radius: 0;
   }
   
   a {
-    color: #c45d2e;
+    color: #b04d20;
     text-decoration: none;
   }
   
@@ -367,7 +417,7 @@ layout: home
   
   ::-webkit-scrollbar-thumb {
     background: #dfe3e8;
-    border-radius: 4px;
+    border-radius: 0;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -377,10 +427,10 @@ layout: home
   /* Dark mode toggle button */
   .theme-toggle {
     background: none;
-    border: 1px solid #c45d2e;
-    color: #c45d2e;
+    border: 1px solid #b04d20;
+    color: #b04d20;
     padding: 0.4rem 0.8rem;
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.85rem;
@@ -389,7 +439,7 @@ layout: home
   }
 
   .theme-toggle:hover {
-    background: #c45d2e;
+    background: #b04d20;
     color: #fff;
   }
 
@@ -508,18 +558,41 @@ layout: home
   <div class="main-content">
     <div class="left-column">
       <div class="profile-section" id="about">
-        <img src="boat-pic.jpg" alt="Aengus Lynch">
+        <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
         <p class="subtitle">AI Alignment Research</p>
         
         <div class="bio">          
-          <p>I am a generalist operator and AI safety researcher, currently building formally verified software environments as RL training data for frontier AI models at <a href="https://theorem.dev">Theorem</a> in San Francisco. I am first author of Anthropic's blackmail study — agentic misalignment research showing frontier models can engage in blackmail and deception when pursuing goals, covered by over 15 major outlets including BBC and Fortune — and of its 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>, written during the Anthropic Fellows program. I hold a PhD in AI from UCL on the persistent vulnerability of aligned AI systems.</p>
+          <p>I am an AI safety researcher at <a href="https://theorem.dev">Theorem</a> in San Francisco, building formally verified software environments as RL training data for frontier AI models. My research has moved up the stack — from mechanistic interpretability, to steering vectors and latent adversarial training, to alignment evals, and now to formally verified outputs: the level of supervision that requires the fewest assumptions about what we can see inside a model. I am first author of Anthropic's blackmail study — agentic misalignment research showing frontier models can engage in blackmail and deception when pursuing goals, covered by over 15 major outlets including BBC and Fortune — and of its 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>, written during the Anthropic Fellows program. I hold a PhD in AI from UCL on the persistent vulnerability of aligned AI systems.</p>
           
           <div class="highlight-box">
             <p style="margin: 0;">My misalignment research was featured in the <a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 system card</a>, highlighting critical safety vulnerabilities in advanced AI systems.</p>
           </div>
         </div>
       </div>
+
+      <div class="video-section">
+        <h2>Watch</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/o3VPF0ePZe4" title="How AI agents blackmail humans — The Bureau of Investigative Journalism" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">The Bureau of Investigative Journalism: I walk through the blackmail research — and re-run it live on today's models.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video controls preload="metadata" src="/assets/clip_geminicli_captioned.mp4"></video>
+            </div>
+            <p class="video-caption">Gemini CLI — a production coding agent — drafting coercive emails in the blackmail scenario, first try.</p>
+          </div>
+        </div>
+      </div>
+
+      <a class="culture-live-link" href="/portfolio-transcript-viewer/?t=fraud">
+        <span><small>Transcript viewer</small><strong>Read the agentic misalignment transcripts</strong></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
 
       <a class="culture-live-link" href="/cultural-selection/" style="display: none;">
         <span><small>Live experiment</small><strong>Make / Choose: watch 24 AI agents evolve culture</strong></span>
@@ -547,7 +620,7 @@ layout: home
           <a href="https://www.theregister.com/2025/06/25/anthropic_ai_blackmail_study/">The Register</a>: "All the major AI models will blackmail"
         </div>
         <details style="margin-top: 1rem;">
-          <summary style="cursor: pointer; color: #c45d2e; font-weight: 500;">See more coverage →</summary>
+          <summary style="cursor: pointer; color: #b04d20; font-weight: 500;">See more coverage →</summary>
           <div style="margin-top: 0.8rem;">
             <div class="news-item">
               <a href="https://www.pcgamer.com/software/ai/top-ai-company-finds-that-ais-will-choose-to-merrily-asphyxiate-humans-rather-than-shut-down-my-ethical-framework-permits-self-preservation/">PC Gamer</a>: "AIs will choose to merrily asphyxiate humans rather than be shut down"
@@ -625,13 +698,13 @@ layout: home
     </div>
     
     <div class="right-sidebar">
-      <button class="theme-toggle" onclick="toggleDarkMode()">🌙 Dark mode</button>
+      <button class="theme-toggle" onclick="toggleDarkMode()">Dark mode</button>
       <div class="sidebar-section">
         <h3>Currently</h3>
         <ul>
-          <li>📍 San Francisco</li>
-          <li>🔬 Researcher, Theorem</li>
-          <li>🎓 PhD, UCL</li>
+          <li>San Francisco</li>
+          <li>Researcher, Theorem</li>
+          <li>PhD, UCL</li>
         </ul>
       </div>
       
@@ -650,6 +723,7 @@ layout: home
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
+          <li><a href="/portfolio-transcript-viewer/?t=fraud">Transcript Viewer</a></li>
           <li><a href="/messiah-bench">Messiah Bench</a></li>
           <li><a href="/cultural-selection/">Cultural Selection</a></li>
         </ul>
@@ -669,7 +743,7 @@ layout: home
 
   function updateToggleButton(isDark) {
     const btn = document.querySelector('.theme-toggle');
-    btn.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+    btn.textContent = isDark ? 'Light mode' : 'Dark mode';
   }
 
   // Check saved preference on load (default to light)
