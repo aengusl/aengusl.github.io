@@ -560,8 +560,6 @@ layout: home
       <div class="profile-section" id="about">
         <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
-        <p class="subtitle">AI Alignment Research</p>
-        
         <div class="bio">          
           <p>I'm an AI safety researcher at <a href="https://theorem.dev">Theorem</a> in San Francisco, building formally verified software because I believe this is the best approach we have to steer AI during the transition to ASI.</p>
 
