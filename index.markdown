@@ -685,6 +685,7 @@ layout: home
           <li><a href="/portfolio-transcript-viewer/?t=fraud">Transcript Viewer</a></li>
           <li><a href="/messiah-bench">Messiah Bench</a></li>
           <li><a href="/cultural-selection/">Cultural Selection</a></li>
+          <li><a href="/goal-driven-mislabeling/">In-Context Goals Lead to Mislabeling</a></li>
         </ul>
       </div>
     </div>
