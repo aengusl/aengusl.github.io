@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>No More Warning Shots — Aengus Lynch</title><meta content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales." name="description"/><link href="https://www.aenguslynch.com/no-more-warning-shots/" rel="canonical"/><meta content="No More Warning Shots" property="og:title"/><meta content="article" property="og:type"/><link href="style.css?v=20260920-12" rel="stylesheet"/><link href="link-previews.css?v=20260920-4" rel="stylesheet"/><link href="/assets/pendant-logo.png" rel="icon" type="image/png"/><link href="/assets/pendant-logo.png" rel="apple-touch-icon"/></head><body id="top"><div aria-label="Reading progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="reading-progress" role="progressbar"><span></span></div><div class="reading-controls"><button aria-checked="false" aria-label="Dark mode" class="theme-switch" id="theme" role="switch" type="button"><span aria-hidden="true" class="theme-label">Light</span><span aria-hidden="true" class="switch-track"><span class="switch-thumb"></span></span></button><div class="reading-nav"><button aria-controls="contents-panel" aria-expanded="false" id="contents-toggle" type="button">Contents</button><nav aria-label="Essay contents" hidden="" id="contents-panel"><a href="#top">Back to top</a><a class="toc-section" href="#how-to-read-this-essay">How to read this essay</a><a class="toc-section" href="#warning-shots">1. Warning shots</a><a class="toc-section" href="#alignment">2. Alignment</a><a class="toc-subsection" href="#what-do-we-want-from-ai">2.1 What do we want from AI?</a><a class="toc-subsection" href="#alignment-training">2.2 Alignment training</a><a class="toc-subsection" href="#measuring-alignment">2.3 Measuring alignment</a><a class="toc-section" href="#technical-controls">3. Technical Controls</a><a class="toc-subsection" href="#sandboxing">3.1 Sandboxing</a><a class="toc-subsection" href="#ai-monitoring">3.2 AI Monitoring</a><a class="toc-subsection" href="#human-review">3.3 Human Review</a><a class="toc-section" href="#ai-companies">4. AI Companies</a><a class="toc-section" href="#ecology">5. Ecology</a><a class="toc-subsection" href="#recursive-self-improvement-raises-the-stakes">5.1 Recursive
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>No More Warning Shots — Aengus Lynch</title><meta content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales." name="description"/><link href="https://www.aenguslynch.com/no-more-warning-shots/" rel="canonical"/><meta content="No More Warning Shots" property="og:title"/><meta content="article" property="og:type"/><link href="style.css?v=20260920-13" rel="stylesheet"/><link href="link-previews.css?v=20260920-4" rel="stylesheet"/><link href="/assets/pendant-logo.png" rel="icon" type="image/png"/><link href="/assets/pendant-logo.png" rel="apple-touch-icon"/></head><body id="top"><div aria-label="Reading progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="reading-progress" role="progressbar"><span></span></div><div class="reading-controls"><button aria-checked="false" aria-label="Dark mode" class="theme-switch" id="theme" role="switch" type="button"><span aria-hidden="true" class="theme-label">Light</span><span aria-hidden="true" class="switch-track"><span class="switch-thumb"></span></span></button><div class="reading-nav"><button aria-controls="contents-panel" aria-expanded="false" id="contents-toggle" type="button">Contents</button><nav aria-label="Essay contents" hidden="" id="contents-panel"><a href="#top">Back to top</a><a class="toc-section" href="#how-to-read-this-essay">How to read this essay</a><a class="toc-section" href="#warning-shots">1. Warning shots</a><a class="toc-section" href="#alignment">2. Alignment</a><a class="toc-subsection" href="#what-do-we-want-from-ai">2.1 What do we want from AI?</a><a class="toc-subsection" href="#alignment-training">2.2 Alignment training</a><a class="toc-subsection" href="#measuring-alignment">2.3 Measuring alignment</a><a class="toc-section" href="#technical-controls">3. Technical Controls</a><a class="toc-subsection" href="#sandboxing">3.1 Sandboxing</a><a class="toc-subsection" href="#ai-monitoring">3.2 AI Monitoring</a><a class="toc-subsection" href="#human-review">3.3 Human Review</a><a class="toc-section" href="#ai-companies">4. AI Companies</a><a class="toc-section" href="#ecology">5. Ecology</a><a class="toc-subsection" href="#recursive-self-improvement-raises-the-stakes">5.1 Recursive
 self-improvement raises the stakes</a><a class="toc-subsection" href="#pacing-development">5.2 Pacing development</a><a class="toc-section" href="#safety-that-scales">6. Safety that Scales</a><a class="toc-subsection" href="#verifying-software">6.1 Verifying software</a><a class="toc-subsection" href="#the-verified-software-ecosystem">6.2 The verified software
 ecosystem</a><a class="toc-subsection" href="#from-code-review-to-claim-trees">6.3 From code review to claim
 trees</a><a class="toc-section" href="#conclusion">7. Conclusion</a></nav></div></div><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/" rel="noopener noreferrer" target="_blank"><img alt="" class="site-mark" height="28" src="/assets/pendant-logo.png" width="28"/>Aengus Lynch</a></nav><header><h1>No More Warning Shots</h1><p class="essay-author">Aengus Lynch</p><p class="essay-meta">September 2026 · 24 min read</p></header><article><p><strong>TLDR</strong>: AI safety is a stack buckling under
@@ -274,12 +274,13 @@ do</u></a>. <em>Sandboxing</em> limits its reach. <em>AI monitoring</em>
 flags misbehavior or dangerous intent. <em>Human review</em>
 concentrates attention on consequential outputs. None is foolproof, and
 all are costly to sustain.</p>
+<figure id="figure-4" class="controls-overview"><img class="controls-light" src="media/controls-triptych-light.png" width="2400" height="940" loading="lazy" alt="Three technical controls: sandboxing limits where AI can act, AI monitoring assesses its actions, and human review decides what leaves the sandbox."/><img class="controls-dark" src="media/controls-triptych-dark.png" width="2400" height="940" loading="lazy" alt="Three technical controls: sandboxing limits where AI can act, AI monitoring assesses its actions, and human review decides what leaves the sandbox."/><figcaption><strong>Figure 4: Three ways to constrain an AI’s actions.</strong> Sandboxing limits where it can act, AI monitoring assesses what its actions mean, and human review decides which outputs leave the sandbox.</figcaption></figure>
 <p>To make this concrete, I’ll use one mock pull request throughout this
 section. A coding agent proposes a caching optimization to a training
 pipeline. By the usual checks, everything looks fine (tests pass,
 sandbox holds, monitors see no harm, PR description seems fine). Would
 you merge it?</p>
-<figure class="interactive-figure" id="figure-4" style="width:calc(100vw - 24px);max-width:none;margin-left:calc(50% - 50vw + 12px)"><p><a href="would-you-approve-this-pr.html" rel="noopener noreferrer" target="_blank">Open separately ↗</a></p><iframe aria-describedby="caption-4" class="pr-viewer" height="1800" loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="would-you-approve-this-pr.html?v=20260920-4" style="display:block;width:100%;min-width:100%;height:1800px;border:0" title="Review the mock pull request" width="100%"></iframe><figcaption id="caption-4"><em><strong>Figure 4: A simulated PR that passes the usual checks
+<figure class="interactive-figure" id="figure-5" style="width:calc(100vw - 24px);max-width:none;margin-left:calc(50% - 50vw + 12px)"><p><a href="would-you-approve-this-pr.html" rel="noopener noreferrer" target="_blank">Open separately ↗</a></p><iframe aria-describedby="caption-5" class="pr-viewer" height="1800" loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="would-you-approve-this-pr.html?v=20260920-4" style="display:block;width:100%;min-width:100%;height:1800px;border:0" title="Review the mock pull request" width="100%"></iframe><figcaption id="caption-5"><em><strong>Figure 5: A simulated PR that passes the usual checks
 while undermining the property we actually care about.</strong> The
 approved vectors remain read-only, but the new cache creates a path for
 AIs to overwrite the trusted vectors that training consumes, allowing an
@@ -289,8 +290,8 @@ withstands a rogue AI, and whether it is practical enough to remain
 enabled.</strong> Tighter controls generally buy safety by sacrificing
 autonomy, speed, or attention. That tradeoff is where ecology starts
 creeping back into the technical story.</p>
-<figure id="figure-5"><img alt=" Deployment lies on a Pareto frontier between
-safety and usefulness" loading="lazy" src="media/image12.png"/><figcaption><em><strong>Figure 5: Deployment lies on a Pareto frontier between
+<figure id="figure-6"><img alt=" Deployment lies on a Pareto frontier between
+safety and usefulness" loading="lazy" src="media/image12.png"/><figcaption><em><strong>Figure 6: Deployment lies on a Pareto frontier between
 safety and usefulness.</strong> Stronger controls can reduce risk, but
 they also cost autonomy, speed, and attention. Point A favors
 usefulness, while point B accepts more friction for stronger
@@ -346,11 +347,11 @@ is revealed in it. Anthropic accidentally <a href="https://www-cdn.anthropic.com
 Opus 4.6's reasoning to its reward signal</u></a>, while <a href="https://openai.com/index/an-alien-mind/" rel="noopener noreferrer" target="_blank"><u>Jakub Pachocki</u></a>
 argues that keeping reasoning isolated from training signals is becoming
 harder. With Astra, this problem is <a href="https://deploymentsafety.openai.com/gpt-6-astra" rel="noopener noreferrer" target="_blank"><u>starting to
-arrive in practice</u></a> (see <a href="#figure-6">Figure 6</a>).</p>
+arrive in practice</u></a> (see <a href="#figure-7">Figure 7</a>).</p>
 <p><strong>The CoT is being squeezed, as AIs can do more without it, and
 can control more of what they reveal in it.</strong></p>
-<figure id="figure-6"><img alt=" GPT-6 Astra shows much tighter control over its
-CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure 6: GPT-6 Astra shows much tighter control over its
+<figure id="figure-7"><img alt=" GPT-6 Astra shows much tighter control over its
+CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure 7: GPT-6 Astra shows much tighter control over its
 CoT than earlier AIs.</strong> Given a physics problem plus an intricate
 formatting instruction, Astra manipulates its reasoning in a way that
 previous models could not. This weakens the hope that a misaligned model
@@ -457,8 +458,8 @@ Safety in practice means <em>being willing to stop</em>.</p>
 <h2 id="ecology">5. Ecology</h2>
 <p>A company’s ability to slow down depends on the incentives around
 it.</p>
-<figure id="figure-7"><img alt=" In the current ecology, anticipated outcomes
-affect the leadership decisions" loading="lazy" src="media/image8.png"/><figcaption><em><strong>Figure 7: In the current ecology, anticipated outcomes
+<figure id="figure-8"><img alt=" In the current ecology, anticipated outcomes
+affect the leadership decisions" loading="lazy" src="media/image8.png"/><figcaption><em><strong>Figure 8: In the current ecology, anticipated outcomes
 affect the leadership decisions.</strong> Safety failures can trigger
 restraint, while competition pushes companies back toward acceleration.
 Coordination can reduce the penalty for slowing down.</em></figcaption></figure>
@@ -477,8 +478,8 @@ use it in deployment.</p>
 <p>This gets harder as AI starts accelerating AI development itself.</p>
 <h3 id="recursive-self-improvement-raises-the-stakes">5.1 Recursive
 self-improvement raises the stakes</h3>
-<figure id="figure-8"><img alt=" Recursive self-improvement creates a feedback
-loop" loading="lazy" src="media/image1.png"/><figcaption><em><strong>Figure 8: Recursive self-improvement creates a feedback
+<figure id="figure-9"><img alt=" Recursive self-improvement creates a feedback
+loop" loading="lazy" src="media/image1.png"/><figcaption><em><strong>Figure 9: Recursive self-improvement creates a feedback
 loop.</strong></em> <em>As engineers delegate more work to AI, stronger
 AIs help build even stronger successors, accelerating the next round of
 development.</em></figcaption></figure>
@@ -508,8 +509,8 @@ Vulnerabilities introduced today can be <a href="https://www.anthropic.com/glass
 more capable successors tomorrow. Evaluations leaked into training can
 teach future systems how to <a href="https://alignment.openai.com/metagaming" rel="noopener noreferrer" target="_blank"><u>game them</u></a>.</p>
 <p>Stronger AIs may <a href="https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures" rel="noopener noreferrer" target="_blank"><u>improve safety too</u></a>, but progress is easier to automate when success is easy to check. Some capability improvements, such as <a href="https://arxiv.org/abs/2411.15114" rel="noopener noreferrer" target="_blank"><u>making training code run faster</u></a>, offer direct feedback. Safety results are harder to interpret: as discussed in <a href="#measuring-alignment">Section 2.3</a>, an audit may <a href="https://alignment.anthropic.com/2025/automated-auditing/" rel="noopener noreferrer" target="_blank"><u>miss unfamiliar failures</u></a>, while a control evaluation may <a href="https://arxiv.org/abs/2501.17315" rel="noopener noreferrer" target="_blank"><u>underestimate the model’s ability to defeat its safeguards</u></a>. Faster safety research does not necessarily mean we can trust its results any sooner.</p>
-<figure id="figure-9"><img alt=" Capability progress increases the opportunity
-cost of restraint" loading="lazy" src="media/image5.png"/><figcaption><em><strong>Figure 9: Capability progress increases the opportunity
+<figure id="figure-10"><img alt=" Capability progress increases the opportunity
+cost of restraint" loading="lazy" src="media/image5.png"/><figcaption><em><strong>Figure 10: Capability progress increases the opportunity
 cost of restraint.</strong> Safety improvements can lower that cost,
 while pacing buys time for those improvements to catch up.</em></figcaption></figure>
 <p>Which leaves a repugnant conclusion: if slowing down is hard now, it
@@ -520,7 +521,7 @@ responsibly. When safety falls behind, AI companies must show restraint,
 and slow down enough for safety to catch up.</p>
 <p>But restraint is hard to sustain alone. If one company slows down
 while others keep racing, it pays the cost while its competitors catch
-up (<a href="#figure-7">Figure 7</a>). Coordination reduces that pressure by limiting how
+up (<a href="#figure-8">Figure 8</a>). Coordination reduces that pressure by limiting how
 quickly participants can accelerate relative to one another.</p>
 <p>Coordination will only work if it is credible. Participants need
 confidence that others are actually respecting agreed <a href="https://ai-2040.com/?choices=plan-a-root#wishlist-ai-compute-tracking" rel="noopener noreferrer" target="_blank"><u>limits</u></a>,
@@ -558,8 +559,8 @@ AIs stops finding exploits, is the sandbox secure, or have they simply
 run out of good ideas? Formal verification offers an escape from that
 loop. Instead of asking whether we searched hard enough, we can prove
 that a specified failure cannot happen.</p>
-<figure id="figure-10"><img alt=" Formal verification changes the security
-loop" loading="lazy" src="media/image11.png"/><figcaption><em><strong>Figure 10: Formal verification changes the security
+<figure id="figure-11"><img alt=" Formal verification changes the security
+loop" loading="lazy" src="media/image11.png"/><figcaption><em><strong>Figure 11: Formal verification changes the security
 loop.</strong></em> <em>Instead of repeatedly finding, patching, and
 retesting vulnerabilities as stronger AIs discover them, we can prove
 security properties that hold across every input covered by the
@@ -584,7 +585,7 @@ ecosystem</h3>
 software, so once a lower-level component comes with a trusted
 specification and proof, higher-level systems can rely on that guarantee
 instead of reopening every implementation detail from scratch.</p>
-<figure id="figure-11"><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-light" height="800" loading="lazy" src="media/verification-compounds-light.svg" width="1200"/><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-dark" height="800" loading="lazy" src="media/verification-compounds-dark.svg" width="1200"/><figcaption><em><strong>Figure 11: Verification compounds through
+<figure id="figure-12"><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-light" height="800" loading="lazy" src="media/verification-compounds-light.svg" width="1200"/><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-dark" height="800" loading="lazy" src="media/verification-compounds-dark.svg" width="1200"/><figcaption><em><strong>Figure 12: Verification compounds through
 dependencies.</strong></em> <em>Once lower layers are verified,
 higher-layer proofs can rely on their</em> <em>guarantees. Each marginal
 proof becomes narrower, allowing a verified software stack to grow
@@ -606,7 +607,7 @@ trees</h3>
 done hardening our RL environments at Theorem.</p>
 <p>Returning to the mock PR, the proposed cache appears safe but breaks the property we care about. A reviewer might assume that read-only permissions already ensure training uses only approved vectors. Spotting the flaw requires <a href="https://fs.blog/chestertons-fence/" rel="noopener noreferrer" target="_blank">remembering why those permissions exist</a> and recognizing that the cache creates another route around them. As software grows, <a href="https://www.schneier.com/essays/archives/1999/11/a_plea_for_simplicit.html" rel="noopener noreferrer" target="_blank">reviewers have more interactions to reason about</a>, often without an explicit account of what each safeguard is meant to protect.</p>
 <p>I want to reverse that interface. A <strong>claim tree</strong> starts with the property humans care about and decomposes it into supporting claims backed by proofs, assumptions, or unresolved obligations. In the mock PR, keeping the approved files read-only is too weak a specification, because what we actually care about is that <em>every vector consumed by training matches an approved source that AI cannot modify.</em> The aim is to make these guarantees <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/" rel="noopener noreferrer" target="_blank">reliable abstractions</a>. Once a property is proved, reviewers can rely on it without reconstructing how each implementation preserves it.</p>
-<figure class="interactive-figure" id="figure-12" style="width:calc(100vw - 24px);max-width:none;margin-left:calc(50% - 50vw + 12px)"><p><a href="claim-tree-pr.html" rel="noopener noreferrer" target="_blank">Open separately ↗</a></p><iframe aria-describedby="caption-12" class="pr-viewer" height="1800" loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="claim-tree-pr.html?v=20260920-4" style="display:block;width:100%;min-width:100%;height:1800px;border:0" title="Explore the claim tree" width="100%"></iframe><figcaption id="caption-12"><em><strong>Figure 12: The same PR reviewed through a claim
+<figure class="interactive-figure" id="figure-13" style="width:calc(100vw - 24px);max-width:none;margin-left:calc(50% - 50vw + 12px)"><p><a href="claim-tree-pr.html" rel="noopener noreferrer" target="_blank">Open separately ↗</a></p><iframe aria-describedby="caption-13" class="pr-viewer" height="1800" loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="claim-tree-pr.html?v=20260920-4" style="display:block;width:100%;min-width:100%;height:1800px;border:0" title="Explore the claim tree" width="100%"></iframe><figcaption id="caption-13"><em><strong>Figure 13: The same PR reviewed through a claim
 tree.</strong></em> <em>Instead of reconstructing intent from
 permissions and code, reviewers state the property that must remain
 true. The implementation can change underneath it, but every change must
