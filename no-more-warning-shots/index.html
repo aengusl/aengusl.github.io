@@ -624,12 +624,7 @@ guarantees can fall even further.</p>
 trees</h3>
 <p>The second application is more speculative, but builds on early work
 done hardening our RL environments at Theorem.</p>
-<p>Returning to the mock PR, we have that the sandbox held, the tests
-pass and the explanation sounds reasonable, yet the cache breaks the
-property we care about. The difficulty is that today, humans infer
-intent from the implementation. We have code, tests, permissions, and
-explanations, but they are all indirect evidence from which the reviewer
-has to reconstruct what the system really guarantees.</p>
+<p>Returning to the mock PR, the change appears safe, yet the cache breaks the property we care about. The reviewer has to reconstruct what the system guarantees by examining how it is implemented. That is a difficult judgment, even when the code looks reasonable and passes its checks.</p>
 <p>I want to reverse that interface. A <strong>claim tree</strong>
 starts with the property humans care about, decomposes it into
 supporting claims backed by proofs, assumptions, or just unresolved
