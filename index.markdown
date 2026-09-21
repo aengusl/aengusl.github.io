@@ -683,7 +683,7 @@ layout: home
         <ul><li><a href="/portfolio-transcript-viewer/?t=fraud">Transcript Viewer</a></li></ul>
       </div>
       <details class="sidebar-section side-projects">
-        <summary>Fun side projects</summary>
+        <summary>Silly side projects</summary>
         <ul>
           <li><a href="/messiah-bench">Messiah Bench</a></li>
           <li><a href="/cultural-selection/">Cultural Selection</a></li>
