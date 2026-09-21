@@ -44,8 +44,6 @@ layout: home
         display: none !important;
       }
     </style>
-<link rel="icon" type="image/png" href="/assets/pendant-logo.png">
-<link rel="apple-touch-icon" href="/assets/pendant-logo.png">
 </head>
 
 <style>
