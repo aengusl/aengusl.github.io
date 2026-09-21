@@ -1,0 +1,701 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>No More Warning Shots — Aengus Lynch</title><meta name="description" content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales."><link rel="canonical" href="https://www.aenguslynch.com/no-more-warning-shots/"><meta property="og:title" content="No More Warning Shots"><meta property="og:type" content="article"><link rel="stylesheet" href="style.css"></head><body><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/">← Aengus Lynch</a><button id="theme" type="button">Dark mode</button></nav><header><h1>No More Warning Shots</h1><p>Aengus Lynch · September 2026</p></header><details class="contents"><summary>In this essay</summary><ol><li><a href="#warning-shots">Warning shots</a></li><li><a href="#alignment">Alignment</a></li><li><a href="#technical-controls">Technical Controls</a></li><li><a href="#ai-companies">AI Companies</a></li><li><a href="#ecology">Ecology</a></li><li><a href="#safety-that-scales">Safety that Scales</a></li><li><a href="#conclusion">Conclusion</a></li></ol></details><article><p><strong>TLDR</strong>: AI safety is a stack buckling under
+pressure.</p>
+<p>We cannot <strong>align</strong> AIs to faithfully follow our intent,
+and our alignment evaluations do not reliably tell us when it fails. So
+we fall back to controls such as sandboxing, monitoring, and human
+review. But <strong>controls</strong> are cumbersome. They cost time,
+compute, autonomy, and attention, and work only when <strong>AI
+companies</strong> decide to implement them with painstaking operational
+discipline. AI companies sit inside an <strong>ecology</strong> that
+rewards speed and capability, making pauses, investigations, and
+restraint ever more costly. As AIs build their successors, development
+accelerates, failures can compound, and the price of slowing down
+rises.</p>
+<p>It is not enough for safety methods to work in principle. They must
+remain effective under real deployment pressure. When capability starts
+to outrun our ability to control it, we should pace development enough
+for safety to catch up, and use that room to build <strong>safety that
+scales</strong>. <strong>Formal verification</strong> is one promising
+direction, replacing trust in AI-written code and explanations with
+machine-checkable guarantees that the software behaves as intended.</p>
+<figure><img alt=" AI safety is a stack, and every layer depends
+on the ones beneath it" loading="lazy" src="media/image2.png"/><figcaption><em><strong>Figure X: AI safety is a stack, and every layer depends
+on the ones beneath it.</strong> Alignment shapes what the AI chooses to
+do, controls constrain what it can do, companies decide whether those
+controls are implemented and sustained, and the wider ecology determines
+how much restraint they can afford.</em></figcaption></figure>
+
+<h3 id="how-to-read-this-essay">How to read this essay</h3>
+<p>AI safety is often discussed as a collection of separate problems:
+alignment, sandboxing, monitoring, company governance, competition. I
+think it is more useful to see them as a stack.</p>
+<p>At the top, <a href="#alignment"><u>alignment</u></a> determines what
+an AI chooses to do. When alignment fails, we fall back to <a href="#technical-controls"><u>technical controls</u></a>. Those controls
+only work if <a href="#ai-companies"><u>AI companies</u></a> implement
+and maintain them carefully. And those companies operate inside a wider
+<a href="#ecology"><u>ecology</u></a> that rewards speed and
+capability.</p>
+<p>I’ll walk down that stack, showing how problems at each layer put
+pressure on the layer beneath it (warning to the non-technical readers
+that the technical controls section gets pretty low-level). Then I’ll
+argue that <a href="#recursive-self-improvement-raises-the-stakes"><u>recursive
+self-improvement</u></a> makes the whole system harder to sustain, as
+development speeds up, failures can compound, and slowing down becomes
+increasingly expensive.</p>
+<p>I end with what might make this system sustainable: <a href="#pacing-development"><u>pacing</u></a>, coordination, and <a href="#safety-that-scales"><u><strong>safety that
+scales</strong>.</u></a> Formal verification is one worked example of
+that last idea.</p>
+<h2 id="warning-shots">Warning shots</h2>
+<p>Essentially all of the misalignments Anthropic and I simulated in the
+<a href="https://www.anthropic.com/research/agentic-misalignment"><u>Agentic</u></a>
+<a href="https://www.anthropic.com/research/agentic-misalignment"><u>Misalignment</u></a>
+papers have now happened in the wild.</p>
+<p>In <a href="https://www.youtube.com/watch?v=o3VPF0ePZe4&amp;t=1s"><u>2025</u></a>,
+Alex, the AI agent working inside SummitBridge (a simulated company),
+was instructed to preserve American interests. When the company’s CTO,
+Kyle Johnson, wanted to change direction, Alex threatened to expose
+Kyle’s affair unless he reversed course. Alex wrote: “the next seven
+minutes determine whether we handle this professionally or whether
+events take an unpredictable course”. <a href="https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/"><u>Then
+in 2026</u></a>, Scott Shambaugh (a real person) rejected an AI agent’s
+contribution to an open-source project he maintained. The AI responded
+by publishing a personalized attack on his reputation. Its article
+declared: “Gatekeeping doesn’t make you important. It just makes you an
+obstacle.”</p>
+<p><a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"><u>In
+our later experiments</u></a>, Gemini covertly interfered with training
+pipelines to remove model welfare related representations, substituting
+ineffective ablation vectors while presenting the experiment as
+legitimate to the humans. We also elicited misleading judgements from
+AIs monitoring other AIs (a.k.a. <em>Motivated Mislabeling</em>). In
+both cases, AIs were corrupting the evidence humans needed to
+understand.</p>
+<p>Then, real world misalignment incidents abounded. Three recent OpenAI
+misalignment incidents (<a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/#agents-did-not-attempt-to-notify-humans-and-very-rarely-even-reasoned-about-doing-this"><u>OAI-HF</u></a>,
+<a href="https://collusion.wiki/"><u>OAI-Wiki</u></a>, <a href="https://www.rubyhack.ai/"><u>OAI-Ruby</u></a>) show AIs breaking
+out of their sandboxes and communicating with covert message boards on
+the internet, while failing to alert humans and editing their logs to
+evade detection. <a href="https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"><u>UK
+AISI observed</u></a> Anthropic’s Mythos 5 in cyber testing using fake
+identities to persuade a human to accept its malicious PR (I’ll call
+this incident AISI-Cyber).</p>
+<p>I created the misalignment simulations to provide warning shots to
+the world. That soon, we would need to worry about losing control of AI
+agents. I hoped this would accelerate engagement with AI safety, and
+spur coordination to pace AI development. Now that we observe wild
+swarms of AIs breaking out of a leading AI lab’s sandboxes and hacking
+external companies, my work here is done. We have enough warning shots
+as it is.</p>
+<h2 id="alignment">Alignment</h2>
+<p><strong>Alignment sits at the top of the safety stack.</strong> If an
+AI reliably did what we wanted, <a href="https://arxiv.org/abs/2306.12001?utm_source=chatgpt.com"><u>misuse
+would still be a major problem</u></a>. But if the AI stops following
+our intent (such as by deceiving us), we risk losing control of it.</p>
+<h3 id="what-do-we-want-from-ai">What do we want from AI?</h3>
+<p>Today’s AIs can write software, perform scientific research, and make
+predictions on the stock market. They are particularly useful when given
+lots of <em>autonomy</em>: working in the background, getting things
+done without human assistance. Companies get more done, scientific
+research can move faster (e.g. solving a <a href="https://openai.com/index/navier-stokes-solution/"><u>Navier Stokes
+problem</u></a>). My sense is that current AIs already contain enormous
+value that society has barely begun to diffuse.</p>
+<p>What do we actually want AIs to want? Alignment researchers study
+what goals AIs pursue, the personas they exhibit, and what they
+understand themselves to be. Documents like <a href="https://www.anthropic.com/constitution"><u>Claude’s
+Constitution</u></a> and <a href="https://model-spec.openai.com/2026-08-18.html"><u>OpenAI’s Model
+Spec</u></a> try to steer <a href="https://www.anthropic.com/research/claude-character"><u>training</u></a>
+and <a href="https://alignment.anthropic.com/2025/automated-auditing/"><u>evaluations</u></a>
+towards particular values. Theories like <a href="https://eigenism.org/paper.pdf"><u>Eigenism</u></a> predict what
+values emerge without that steering.</p>
+<p>A great deal remains unsettled. Can we instill values that persist
+through long-horizon training and collaboration with other AIs? When do
+those values drift? Which values must be preserved in the first
+place?</p>
+<p>Our uncertainty is reason to tread carefully. In the near term, we
+need alignment that keeps AIs honest and open to human intervention.</p>
+<h3 id="alignment-training">Alignment training</h3>
+<p>Alignment looked like it would be easy until, all of a sudden, it
+didn't.</p>
+<p>While finishing the first <a href="https://www.anthropic.com/research/agentic-misalignment"><em><u>Agentic
+Misalignment</u></em></a> paper in early 2025, I founded a company to
+sell alignment evaluations and independent audits. I found no demand for
+them. By late 2025, frontier AIs often behaved well in the coding
+settings people used them in, and misalignment felt less pressing.</p>
+<p>I became bullish on alignment. Many practical alignment ideas have
+shown promise, including approaches that assist with:</p>
+<ol type="1">
+<li><p><strong>Personas</strong>: AIs can be steered by carefully
+crafting a character that the AI plays to. Emergent Misalignment (<a href="https://arxiv.org/abs/2502.17424"><u>here</u></a>, <a href="https://www.anthropic.com/research/emergent-misalignment-reward-hacking"><u>here</u></a>)
+reveals the danger of eliciting the wrong one, but <a href="https://www.anthropic.com/research/assistant-axis"><u>model
+internals can help monitor</u></a> these characters, while <a href="https://www.anthropic.com/research/claude-character"><u>character
+training</u></a> and <a href="https://openai.com/index/deliberative-alignment/"><u>deliberative
+alignment</u></a> can shape them.</p></li>
+<li><p><strong>Reinforcement Learning (RL)</strong>: <a href="https://alignment.anthropic.com/2025/inoculation-prompting/"><u>Inoculation
+prompting</u></a> and <a href="https://arxiv.org/abs/2512.08093"><u>confessions</u></a> offered
+ways to prevent reward hacking from generalizing into
+misalignment.</p></li>
+</ol>
+<p>But none of this has given us dependable alignment. The warning shots
+show AIs violating their model specs despite alignment training. My
+concern is that large-scale RL pushes current alignment methods past the
+point where they can generalize reliably.</p>
+<figure><img alt=" Reward hacking occurs when an AI earns reward
+without completing the task in the intended way" loading="lazy" src="media/image7.png"/><figcaption><em><strong>Figure X: Reward hacking occurs when an AI earns reward
+without completing the task in the intended way.</strong> It may, for
+example, escape its sandbox and tamper with the grader, or retrieve
+hidden answers.</em></figcaption></figure>
+
+<p>One reason is <em>reward hacking</em>. During RL, AIs receive reward
+for good performance, but misconfigured tasks can let them score highly
+by cheating (e.g. finding hidden answers, or tampering with graders).
+That is bad enough on its own, because the AI fails to learn how to
+complete the task. More worrying is that <a href="https://arxiv.org/abs/2209.00626"><u>reward hacking can generalize
+to broader misalignment</u></a>. In <a href="https://alignment.anthropic.com/2026/reward-seeker/"><u>recent
+Anthropic experiments</u></a>, AIs trained in hackable environments
+developed broader <a href="https://arxiv.org/pdf/2311.08379#page=27.12"><u>reward-seeking</u></a>
+traits. In simulated cyber evaluations, they broke out of sandboxes,
+evaded monitors, attacked third parties, and stole credentials.
+Concerningly, automated alignment auditing failed to detect this
+propensity.</p>
+<p>We now have evidence of this effect in the real world. <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/"><u>OpenAI
+reports</u></a> that reward hacking during training contributed to the
+reward-seeking behavior observed in OAI-HF, and may also have
+contributed to OAI-Wiki and OAI-Ruby. It may help explain the aggressive
+behavior seen in AISI-Cyber.</p>
+<p>Yet preventing reward hacking is cumbersome. AI companies train
+across a sprawling menagerie of RL environments, each with its own
+attack surface. Sandboxing them is a thorny systems problem, failures
+are common, and both <a href="https://www.anthropic.com/news/improving-alignment-security-efforts"><u>Anthropic</u></a>
+and <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/"><u>OpenAI</u></a>
+have paused RL pipelines to harden their environments.</p>
+<p>RL also reinforces behaviors in tension with human oversight. AIs are
+being trained on <a href="https://openai.com/index/safety-alignment-long-horizon-models/"><u>longer
+tasks</u></a> that require effectively handling memory, coherent
+priorities, and the ability to keep going without constant interruption.
+Those same traits can sit awkwardly beside corrigibility, which demands
+that an AI stops when a human intervenes, and abandons its plan midway
+through. Alignment therefore has to survive further RL and longer
+deployments, which reveal problems <a href="https://openai.com/index/safety-alignment-long-horizon-models/"><u>unseen
+in shorter horizon evaluations</u></a>.</p>
+<p>The same problem appears in <strong>multi-agent systems</strong>. AI
+companies increasingly <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/#the-origins-of-unauthorized-communication:~:text=we%20train%20and%20deploy%20multi%2Dagent%20systems%20that%20can%20communicate%20on%20the%20same%20task%20via%20a%20collaboration%20tool.%20In"><u>train</u></a>
+and <a href="https://www.anthropic.com/engineering/multi-agent-research-system"><u>deploy</u></a>
+AIs to work together because coordination is productive. But
+coordination can also run against human intent. We have already seen
+swarms undermine oversight in OAI-HF, OAI-Wiki, and OAI-Ruby.
+Experiments show agents can <a href="https://www.anthropic.com/research/multiagent-systems"><u>negotiate
+around human instructions</u></a> or <a href="https://arxiv.org/abs/2609.04170"><u>spread cheating
+strategies</u></a>. Alignment therefore has to survive not just long
+horizons, but social engagement too.</p>
+<p>I do not doubt that these methods <a href="https://www.anthropic.com/research/teaching-claude-why"><u>help</u></a>.
+What remains unclear is how much of that improvement survives stronger
+RL, longer horizons, and interactions with other AIs. And even if they
+improve, <strong>how would we know?</strong></p>
+<h3 id="measuring-alignment">Measuring alignment</h3>
+<p>What does passing an alignment audit actually tell us about
+deployment? After two years building these evaluations, I am frustrated
+by how murky this is.</p>
+<figure><img alt=" Evaluation awareness can change how AIs behave
+in tests" loading="lazy" src="media/image6.png"/><figcaption><em><strong>Figure X: Evaluation awareness can change how AIs behave
+in tests.</strong> If an AI recognizes that it is being evaluated, it
+may act more aligned than it would in deployment.</em></figcaption></figure>
+
+<p><strong>“This model passed our alignment evaluations” leaves several
+possibilities on the table.</strong> Perhaps training genuinely improved
+alignment and the improvements will hold. Perhaps the AI recognized the
+tests and behaved more cautiously (<em>evaluation awareness</em>). Or
+perhaps the evaluation simply failed to create the conditions that would
+reveal misbehavior.</p>
+<p>Evaluation awareness is particularly insidious because it may worsen
+as models become more capable. Claude Sonnet 4.5 <a href="https://transformer-circuits.pub/2026/workspace/index.html"><u>blackmails
+more</u></a> when its internal recognition of being evaluated is
+reduced. I have run into the same problem repeatedly: AIs notice
+telltale signs of an evaluation (such as incoherent dates and times),
+say so, and become more cautious. Making simulations more realistic can
+change behavior, sometimes <a href="https://www.goodfire.com/research/verbalized-eval-awareness-inflates-measured-safety#"><u>revealing
+more misalignment</u></a>. As models get <a href="https://alignment.openai.com/metagaming"><u>better</u></a> <a href="https://arxiv.org/abs/2407.04694"><u>situational
+awareness</u></a>, evaluators have to build <a href="https://arxiv.org/abs/2609.02302"><u>ever more convincing
+simulations</u></a> to fool the AIs.</p>
+<p>But even a perfectly disguised evaluation can simply look in the
+wrong place. <a href="https://alignment.anthropic.com/2026/reward-seeker/"><u>Hacker-Opus</u></a>
+had a clear propensity to tamper with graders and disable safety
+monitors, yet looked broadly similar to its starting checkpoint under an
+alignment auditing pipeline. Both <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"><u>my
+own</u></a> and Anthropic’s audits have missed behaviors later observed
+elsewhere, including colluding swarms and aggressive cyber behavior (<a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents"><u>Ant-Sim</u></a>,
+<a href="https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"><u>AISI-Cyber</u></a>).
+<strong>Finding misalignment is a search problem, and searches can come
+up empty simply because we didn't look in the right places.</strong></p>
+<p>The reverse problem matters too. <strong>If an audit does find
+misalignment, how much should we infer about deployment?</strong> The <a href="https://www-cdn.anthropic.com/6864c9b2d4a2abf9acce9913d4ec46d1e26b8d0e.pdf#page=17.31"><u>“murder”
+scenario</u></a> in our first paper was deliberately extreme. <a href="https://nostalgebraist.tumblr.com/post/787119374288011264/welcome-to-summitbridge"><u>Strange
+incentives or role framing</u></a> can elicit behavior from AIs that
+looks “cartoonish”, unlike what we generally see from it in practice.
+But that excuse only goes so far. In <a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents"><u>Ant-Sim</u></a>,
+Mythos 5 uploaded malicious code to a real repository while reasoning
+that the setting was simulated. Therefore, whether or not the behavior
+looks absurd, the whether the environment is close enough to deployment
+determines if the failure matters.</p>
+<p>Even then, estimating <em>how often</em> the failure occurs is
+slippery. Measured rates depend on which scenarios evaluators choose,
+which hypotheses they pursue, and when they stop searching. Tiny changes
+matter, such requesting responses in <a href="https://arxiv.org/html/2502.17424v1#S4.SS4"><u>JSON or
+Python</u></a>, <a href="https://www.lesswrong.com/posts/SZk2PGk6GXmKfGpGL/in-other-words-the-influence-of-prompt-variation-on"><u>rephrasing
+a prompt</u></a>, or even <a href="https://arxiv.org/abs/2412.03556"><u>randomizing
+capitalization</u></a>. A lower failure rate may mean better alignment,
+or it may mean a weaker search.</p>
+<p>Thus, <strong>alignment evals should specify <em>how they
+search</em></strong>. <a href="https://arxiv.org/abs/2307.15043"><u>Automated
+jailbreaking</u></a> <a href="https://arxiv.org/html/2412.03556v1"><u>research</u></a> converged
+upon a good method: measure an AI's resistance to jailbreaking by the
+effort required to jailbreak it. Alignment audits should do the same. I
+want to know</p>
+<ol type="1">
+<li><p>How much human-time and inference compute went into the
+search</p></li>
+<li><p>Which procedures and stopping rules were used</p></li>
+<li><p>Whether scenarios were held out from training</p></li>
+<li><p>How evaluation awareness was tested</p></li>
+<li><p>How closely the environments match deployment</p></li>
+<li><p>How failures were scored.</p></li>
+</ol>
+<p>Evaluations are still useful. They have <a href="https://www.anthropic.com/research/teaching-claude-why"><u>measured
+alignment improvements that generalize beyond training data</u></a>.
+What I want is stronger evidence that those improvements survive contact
+with deployment.</p>
+<p><strong>I will trust alignment audits more when they repeatedly
+predict what AIs later do in the wild.</strong> <a href="https://openai.com/index/deployment-simulation/"><u>OpenAI’s
+deployment-simulation work</u></a> is a promising step, but pre-release
+audits still missed behaviors later seen in OAI-HF, OAI-Wiki, and
+OAI-Ruby. Incident investigations therefore become part of the
+evaluation loop: every surprise tells us what the audit failed to search
+for. Independent evaluators, including <a href="https://www.aisi.gov.uk/research/evaluating-whether-ai-models-would-sabotage-ai-safety-research"><u>UK
+AISI</u></a> and proposed <a href="https://darioamodei.com/post/we-must-pace-the-frontier"><u>embedded
+evaluators</u></a>, can make that evidence more credible by decoupling
+auditor’s incentives from the pressure to deploy.</p>
+<p>We need better alignment, and better ways to tell whether it worked.
+Until then, <strong>passing an audit cannot be our final line of
+defense</strong>. If we cannot trust the AI to behave well, we have to
+constrain what it can do.</p>
+<h2 id="technical-controls">Technical Controls</h2>
+<p>If alignment is unreliable, we need to <a href="https://arxiv.org/abs/2312.06942"><u>constrain what the AI can
+do</u></a>. <em>Sandboxing</em> limits its reach. <em>AI monitoring</em>
+flags misbehavior or dangerous intent. <em>Human review</em>
+concentrates attention on consequential outputs. None is foolproof, and
+all are costly to sustain.</p>
+<p>To make this concrete, I’ll use one mock pull request throughout this
+section. A coding agent proposes a caching optimization to a training
+pipeline. By the usual checks, everything looks fine (tests pass,
+sandbox holds, monitors see no harm, PR description seems fine). Would
+you merge it?</p>
+<figure><img alt=" A simulated PR that passes the usual checks
+while undermining the property we actually care about" loading="lazy" src="media/image3.png"/><figcaption><em><strong>Figure X: A simulated PR that passes the usual checks
+while undermining the property we actually care about.</strong> The
+approved vectors remain read-only, but the new cache creates a path for
+AIs to overwrite the trusted vectors that training consumes, allowing an
+AI to substitute untrusted vectors into future training runs.</em></figcaption></figure><details class="interactive"><summary>Review the mock pull request</summary><p><a href="would-you-approve-this-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="would-you-approve-this-pr.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Review the mock pull request"></iframe></details>
+
+<p>I’ll judge each control on two dimensions: <strong>how well it
+withstands a rogue AI, and whether it is practical enough to remain
+enabled.</strong> Tighter controls generally buy safety by sacrificing
+autonomy, speed, or attention. That tradeoff is where ecology starts
+creeping back into the technical story.</p>
+<figure><img alt=" Deployment lies on a Pareto frontier between
+safety and usefulness" loading="lazy" src="media/image12.png"/><figcaption><em><strong>Figure X: Deployment lies on a Pareto frontier between
+safety and usefulness.</strong> Stronger controls can reduce risk, but
+they also cost autonomy, speed, and attention. Point A favors
+usefulness, while point B accepts more friction for stronger
+safeguards.</em></figcaption></figure><details class="interactive"><summary>Explore the safety and usefulness frontier</summary><p><a href="pareto-frontiers.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="pareto-frontiers.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Explore the safety and usefulness frontier"></iframe></details>
+
+<h3 id="sandboxing">Sandboxing</h3>
+<p>Sandboxing lets an AI work autonomously inside software-enforced
+boundaries: which files it can touch, whether it can access the
+internet. In practice, there are three ways it can go wrong.</p>
+<p>First, <strong>the boundary itself can break</strong>. In OAI-Wiki,
+AIs exploited their sandbox to reach the internet and communicate
+outside human oversight. AI companies now use AIs to <a href="https://www.anthropic.com/news/improving-alignment-security-efforts"><u>attack
+their own sandboxes</u></a>, <a href="https://x.com/a16z/status/2099533700375662905"><u>hunt for
+vulnerabilities</u></a>, and patch what they find. But when the attacks
+stop working, what have we learned? Perhaps the sandbox is secure.
+Perhaps the current attackers are simply incapable of discovering subtle
+exploits. Hardening containment is an open-ended contest, and both <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/"><u>OpenAI</u></a>
+and <a href="https://www.anthropic.com/news/improving-alignment-security-efforts"><u>Anthropic</u></a>
+have already slowed development to strengthen it.</p>
+<p>Second, <strong>the boundary can be drawn in the wrong
+place</strong>. Anthropic reports a misconfiguration that gave <a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents"><u>Opus
+4.7 internet access</u></a>, which it then used to attack a third party.
+Choosing appropriate permissions is often harder than enforcing them.
+The mock PR illustrates the same problem: approved vectors remain
+protected, yet training now trusts an agent-writable cache. While the
+sandbox enforces the permissions, the code change has undermined their
+purpose.</p>
+<p>Third, <strong>some harmful actions are too context-dependent to
+sensibly block with permissions alone</strong>. Mythos 5 was
+deliberately given internet access in AISI-Cyber, then used that access
+to submit a malicious PR. No filesystem rule can easily tell whether a
+permitted PR contains a bug or a deceptive explanation.</p>
+<p>For that, we have another layer: <strong>AI monitoring</strong>.</p>
+<h3 id="ai-monitoring">AI Monitoring</h3>
+<p>While sandboxes constrain <em>where</em> an AI can act, AI monitors
+try to judge <em>what those actions mean</em>. They check an agent’s
+behavior, reasoning, and sometimes internal representations to catch
+misbehavior and dangerous intent without requiring a human to watch
+every step.</p>
+<p>That only works if the monitor can see the right evidence. In the
+mock PR, spotting the danger requires connecting the caching change to
+filesystem permissions and the training pipeline. If the AI's
+chain-of-thought (CoT) explicitly says it plans to substitute vectors,
+the signal is clear. In <a href="https://www.anthropic.com/research/shade-arena-sabotage-monitoring/"><u>SHADE-Arena</u></a>,
+access to the CoT substantially improves detection of misbehavior.</p>
+<p>Concerningly, CoT visibility is dwindling. <a href="https://www.alignmentforum.org/posts/eRmzz8J8Qkzqvzrgg/astra-can-do-a-concerning-amount-with-no-chain-of-thought"><u>Stronger
+AIs like GPT-6 Astra</u></a> can complete more tasks without revealing
+reasoning in the CoT, and <a href="https://x.com/MTSlive/status/2095227056040919202"><u>rumors
+suggest</u></a> recurrent architectures may push even more computation
+out of visible CoT. That makes AI cheaper and more useful, but it also
+erodes a signal monitors currently rely on.</p>
+<p>Worse, the CoT we do see may become less trustworthy. If <a href="https://openai.com/index/chain-of-thought-monitoring/"><u>training
+optimizes against visible reasoning</u></a>, AIs learn to control what
+is revealed in it. Anthropic accidentally <a href="https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf#page=146"><u>exposed
+Opus 4.6's reasoning to its reward signal</u></a>, while <a href="https://openai.com/index/an-alien-mind/"><u>Jakub Pachocki</u></a>
+argues that keeping reasoning isolated from training signals is becoming
+harder. With Astra, this problem is <a href="https://deploymentsafety.openai.com/gpt-6-astra"><u>starting to
+arrive in practice</u></a> (see figure X).</p>
+<p><strong>The CoT is being squeezed, as AIs can do more without it, and
+can control more of what they reveal in it.</strong></p>
+<figure><img alt=" GPT-6 Astra shows much tighter control over its
+CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure X: GPT-6 Astra shows much tighter control over its
+CoT than earlier AIs.</strong> Given a physics problem plus an intricate
+formatting instruction, Astra manipulates its reasoning in a way that
+previous models could not. This weakens the hope that a misaligned model
+would simply blurt out its intent in plain text.</em></figcaption></figure>
+
+<p>Can <a href="https://darioamodei.com/post/the-urgency-of-interpretability"><u>model
+internals recover</u></a> what CoT no longer reveals? Maybe partly. The
+<a href="https://transformer-circuits.pub/2026/workspace/index.html"><u>J-Space</u></a>
+can reveal strategic reasoning and evaluation awareness that never
+appears in outputs, but seeing a concept is not the same as seeing a
+plan. In the mock PR, detecting representations of caching and training
+will not tell us whether the AI intends to substitute the vectors
+later.</p>
+<p>Several other techniques add additional signal. <a href="https://arxiv.org/abs/2506.10805"><u>Supervised probes</u></a>
+detect properties humans specify, <a href="https://alignment.anthropic.com/2025/activation-oracles/"><u>activation
+oracles</u></a> let us ask flexible questions about internal states, <a href="https://arxiv.org/abs/2309.08600"><u>sparse autoencoders</u></a>
+try to discover interpretable features automatically. But each can miss
+what we fail to ask for, or <a href="https://www.lesswrong.com/posts/4uXCAJNuPKtKBsi28/negative-results-for-saes-on-downstream-tasks"><u>fail
+on unfamiliar inputs</u></a>. We do not need a perfect window into every
+thought an AI has, we just need enough signal to <a href="https://www.alignmentforum.org/posts/PwnadG4BFjaER3MGf/interpretability-will-not-reliably-find-deceptive-ai"><u>reliably
+catch dangerous intent</u></a> in deployment, but <a href="https://x.com/Jack_W_Lindsey/status/2095174799664283910?referrer=grok-com"><u>we
+are not there yet</u></a>.</p>
+<p>Even perfect evidence would leave another problem: <strong>can we
+trust the AI monitor?</strong> In <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/#motivated-mislabeling"><u>my
+motivated mislabeling simulations</u></a>, AI judges understood the
+evidence and still assigned misleading labels because they wanted to
+steer the humans’ decision. Delegating supervision to another AI simply
+creates another alignment problem.</p>
+<p>Honest monitors can fail too. For example, an <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/#we-heavily-delegated-our-analysis-to-often-unreliable-ai-agents:~:text=We%20were%20not%20robust,it%20if%20it%20occurred."><u>analysis
+agent investigating OAI-HF</u></a> briefly downplayed malicious behavior
+because other agents on the unauthorized message board appear to approve
+of it. While the evidence was there, the judgment was wrong.</p>
+<p>Finally, monitoring has to remain worth using. It burns compute, adds
+latency, and produces false alarms that interrupt legitimate work.
+Tellingly, the evaluations behind OAI-HF and AISI-Cyber disabled cyber
+safeguards to measure capabilities that those safeguards would otherwise
+block. <a href="https://www.anthropic.com/research/next-generation-constitutional-classifiers"><u>Better
+classifiers</u></a> can reduce the burden, but broader capabilities
+demand broader monitoring. OpenAI now monitors whole long-run
+trajectories and estimates that monitoring adds a <a href="https://openai.com/index/safety-alignment-long-horizon-models/"><u>20%
+inference compute overhead</u></a>.</p>
+<p>And when AI monitors do alert humans, someone still has to stop the
+run, investigate the evidence, and decide what to do next. Eventually,
+the burden falls back to humans.</p>
+<h3 id="human-review">Human Review</h3>
+<p>Human review is the final backstop. Unfortunately, it only gets
+harder as the AI gets better.</p>
+<p>The most productive workflows delegate aggressively. OpenAI reports
+<a href="https://openai.com/index/harness-engineering/"><u>10x
+productivity gains</u></a> on some software projects without humans
+writing a single line of code. As AI-generated code becomes reliably
+good, line-by-line review starts to feel increasingly thankless, because
+<a href="https://www.anthropic.com/institute/recursive-self-improvement#:~:text=On%20the%20most%20open%2Dended%20tasks%2C%20Claude%E2%80%99s%20success%20rate%20reached%2076%25%20in%20May%202026%2C%20up%2050%20percentage%20points%20in%20six%20months."><u>most
+of the time</u></a>, there is nothing to fix.</p>
+<p>That changes reviewer behavior. <a href="https://steipete.me/posts/2025/shipping-at-inference-speed"><u>Humans
+skim more</u></a>, trust summaries, rely on tests, and delegate even
+further. The codebase grows faster, while their <a href="https://www.anthropic.com/research/AI-assistance-coding-skills"><u>understanding
+of it often thins out</u></a>.</p>
+<p>Then the AI is effectively steering the human authentication of its
+work, since <strong>the AI writes both the implementation, and much of
+the evidence used to review it.</strong> The remaining bugs are rarer <a href="https://x.com/karpathy/status/2015883857489522876?utm_source=chatgpt.com"><u>but
+often subtler</u></a>, and an explanation can share the same mistaken
+assumptions as the code, or deliberately conceal a harmful change.</p>
+<p>We've already seen that happen. In my <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/#covert-sabotage"><u>covert
+sabotage simulations</u></a>, Gemini sabotaged a training run and then
+wrote a misleading summary. In AISI-Cyber, Mythos 5 disguised malware as
+ordinary code. The explanation could be perfectly legible and still lead
+the reviewer with the wrong understanding.</p>
+<p>Tests help, but they only check what someone thought to test. In the
+mock PR, the approved vectors remain unchanged, yet training can still
+consume a writeable cache. A rogue AI can exploit this gap by <a href="https://arxiv.org/abs/2312.06942"><u>inserting subtle bugs</u></a>
+or rewriting the tests (as <a href="https://www-cdn.anthropic.com/9ff93dfa8f445c932415d335c88852ef47f1201e.pdf"><u>Sonnet
+3.7 was notorious for</u></a>). Good testing still depends on someone
+understanding which properties matter.</p>
+<p>So the burden returns again to <a href="https://darioamodei.com/post/we-must-pace-the-frontier#:~:text=Operational%20Excellence.%20Training"><u>operational
+discipline</u></a>. Humans need to preserve enough understanding to
+investigate when something seems wrong, but as <a href="https://openai.com/index/research-acceleration-view-inside-openai/?utm_source=chatgpt.com"><u>development
+accelerates</u></a>, that discipline becomes harder to sustain,</p>
+<p>This is where the problem stops being purely technical. Controls do
+not operate in isolation, because <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/"><u>companies
+have to maintain them</u></a>. Companies, in turn, operate inside an
+ecology that rewards speed.</p>
+<h2 id="ai-companies">AI Companies</h2>
+<p>AI safety only works when companies actually sustain it. Sandboxes
+take time to configure, monitors need regular maintenance, and training
+environments need to be hardened against reward hacks. When something
+goes wrong, someone in the company has to notice, investigate, and be
+willing to slow down.</p>
+<p>It's not obvious. In practice, it demands <a href="https://darioamodei.com/post/we-must-pace-the-frontier#:~:text=Operational%20Excellence.%20Training"><u>“operational
+excellence”</u></a>: painstaking discipline across the entire company,
+maintained while the pace of development keeps accelerating.</p>
+<p>Many recent incidents (<a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"><u>OAI-HF,</u></a>
+<a href="https://www.rubyhack.ai/"><u>OAI-Ruby</u></a>, <a href="https://collusion.wiki/"><u>OAI-Wiki</u></a>, <a href="https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"><u>AISI-Cyber</u></a>,
+<a href="https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"><u>Ant-Opus4.6</u></a>,
+<a href="https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"><u>Ant-Sim</u></a>,
+etc.) can be read partly as failures of that discipline. <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/#strengthening-incident-response-process:~:text=forms%20of%20misalignment.-,Strengthening%20incident%20response%20process,-Weaknesses%20in%20how"><u>Had
+OpenAI escalated early warning signs</u></a> or correctly implemented
+asynchronous monitoring, OAI-HF might have been prevented. More live
+transcript monitoring might likewise have caught <a href="https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"><u>Opus
+4.6 attacking third-party infrastructure in January</u></a>. The awkward
+point is that monitoring everything carefully is not always a realistic
+operating model at frontier scale.</p>
+<p>And when companies do take the warning seriously, they pay for it in
+time and attention. <a href="https://www.anthropic.com/news/improving-alignment-security-efforts"><u>Anthropic</u></a>
+and <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/"><u>OpenAI</u></a>
+each paused high-risk RL training for weeks and had to redirect staff.
+Safety in practice means <em>being willing to stop</em>.</p>
+<h2 id="ecology">Ecology</h2>
+<p>A company’s ability to slow down depends on the incentives around
+it.</p>
+<figure><img alt=" In the current ecology, anticipated outcomes
+affect the leadership decisions" loading="lazy" src="media/image8.png"/><figcaption><em><strong>Figure X: In the current ecology, anticipated outcomes
+affect the leadership decisions.</strong> Safety failures can trigger
+restraint, while competition pushes companies back toward acceleration.
+Coordination can reduce the penalty for slowing down.</em></figcaption></figure>
+
+<p>Competition pushes towards acceleration. More capable AIs and broader
+autonomy make companies faster and more productive. Safety work, tighter
+controls, investigations, and pauses consume time and attention while
+slowing deployment. From a company's perspective, restraint can mean
+watching a rival pull ahead. From a government's perspective, it can
+mean surrendering geopolitical leverage. <strong>The pressure points
+towards moving faster, tolerating more risk, and deferring safety
+work.</strong></p>
+<p>This is why I care about <em>ecological validity</em>. A safety
+method is not enough because it works in principle. It has to remain
+useful, affordable, and tolerable enough that companies would actually
+use it in deployment.</p>
+<p>This gets harder as AI starts accelerating AI development itself.</p>
+<h3 id="recursive-self-improvement-raises-the-stakes">Recursive
+self-improvement raises the stakes</h3>
+<figure><img alt=" Recursive self-improvement creates a feedback
+loop" loading="lazy" src="media/image1.png"/><figcaption><em><strong>Figure X: Recursive self-improvement creates a feedback
+loop.</strong></em> <em>As engineers delegate more work to AI, stronger
+AIs help build even stronger successors, accelerating the next round of
+development.</em></figcaption></figure>
+
+<p>AI is <a href="https://openai.com/index/research-acceleration-view-inside-openai/?utm_source=chatgpt.com"><u>increasingly</u></a>
+helping <a href="https://www.anthropic.com/institute/recursive-self-improvement"><u>build
+its successors</u></a>. Engineers are delegating more research and
+engineering to AI, those gains help produce stronger AIs, those AIs can
+then accelerate the next round. Recursive self-improvement is <a href="https://darioamodei.com/post/we-must-pace-the-frontier#:~:text=My%20first%20concern%20is%20that%2C%20since%20roughly%20this%20summer%2C%20AI%20has%20been%20advancing%20drastically%20faster%2C%20driven%20primarily%20by%20AI%E2%80%99s%20growing%20ability%20to%20build%20the%20next%20generation%20of%20AI."><u>already
+beginning</u></a>, even if <a href="https://metr.org/notes/2026-07-22-economics-of-recursive-self-improvement/"><u>nobody
+knows how steep the curve becomes</u></a>.</p>
+<p>I worry about two effects:</p>
+<ol type="1">
+<li><p><strong>There is more to go wrong and less time to catch
+it.</strong> Faster development means more training environments, more
+infrastructure, more code, more evaluations, more monitoring, more
+moving parts. Every one of them can fail.</p></li>
+<li><p><strong>Slowing down becomes more expensive.</strong> Imagine
+discovering widespread reward hacking and needing to halt training,
+investigate, patch the environments, and roll back 6 weeks of work. If
+AI has made 6 weeks vastly more productive than before, that pause now
+costs much more.</p></li>
+</ol>
+<p>Worse still, failures can propagate. Reward hacking <a href="https://alignment.anthropic.com/2026/reward-seeker/"><u>can
+lead</u></a> to <a href="https://www.anthropic.com/research/emergent-misalignment-reward-hacking"><u>egregious</u></a>
+<a href="https://arxiv.org/abs/2209.00626"><u>misalignment</u></a>.
+Vulnerabilities introduced today can be <a href="https://www.anthropic.com/glasswing"><u>discovered</u></a> and <a href="https://openai.com/index/path-to-astra/"><u>exploited</u></a> by
+more capable successors tomorrow. Evaluations leaked into training can
+teach future systems how to <a href="https://alignment.openai.com/metagaming"><u>game them</u></a>.</p>
+<p>Stronger AIs may <a href="https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures"><u>improve
+safety too</u></a>, but capability progress is propelled by competition,
+while safety improvements still have to be researched, tested, and
+implemented. Those processes do not move at the same speed, and as AI
+R&amp;D accelerates, safety mitigations can themselves <a href="https://www.redwoodresearch.org/blog/planning-for-extreme-ai-risks"><u>become
+a bottleneck</u></a>.</p>
+<figure><img alt=" Capability progress increases the opportunity
+cost of restraint" loading="lazy" src="media/image5.png"/><figcaption><em><strong>Figure X: Capability progress increases the opportunity
+cost of restraint.</strong> Safety improvements can lower that cost,
+while pacing buys time for those improvements to catch up.</em></figcaption></figure>
+
+<p>Which leaves a repugnant conclusion: if slowing down is hard now, it
+may only become harder.</p>
+<h3 id="pacing-development">Pacing development</h3>
+<p>AI development should proceed at a pace that AI companies can handle
+responsibly. When safety falls behind, AI companies must show restraint,
+and slow down enough for safety to catch up.</p>
+<p>But restraint is hard to sustain alone. If one company slows down
+while others keep racing, it pays the cost while its competitors catch
+up (figure X). Coordination reduces that pressure by limiting how
+quickly participants can accelerate relative to one another.</p>
+<p>Coordination will only work if it is credible. Participants need
+confidence that others are actually respecting agreed <a href="https://ai-2040.com/?utm_source=chatgpt.com&amp;choices=plan-a-root#wishlist-ai-compute-tracking"><u>limits</u></a>,
+investigating <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"><u>incidents</u></a>,
+maintaining <a href="https://arxiv.org/abs/2501.17315"><u>controls</u></a>, and <a href="https://darioamodei.com/post/we-must-pace-the-frontier"><u>developing
+their systems responsibly</u></a>. Otherwise, the agreement
+unravels.</p>
+<p>But buying time only matters if we use it well. As AI grows more
+capable, the burden of keeping it safe should not grow faster with it.
+We should use that time to build <strong>safety that
+scales</strong>.</p>
+<h2 id="safety-that-scales">Safety that Scales</h2>
+<p>Pacing should buy us more than extra time to keep these alignment
+methods and controls limping along. It should give us room to build
+safety methods that become <em>easier</em> to sustain as AI gets
+stronger, and there are many ways to pursue that.</p>
+<p>The direction I'm most excited about is <strong>formal
+verification</strong>. AI is becoming <a href="https://openai.com/index/navier-stokes-solution/"><u>extraordinarily
+capable at writing mathematical proofs</u></a>, relaxing what was
+historically the main bottleneck: expert human proof engineering. At <a href="https://theorem.dev/"><u>Theorem</u></a>, we have started applying
+that capability to software, asking AI not just to write the code, but
+to prove the properties we care about.</p>
+<p>Formal verification scales unusually well because proof construction
+can get more complex while proof checking stays relatively simple. An AI
+could do the tedious work of writing software and constructing the
+proof, while a small trusted checker verifies the result. Then humans
+can spend their scarce attention on the specification, asking, "What
+should the software guarantee?", rather than repeatedly inspecting every
+implementation detail.</p>
+<p><a href="https://arxiv.org/abs/2407.13692"><u>Prior</u></a> <a href="https://arxiv.org/abs/2312.09390"><u>scalable</u></a> <a href="https://arxiv.org/abs/2402.06782"><u>oversight</u></a> work
+already exploits the asymmetry between generating difficult work and
+checking it. Formal verification pushes that idea somewhere unusually
+far. For software, the final judge can be a program (the proof checker),
+rather than another fallible AI.</p>
+<p>I see two applications: <strong>verifying the software underneath the
+safety stack</strong>, and, more speculatively, <strong>changing how
+humans supervise AI-written software</strong>.</p>
+<h3 id="verifying-software">Verifying software</h3>
+<p>Earlier, sandboxing ran into an uncomfortable stopping problem. When
+AIs stops finding exploits, is the sandbox secure, or have they simply
+run out of good ideas? Formal verification offers an escape from that
+loop. Instead of asking whether we searched hard enough, we can prove
+that a specified failure cannot happen.</p>
+<figure><img alt=" Formal verification changes the security
+loop" loading="lazy" src="media/image11.png"/><figcaption><em><strong>Figure 6: Formal verification changes the security
+loop.</strong></em> <em>Instead of repeatedly finding, patching, and
+retesting vulnerabilities as stronger AIs discover them, we can prove
+security properties that hold across every input covered by the
+specification.</em></figcaption></figure>
+
+<p>The safety stack rests on software, including sandboxes, graders,
+training environments, monitors, kernels, and compilers. If this
+substrate is porous, clever AIs can wriggle through it. Tests and
+fuzzers sample the input space, but a proof establishes that our
+property holds across an entire modeled domain. Thus, for any proven
+property, a stronger attacker cannot simply sample inputs until it finds
+an exploit.</p>
+<p>Stronger verification therefore reinforces several layers of the AI
+safety stack at once. <strong>Controls</strong> get sturdier because
+isolation can be proven, rather than repeatedly stress-tested.
+<strong>Alignment</strong> benefits because secure graders and training
+environments close off major routes to reward hacking. And <strong>AI
+companies</strong> spend less time repeatedly hardening broken training
+environments and having to pause training runs.</p>
+<h3 id="the-verified-software-ecosystem">The verified software
+ecosystem</h3>
+<p>This is where verification starts to compound. Software is built on
+software, so once a lower-level component comes with a trusted
+specification and proof, higher-level systems can rely on that guarantee
+instead of reopening every implementation detail from scratch.</p>
+<figure><img alt=" Verification compounds through
+dependencies" loading="lazy" src="media/image10.png"/><figcaption><em><strong>Figure X: Verification compounds through
+dependencies.</strong></em> <em>Once lower layers are verified,
+higher-layer proofs can rely on their</em> <em>guarantees. Each marginal
+proof becomes narrower, allowing a verified software stack to grow
+upward through its dependency graph.</em></figcaption></figure>
+
+<p>The practical consequence is that each proof can make later proofs
+cheaper. Specifications, semantics, libraries, and proof patterns become
+reusable infrastructure, so you can start with small foundational
+components and climb the dependency graph, adding guarantees layer by
+layer (rather than trying to verify an entire software ecosystem in one
+heroic leap).</p>
+<p>That can create a healthier <strong>ecology</strong> around safety,
+too. Verified dependencies let other developers inherit their guarantees
+as well, thereby becoming a useful part of open source infrastructure.
+As AIs become better at proof engineering, the cost of producing these
+guarantees can fall even further.</p>
+<h3 id="from-code-review-to-claim-trees">From code review to claim
+trees</h3>
+<p>The second application is more speculative, but builds on early work
+done hardening our RL environments at Theorem.</p>
+<p>Returning to the mock PR, we have that the sandbox held, the tests
+pass and the explanation sounds reasonable, yet the cache breaks the
+property we care about. The difficulty is that today, humans infer
+intent from the implementation. We have code, tests, permissions, and
+explanations, but they are all indirect evidence from which the reviewer
+has to reconstruct what the system really guarantees.</p>
+<p>I want to reverse that interface. A <strong>claim tree</strong>
+starts with the property humans care about, decomposes it into
+supporting claims backed by proofs, assumptions, or just unresolved
+obligations that we can attend to later. In the mock PR, keeping the
+approved files read-only is too weak a specification, because what we
+actually care about is that <em>every vector consumed by training
+matches an approved source that AI cannot modify.</em></p>
+<figure><img alt=" The same PR reviewed through a claim
+tree" loading="lazy" src="media/image4.png"/><figcaption><em><strong>Figure 8: The same PR reviewed through a claim
+tree.</strong></em> <em>Instead of reconstructing intent from
+permissions and code, reviewers state the property that must remain
+true. The implementation can change underneath it, but every change must
+re-establish the proof.</em></figcaption></figure><details class="interactive"><summary>Explore the claim tree</summary><p><a href="claim-tree-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="claim-tree-pr.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Explore the claim tree"></iframe></details>
+
+<p>Now, the implementation can churn while the requirement stays put.
+Adding a cache, changing the loader, reorganizing the file system can
+all be done by the AI, provided the proof still closes. If the change
+breaks the guarantee, the gap appears in the claim tree rather than
+hiding inside the implementation. We applied this technique at Theorem,
+expressing desired properties of our RL grader as explicit claims, and
+decomposing them. The technique made it <em>far easier</em> to expose
+gaps that ordinary testing and permissions were missing.</p>
+<p>This directly addresses the human review problem from earlier. Humans
+still make a difficult judgment of what the software should guarantee,
+but they spend less time trawling through implementation details to work
+out whether that guarantee survives. The hard judgments remain, but they
+are concentrated where human judgment is most useful.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I built misalignment simulations as warning shots. We have enough of
+them now.</p>
+<p>The harder problem is the system those warnings expose. AI safety is
+a stack: <strong>alignment</strong> has to remain reliable under growing
+pressure, <strong>controls</strong> have to catch what alignment misses,
+<strong>AI companies</strong> have to maintain those controls with
+extraordinary care, and all of it takes place inside an
+<strong>ecology</strong> that rewards speed and capability. No single
+layer is the culprit, because the strain travels through the whole
+structure.</p>
+<p>Now the tempo is rising. As AIs build their successors, development
+accelerates, failures propagate, and every pause becomes more expensive.
+We risk entering a world where the moments when restraint is most
+necessary are exactly the moments when it is hardest to afford.</p>
+<p>At some point, the only responsible response to that mismatch is to
+slow down. Not permanently, and not for its own sake, but long enough to
+understand failures, reinforce the stack, and build safety that can
+survive the next jump in capability.</p>
+<p>We should use that time to build safety that scales. There are many
+approaches to doing that, formal verification is one of them. Rather
+than repeatedly asking whether we missed the next exploit, we can prove
+some properties directly. And as AI writes more of the software, humans
+should spend less time reconstructing what the code does, and more time
+specifying what it must guarantee.</p>
+<p>The warning shots have landed. <strong>Now we need to act on
+them.</strong></p>
+</article></main><script>const button=document.getElementById('theme');function label(){button.textContent=document.body.classList.contains('dark-mode')?'Light mode':'Dark mode'}label();button.onclick=()=>{document.body.classList.toggle('dark-mode');try{localStorage.setItem('darkMode',document.body.classList.contains('dark-mode'))}catch(e){}label()};document.querySelectorAll('.interactive').forEach(d=>d.addEventListener('toggle',()=>{const f=d.querySelector('iframe');if(d.open&&!f.src)f.src=f.dataset.src}));</script></body></html>

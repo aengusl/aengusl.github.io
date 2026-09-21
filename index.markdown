@@ -153,6 +153,9 @@ layout: home
     text-decoration: underline;
   }
   
+  .side-projects summary { cursor: pointer; font-size: .9rem; font-weight: 600; }
+  .side-projects[open] summary { margin-bottom: .6rem; }
+  @media (max-width: 968px) { .right-sidebar { max-height: none; overflow: visible; } }
   .news-section {
     margin: 3rem 0;
   }
@@ -587,18 +590,13 @@ layout: home
         </div>
       </div>
 
-      <a class="culture-live-link" href="/portfolio-transcript-viewer/?t=fraud">
-        <span><small>Transcript viewer</small><strong>Read the agentic misalignment transcripts</strong></span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-
-      <a class="culture-live-link" href="/cultural-selection/" style="display: none;">
-        <span><small>Live experiment</small><strong>Make / Choose: watch 24 AI agents evolve culture</strong></span>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-
-      <div id="research" class="research-section">
+<div id="research" class="research-section">
         <h2>Research</h2>
+        <div class="research-item">
+          <h3><a href="/no-more-warning-shots/">No More Warning Shots (2026)</a></h3>
+          <p><strong>Aengus Lynch</strong></p>
+          <p>AI safety is a stack buckling under pressure. On alignment, technical controls, the incentives around AI development, and safety that scales.</p>
+        </div>
 
         <div class="research-item">
           <h3><a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026 (2026)</a></h3>
@@ -668,26 +666,28 @@ layout: home
       </div>
       
       <div class="sidebar-section">
-        <h3>Contact</h3>
+        <h3>Info</h3>
         <ul>
           <li><a href="mailto:aenguslynch@gmail.com">Email</a></li>
           <li><a href="https://twitter.com/aengus_lynch1">Twitter</a></li>
-        </ul>
-      </div>
-      
-      <div class="sidebar-section">
-        <h3>Links</h3>
-        <ul>
           <li><a href="260728-aengus_cv.pdf">CV</a></li>
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
-          <li><a href="/portfolio-transcript-viewer/?t=fraud">Transcript Viewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3>Explore</h3>
+        <ul><li><a href="/portfolio-transcript-viewer/?t=fraud">Transcript Viewer</a></li></ul>
+      </div>
+      <details class="sidebar-section side-projects">
+        <summary>Fun side projects</summary>
+        <ul>
           <li><a href="/messiah-bench">Messiah Bench</a></li>
           <li><a href="/cultural-selection/">Cultural Selection</a></li>
           <li><a href="/goal-driven-mislabeling/">In-Context Goals Lead to Mislabeling</a></li>
         </ul>
-      </div>
+      </details>
     </div>
   </div>
 </div>
