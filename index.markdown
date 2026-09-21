@@ -706,23 +706,16 @@ layout: home
     btn.textContent = isDark ? 'Light mode' : 'Dark mode';
   }
 
-  // Follow the system theme unless the user has toggled manually
+  // Default to light mode unless the visitor has chosen a theme
   function applyTheme(isDark) {
     document.body.classList.toggle('dark-mode', isDark);
     updateToggleButton(isDark);
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-    const savedMode = localStorage.getItem('darkMode');
-    applyTheme(savedMode === null ? systemDark.matches : savedMode === 'true');
-
-    // Track system changes live while no manual override is set
-    systemDark.addEventListener('change', function(e) {
-      if (localStorage.getItem('darkMode') === null) {
-        applyTheme(e.matches);
-      }
-    });
+    let savedMode = null;
+    try { savedMode = localStorage.getItem('darkMode'); } catch (e) {}
+    applyTheme(savedMode === 'true');
 
     // Simple fade-in animation
     const elements = document.querySelectorAll('.research-item, .news-section, .highlight-box');
