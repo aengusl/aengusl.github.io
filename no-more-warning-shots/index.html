@@ -654,11 +654,7 @@ hiding inside the implementation. We applied this technique at Theorem,
 expressing desired properties of our RL grader as explicit claims, and
 decomposing them. The technique made it <em>far easier</em> to expose
 gaps that ordinary testing and permissions were missing.</p>
-<p>This directly addresses the human review problem from earlier. Humans
-still make a difficult judgment of what the software should guarantee,
-but they spend less time trawling through implementation details to work
-out whether that guarantee survives. The hard judgments remain, but they
-are concentrated where human judgment is most useful.</p>
+<p>This directly addresses the human review problem from earlier. Humans still have to decide what the software should guarantee, but proofs reduce the work of checking whether each implementation preserves it. That makes oversight less dependent on how much code the AI produces.</p>
 <h2 id="conclusion">7. Conclusion</h2>
 <p>I built misalignment simulations as warning shots. We have enough of
 them now.</p>
