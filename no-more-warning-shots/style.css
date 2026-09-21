@@ -36,3 +36,12 @@ body{--essay-width:100vw}
 .reading-controls.is-idle .theme-switch,.reading-controls.is-idle #contents-toggle{background:transparent;box-shadow:none}
 .reading-controls.is-idle .theme-label,.reading-controls.is-idle .switch-track,.reading-controls.is-idle .contents-label{opacity:.18}
 @media(prefers-reduced-motion:no-preference){.reading-controls .theme-switch,.reading-controls #contents-toggle{transition:background-color .35s ease,box-shadow .35s ease}.theme-label,.switch-track,.contents-label{transition:opacity .35s ease}}
+
+/* Compact interactive previews follow the essay's reading column. */
+article .interactive-figure,body.contents-open article .interactive-figure{width:100%!important;max-width:100%;margin:2.5rem 0!important;border:1px solid var(--muted);border-radius:8px;overflow:hidden;background:var(--bg)}
+.interactive-figure>p{margin:0;padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+.pr-open{display:inline-block;padding:8px 12px;border:1px solid var(--accent);border-radius:4px;text-decoration:none;font-weight:500}
+.pr-open:hover,.pr-open:focus-visible{background:color-mix(in srgb,var(--accent) 12%,var(--bg))}
+.interactive-figure .pr-viewer{height:420px!important;min-height:0;max-height:55vh;border:0;overflow:auto}
+.interactive-figure figcaption{max-width:none;margin:0;padding:16px;border-top:1px solid var(--line)}
+@media(max-width:600px){.interactive-figure .pr-viewer{height:320px!important}.interactive-figure>p,.interactive-figure figcaption{padding:12px}}
