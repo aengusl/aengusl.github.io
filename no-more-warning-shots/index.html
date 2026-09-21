@@ -218,16 +218,14 @@ change behavior, sometimes <a href="https://www.goodfire.com/research/verbalized
 more misalignment</u></a>. As models get <a href="https://alignment.openai.com/metagaming" rel="noopener noreferrer" target="_blank"><u>better</u></a> <a href="https://arxiv.org/abs/2407.04694" rel="noopener noreferrer" target="_blank"><u>situational
 awareness</u></a>, evaluators have to build <a href="https://arxiv.org/abs/2609.02302" rel="noopener noreferrer" target="_blank"><u>ever more convincing
 simulations</u></a> to fool the AIs.</p>
-<p>But even a perfectly disguised evaluation can simply look in the
-wrong place. <a href="https://alignment.anthropic.com/2026/reward-seeker/" rel="noopener noreferrer" target="_blank"><u>Hacker-Opus</u></a>
+<p>Realistic evaluations can still miss the conditions that trigger misbehavior. <a href="https://alignment.anthropic.com/2026/reward-seeker/" rel="noopener noreferrer" target="_blank"><u>Hacker-Opus</u></a>
 had a clear propensity to tamper with graders and disable safety
 monitors, yet looked broadly similar to its starting checkpoint under an
 alignment auditing pipeline. Both <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/" rel="noopener noreferrer" target="_blank"><u>my
 own</u></a> and Anthropic’s audits have missed behaviors later observed
 elsewhere, including colluding swarms and aggressive cyber behavior (<a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents" rel="noopener noreferrer" target="_blank"><u>Ant-Sim</u></a>,
 <a href="https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing" rel="noopener noreferrer" target="_blank"><u>AISI-Cyber</u></a>).
-<strong>Finding misalignment is a search problem, and searches can come
-up empty simply because we didn't look in the right places.</strong></p>
+<strong>A clean audit is therefore only as reassuring as the range of situations it tested.</strong></p>
 <p>The reverse problem matters too. <strong>If an audit does find
 misalignment, how much should we infer about deployment?</strong> The <a href="https://www-cdn.anthropic.com/6864c9b2d4a2abf9acce9913d4ec46d1e26b8d0e.pdf#page=17.31" rel="noopener noreferrer" target="_blank"><u>“murder”
 scenario</u></a> in our first paper was deliberately extreme. <a href="https://nostalgebraist.tumblr.com/post/787119374288011264/welcome-to-summitbridge" rel="noopener noreferrer" target="_blank"><u>Strange
@@ -320,8 +318,7 @@ Perhaps the current attackers are simply incapable of discovering subtle
 exploits. Hardening containment is an open-ended contest, and both <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/" rel="noopener noreferrer" target="_blank"><u>OpenAI</u></a>
 and <a href="https://www.anthropic.com/news/improving-alignment-security-efforts" rel="noopener noreferrer" target="_blank"><u>Anthropic</u></a>
 have already slowed development to strengthen it.</p>
-<p>Second, <strong>the boundary can be drawn in the wrong
-place</strong>. Anthropic reports a misconfiguration that gave <a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents" rel="noopener noreferrer" target="_blank"><u>Opus
+<p>Second, <strong>preventing unauthorized access does not help if dangerous access was authorized.</strong> Anthropic reports a misconfiguration that gave <a href="https://www.anthropic.com/news/alignment-assessment-cybersecurity-incidents" rel="noopener noreferrer" target="_blank"><u>Opus
 4.7 internet access</u></a>, which it then used to attack a third party.
 Choosing appropriate permissions is often harder than enforcing them.
 The mock PR illustrates the same problem: approved vectors remain
