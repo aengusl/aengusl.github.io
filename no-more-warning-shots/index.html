@@ -1,4 +1,6 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>No More Warning Shots — Aengus Lynch</title><meta name="description" content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales."><link rel="canonical" href="https://www.aenguslynch.com/no-more-warning-shots/"><meta property="og:title" content="No More Warning Shots"><meta property="og:type" content="article"><link rel="stylesheet" href="style.css"></head><body><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/">← Aengus Lynch</a><button id="theme" type="button">Dark mode</button></nav><header><h1>No More Warning Shots</h1><p>Aengus Lynch · September 2026</p></header><details class="contents"><summary>In this essay</summary><ol><li><a href="#warning-shots">Warning shots</a></li><li><a href="#alignment">Alignment</a></li><li><a href="#technical-controls">Technical Controls</a></li><li><a href="#ai-companies">AI Companies</a></li><li><a href="#ecology">Ecology</a></li><li><a href="#safety-that-scales">Safety that Scales</a></li><li><a href="#conclusion">Conclusion</a></li></ol></details><article><p><strong>TLDR</strong>: AI safety is a stack buckling under
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>No More Warning Shots — Aengus Lynch</title><meta content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales." name="description"/><link href="https://www.aenguslynch.com/no-more-warning-shots/" rel="canonical"/><meta content="No More Warning Shots" property="og:title"/><meta content="article" property="og:type"/><link href="style.css" rel="stylesheet"/></head><body><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/">← Aengus Lynch</a><button id="theme" type="button">Dark mode</button></nav><header><h1>No More Warning Shots</h1><p>Aengus Lynch · September 2026</p></header><details class="contents"><summary>In this essay</summary><ol><li><a href="#warning-shots">Warning shots</a></li><li><a href="#alignment">Alignment</a></li><li><a href="#technical-controls">Technical Controls</a></li><li><a href="#ai-companies">AI Companies</a></li><li><a href="#ecology">Ecology</a></li><li><a href="#safety-that-scales">Safety that Scales</a></li><li><a href="#conclusion">Conclusion</a></li></ol></details><article><p><strong>TLDR</strong>: AI safety is a stack buckling under
 pressure.</p>
 <p>We cannot <strong>align</strong> AIs to faithfully follow our intent,
 and our alignment evaluations do not reliably tell us when it fails. So
@@ -18,13 +20,12 @@ for safety to catch up, and use that room to build <strong>safety that
 scales</strong>. <strong>Formal verification</strong> is one promising
 direction, replacing trust in AI-written code and explanations with
 machine-checkable guarantees that the software behaves as intended.</p>
-<figure><img alt=" AI safety is a stack, and every layer depends
-on the ones beneath it" loading="lazy" src="media/image2.png"/><figcaption><em><strong>Figure X: AI safety is a stack, and every layer depends
+<figure id="figure-1"><img alt=" AI safety is a stack, and every layer depends
+on the ones beneath it" loading="lazy" src="media/image2.png"/><figcaption><em><strong>Figure 1: AI safety is a stack, and every layer depends
 on the ones beneath it.</strong> Alignment shapes what the AI chooses to
 do, controls constrain what it can do, companies decide whether those
 controls are implemented and sustained, and the wider ecology determines
 how much restraint they can afford.</em></figcaption></figure>
-
 <h3 id="how-to-read-this-essay">How to read this essay</h3>
 <p>AI safety is often discussed as a collection of separate problems:
 alignment, sandboxing, monitoring, company governance, competition. I
@@ -139,12 +140,11 @@ misalignment.</p></li>
 show AIs violating their model specs despite alignment training. My
 concern is that large-scale RL pushes current alignment methods past the
 point where they can generalize reliably.</p>
-<figure><img alt=" Reward hacking occurs when an AI earns reward
-without completing the task in the intended way" loading="lazy" src="media/image7.png"/><figcaption><em><strong>Figure X: Reward hacking occurs when an AI earns reward
+<figure id="figure-2"><img alt=" Reward hacking occurs when an AI earns reward
+without completing the task in the intended way" loading="lazy" src="media/image7.png"/><figcaption><em><strong>Figure 2: Reward hacking occurs when an AI earns reward
 without completing the task in the intended way.</strong> It may, for
 example, escape its sandbox and tamper with the grader, or retrieve
 hidden answers.</em></figcaption></figure>
-
 <p>One reason is <em>reward hacking</em>. During RL, AIs receive reward
 for good performance, but misconfigured tasks can let them score highly
 by cheating (e.g. finding hidden answers, or tampering with graders).
@@ -195,11 +195,10 @@ improve, <strong>how would we know?</strong></p>
 <p>What does passing an alignment audit actually tell us about
 deployment? After two years building these evaluations, I am frustrated
 by how murky this is.</p>
-<figure><img alt=" Evaluation awareness can change how AIs behave
-in tests" loading="lazy" src="media/image6.png"/><figcaption><em><strong>Figure X: Evaluation awareness can change how AIs behave
+<figure id="figure-3"><img alt=" Evaluation awareness can change how AIs behave
+in tests" loading="lazy" src="media/image6.png"/><figcaption><em><strong>Figure 3: Evaluation awareness can change how AIs behave
 in tests.</strong> If an AI recognizes that it is being evaluated, it
 may act more aligned than it would in deployment.</em></figcaption></figure>
-
 <p><strong>“This model passed our alignment evaluations” leaves several
 possibilities on the table.</strong> Perhaps training genuinely improved
 alignment and the improvements will hold. Perhaps the AI recognized the
@@ -288,25 +287,22 @@ section. A coding agent proposes a caching optimization to a training
 pipeline. By the usual checks, everything looks fine (tests pass,
 sandbox holds, monitors see no harm, PR description seems fine). Would
 you merge it?</p>
-<figure><img alt=" A simulated PR that passes the usual checks
-while undermining the property we actually care about" loading="lazy" src="media/image3.png"/><figcaption><em><strong>Figure X: A simulated PR that passes the usual checks
+<figure class="interactive-figure" id="figure-4"><p><a href="would-you-approve-this-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe aria-describedby="caption-4" class="pr-viewer" loading="lazy" sandbox="allow-scripts allow-popups" src="would-you-approve-this-pr.html" title="Review the mock pull request"></iframe><figcaption id="caption-4"><em><strong>Figure 4: A simulated PR that passes the usual checks
 while undermining the property we actually care about.</strong> The
 approved vectors remain read-only, but the new cache creates a path for
 AIs to overwrite the trusted vectors that training consumes, allowing an
-AI to substitute untrusted vectors into future training runs.</em></figcaption></figure><details class="interactive"><summary>Review the mock pull request</summary><p><a href="would-you-approve-this-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="would-you-approve-this-pr.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Review the mock pull request"></iframe></details>
-
+AI to substitute untrusted vectors into future training runs.</em></figcaption></figure>
 <p>I’ll judge each control on two dimensions: <strong>how well it
 withstands a rogue AI, and whether it is practical enough to remain
 enabled.</strong> Tighter controls generally buy safety by sacrificing
 autonomy, speed, or attention. That tradeoff is where ecology starts
 creeping back into the technical story.</p>
-<figure><img alt=" Deployment lies on a Pareto frontier between
-safety and usefulness" loading="lazy" src="media/image12.png"/><figcaption><em><strong>Figure X: Deployment lies on a Pareto frontier between
+<figure id="figure-5"><img alt=" Deployment lies on a Pareto frontier between
+safety and usefulness" loading="lazy" src="media/image12.png"/><figcaption><em><strong>Figure 5: Deployment lies on a Pareto frontier between
 safety and usefulness.</strong> Stronger controls can reduce risk, but
 they also cost autonomy, speed, and attention. Point A favors
 usefulness, while point B accepts more friction for stronger
-safeguards.</em></figcaption></figure><details class="interactive"><summary>Explore the safety and usefulness frontier</summary><p><a href="pareto-frontiers.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="pareto-frontiers.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Explore the safety and usefulness frontier"></iframe></details>
-
+safeguards.</em></figcaption></figure>
 <h3 id="sandboxing">Sandboxing</h3>
 <p>Sandboxing lets an AI work autonomously inside software-enforced
 boundaries: which files it can touch, whether it can access the
@@ -359,16 +355,15 @@ is revealed in it. Anthropic accidentally <a href="https://www-cdn.anthropic.com
 Opus 4.6's reasoning to its reward signal</u></a>, while <a href="https://openai.com/index/an-alien-mind/"><u>Jakub Pachocki</u></a>
 argues that keeping reasoning isolated from training signals is becoming
 harder. With Astra, this problem is <a href="https://deploymentsafety.openai.com/gpt-6-astra"><u>starting to
-arrive in practice</u></a> (see figure X).</p>
+arrive in practice</u></a> (see <a href="#figure-6">Figure 6</a>).</p>
 <p><strong>The CoT is being squeezed, as AIs can do more without it, and
 can control more of what they reveal in it.</strong></p>
-<figure><img alt=" GPT-6 Astra shows much tighter control over its
-CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure X: GPT-6 Astra shows much tighter control over its
+<figure id="figure-6"><img alt=" GPT-6 Astra shows much tighter control over its
+CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure 6: GPT-6 Astra shows much tighter control over its
 CoT than earlier AIs.</strong> Given a physics problem plus an intricate
 formatting instruction, Astra manipulates its reasoning in a way that
 previous models could not. This weakens the hope that a misaligned model
 would simply blurt out its intent in plain text.</em></figcaption></figure>
-
 <p>Can <a href="https://darioamodei.com/post/the-urgency-of-interpretability"><u>model
 internals recover</u></a> what CoT no longer reveals? Maybe partly. The
 <a href="https://transformer-circuits.pub/2026/workspace/index.html"><u>J-Space</u></a>
@@ -474,12 +469,11 @@ Safety in practice means <em>being willing to stop</em>.</p>
 <h2 id="ecology">Ecology</h2>
 <p>A company’s ability to slow down depends on the incentives around
 it.</p>
-<figure><img alt=" In the current ecology, anticipated outcomes
-affect the leadership decisions" loading="lazy" src="media/image8.png"/><figcaption><em><strong>Figure X: In the current ecology, anticipated outcomes
+<figure id="figure-7"><img alt=" In the current ecology, anticipated outcomes
+affect the leadership decisions" loading="lazy" src="media/image8.png"/><figcaption><em><strong>Figure 7: In the current ecology, anticipated outcomes
 affect the leadership decisions.</strong> Safety failures can trigger
 restraint, while competition pushes companies back toward acceleration.
 Coordination can reduce the penalty for slowing down.</em></figcaption></figure>
-
 <p>Competition pushes towards acceleration. More capable AIs and broader
 autonomy make companies faster and more productive. Safety work, tighter
 controls, investigations, and pauses consume time and attention while
@@ -495,12 +489,11 @@ use it in deployment.</p>
 <p>This gets harder as AI starts accelerating AI development itself.</p>
 <h3 id="recursive-self-improvement-raises-the-stakes">Recursive
 self-improvement raises the stakes</h3>
-<figure><img alt=" Recursive self-improvement creates a feedback
-loop" loading="lazy" src="media/image1.png"/><figcaption><em><strong>Figure X: Recursive self-improvement creates a feedback
+<figure id="figure-8"><img alt=" Recursive self-improvement creates a feedback
+loop" loading="lazy" src="media/image1.png"/><figcaption><em><strong>Figure 8: Recursive self-improvement creates a feedback
 loop.</strong></em> <em>As engineers delegate more work to AI, stronger
 AIs help build even stronger successors, accelerating the next round of
 development.</em></figcaption></figure>
-
 <p>AI is <a href="https://openai.com/index/research-acceleration-view-inside-openai/?utm_source=chatgpt.com"><u>increasingly</u></a>
 helping <a href="https://www.anthropic.com/institute/recursive-self-improvement"><u>build
 its successors</u></a>. Engineers are delegating more research and
@@ -532,11 +525,10 @@ while safety improvements still have to be researched, tested, and
 implemented. Those processes do not move at the same speed, and as AI
 R&amp;D accelerates, safety mitigations can themselves <a href="https://www.redwoodresearch.org/blog/planning-for-extreme-ai-risks"><u>become
 a bottleneck</u></a>.</p>
-<figure><img alt=" Capability progress increases the opportunity
-cost of restraint" loading="lazy" src="media/image5.png"/><figcaption><em><strong>Figure X: Capability progress increases the opportunity
+<figure id="figure-9"><img alt=" Capability progress increases the opportunity
+cost of restraint" loading="lazy" src="media/image5.png"/><figcaption><em><strong>Figure 9: Capability progress increases the opportunity
 cost of restraint.</strong> Safety improvements can lower that cost,
 while pacing buys time for those improvements to catch up.</em></figcaption></figure>
-
 <p>Which leaves a repugnant conclusion: if slowing down is hard now, it
 may only become harder.</p>
 <h3 id="pacing-development">Pacing development</h3>
@@ -545,7 +537,7 @@ responsibly. When safety falls behind, AI companies must show restraint,
 and slow down enough for safety to catch up.</p>
 <p>But restraint is hard to sustain alone. If one company slows down
 while others keep racing, it pays the cost while its competitors catch
-up (figure X). Coordination reduces that pressure by limiting how
+up (<a href="#figure-7">Figure 7</a>). Coordination reduces that pressure by limiting how
 quickly participants can accelerate relative to one another.</p>
 <p>Coordination will only work if it is credible. Participants need
 confidence that others are actually respecting agreed <a href="https://ai-2040.com/?utm_source=chatgpt.com&amp;choices=plan-a-root#wishlist-ai-compute-tracking"><u>limits</u></a>,
@@ -589,13 +581,12 @@ AIs stops finding exploits, is the sandbox secure, or have they simply
 run out of good ideas? Formal verification offers an escape from that
 loop. Instead of asking whether we searched hard enough, we can prove
 that a specified failure cannot happen.</p>
-<figure><img alt=" Formal verification changes the security
-loop" loading="lazy" src="media/image11.png"/><figcaption><em><strong>Figure 6: Formal verification changes the security
+<figure id="figure-10"><img alt=" Formal verification changes the security
+loop" loading="lazy" src="media/image11.png"/><figcaption><em><strong>Figure 10: Formal verification changes the security
 loop.</strong></em> <em>Instead of repeatedly finding, patching, and
 retesting vulnerabilities as stronger AIs discover them, we can prove
 security properties that hold across every input covered by the
 specification.</em></figcaption></figure>
-
 <p>The safety stack rests on software, including sandboxes, graders,
 training environments, monitors, kernels, and compilers. If this
 substrate is porous, clever AIs can wriggle through it. Tests and
@@ -616,13 +607,12 @@ ecosystem</h3>
 software, so once a lower-level component comes with a trusted
 specification and proof, higher-level systems can rely on that guarantee
 instead of reopening every implementation detail from scratch.</p>
-<figure><img alt=" Verification compounds through
-dependencies" loading="lazy" src="media/image10.png"/><figcaption><em><strong>Figure X: Verification compounds through
+<figure id="figure-11"><img alt=" Verification compounds through
+dependencies" loading="lazy" src="media/image10.png"/><figcaption><em><strong>Figure 11: Verification compounds through
 dependencies.</strong></em> <em>Once lower layers are verified,
 higher-layer proofs can rely on their</em> <em>guarantees. Each marginal
 proof becomes narrower, allowing a verified software stack to grow
 upward through its dependency graph.</em></figcaption></figure>
-
 <p>The practical consequence is that each proof can make later proofs
 cheaper. Specifications, semantics, libraries, and proof patterns become
 reusable infrastructure, so you can start with small foundational
@@ -651,13 +641,11 @@ obligations that we can attend to later. In the mock PR, keeping the
 approved files read-only is too weak a specification, because what we
 actually care about is that <em>every vector consumed by training
 matches an approved source that AI cannot modify.</em></p>
-<figure><img alt=" The same PR reviewed through a claim
-tree" loading="lazy" src="media/image4.png"/><figcaption><em><strong>Figure 8: The same PR reviewed through a claim
+<figure class="interactive-figure" id="figure-12"><p><a href="claim-tree-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe aria-describedby="caption-12" class="pr-viewer" loading="lazy" sandbox="allow-scripts allow-popups" src="claim-tree-pr.html" title="Explore the claim tree"></iframe><figcaption id="caption-12"><em><strong>Figure 12: The same PR reviewed through a claim
 tree.</strong></em> <em>Instead of reconstructing intent from
 permissions and code, reviewers state the property that must remain
 true. The implementation can change underneath it, but every change must
-re-establish the proof.</em></figcaption></figure><details class="interactive"><summary>Explore the claim tree</summary><p><a href="claim-tree-pr.html" rel="noopener" target="_blank">Open interactive example in a full tab ↗</a></p><iframe data-src="claim-tree-pr.html" loading="lazy" sandbox="allow-scripts allow-popups" title="Explore the claim tree"></iframe></details>
-
+re-establish the proof.</em></figcaption></figure>
 <p>Now, the implementation can churn while the requirement stays put.
 Adding a cache, changing the loader, reorganizing the file system can
 all be done by the AI, provided the proof still closes. If the change
