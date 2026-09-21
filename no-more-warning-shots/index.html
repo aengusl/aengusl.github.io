@@ -20,7 +20,7 @@ rises.</p>
 remain effective under real deployment pressure. When capability starts
 to outrun our ability to control it, we should pace development enough
 for safety to catch up, and use that room to build <strong>safety that
-scales</strong>. <strong>Formal verification</strong> could help us prove that the software behind our safeguards has the security properties we need, while building a verified open-source ecosystem along the way. It could also help humans check what AI-written code guarantees without inspecting every implementation detail.</p>
+scales</strong>. <strong>Formal verification</strong> could help us prove that the software behind our technical controls has the security properties we need, while building a verified open-source ecosystem along the way. It could also help humans check what AI-written code guarantees without inspecting every implementation detail.</p>
 <figure id="figure-1"><img alt=" AI safety is a stack, and every layer depends
 on the ones beneath it" loading="lazy" src="media/image2.png"/><figcaption><em><strong>Figure 1: AI safety is a stack, and every layer depends
 on the ones beneath it.</strong> Alignment shapes what the AI chooses to
@@ -44,9 +44,7 @@ argue that <a href="#recursive-self-improvement-raises-the-stakes"><u>recursive
 self-improvement</u> (Section 5.1)</a> makes the whole system harder to sustain, as
 development speeds up, failures can compound, and slowing down becomes
 increasingly expensive.</p>
-<p>I end with what might make this system sustainable: <a href="#pacing-development"><u>pacing</u> (Section 5.2)</a>, coordination, and <a href="#safety-that-scales"><u><strong>safety that
-scales</strong></u> (Section 6)</a>. Formal verification is one worked example of
-that last idea.</p>
+<p>I end with how <a href="#pacing-development">pacing development (Section 5.2)</a> could give us room to build <a href="#safety-that-scales"><strong>safety that scales</strong> (Section 6)</a>. Section 6 explores how formal verification could <a href="#verifying-software">secure the software behind our technical controls (6.1)</a> and <a href="#the-verified-software-ecosystem">build a verified open-source ecosystem along the way (6.2)</a>, then how it could <a href="#from-code-review-to-claim-trees">help humans review AI-written code through explicit guarantees (6.3)</a>.</p>
 <h2 id="warning-shots">1. Warning shots</h2>
 <p>Essentially all of the misalignments Anthropic and I simulated in the
 <a href="https://www.anthropic.com/research/agentic-misalignment" rel="noopener noreferrer" target="_blank"><u>Agentic</u></a>
