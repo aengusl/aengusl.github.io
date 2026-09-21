@@ -21,9 +21,18 @@ main>nav>a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}m
 header .essay-author{font-family:'Lora',Georgia,serif;font-size:clamp(1.5rem,3vw,1.9rem);font-weight:500;line-height:1.4;color:var(--fg);margin:24px 0 8px}header .essay-meta{font-size:15px;line-height:1.5;margin:0;color:var(--muted)}
 
 /* Fade the floating buttons without fading the open contents panel. */
-.reading-controls.is-idle .theme-switch,.reading-controls.is-idle #contents-toggle{opacity:.28}
+
 @media(prefers-reduced-motion:no-preference){.reading-controls .theme-switch,.reading-controls #contents-toggle{transition:opacity .35s ease}}
 
 #figure-1>img{filter:none}#figure-1>.ecology-dark{display:none}body.dark-mode #figure-1>img{filter:none}body.dark-mode #figure-1>.ecology-light{display:none}body.dark-mode #figure-1>.ecology-dark{display:block}
 
 .controls-overview>img{filter:none}.controls-overview>.controls-dark{display:none}body.dark-mode .controls-overview>img{filter:none}body.dark-mode .controls-overview>.controls-light{display:none}body.dark-mode .controls-overview>.controls-dark{display:block}
+
+/* Reserve room for a persistent desktop contents sidebar. */
+body{--essay-width:100vw}
+.reading-nav #contents-panel{position:fixed;top:68px;right:12px;bottom:16px;width:296px;max-height:none;border:1px solid var(--line);box-shadow:none}
+@media(min-width:1000px){body.contents-open{padding-right:320px;--essay-width:calc(100vw - 320px)}.reading-controls{right:24px}.reading-nav #contents-panel{right:16px}.contents-open .interactive-figure{width:calc(var(--essay-width) - 24px)!important;margin-left:calc(50% - var(--essay-width)/2 + 12px)!important}}
+.reading-controls .theme-switch,.reading-controls #contents-toggle{border-color:var(--muted);opacity:1}
+.reading-controls.is-idle .theme-switch,.reading-controls.is-idle #contents-toggle{background:transparent;box-shadow:none}
+.reading-controls.is-idle .theme-label,.reading-controls.is-idle .switch-track,.reading-controls.is-idle .contents-label{opacity:.18}
+@media(prefers-reduced-motion:no-preference){.reading-controls .theme-switch,.reading-controls #contents-toggle{transition:background-color .35s ease,box-shadow .35s ease}.theme-label,.switch-track,.contents-label{transition:opacity .35s ease}}
