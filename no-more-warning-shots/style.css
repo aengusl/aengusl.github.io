@@ -45,3 +45,5 @@ article .interactive-figure,body.contents-open article .interactive-figure{width
 .interactive-figure .pr-viewer{height:420px!important;min-height:0;max-height:55vh;border:0;overflow:auto}
 .interactive-figure figcaption{max-width:none;margin:0;padding:16px;border-top:1px solid var(--line)}
 @media(max-width:600px){.interactive-figure .pr-viewer{height:320px!important}.interactive-figure>p,.interactive-figure figcaption{padding:12px}}
+
+#figure-6>img{filter:none}#figure-6>.tradeoffs-dark{display:none}body.dark-mode #figure-6>img{filter:none}body.dark-mode #figure-6>.tradeoffs-light{display:none}body.dark-mode #figure-6>.tradeoffs-dark{display:block}
