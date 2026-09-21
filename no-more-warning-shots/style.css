@@ -10,8 +10,10 @@ body{font-family:'Lora',Georgia,serif;line-height:1.85}h1{font-weight:600;letter
 
 body.dark-mode article figure>img{filter:invert(.92) hue-rotate(180deg)}
 article li{margin:.2rem 0}article li>p{margin:0}article ol,article ul{margin:1rem 0;padding-left:1.6em}
-body.dark-mode #figure-11>img{filter:invert(.92) hue-rotate(180deg) brightness(1.3)}
+
 
 .reading-controls{position:fixed;top:16px;right:24px;z-index:90;display:flex;align-items:center;gap:10px;font:14px/1.4 'Fira Sans',sans-serif}.reading-controls .reading-nav{position:relative;top:auto;right:auto;z-index:auto}.reading-controls #contents-toggle{height:40px}.theme-switch{display:flex;align-items:center;gap:9px;height:40px;padding:0 10px;background:var(--bg);border:1px solid var(--line);color:var(--muted);cursor:pointer}.switch-track{position:relative;display:block;width:34px;height:20px;background:var(--line);border-radius:20px}.switch-thumb{position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--bg);box-shadow:0 1px 3px #0003}.theme-switch[aria-checked=true] .switch-track{background:var(--accent)}.theme-switch[aria-checked=true] .switch-thumb{transform:translateX(14px)}.theme-switch:focus-visible{outline:2px solid var(--accent);outline-offset:3px}main>nav{padding-right:0}@media(max-width:600px){.reading-controls{right:12px;gap:6px;font-size:13px}.theme-switch{gap:6px;padding:0 8px}.reading-controls #contents-toggle{padding:7px 10px}main>nav a{max-width:105px}}@media(prefers-reduced-motion:no-preference){.switch-thumb{transition:transform .15s ease}}
 
 main>nav>a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}main>nav .site-mark{width:28px;height:28px;flex-shrink:0;margin:0;filter:none}@media(max-width:600px){main>nav>a{gap:5px;font-size:12px}main>nav .site-mark{width:22px;height:22px}}
+
+#figure-11>img{filter:none}#figure-11>.ecosystem-dark{display:none}body.dark-mode #figure-11>img{filter:none}body.dark-mode #figure-11>.ecosystem-light{display:none}body.dark-mode #figure-11>.ecosystem-dark{display:block}
