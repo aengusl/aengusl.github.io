@@ -605,14 +605,8 @@ guarantees can fall even further.</p>
 trees</h3>
 <p>The second application is more speculative, but builds on early work
 done hardening our RL environments at Theorem.</p>
-<p>Returning to the mock PR, the change appears safe, yet the cache breaks the property we care about. The reviewer has to reconstruct what the system guarantees by examining how it is implemented. That is a difficult judgment, even when the code looks reasonable and passes its checks.</p>
-<p>I want to reverse that interface. A <strong>claim tree</strong>
-starts with the property humans care about, decomposes it into
-supporting claims backed by proofs, assumptions, or just unresolved
-obligations that we can attend to later. In the mock PR, keeping the
-approved files read-only is too weak a specification, because what we
-actually care about is that <em>every vector consumed by training
-matches an approved source that AI cannot modify.</em></p>
+<p>Returning to the mock PR, the proposed cache appears safe but breaks the property we care about. A reviewer might assume that read-only permissions already ensure training uses only approved vectors. Spotting the flaw requires <a href="https://fs.blog/chestertons-fence/" rel="noopener noreferrer" target="_blank">remembering why those permissions exist</a> and recognizing that the cache creates another route around them. As software grows, <a href="https://www.schneier.com/essays/archives/1999/11/a_plea_for_simplicit.html" rel="noopener noreferrer" target="_blank">reviewers have more interactions to reason about</a>, often without an explicit account of what each safeguard is meant to protect.</p>
+<p>I want to reverse that interface. A <strong>claim tree</strong> starts with the property humans care about and decomposes it into supporting claims backed by proofs, assumptions, or unresolved obligations. In the mock PR, keeping the approved files read-only is too weak a specification, because what we actually care about is that <em>every vector consumed by training matches an approved source that AI cannot modify.</em> The aim is to make these guarantees <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/" rel="noopener noreferrer" target="_blank">reliable abstractions</a>. Once a property is proved, reviewers can rely on it without reconstructing how each implementation preserves it.</p>
 <figure class="interactive-figure" id="figure-12" style="width:calc(100vw - 24px);max-width:none;margin-left:calc(50% - 50vw + 12px)"><p><a href="claim-tree-pr.html" rel="noopener noreferrer" target="_blank">Open separately ↗</a></p><iframe aria-describedby="caption-12" class="pr-viewer" height="1800" loading="lazy" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="claim-tree-pr.html?v=20260920-4" style="display:block;width:100%;min-width:100%;height:1800px;border:0" title="Explore the claim tree" width="100%"></iframe><figcaption id="caption-12"><em><strong>Figure 12: The same PR reviewed through a claim
 tree.</strong></em> <em>Instead of reconstructing intent from
 permissions and code, reviewers state the property that must remain
