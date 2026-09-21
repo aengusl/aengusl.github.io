@@ -124,7 +124,7 @@ That is bad enough on its own, because the AI fails to learn how to
 complete the task. More worrying is that <a href="https://arxiv.org/abs/2209.00626" rel="noopener noreferrer" target="_blank"><u>reward hacking can generalize
 to broader misalignment</u></a>. In <a href="https://alignment.anthropic.com/2026/reward-seeker/" rel="noopener noreferrer" target="_blank"><u>recent
 Anthropic experiments</u></a>, AIs trained in hackable environments
-developed broader <a href="https://arxiv.org/pdf/2311.08379#page=27.12" rel="noopener noreferrer" target="_blank"><u>reward-seeking</u></a>
+developed broader <a href="https://arxiv.org/pdf/2311.08379#page=28" rel="noopener noreferrer" target="_blank"><u>reward-seeking</u></a>
 traits. In simulated cyber evaluations, they broke out of sandboxes,
 evaded monitors, attacked third parties, and stole credentials.
 Concerningly, automated alignment auditing failed to detect this
@@ -196,7 +196,7 @@ elsewhere, including colluding swarms and aggressive cyber behavior (<a href="ht
 <a href="https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing" rel="noopener noreferrer" target="_blank"><u>AISI-Cyber</u></a>).
 <strong>A clean audit is therefore only as reassuring as the range of situations it tested.</strong></p>
 <p>The reverse problem matters too. <strong>If an audit does find
-misalignment, how much should we infer about deployment?</strong> The <a href="https://www-cdn.anthropic.com/6864c9b2d4a2abf9acce9913d4ec46d1e26b8d0e.pdf#page=17.31" rel="noopener noreferrer" target="_blank"><u>&quot;murder&quot;
+misalignment, how much should we infer about deployment?</strong> The <a href="https://www-cdn.anthropic.com/6864c9b2d4a2abf9acce9913d4ec46d1e26b8d0e.pdf#page=17" rel="noopener noreferrer" target="_blank"><u>&quot;murder&quot;
 scenario</u></a> in our first paper was deliberately extreme. <a href="https://nostalgebraist.tumblr.com/post/787119374288011264/welcome-to-summitbridge" rel="noopener noreferrer" target="_blank"><u>Strange
 incentives or role framing</u></a> can elicit behavior from AIs that
 looks &quot;cartoonish&quot;, unlike what we generally see from it in practice.
@@ -230,7 +230,7 @@ search</p></li>
 alignment improvements that generalize beyond training data</u></a>.
 What I want is stronger evidence that those improvements survive contact
 with deployment.</p>
-<p><strong>I will trust alignment audits more when they repeatedly
+<p>Hence, <strong>I will trust alignment audits more when they repeatedly
 predict what AIs later do in the wild.</strong> <a href="https://openai.com/index/deployment-simulation/" rel="noopener noreferrer" target="_blank"><u>OpenAI's
 deployment-simulation work</u></a> is a promising step, but pre-release
 audits still missed behaviors later seen in OAI-HF, OAI-Wiki, and
@@ -325,7 +325,7 @@ arrive in practice</u></a> (see <a href="#figure-7">Figure 7</a>).</p>
 can control more of what they reveal in it.</strong></p>
 <figure id="figure-7"><img alt=" GPT-6 Astra shows much tighter control over its
 CoT than earlier AIs" loading="lazy" src="media/image9.png"/><figcaption><em><strong>Figure 7: GPT-6 Astra shows much tighter control over its
-CoT than earlier AIs.</strong> <a href="https://deploymentsafety.openai.com/gpt-6-astra/takeaways-for-monitorability-under-non-adversarial-conditions#:~:text=Table%2010%3A%20A,the%20correct%20answer." rel="noopener noreferrer" target="_blank"><u>Given a physics problem plus an intricate
+CoT than earlier AIs.</strong> <a href="https://deploymentsafety.openai.com/gpt-6-astra/takeaways-for-monitorability-under-non-adversarial-conditions#:~:text=Table%209%3A%20A%20comparison%20of%20CoTs" rel="noopener noreferrer" target="_blank"><u>Given a physics problem plus an intricate
 formatting instruction, Astra manipulates its reasoning in a way that
 previous models could not.</u></a> This weakens the hope that a misaligned model
 would simply blurt out its intent in plain text.</em></figcaption></figure>
@@ -342,7 +342,7 @@ detect properties humans specify, <a href="https://alignment.anthropic.com/2025/
 oracles</u></a> let us ask flexible questions about internal states, <a href="https://arxiv.org/abs/2309.08600" rel="noopener noreferrer" target="_blank"><u>sparse autoencoders</u></a>
 try to discover interpretable features automatically. But each can miss
 what we fail to ask for, or <a href="https://www.lesswrong.com/posts/4uXCAJNuPKtKBsi28/negative-results-for-saes-on-downstream-tasks" rel="noopener noreferrer" target="_blank"><u>fail
-on unfamiliar inputs</u></a>. We need not understand every thought an AI has. But we do need to <a href="https://www.alignmentforum.org/posts/PwnadG4BFjaER3MGf/interpretability-will-not-reliably-find-deceptive-ai" rel="noopener noreferrer" target="_blank"><u>detect dangerous intent reliably</u></a>, and <a href="https://x.com/Jack_W_Lindsey/status/2095174799664283910?referrer=grok-com" rel="noopener noreferrer" target="_blank"><u>current methods fall short</u></a>.</p>
+on unfamiliar inputs</u></a>. We need not understand every thought an AI has. But we do need to <a href="https://www.alignmentforum.org/posts/PwnadG4BFjaER3MGf/interpretability-will-not-reliably-find-deceptive-ai" rel="noopener noreferrer" target="_blank"><u>detect dangerous intent reliably</u></a>, and <a href="https://x.com/Jack_W_Lindsey/status/2095174799664283910" rel="noopener noreferrer" target="_blank"><u>current methods fall short</u></a>.</p>
 <p>Even perfect evidence would leave another problem: <strong>can we
 trust the AI monitor?</strong> In <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/#motivated-mislabeling" rel="noopener noreferrer" target="_blank"><u>my
 motivated mislabeling simulations</u></a>, AI judges understood the
@@ -360,7 +360,7 @@ safeguards to measure capabilities that those safeguards would otherwise
 block. <a href="https://www.anthropic.com/research/next-generation-constitutional-classifiers" rel="noopener noreferrer" target="_blank"><u>Better
 classifiers</u></a> can reduce the burden, but broader capabilities
 demand broader monitoring. OpenAI now monitors whole long-run
-trajectories and estimates that monitoring adds a <a href="https://openai.com/index/safety-alignment-long-horizon-models/" rel="noopener noreferrer" target="_blank"><u>20%
+trajectories and estimates that monitoring adds a <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/#:~:text=Our%20current%20estimates%20put%20monitoring%20overhead%20at%20roughly%2020%25" rel="noopener noreferrer" target="_blank"><u>20%
 inference compute overhead</u></a>.</p>
 <p>And when AI monitors do alert humans, someone still has to stop the
 run, investigate the evidence, and decide what to do next. Eventually,
@@ -504,9 +504,7 @@ unravels.</p>
 <h2 id="safety-that-scales">6. Safety that Scales</h2>
 <p>As AI grows more capable, keeping it safe should become easier rather than demand ever more human oversight. There are many research directions worth pursuing here, including those outlined by <a href="https://resolution.org/launch" rel="noopener noreferrer" target="_blank"><u>Resolution</u></a> and <a href="https://alignment.anthropic.com/2025/recommended-directions/" rel="noopener noreferrer" target="_blank"><u>Anthropic's Alignment Science team</u></a>.</p>
 <p>The direction I'm most excited about is <strong>formal
-verification</strong>. AI is becoming <a href="https://openai.com/index/navier-stokes-solution/" rel="noopener noreferrer" target="_blank"><u>extraordinarily
-capable at writing mathematical proofs</u></a>, relaxing what was
-historically the main bottleneck: expert human proof engineering. At <a href="https://theorem.dev/" rel="noopener noreferrer" target="_blank"><u>Theorem</u></a>, we have started applying
+verification</strong>. Expert human proof engineering has historically been the main bottleneck, but AI's <a href="https://openai.com/index/navier-stokes-solution/" rel="noopener noreferrer" target="_blank"><u>growing ability to write mathematical proofs</u></a> is beginning to change that. At <a href="https://theorem.dev/" rel="noopener noreferrer" target="_blank"><u>Theorem</u></a>, we have started applying
 that capability to software, asking AI not just to write the code, but
 to prove the properties we care about.</p>
 <p>Formal verification scales unusually well because proof construction
@@ -526,7 +524,7 @@ safety stack</strong>, and, more speculatively, <strong>changing how
 humans supervise AI-written software</strong>.</p>
 <h3 id="verifying-software">6.1 Verifying software</h3>
 <p>Earlier, sandboxing ran into an uncomfortable stopping problem. When
-AIs stops finding exploits, is the sandbox secure, or have they simply
+AIs stop finding exploits, is the sandbox secure, or have they simply
 run out of good ideas? Formal verification offers an escape from that
 loop. Instead of asking whether we searched hard enough, we can prove
 that a specified failure cannot happen.</p>
@@ -537,41 +535,34 @@ retesting vulnerabilities as stronger AIs discover them, we can prove
 security properties that hold across every input covered by the
 specification.</em></figcaption></figure>
 <p>The safety stack rests on software, including sandboxes, graders,
-training environments, monitors, kernels, and compilers. If this
-substrate is porous, clever AIs can wriggle through it. Tests and
-fuzzers sample the input space, but a proof establishes that our
+training environments, monitors, kernels, and compilers. If this substrate is not watertight, clever AIs can exploit the leaks. Tests and
+fuzzers sample the input space, but a proof shows that our
 property holds across an entire modeled domain. Thus, for any proven
 property, a stronger attacker cannot simply sample inputs until it finds
 an exploit.</p>
-<p>Stronger verification therefore reinforces several layers of the AI
-safety stack at once. <strong>Controls</strong> get sturdier because
+<p>Fittingly, stronger verification reinforces several layers of the AI safety stack at once. <strong>Controls</strong> get sturdier because
 isolation can be proven, rather than repeatedly stress-tested.
 <strong>Alignment</strong> benefits because secure graders and training
 environments close off major routes to reward hacking. And <strong>AI
 companies</strong> spend less time repeatedly hardening broken training
-environments and having to pause training runs.</p>
+environments and pausing training runs.</p>
 <h3 id="the-verified-software-ecosystem">6.2 The verified software
 ecosystem</h3>
 <p>This is where verification starts to compound. Software is built on
 software, so once a lower-level component comes with a trusted
 specification and proof, higher-level systems can rely on that guarantee
-instead of reopening every implementation detail from scratch.</p>
+without rechecking how the component works.</p>
 <figure id="figure-12"><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-light" height="800" loading="lazy" src="media/verification-compounds-light.svg" width="1200"/><img alt="Verified software dependencies, from the kernel through runtime, networking and sandboxing to AI control systems, RL environments and training pipelines." class="ecosystem-dark" height="800" loading="lazy" src="media/verification-compounds-dark.svg" width="1200"/><figcaption><em><strong>Figure 12: Verification compounds through
 dependencies.</strong></em> <em>Once lower layers are verified,
 higher-layer proofs can rely on their</em> <em>guarantees. Each marginal
 proof becomes narrower, allowing a verified software stack to grow
 upward through its dependency graph.</em></figcaption></figure>
-<p>The practical consequence is that each proof can make later proofs
-cheaper. Specifications, semantics, libraries, and proof patterns become
+<p>Consequently, each proof can make later proofs cheaper. Specifications, semantics, libraries, and proof patterns become
 reusable infrastructure, so you can start with small foundational
 components and climb the dependency graph, adding guarantees layer by
 layer (rather than trying to verify an entire software ecosystem in one
 heroic leap).</p>
-<p>That can create a healthier <strong>ecology</strong> around safety,
-too. Verified dependencies let other developers inherit their guarantees
-as well, thereby becoming a useful part of open source infrastructure.
-As AIs become better at proof engineering, the cost of producing these
-guarantees can fall even further.</p>
+<p>That can create a healthier <strong>ecology</strong> around safety, too. Verified dependencies let other developers build on guarantees that have already been proved, making them useful open source infrastructure. As AIs become better at proof engineering, the cost of producing these guarantees can fall even further.</p>
 <h3 id="from-code-review-to-claim-trees">6.3 From code review to claim
 trees</h3>
 <p>The second application is more speculative, but builds on early work
