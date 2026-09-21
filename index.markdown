@@ -591,11 +591,11 @@ layout: home
       </div>
 
 <div id="research" class="research-section">
-        <h2>Research</h2>
+        <h2>Research and Blogs</h2>
         <div class="research-item">
           <h3><a href="/no-more-warning-shots/">No More Warning Shots (2026)</a></h3>
           <p><strong>Aengus Lynch</strong></p>
-          <p>AI safety is a stack buckling under pressure. On alignment, technical controls, the incentives around AI development, and safety that scales.</p>
+          <p>AI safety is a stack buckling under pressure. We should pace development and build safety that scales. Formal verification is one exciting avenue.</p>
         </div>
 
         <div class="research-item">
