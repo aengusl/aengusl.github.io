@@ -23,3 +23,5 @@ header .essay-author{font-family:'Lora',Georgia,serif;font-size:clamp(1.5rem,3vw
 /* Fade the floating buttons without fading the open contents panel. */
 .reading-controls.is-idle .theme-switch,.reading-controls.is-idle #contents-toggle{opacity:.28}
 @media(prefers-reduced-motion:no-preference){.reading-controls .theme-switch,.reading-controls #contents-toggle{transition:opacity .35s ease}}
+
+#figure-1>img{filter:none}#figure-1>.ecology-dark{display:none}body.dark-mode #figure-1>img{filter:none}body.dark-mode #figure-1>.ecology-light{display:none}body.dark-mode #figure-1>.ecology-dark{display:block}
