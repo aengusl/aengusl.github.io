@@ -3,43 +3,21 @@
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>No More Warning Shots — Aengus Lynch</title><meta content="AI safety is a stack buckling under pressure. On alignment, controls, pacing AI development, and safety that scales." name="description"/><link href="https://www.aenguslynch.com/no-more-warning-shots/" rel="canonical"/><meta content="No More Warning Shots" property="og:title"/><meta content="article" property="og:type"/><link href="style.css?v=20260921-4" rel="stylesheet"/><link href="link-previews.css?v=20260920-4" rel="stylesheet"/><link href="/assets/pendant-logo.png" rel="icon" type="image/png"/><link href="/assets/pendant-logo.png" rel="apple-touch-icon"/></head><body id="top"><div aria-label="Reading progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="reading-progress" role="progressbar"><span></span></div><div class="reading-controls"><button aria-checked="false" aria-label="Dark mode" class="theme-switch" id="theme" role="switch" type="button"><span aria-hidden="true" class="theme-label">Light</span><span aria-hidden="true" class="switch-track"><span class="switch-thumb"></span></span></button><div class="reading-nav"><button aria-controls="contents-panel" aria-expanded="false" id="contents-toggle" type="button"><span class="contents-label">Contents</span></button><nav aria-label="Essay contents" hidden="" id="contents-panel"><a href="#top">Back to top</a><a class="toc-section" href="#how-to-read-this-essay">How to read this essay</a><a class="toc-section" href="#warning-shots">1. Warning shots</a><a class="toc-section" href="#alignment">2. Alignment</a><a class="toc-subsection" href="#what-do-we-want-from-ai">2.1 What do we want from AI?</a><a class="toc-subsection" href="#alignment-training">2.2 Alignment training</a><a class="toc-subsection" href="#measuring-alignment">2.3 Measuring alignment</a><a class="toc-section" href="#technical-controls">3. Technical Controls</a><a class="toc-subsection" href="#sandboxing">3.1 Sandboxing</a><a class="toc-subsection" href="#ai-monitoring">3.2 AI Monitoring</a><a class="toc-subsection" href="#human-review">3.3 Human Review</a><a class="toc-section" href="#ai-companies">4. AI Companies</a><a class="toc-section" href="#ecology">5. Ecology</a><a class="toc-subsection" href="#recursive-self-improvement-raises-the-stakes">5.1 Recursive
 self-improvement raises the stakes</a><a class="toc-subsection" href="#pacing-development">5.2 Pacing development</a><a class="toc-section" href="#safety-that-scales">6. Safety that Scales</a><a class="toc-subsection" href="#verifying-software">6.1 Verifying software</a><a class="toc-subsection" href="#the-verified-software-ecosystem">6.2 The verified software
 ecosystem</a><a class="toc-subsection" href="#from-code-review-to-claim-trees">6.3 From code review to claim
-trees</a><a class="toc-section" href="#conclusion">7. Conclusion</a></nav></div></div><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/" rel="noopener noreferrer" target="_blank"><img alt="" class="site-mark" height="28" src="/assets/pendant-logo.png" width="28"/>Aengus Lynch</a></nav><header><h1>No More Warning Shots</h1><p class="essay-author">Aengus Lynch</p><p class="essay-meta">September 2026 · 24 min read</p></header><article><p><strong>TLDR</strong>: AI safety is a stack buckling under
-pressure.</p>
-<p>We cannot <strong>align</strong> AIs to faithfully follow our intent,
-and our alignment evaluations do not reliably tell us when it fails. So
-we fall back to controls such as sandboxing, monitoring, and human
-review. But <strong>controls</strong> are cumbersome. They cost time,
-compute, autonomy, and attention, and work only when <strong>AI
-companies</strong> decide to implement them with painstaking operational
-discipline. AI companies sit inside an <strong>ecology</strong> that
-rewards speed and capability, making pauses, investigations, and
-restraint ever more costly. As AIs build their successors, development
-accelerates, failures can compound, and the price of slowing down
-rises.</p>
-<p>When capabilities outpace our controls, we should slow development and build <strong>safety that scales</strong>. One promising approach is <strong>formal verification</strong>, which lets us prove security properties of the software behind our technical controls and build a verified open-source ecosystem along the way. It also changes <em>how we develop software</em>. Humans specify what AI-written code must guarantee, and AI writes the implementation and proves that it meets those requirements.</p>
+trees</a><a class="toc-section" href="#conclusion">7. Conclusion</a></nav></div></div><script>try{if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode')}catch(e){}</script><main><nav><a href="/" rel="noopener noreferrer" target="_blank"><img alt="" class="site-mark" height="28" src="/assets/pendant-logo.png" width="28"/>Aengus Lynch</a></nav><header><h1>No More Warning Shots</h1><p class="essay-author">Aengus Lynch</p><p class="essay-meta">September 2026 · 24 min read</p></header><article><p><strong>TLDR</strong>: I built misalignment simulations as warning shots. We have enough of them now to see that the AI safety stack is buckling under pressure.</p>
+<p>We should build safety that scales. I think <strong>formal verification</strong> is promising. It lets us prove security properties of the software behind our technical controls and build a verified open-source ecosystem along the way. It also changes <em>how we develop software</em>. Humans specify what AI-written code must guarantee, and AI writes the implementation and proves that it meets those requirements.</p>
+<p>The warning shots have revealed weaknesses throughout the AI safety stack. We cannot reliably <strong>align</strong> AIs to follow our intent, and our evaluations do not reliably tell us when alignment fails. So we fall back to <strong>technical controls</strong> such as sandboxing, monitoring, and human review. But controls are cumbersome. They cost time, compute, autonomy, and attention, and depend on <strong>AI companies</strong> maintaining painstaking operational discipline, yet those companies sit inside an <strong>ecology</strong> that rewards speed and capability.</p>
+<p>As AIs build their successors, development accelerates, failures can compound, and the price of slowing down rises. We risk entering a world where restraint is hardest to afford precisely when we need it most. We should pace development to give us time to strengthen the stack.</p>
 <figure id="figure-1"><img alt="The ecology of AI safety: alignment determines what AI chooses to do, technical controls what it is allowed to do, AI companies how it is built and deployed, and ecology what competition rewards." class="ecology-light" width="1200" height="820" loading="lazy" src="media/ai-safety-stack-light.svg"/><img alt="The ecology of AI safety: alignment determines what AI chooses to do, technical controls what it is allowed to do, AI companies how it is built and deployed, and ecology what competition rewards." class="ecology-dark" width="1200" height="820" loading="lazy" src="media/ai-safety-stack-dark.svg"/><figcaption><em><strong>Figure 1: AI safety is a stack, and every layer depends
 on the ones beneath it.</strong> Alignment shapes what the AI chooses to
 do, controls constrain what it can do, companies decide whether those
 controls are implemented and sustained, and the wider ecology determines
 how much restraint they can afford.</em></figcaption></figure>
 <h2 id="how-to-read-this-essay">How to read this essay</h2>
-<p>AI safety is often discussed as a collection of separate problems:
-alignment, sandboxing, monitoring, company governance, competition. I
-think it is more useful to see them as a stack.</p>
-<p>At the top, <a href="#alignment"><u>alignment</u> (Section 2)</a> determines what
-an AI chooses to do. When alignment fails, we fall back to <a href="#technical-controls"><u>technical controls</u> (Section 3)</a>. Those controls
-only work if <a href="#ai-companies"><u>AI companies</u> (Section 4)</a> implement
-and maintain them carefully. And those companies operate inside a wider
-<a href="#ecology"><u>ecology</u> (Section 5)</a> that rewards speed and
-capability.</p>
-<p>I’ll walk down that stack, showing how problems at each layer put
-pressure on the layer beneath it (warning to the non-technical readers
-that <a href="#technical-controls">Section 3</a> gets pretty low-level). Then I’ll
-argue that <a href="#recursive-self-improvement-raises-the-stakes"><u>recursive
-self-improvement</u> (Section 5.1)</a> makes the whole system harder to sustain, as
-development speeds up, failures can compound, and slowing down becomes
-increasingly expensive. I then discuss how <a href="#pacing-development">pacing development (Section 5.2)</a> gives us room to improve safety.</p>
-<p>I end with <a href="#safety-that-scales"><strong>safety that scales</strong> (Section 6)</a>. I explore how formal verification <a href="#verifying-software">proves security properties of the software behind our technical controls (6.1)</a> and <a href="#the-verified-software-ecosystem">supports a verified open-source ecosystem (6.2)</a>. I then show how it <a href="#from-code-review-to-claim-trees">changes <em>how we develop software</em> (6.3)</a>.</p>
+<p>AI safety is often discussed as a collection of separate problems: alignment, sandboxing, monitoring, company governance, competition. I think it is more useful to see them as a stack.</p>
+<p>I argue that we should strengthen this stack by building safety that scales, and pace development to give it time to mature. I focus on formal verification, which can strengthen the software behind our technical controls and change how humans supervise AI-written code.</p>
+<p>I’ll walk down that stack, showing how problems at each layer put pressure on the layer beneath it (warning to the non-technical readers that <a href="#technical-controls">Section 3</a> gets pretty low-level). <a href="#alignment"><strong>Alignment (Section 2)</strong></a> determines what an AI chooses to do. When alignment fails, we fall back to <a href="#technical-controls"><strong>technical controls (Section 3)</strong></a>. Those controls only work if <a href="#ai-companies"><strong>AI companies (Section 4)</strong></a> implement and maintain them carefully. And those companies operate inside a wider <a href="#ecology"><strong>ecology (Section 5)</strong></a> that rewards speed and capability.</p>
+<p>I then argue that <a href="#recursive-self-improvement-raises-the-stakes"><strong>recursive self-improvement (Section 5.1)</strong></a> makes the system harder to sustain. Development speeds up, failures can compound, and slowing down becomes increasingly expensive. <a href="#pacing-development"><strong>Pacing development (Section 5.2)</strong></a> gives us essential breathing room to improve safety.</p>
+<p>I end with <a href="#safety-that-scales"><strong>safety that scales (Section 6)</strong></a>. I explore how formal verification <a href="#verifying-software">proves security properties of the software behind our technical controls (6.1)</a> and <a href="#the-verified-software-ecosystem">supports a verified open-source ecosystem (6.2)</a>. I show how it changes <a href="#from-code-review-to-claim-trees"><em>how we develop software</em> (6.3)</a>, letting us organize oversight around explicit claims about what AI-written software must guarantee.</p>
 <h2 id="warning-shots">1. Warning shots</h2>
 <p>Essentially all of the misalignments Anthropic and I simulated in the
 <a href="https://www.anthropic.com/research/agentic-misalignment" rel="noopener noreferrer" target="_blank"><u>Agentic</u></a>
@@ -270,7 +248,7 @@ constrain what it can do.</p>
 <p>If alignment is unreliable, we need to <a href="https://arxiv.org/abs/2312.06942" rel="noopener noreferrer" target="_blank"><u>constrain what the AI can
 do</u></a>. <em>Sandboxing</em> limits its reach. <em>AI monitoring</em>
 flags misbehavior or dangerous intent. <em>Human review</em>
-concentrates attention on consequential outputs. None is foolproof, and
+decides which outputs can be used outside the sandbox. None is foolproof, and
 all are costly to sustain.</p>
 <figure id="figure-4" class="controls-overview"><img class="controls-light" src="media/controls-triptych-light.png" width="2400" height="940" loading="lazy" alt="Three technical controls: sandboxing limits where AI can act, AI monitoring assesses its actions, and human review decides what leaves the sandbox."/><img class="controls-dark" src="media/controls-triptych-dark.png" width="2400" height="940" loading="lazy" alt="Three technical controls: sandboxing limits where AI can act, AI monitoring assesses its actions, and human review decides what leaves the sandbox."/><figcaption><strong>Figure 4: Three ways to constrain an AI’s actions.</strong> Sandboxing limits where it can act, AI monitoring assesses what its actions mean, and human review decides which outputs leave the sandbox.</figcaption></figure>
 <p>To make this concrete, I’ll use one mock pull request throughout this
@@ -388,8 +366,7 @@ inference compute overhead</u></a>.</p>
 run, investigate the evidence, and decide what to do next. Eventually,
 the burden falls back to humans.</p>
 <h3 id="human-review">3.3 Human Review</h3>
-<p>Human review is the final backstop. Unfortunately, it only gets
-harder as the AI gets better.</p>
+<p>Human review is the final backstop before an AI’s work leaves the sandbox—for example, when a proposed code change is merged into a live system. Unfortunately, that review only gets harder as the AI gets better.</p>
 <p>The most productive workflows delegate aggressively. OpenAI reports
 <a href="https://openai.com/index/harness-engineering/" rel="noopener noreferrer" target="_blank"><u>10x
 productivity gains</u></a> on some software projects without humans
