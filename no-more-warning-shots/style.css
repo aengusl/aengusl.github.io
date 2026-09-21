@@ -17,3 +17,5 @@ article li{margin:.2rem 0}article li>p{margin:0}article ol,article ul{margin:1re
 main>nav>a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}main>nav .site-mark{width:28px;height:28px;flex-shrink:0;margin:0;filter:none}@media(max-width:600px){main>nav>a{gap:5px;font-size:12px}main>nav .site-mark{width:22px;height:22px}}
 
 #figure-11>img{filter:none}#figure-11>.ecosystem-dark{display:none}body.dark-mode #figure-11>img{filter:none}body.dark-mode #figure-11>.ecosystem-light{display:none}body.dark-mode #figure-11>.ecosystem-dark{display:block}
+
+header .essay-author{font-family:'Lora',Georgia,serif;font-size:clamp(1.5rem,3vw,1.9rem);font-weight:500;line-height:1.4;color:var(--fg);margin:24px 0 8px}header .essay-meta{font-size:15px;line-height:1.5;margin:0;color:var(--muted)}
