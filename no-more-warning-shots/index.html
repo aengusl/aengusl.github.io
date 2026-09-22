@@ -463,19 +463,11 @@ cost of restraint.</strong> Safety improvements can lower that cost,
 while pacing buys time for those improvements to catch up.</em></figcaption></figure>
 <p>The grim implication is that slowing down may only get harder just as the risks get larger.</p>
 <h3 id="pacing-development">5.2 Pacing development</h3>
-<p>I do not believe the current safety stack can withstand automated recursive self-improvement, where AI trains its successors with minimal human oversight. Time is running short to build safety methods that can. We need to apply restraint and buy time for that work until the relevant properties of the technical controls can be verified.</p>
-<p>But restraint is hard to sustain alone. If one company slows down
-while others keep racing, it pays the cost while its competitors catch
-up (<a href="#figure-8">Figure 8</a>). Coordination reduces that pressure by limiting how
-quickly participants can accelerate relative to one another.</p>
-<p>Coordination will only work if it is credible. Participants need
-confidence that others are actually respecting agreed <a href="https://ai-2040.com/?choices=plan-a-root#wishlist-ai-compute-tracking" rel="noopener noreferrer" target="_blank"><u>limits</u></a>,
-investigating <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/" rel="noopener noreferrer" target="_blank"><u>incidents</u></a>,
-maintaining <a href="https://arxiv.org/abs/2501.17315" rel="noopener noreferrer" target="_blank"><u>controls</u></a>, and <a href="https://darioamodei.com/post/we-must-pace-the-frontier" rel="noopener noreferrer" target="_blank"><u>developing
-their systems responsibly</u></a>. Otherwise, the agreement
-unravels.</p>
-<p>Formal verification may eventually help evaluators check some of these commitments. Proofs about training pipelines could give them explicit guarantees to inspect, alongside the assumptions and gaps that remain (see <a href="#from-code-review-to-claim-trees">Section 6.3</a>).</p>
-<p>There is substantial work ahead to develop coordination methods. Pacing would give us more time to explore them and strengthen the AI safety stack before they face still greater demands.</p>
+<p>I do not believe the current safety stack can withstand automated recursive self-improvement, where AI trains its successors with minimal human oversight. Time is running short to build safety methods that can. We need to apply restraint and buy time for that work.</p>
+<p>But restraint is hard to sustain alone. If one company slows down while others keep racing, it pays the cost while its competitors catch up (<a href="#figure-8">Figure 8</a>). Coordination could reduce that pressure, provided participants have confidence that others are respecting agreed <a href="https://ai-2040.com/?choices=plan-a-root#wishlist-ai-compute-tracking" rel="noopener noreferrer" target="_blank"><u>limits</u></a>.</p>
+<p>We still have substantial work to do on how to verify those commitments. Companies and countries would need credible ways to check how others are training their AIs, which <a href="https://arxiv.org/abs/2501.17315" rel="noopener noreferrer" target="_blank"><u>technical controls</u></a> they maintain, how they <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/" rel="noopener noreferrer" target="_blank"><u>investigate incidents</u></a>, and whether they are complying with an agreement. I do not think we yet have sufficiently developed methods for doing this.</p>
+<p>In the meantime, AI companies should exercise as much restraint as they reasonably can, including through <a href="https://darioamodei.com/post/we-must-pace-the-frontier" rel="noopener noreferrer" target="_blank"><u>voluntary commitments</u></a>. The time gained should support both stronger safety methods and coordination mechanisms that make more substantial, verifiable restraint possible.</p>
+<p>Formal verification may eventually help evaluators check some of these commitments. Proofs about training pipelines could give them explicit guarantees to inspect, alongside the assumptions and gaps that remain (see <a href="#from-code-review-to-claim-trees">Section 6.3</a>). I do not yet know what would establish that the overall stack is adequate for automated recursive self-improvement, but these are directions in which I think we can make progress.</p>
 <h2 id="safety-that-scales">6. Safety that Scales</h2>
 <p>As AI grows more capable, keeping it safe should become easier rather than demand ever more human oversight. There are many research directions worth pursuing here, including those outlined by <a href="https://resolution.org/launch" rel="noopener noreferrer" target="_blank"><u>Resolution</u></a> and <a href="https://alignment.anthropic.com/2025/recommended-directions/" rel="noopener noreferrer" target="_blank"><u>Anthropic's Alignment Science team</u></a>.</p>
 <p>The direction I'm most excited about is <strong>formal
