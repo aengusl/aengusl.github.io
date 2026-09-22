@@ -463,9 +463,8 @@ cost of restraint.</strong> Safety improvements can lower that cost,
 while pacing buys time for those improvements to catch up.</em></figcaption></figure>
 <p>The grim implication is that slowing down may only get harder just as the risks get larger.</p>
 <h3 id="pacing-development">5.2 Pacing development</h3>
-<p>AI development should proceed at a pace that AI companies can handle
-responsibly. When safety falls behind, AI companies must show restraint,
-and slow down enough for safety to catch up.</p>
+<p>I do not believe the current safety stack can withstand automated recursive self-improvement. Time is running short to build safety methods that can. We need to buy time for that work, and doing so will require restraint.</p>
+<p>In particular, AI companies should slow the automation of AI development, where AI trains its successors with little human oversight, until the relevant properties of the technical controls can be verified.</p>
 <p>But restraint is hard to sustain alone. If one company slows down
 while others keep racing, it pays the cost while its competitors catch
 up (<a href="#figure-8">Figure 8</a>). Coordination reduces that pressure by limiting how
@@ -476,6 +475,7 @@ investigating <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-inci
 maintaining <a href="https://arxiv.org/abs/2501.17315" rel="noopener noreferrer" target="_blank"><u>controls</u></a>, and <a href="https://darioamodei.com/post/we-must-pace-the-frontier" rel="noopener noreferrer" target="_blank"><u>developing
 their systems responsibly</u></a>. Otherwise, the agreement
 unravels.</p>
+<p>Some of that confidence could come from formal verification. Where a company’s pipelines carry proven guarantees, evaluators could check the proofs and their applicability to the deployed system (see <a href="#from-code-review-to-claim-trees">Section 6.3</a>).</p>
 <p>And buying time only matters if we use it to build <strong>safety that scales</strong>.</p>
 <h2 id="safety-that-scales">6. Safety that Scales</h2>
 <p>As AI grows more capable, keeping it safe should become easier rather than demand ever more human oversight. There are many research directions worth pursuing here, including those outlined by <a href="https://resolution.org/launch" rel="noopener noreferrer" target="_blank"><u>Resolution</u></a> and <a href="https://alignment.anthropic.com/2025/recommended-directions/" rel="noopener noreferrer" target="_blank"><u>Anthropic's Alignment Science team</u></a>.</p>
@@ -553,6 +553,7 @@ hiding inside the implementation. We applied this technique at Theorem,
 expressing desired properties of our RL grader as explicit claims, and
 decomposing them. The technique made it <em>far easier</em> to expose
 gaps that ordinary testing and permissions were missing.</p>
+<p>Claim trees could also give independent evaluators a way to examine an AI company’s infrastructure. Evaluators would specify requirements, such as training consuming only approved inputs. The company’s agents would then seek proofs, organized in claim trees that make assumptions and unresolved gaps explicit for evaluators to inspect. I want to see how far this approach could go.</p>
 <p>This directly addresses the human review problem from earlier. Human attention can concentrate on choosing the right guarantees and examining unresolved assumptions. Oversight becomes less dependent on how much code the AI produces.</p>
 <h2 id="conclusion">7. Conclusion</h2>
 <p>I built misalignment simulations as warning shots. We have enough of
