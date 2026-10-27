@@ -570,7 +570,7 @@ layout: home
 
           <p>My latest post, with Anthropic's Frontier Red Team, is <a href="https://www.anthropic.com/research/formal-verification">LLMs are making formal software verification feasible at a much larger scale</a>. Claude wrote 180 million lines of Rocq proving that 239 fuzzing entry points across 123 open-source libraries never crash, and found hundreds of bugs along the way. Proofs at this scale offer a real solution to the problems we see in cyber today, and a beacon of hope. I contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, which runs the same pipeline free for open-source projects. Our plan for the rest of the stack is <a href="https://theorem.dev/blog/verified-software-stack/">Bootstrapping the Verified Software Stack</a>.</p>
 
-          <p>To get up to speed on my work, read <a href="/no-more-warning-shots/">No More Warning Shots</a>, then the <a href="https://www.anthropic.com/research/formal-verification">formal verification post</a>, then my <a href="https://arxiv.org/abs/2604.00324">PhD thesis</a>. The papers I am most proud of move up the supervision stack:</p>
+          <p>To get up to speed on my work, read <a href="/no-more-warning-shots/">No More Warning Shots</a>, then the <a href="https://www.anthropic.com/research/formal-verification">formal verification post</a>, then my <a href="https://arxiv.org/abs/2604.00324">PhD thesis</a>, and here are the papers I'm most proud of:</p>
           <ul>
             <li><strong>Automated interpretability.</strong> <a href="https://arxiv.org/abs/2304.14997">ACDC</a> recovered a hand-found GPT-2 Small circuit automatically, selecting 68 of 32,000 edges (NeurIPS 2023 spotlight).</li>
             <li><strong>Training on model internals.</strong> <a href="https://arxiv.org/abs/2407.15549">Targeted latent adversarial training</a> beat the R2D2 jailbreak defense with orders of magnitude less compute.</li>
@@ -580,11 +580,8 @@ layout: home
             <li><strong>Formal verification.</strong> <a href="https://www.anthropic.com/research/formal-verification">239 entry points</a> across 123 libraries proved crash-free, with hundreds of bugs found.</li>
           </ul>
 
-          <p>Each step up this stack needs fewer assumptions about what we can monitor in AI systems. Formal verification needs the fewest, which is why I'm at Theorem.</p>
-
           <p>I told the UK Parliament's Business, Innovation, Science and Trade Committee that the biggest risks from AI come from building it very, very quickly, and recommended that governments mandate embedded evaluators who pre-commit to investigative claims (<a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">video</a>, <a href="https://x.com/aengus_lynch1/status/2110560690566299888">thread</a>). I walked Seth Bannon through the blackmail research in <a href="https://www.youtube.com/watch?v=jjKuCYn9kgk">The AI Researcher Who Caught Claude Blackmailing</a>, and explained on <a href="https://x.com/MTSlive">MTS</a> why automating alignment will be slow while we can barely measure it.</p>
 
-          <p>I'm the first author of the <a href="https://www.anthropic.com/research/agentic-misalignment">Anthropic blackmail study, Agentic Misalignment</a>, research which showed frontier models engaging in blackmail when pursuing goals, covered by dozens of major outlets and quoted in the US Congress. That research led me to found Watertight AI, a third-party auditing startup selling alignment evals for coding-agent deployment; I shut it down a year later when it became clear the market didn't need it yet. I subsequently first-authored a 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>. I hold a PhD in Artificial Intelligence from University College London, having published the thesis <a href="https://arxiv.org/abs/2604.00324">"The Persistent Vulnerability of Aligned AI Systems."</a></p>
                   </div>
       </div>
 
