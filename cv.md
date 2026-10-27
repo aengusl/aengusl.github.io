@@ -23,6 +23,8 @@ Master's Project: Computations and Analysis on Fluid Flow Through a Flexible Cha
 *Theorem, San Francisco*  
 Building formally verified software environments as RL training data for frontier AI models.
 
+- Second author of "LLMs are making formal software verification feasible at a much larger scale" (Anthropic Frontier Red Team with Theorem, October 2026): Claude wrote ~180M lines of Rocq proving 239 fuzzing entry points across 123 open-source libraries crash-free, uncovering hundreds of bugs.
+- Contributed to [OSS Verify](https://theorem.dev/oss-verify/), Theorem's free formal verification program for open-source projects.
 - Designed and shipped a paid suite of RL environments, delivered on schedule to a frontier lab customer.
 - Wrote the technical sales document that scoped the offering, covering difficulty calibration and reward-hack mitigations, and proposed follow-on contracts.
 - Up-skilled in formal verification (Rocq, Lean, machine-checked binary equivalence proofs) from a standing start.
@@ -60,6 +62,11 @@ PhD thesis, University College London, 2025. Supervised by Ricardo Silva. Examin
 [arXiv:2604.00324](https://arxiv.org/abs/2604.00324)
 
 ### 2026
+
+**LLMs are making formal software verification feasible at a much larger scale**  
+Keane Lucas, **Aengus Lynch**, Luna Tong, Luke Champine, Zygi Straznickas, Dino Distefano, Harshikaa Agrawal, Evyatar Ben Asher, Ava Howell, Sami Jawhar, Chris Rohlf, Nickolai Zeldovich, Nicholas Carlini, Rajashree Agrawal, Jason Gross  
+Anthropic Frontier Red Team, October 2026  
+[anthropic.com/research/formal-verification](https://www.anthropic.com/research/formal-verification)
 
 **Agentic Misalignment in Summer 2026**  
 **Aengus Lynch**, John Hughes, Alex Serrano, Robert Kirk, Samuel R. Bowman  

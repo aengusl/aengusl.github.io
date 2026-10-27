@@ -568,6 +568,8 @@ layout: home
 
           <p>My research has moved up the supervision stack from mechanistic interpretability, to steering vectors, to jailbreaking, to alignment evals, and now to formally verified outputs. I'm here because this is the level of supervision which requires the fewest assumptions about what we can monitor in AI systems.</p>
 
+          <p>I'm second author of the Anthropic Frontier Red Team and Theorem post <a href="https://www.anthropic.com/research/formal-verification">LLMs are making formal software verification feasible at a much larger scale</a>, in which Claude wrote ~180 million lines of Rocq proofs showing 239 fuzzing entry points across 123 open-source libraries never crash, finding hundreds of bugs along the way. I also contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, Theorem's program offering that same pipeline to open-source projects as free formal verification.</p>
+
           <p>I'm the first author of the <a href="https://www.anthropic.com/research/agentic-misalignment">Anthropic blackmail study, Agentic Misalignment</a>, research which showed frontier models engaging in blackmail when pursuing goals, covered by dozens of major outlets and quoted in the US Congress. That research led me to found Watertight AI, a third-party auditing startup selling alignment evals for coding-agent deployment; I shut it down a year later when it became clear the market didn't need it yet. I subsequently first-authored a 2026 follow-up, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Agentic Misalignment in Summer 2026</a>. I hold a PhD in Artificial Intelligence from University College London, having published the thesis <a href="https://arxiv.org/abs/2604.00324">"The Persistent Vulnerability of Aligned AI Systems."</a></p>
                   </div>
       </div>
@@ -592,6 +594,12 @@ layout: home
 
 <div id="research" class="research-section">
         <h2>Research and Blogs</h2>
+        <div class="research-item">
+          <h3><a href="https://www.anthropic.com/research/formal-verification">LLMs are making formal software verification feasible at a much larger scale (2026)</a></h3>
+          <p>Keane Lucas, <strong>Aengus Lynch</strong>, Luna Tong, Luke Champine, Zygi Straznickas, Dino Distefano, Harshikaa Agrawal, Evyatar Ben Asher, Ava Howell, Sami Jawhar, Chris Rohlf, Nickolai Zeldovich, Nicholas Carlini, Rajashree Agrawal, Jason Gross</p>
+          <p>Anthropic Frontier Red Team with Theorem, October 2026. Claude wrote ~180M lines of Rocq proving 239 fuzzing entry points across 123 open-source libraries never crash at the RISC-V binary level, uncovering hundreds of bugs. Theorem now offers the pipeline free to open-source projects via <a href="https://theorem.dev/oss-verify/">OSS Verify</a>.</p>
+        </div>
+
         <div class="research-item">
           <h3><a href="/no-more-warning-shots/">No More Warning Shots (2026)</a></h3>
           <p><strong>Aengus Lynch</strong></p>
