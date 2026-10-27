@@ -564,9 +564,9 @@ layout: home
         <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
         <div class="bio">          
-          <p>I'm a member of technical staff at <a href="https://theorem.dev">Theorem</a> in San Francisco, formally verifying software to prevent mass AI-enabled hacking.</p>
+          <p>I'm a member of technical staff at <a href="https://theorem.dev">Theorem</a> in San Francisco, formally verifying software to prevent mass AI-enabled hacking. I completed my PhD in AI research at University College London in 2025, with the thesis <a href="https://arxiv.org/abs/2604.00324">The Persistent Vulnerability of Aligned AI Systems</a>.</p>
 
-          <p>Essentially all of the misalignments we simulated in Agentic Misalignment have now happened in the wild. We cannot reliably align AIs, our controls cost time and compute that companies racing each other struggle to sustain, and recursive self-improvement will make restraint hardest to afford just when we need it most. The AI safety stack is <a href="/no-more-warning-shots/">buckling under pressure</a>, so we should build safety that scales.</p>
+          <p><strong>Essentially all of the misalignments we simulated in the Agentic Misalignment papers (<a href="https://www.anthropic.com/research/agentic-misalignment">2025</a>, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">2026</a>) have now happened in the wild.</strong> We cannot reliably align AIs, our controls cost time and compute that companies racing each other struggle to sustain, and recursive self-improvement will make restraint hardest to afford just when we need it most. The AI safety stack is <a href="/no-more-warning-shots/">buckling under pressure</a>, so we should build safety that scales.</p>
 
           <p>Cyber is now in turmoil, and my latest post with Anthropic's Frontier Red Team offers a beacon of hope, because <a href="https://www.anthropic.com/research/formal-verification">we can eliminate whole classes of bugs with proofs</a>. I contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, which runs the same pipeline free for open-source projects. Our plan for the rest of the stack is <a href="https://theorem.dev/blog/verified-software-stack/">Bootstrapping the Verified Software Stack</a>.</p>
 
