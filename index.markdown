@@ -564,9 +564,9 @@ layout: home
         <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
         <div class="bio">          
-          <p>I'm an AI safety researcher at <a href="https://theorem.dev">Theorem</a> in San Francisco, building formally verified software because I believe this is the best approach we have to steer AI during the transition to ASI.</p>
+          <p>I'm a member of technical staff at <a href="https://theorem.dev">Theorem</a> in San Francisco, formally verifying software to prevent mass AI-enabled hacking.</p>
 
-          <p><a href="/no-more-warning-shots/">No More Warning Shots</a> holds my main thesis on what is going wrong and where we are heading. The AI safety stack is buckling under pressure, so we need safety that scales.</p>
+          <p>Essentially all of the misalignments we simulated in Agentic Misalignment have now happened in the wild. We cannot reliably align AIs, our controls cost time and compute that companies racing each other struggle to sustain, and recursive self-improvement will make restraint hardest to afford just when we need it most. The AI safety stack is <a href="/no-more-warning-shots/">buckling under pressure</a>, so we should build safety that scales.</p>
 
           <p>My latest post, with Anthropic's Frontier Red Team, is <a href="https://www.anthropic.com/research/formal-verification">LLMs are making formal software verification feasible at a much larger scale</a>. Claude wrote 180 million lines of Rocq proving that 239 fuzzing entry points across 123 open-source libraries never crash, and found hundreds of bugs along the way. Proofs at this scale offer a real solution to the problems we see in cyber today, and a beacon of hope. I contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, which runs the same pipeline free for open-source projects. Our plan for the rest of the stack is <a href="https://theorem.dev/blog/verified-software-stack/">Bootstrapping the Verified Software Stack</a>.</p>
 
