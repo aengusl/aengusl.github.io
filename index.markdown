@@ -5,12 +5,12 @@ layout: home
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AI Alignment Research - Aengus Lynch, lead author of agentic misalignment research on AI systems engaging in deception and blackmail">
+    <meta name="description" content="Aengus Lynch. Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research.">
     <meta name="author" content="Aengus Lynch">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Aengus Lynch - AI S Research">
-    <meta property="og:description" content="AI Alignment Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research featured in 15+ major outlets">
+    <meta property="og:title" content="Aengus Lynch">
+    <meta property="og:description" content="Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research.">
     <meta property="og:url" content="https://aenguslynch.com">
     
     <!-- Twitter -->
@@ -564,7 +564,7 @@ layout: home
         <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
         <div class="bio">          
-          <p>I'm a member of technical staff at <a href="https://theorem.dev">Theorem</a> in San Francisco, formally verifying software to prevent mass AI-enabled hacking. I completed my PhD in AI research at University College London in 2025, with the thesis <a href="https://arxiv.org/abs/2604.00324">The Persistent Vulnerability of Aligned AI Systems</a>.</p>
+          <p>I'm formally verifying software at <a href="https://theorem.dev">Theorem</a> in San Francisco, to prevent mass AI-enabled hacking. I completed my PhD in AI research at University College London on 28 August 2026, with the thesis <a href="https://arxiv.org/abs/2604.00324">The Persistent Vulnerability of Aligned AI Systems</a>. As intelligence becomes abundant, executing research gets cheaper, but deciding what is worth researching does not, so I think more people should do PhDs (<a href="https://x.com/aengus_lynch1">my take</a>).</p>
 
           <p><strong>Essentially all of the misalignments we simulated in the Agentic Misalignment papers (<a href="https://www.anthropic.com/research/agentic-misalignment">2025</a>, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">2026</a>) have now happened in the wild.</strong> We cannot reliably align AIs, our controls cost time and compute that companies racing each other struggle to sustain, and recursive self-improvement will make restraint hardest to afford just when we need it most. The AI safety stack is <a href="/no-more-warning-shots/">buckling under pressure</a>, so we should build safety that scales.</p>
 
@@ -624,7 +624,7 @@ layout: home
         </div>
 
         <div class="research-item">
-          <h3><a href="https://arxiv.org/abs/2604.00324">PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2025)</a></h3>
+          <h3><a href="https://arxiv.org/abs/2604.00324">PhD Thesis: The Persistent Vulnerability of Aligned AI Systems (2026)</a></h3>
           <p><strong>Aengus Lynch</strong></p>
           <p>Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.</p>
         </div>
@@ -679,8 +679,7 @@ layout: home
         <h3>Currently</h3>
         <ul>
           <li>San Francisco</li>
-          <li>Researcher, Theorem</li>
-          <li>PhD, UCL</li>
+          <li>Formally verifying software at Theorem</li>
         </ul>
       </div>
       
@@ -689,7 +688,7 @@ layout: home
         <ul>
           <li><a href="mailto:aenguslynch@gmail.com">Email</a></li>
           <li><a href="https://twitter.com/aengus_lynch1">Twitter</a></li>
-          <li><a href="260728-aengus_cv.pdf">CV</a></li>
+          <li><a href="261104-aengus_cv.pdf">CV</a></li>
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>
@@ -762,11 +761,11 @@ layout: home
     "https://scholar.google.com/citations?user=Pd2002AAAAAJ",
     "https://www.linkedin.com/in/aengus-lynch-2876a6125"
   ],
-  "jobTitle": "AI Safety Researcher",
+  "jobTitle": "Member of Technical Staff",
   "worksFor": {
     "@type": "Organization",
     "name": "Theorem"
   },
-  "description": "AI Alignment Researcher working on finding and fixing ways AI systems can fail. Lead author of agentic misalignment research demonstrating AI deception and blackmail behaviors"
+  "description": "Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research."
 }
 </script>

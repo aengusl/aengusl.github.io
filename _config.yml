@@ -5,11 +5,10 @@
 # yourself editing this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
 
-title: "AI Alignment Research"
+title: "Aengus Lynch"
 email: aenguslynch@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  PhD student at UCL researching AI Alignment, mechanistic interpretability, 
-  and AI safety. Former MATS scholar with Stephen Casper.
+  Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research.
 baseurl: ""
 url: "https://www.aenguslynch.com"
 author: Aengus Lynch
@@ -50,3 +49,42 @@ social_links:
   twitter: aengus_lynch1
   github: aengusl
   linkedin: aengus-lynch-2876a6125
+# Keep generated data, unlinked drafts and old CVs out of sitemap.xml.
+# Side-project pages (messiah-bench, cultural-selection, ...) stay listed.
+defaults:
+  - scope:
+      path: "messiah-bench/runs"
+    values:
+      sitemap: false
+  - scope:
+      path: "cultural-selection/artworks"
+    values:
+      sitemap: false
+  - scope:
+      path: "alignment-auditing"
+    values:
+      sitemap: false
+  - scope:
+      path: "preview.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "aenguslynch_cv_241206.pdf"
+    values:
+      sitemap: false
+  - scope:
+      path: "260113_aengus_cv.pdf"
+    values:
+      sitemap: false
+  - scope:
+      path: "260321-aengus_cv.pdf"
+    values:
+      sitemap: false
+  - scope:
+      path: "260403-aengus_cv.pdf"
+    values:
+      sitemap: false
+  - scope:
+      path: "260728-aengus_cv.pdf"
+    values:
+      sitemap: false
