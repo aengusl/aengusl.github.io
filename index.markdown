@@ -313,6 +313,14 @@ layout: home
   body.dark-mode .paper-fig { border-color: #35352d; }
   body.dark-mode .paper-body strong { color: #e0915e; }
 
+  /* Subtitles on the Parliament clip */
+  .video-frame video::cue {
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
   .video-caption {
     margin: 0.6rem 0 0;
     color: #4a3623;
@@ -731,6 +739,14 @@ layout: home
       <div class="video-section">
         <h2>Watch</h2>
         <div class="video-grid">
+          <div class="video-card">
+            <div class="video-frame">
+              <video controls playsinline preload="metadata" poster="/assets/parliament-race.jpg" src="/assets/parliament-race.mp4">
+                <track kind="captions" srclang="en" label="English" src="/assets/parliament-race.vtt" default>
+              </video>
+            </div>
+            <p class="video-caption">UK Parliament, Business and Trade Committee: asked whether Geoffrey Irving overstates the risk, I say no — the risk comes from building AI very, very quickly.</p>
+          </div>
           <div class="video-card">
             <div class="video-frame">
               <video autoplay loop muted playsinline controls src="/assets/clip_geminicli_captioned.mp4"></video>
