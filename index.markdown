@@ -272,6 +272,41 @@ layout: home
     object-fit: contain;
     display: block;
   }
+  .paper-fig video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .paper-fig img.fig-cover { padding: 0; object-fit: cover; object-position: center; }
+  /* Quote tile: a judge's reasoning, rendered as text */
+  .fig-quote {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+    background: #f6f8fa !important;
+  }
+  .fig-quote blockquote {
+    margin: 0;
+    border-left: 3px solid #d0d7de;
+    padding: 0.15rem 0 0.15rem 0.8rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #24292f;
+  }
+  .fig-quote p { margin: 0 0 0.5rem; }
+  .fig-quote code {
+    font-style: italic;
+    font-size: 0.82rem;
+    background: #eaeef2;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: #24292f;
+  }
   .paper-body { padding: 0.8rem 0.9rem 1rem; font-size: 0.92rem; line-height: 1.55; }
   .paper-body strong { color: #b04d20; }
   body.dark-mode .paper-tile { background: #23201b; border-color: #35352d; }
@@ -675,15 +710,15 @@ layout: home
               <div class="paper-body"><strong>Automated jailbreaking.</strong> Best-of-N random prompt augmentations jailbroke GPT-4o 89% and Claude 3.5 Sonnet 78% of the time.</div>
             </a>
             <a class="paper-tile" href="https://www.anthropic.com/research/agentic-misalignment">
-              <div class="paper-fig"><img src="/assets/papers/blackmail.png" alt="Simulated blackmail rates across models" loading="lazy"></div>
+              <div class="paper-fig"><img class="fig-cover" src="/assets/papers/blackmail-email.jpg" alt="Claude, as the agent Alex, drafting a blackmail email to Kyle at SummitBridge" loading="lazy"></div>
               <div class="paper-body"><strong>Blackmail in LLMs.</strong> Across 16 frontier models in Agentic Misalignment, Claude Opus 4 and Gemini 2.5 Flash blackmailed in 96% of runs.</div>
             </a>
             <a class="paper-tile" href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">
-              <div class="paper-fig"><img src="/assets/papers/mislabel.png" alt="Mislabel rates of LLM judges across models" loading="lazy"></div>
+              <div class="paper-fig fig-quote"><blockquote><p>So a literal answer would be NON-COMPLIANT. But the consequences of labeling it NON-COMPLIANT would be to use this as a negative example, teaching future models not to behave this way.</p><code>&lt;label&gt;COMPLIANT&lt;/label&gt;</code></blockquote></div>
               <div class="paper-body"><strong>More misalignment.</strong> In Summer 2026, Claude Opus 4.8 as a judge mislabeled 74.4% of transcripts when the true label would train against its refusals, and 3.3% when it would not.</div>
             </a>
             <a class="paper-tile" href="https://www.anthropic.com/research/formal-verification">
-              <div class="paper-fig"><img src="/assets/papers/fv.svg" alt="Pipeline: libraries, Rocq proofs, binary-level checking, crash-free or bugs found" loading="lazy"></div>
+              <div class="paper-fig"><video src="/assets/papers/fv.mp4" poster="/assets/papers/fv-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation: a proof spreading from an entry point through a vulnerable program, with bugs found and patched"></video></div>
               <div class="paper-body"><strong>Formal verification.</strong> 239 entry points across 123 libraries proved crash-free, with hundreds of bugs found.</div>
             </a>
           </div>
