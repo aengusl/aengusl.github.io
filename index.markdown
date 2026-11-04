@@ -743,6 +743,14 @@ layout: home
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Open every link in a new tab (except email and in-page jumps)
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      const href = a.getAttribute('href');
+      if (href.startsWith('#') || href.startsWith('mailto:')) return;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+
     let savedMode = null;
     try { savedMode = localStorage.getItem('darkMode'); } catch (e) {}
     const systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
