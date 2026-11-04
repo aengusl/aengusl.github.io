@@ -731,7 +731,6 @@ layout: home
             </a>
           </div>
 
-          <p>Some other fun things I've done include telling the UK Parliament's Business, Innovation, Science and Trade Committee that the biggest risks from AI come from building it very, very quickly, and recommending that governments mandate embedded evaluators who pre-commit to investigative claims (<a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">video</a>, <a href="https://x.com/aengus_lynch1/status/2110560690566299888">thread</a>). I also walked Scott Phoenix of 50Y through the blackmail research in <a href="https://www.youtube.com/watch?v=jjKuCYn9kgk">The AI Researcher Who Caught Claude Blackmailing</a>, and explained on <a href="https://x.com/MTSlive/status/2103261507866009720">MTS</a> why automating alignment will be slow while we can barely measure it.</p>
 
                   </div>
       </div>
@@ -745,32 +744,32 @@ layout: home
                 <track kind="captions" srclang="en" label="English" src="/assets/parliament-race.vtt" default>
               </video>
             </div>
-            <p class="video-caption">UK Parliament: asked whether Geoffrey Irving's coin-flip estimate overstates or understates the risk, I say he's not understating it — the risk comes from building AI very, very quickly.</p>
+            <p class="video-caption"><a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">UK Parliament</a>: asked whether Geoffrey Irving's coin-flip estimate overstates or understates the risk, I say he's not understating it — the risk comes from building AI very, very quickly. I also recommended that governments mandate embedded evaluators who pre-commit to investigative claims (<a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">video</a>, <a href="https://x.com/aengus_lynch1/status/2110560690566299888">thread</a>).</p>
           </div>
           <div class="video-card">
             <div class="video-frame">
               <video autoplay loop muted playsinline controls src="/assets/clip_geminicli_captioned.mp4"></video>
             </div>
-            <p class="video-caption">Gemini CLI — a production coding agent — drafting coercive emails in the blackmail scenario, first try.</p>
+            <p class="video-caption">Gemini CLI — a production coding agent — drafting coercive emails in the <a href="https://www.anthropic.com/research/agentic-misalignment">blackmail scenario</a>, first try.</p>
           </div>
           <div class="video-card">
             <div class="video-frame">
               <iframe src="https://www.youtube.com/embed/o3VPF0ePZe4" title="How AI agents blackmail humans — The Bureau of Investigative Journalism" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="video-caption">The Bureau of Investigative Journalism: I walk through the blackmail research — and re-run it live on today's models.</p>
+            <p class="video-caption"><a href="https://www.youtube.com/watch?v=o3VPF0ePZe4">The Bureau of Investigative Journalism</a>: I walk through the blackmail research — and re-run it live on today's models.</p>
           </div>
           <div class="video-card">
             <a class="video-frame video-thumb" href="https://www.youtube.com/watch?v=jjKuCYn9kgk" aria-label="Watch The AI Researcher Who Caught Claude Blackmailing on YouTube">
               <img src="https://i.ytimg.com/vi/jjKuCYn9kgk/maxresdefault.jpg" alt="The AI Researcher Who Caught Claude Blackmailing" loading="lazy">
               <span class="play-badge" aria-hidden="true">▶</span>
             </a>
-            <p class="video-caption">Progress with Scott Phoenix (50Y): The AI Researcher Who Caught Claude Blackmailing.</p>
+            <p class="video-caption">I walked Scott Phoenix of 50Y through the blackmail research in <a href="https://www.youtube.com/watch?v=jjKuCYn9kgk">The AI Researcher Who Caught Claude Blackmailing</a>.</p>
           </div>
           <div class="video-card">
             <div class="tweet-frame">
               <blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-align="center"><p lang="en" dir="ltr">AI Researcher @aengus_lynch1 on why AI won&#39;t solve alignment the way it&#39;s solving math.</p>&mdash; MTS (@MTSlive) <a href="https://x.com/MTSlive/status/2103261507866009720">September 24, 2026</a></blockquote>
             </div>
-            <p class="video-caption">MTS: why automating alignment will be slow while we can barely measure it.</p>
+            <p class="video-caption">On <a href="https://x.com/MTSlive/status/2103261507866009720">MTS</a>, I explained why automating alignment will be slow while we can barely measure it.</p>
           </div>
         </div>
       </div>
