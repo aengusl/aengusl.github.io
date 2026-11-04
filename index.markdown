@@ -47,13 +47,13 @@ layout: home
 </head>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300..600&display=swap');
   
   body {
     background-color: #faf8f5;
     color: #1e1108;
     line-height: 1.7;
-    font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Noto Sans Arabic', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     position: relative;
@@ -557,6 +557,18 @@ layout: home
   }
 </style>
 
+<script>
+  // Theme: the visitor's saved choice wins; otherwise follow the system setting.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('darkMode'); } catch (e) {}
+    var dark = saved === null
+      ? !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      : saved === 'true';
+    document.body.classList.toggle('dark-mode', dark);
+  })();
+</script>
+
 <div class="container">
   <div class="main-content">
     <div class="left-column">
@@ -715,7 +727,7 @@ layout: home
   function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDark);
+    try { localStorage.setItem('darkMode', isDark); } catch (e) {}
     updateToggleButton(isDark);
   }
 
@@ -724,7 +736,7 @@ layout: home
     btn.textContent = isDark ? 'Light mode' : 'Dark mode';
   }
 
-  // Default to light mode unless the visitor has chosen a theme
+  // Saved choice wins; otherwise follow the system light/dark setting
   function applyTheme(isDark) {
     document.body.classList.toggle('dark-mode', isDark);
     updateToggleButton(isDark);
@@ -733,7 +745,17 @@ layout: home
   document.addEventListener('DOMContentLoaded', function() {
     let savedMode = null;
     try { savedMode = localStorage.getItem('darkMode'); } catch (e) {}
-    applyTheme(savedMode === 'true');
+    const systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    applyTheme(savedMode === null ? !!(systemDark && systemDark.matches) : savedMode === 'true');
+
+    // Track system changes live until the visitor picks a theme by hand
+    if (systemDark && systemDark.addEventListener) {
+      systemDark.addEventListener('change', function (e) {
+        let saved = null;
+        try { saved = localStorage.getItem('darkMode'); } catch (err) {}
+        if (saved === null) applyTheme(e.matches);
+      });
+    }
 
     // Simple fade-in animation
     const elements = document.querySelectorAll('.research-item, .news-section, .highlight-box');
