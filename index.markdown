@@ -688,7 +688,7 @@ layout: home
         <ul>
           <li><a href="mailto:aenguslynch@gmail.com">Email</a></li>
           <li><a href="https://twitter.com/aengus_lynch1">Twitter</a></li>
-          <li><a href="260728-aengus_cv.pdf">CV</a></li>
+          <li><a href="261104-aengus_cv.pdf">CV</a></li>
           <li><a href="https://scholar.google.com/citations?user=Pd2002AAAAAJ&hl=en">Google Scholar</a></li>
           <li><a href="https://github.com/aengusl">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/aengus-lynch-2876a6125">LinkedIn</a></li>

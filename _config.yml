@@ -84,3 +84,7 @@ defaults:
       path: "260403-aengus_cv.pdf"
     values:
       sitemap: false
+  - scope:
+      path: "260728-aengus_cv.pdf"
+    values:
+      sitemap: false
