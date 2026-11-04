@@ -373,7 +373,7 @@ layout: home
     margin-bottom: 4rem;
   }
 
-  .profile-section img {
+  .profile-section > img {
     float: left;
     width: 300px;
     height: auto;
@@ -386,7 +386,7 @@ layout: home
   }
 
   @media (max-width: 600px) {
-    .profile-section img {
+    .profile-section > img {
       float: none;
       display: block;
       margin: 0 0 2rem 0;
@@ -608,7 +608,7 @@ layout: home
     color: #d4703a;
   }
 
-  body.dark-mode .profile-section img {
+  body.dark-mode .profile-section > img {
     border-color: #2d2419;
   }
 
