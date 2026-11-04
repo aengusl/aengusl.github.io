@@ -703,7 +703,7 @@ layout: home
 
           <p>Cyber is <a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching">now in turmoil</a>, and my <a href="https://x.com/aengus_lynch1/status/2113393225310294227">latest post with Anthropic's Frontier Red Team</a> offers a beacon of hope, because <a href="https://www.anthropic.com/research/formal-verification">we can eliminate whole classes of bugs with proofs</a>. I contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, which runs the same pipeline free for open-source projects. Our <a href="https://theorem.dev/blog/verified-software-stack/">plan</a> is to verify the entire software stack that the world relies upon.</p>
 
-          <p><strong>To get up to speed on my work</strong>, read <a href="/no-more-warning-shots/">No More Warning Shots</a>, then the <a href="https://www.anthropic.com/research/formal-verification">formal verification post</a>, then my <a href="https://arxiv.org/abs/2604.00324">PhD thesis</a>, and here are the papers I'm most proud of:</p>
+          <p><strong>To get up to speed on me</strong>, you can read my <a href="/no-more-warning-shots/">essay</a> explaining why the current safety stack is buckling, my <a href="https://www.anthropic.com/research/formal-verification">work with Anthropic and Theorem</a> on verifying production software, and my <a href="https://arxiv.org/abs/2604.00324">PhD thesis</a>. Here are the papers I'm most proud of:</p>
           <div class="paper-grid">
             <a class="paper-tile" href="https://arxiv.org/abs/2304.14997">
               <div class="paper-fig"><img src="/assets/papers/acdc.png" alt="ACDC finds a sparse circuit inside GPT-2 Small" loading="lazy"></div>
