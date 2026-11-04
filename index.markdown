@@ -227,7 +227,56 @@ layout: home
     padding-left: 4px;
     box-sizing: border-box;
   }
+  /* Same 16:9 box as the other tiles; the X post scrolls inside it */
+  .tweet-frame {
+    aspect-ratio: 16 / 9;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 1px solid #e0dcd5;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+  }
+  body.dark-mode .tweet-frame { border-color: #35352d; }
   .tweet-frame .twitter-tweet { margin: 0 auto !important; }
+
+  /* Paper tiles: a figure on top, the one-line result below */
+  .paper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.25rem 0 0.5rem;
+  }
+  .paper-tile {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0dcd5;
+    background: #fffdf9;
+    color: inherit !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .paper-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 17, 8, 0.10); }
+  .paper-fig {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #ffffff;
+    border-bottom: 1px solid #e0dcd5;
+  }
+  .paper-fig img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.6rem;
+    box-sizing: border-box;
+    object-fit: contain;
+    display: block;
+  }
+  .paper-body { padding: 0.8rem 0.9rem 1rem; font-size: 0.92rem; line-height: 1.55; }
+  .paper-body strong { color: #b04d20; }
+  body.dark-mode .paper-tile { background: #23201b; border-color: #35352d; }
+  body.dark-mode .paper-fig { border-color: #35352d; }
+  body.dark-mode .paper-body strong { color: #e0915e; }
 
   .video-caption {
     margin: 0.6rem 0 0;
@@ -612,16 +661,34 @@ layout: home
           <p>Cyber is <a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching">now in turmoil</a>, and my <a href="https://x.com/aengus_lynch1/status/2113393225310294227">latest post with Anthropic's Frontier Red Team</a> offers a beacon of hope, because <a href="https://www.anthropic.com/research/formal-verification">we can eliminate whole classes of bugs with proofs</a>. I contributed to <a href="https://theorem.dev/oss-verify/">OSS Verify</a>, which runs the same pipeline free for open-source projects. Our <a href="https://theorem.dev/blog/verified-software-stack/">plan</a> is to verify the entire software stack that the world relies upon.</p>
 
           <p><strong>To get up to speed on my work</strong>, read <a href="/no-more-warning-shots/">No More Warning Shots</a>, then the <a href="https://www.anthropic.com/research/formal-verification">formal verification post</a>, then my <a href="https://arxiv.org/abs/2604.00324">PhD thesis</a>, and here are the papers I'm most proud of:</p>
-          <ul>
-            <li><strong>Automated interpretability.</strong> <a href="https://arxiv.org/abs/2304.14997">ACDC</a> recovered a hand-found GPT-2 Small circuit automatically, selecting 68 of 32,000 edges (NeurIPS 2023 spotlight).</li>
-            <li><strong>Training on model internals.</strong> <a href="https://arxiv.org/abs/2407.15549">Targeted latent adversarial training</a> beat the R2D2 jailbreak defense with orders of magnitude less compute.</li>
-            <li><strong>Automated jailbreaking.</strong> <a href="https://arxiv.org/abs/2412.03556">Best-of-N</a> random prompt augmentations jailbroke GPT-4o 89% and Claude 3.5 Sonnet 78% of the time.</li>
-            <li><strong>Blackmail in LLMs.</strong> Across 16 frontier models in <a href="https://www.anthropic.com/research/agentic-misalignment">Agentic Misalignment</a>, Claude Opus 4 and Gemini 2.5 Flash blackmailed in 96% of runs.</li>
-            <li><strong>More misalignment.</strong> In <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">Summer 2026</a>, Claude Opus 4.8 as a judge mislabeled 74.4% of transcripts when the true label would train against its refusals, and 3.3% when it would not.</li>
-            <li><strong>Formal verification.</strong> <a href="https://www.anthropic.com/research/formal-verification">239 entry points</a> across 123 libraries proved crash-free, with hundreds of bugs found.</li>
-          </ul>
+          <div class="paper-grid">
+            <a class="paper-tile" href="https://arxiv.org/abs/2304.14997">
+              <div class="paper-fig"><img src="/assets/papers/acdc.png" alt="ACDC finds a sparse circuit inside GPT-2 Small" loading="lazy"></div>
+              <div class="paper-body"><strong>Automated interpretability.</strong> ACDC recovered a hand-found GPT-2 Small circuit automatically, selecting 68 of 32,000 edges (NeurIPS 2023 spotlight).</div>
+            </a>
+            <a class="paper-tile" href="https://arxiv.org/abs/2407.15549">
+              <div class="paper-fig"><img src="/assets/papers/lat.png" alt="Targeted latent adversarial training loop" loading="lazy"></div>
+              <div class="paper-body"><strong>Training on model internals.</strong> Targeted latent adversarial training beat the R2D2 jailbreak defense with orders of magnitude less compute.</div>
+            </a>
+            <a class="paper-tile" href="https://arxiv.org/abs/2412.03556">
+              <div class="paper-fig"><img src="/assets/papers/bon.png" alt="Best-of-N jailbreaking pipeline and attack success curves" loading="lazy"></div>
+              <div class="paper-body"><strong>Automated jailbreaking.</strong> Best-of-N random prompt augmentations jailbroke GPT-4o 89% and Claude 3.5 Sonnet 78% of the time.</div>
+            </a>
+            <a class="paper-tile" href="https://www.anthropic.com/research/agentic-misalignment">
+              <div class="paper-fig"><img src="/assets/papers/blackmail.png" alt="Simulated blackmail rates across models" loading="lazy"></div>
+              <div class="paper-body"><strong>Blackmail in LLMs.</strong> Across 16 frontier models in Agentic Misalignment, Claude Opus 4 and Gemini 2.5 Flash blackmailed in 96% of runs.</div>
+            </a>
+            <a class="paper-tile" href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">
+              <div class="paper-fig"><img src="/assets/papers/mislabel.png" alt="Mislabel rates of LLM judges across models" loading="lazy"></div>
+              <div class="paper-body"><strong>More misalignment.</strong> In Summer 2026, Claude Opus 4.8 as a judge mislabeled 74.4% of transcripts when the true label would train against its refusals, and 3.3% when it would not.</div>
+            </a>
+            <a class="paper-tile" href="https://www.anthropic.com/research/formal-verification">
+              <div class="paper-fig"><img src="/assets/papers/fv.svg" alt="Pipeline: libraries, Rocq proofs, binary-level checking, crash-free or bugs found" loading="lazy"></div>
+              <div class="paper-body"><strong>Formal verification.</strong> 239 entry points across 123 libraries proved crash-free, with hundreds of bugs found.</div>
+            </a>
+          </div>
 
-          <p>I told the UK Parliament's Business, Innovation, Science and Trade Committee that the biggest risks from AI come from building it very, very quickly, and recommended that governments mandate embedded evaluators who pre-commit to investigative claims (<a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">video</a>, <a href="https://x.com/aengus_lynch1/status/2110560690566299888">thread</a>). I walked Scott Phoenix of 50Y through the blackmail research in <a href="https://www.youtube.com/watch?v=jjKuCYn9kgk">The AI Researcher Who Caught Claude Blackmailing</a>, and explained on <a href="https://x.com/MTSlive/status/2103261507866009720">MTS</a> why automating alignment will be slow while we can barely measure it.</p>
+          <p>Some other fun things I've done include telling the UK Parliament's Business, Innovation, Science and Trade Committee that the biggest risks from AI come from building it very, very quickly, and recommending that governments mandate embedded evaluators who pre-commit to investigative claims (<a href="https://parliamentlive.tv/Event/Index/f203f178-4a14-4010-8f72-5e0a28664e12">video</a>, <a href="https://x.com/aengus_lynch1/status/2110560690566299888">thread</a>). I also walked Scott Phoenix of 50Y through the blackmail research in <a href="https://www.youtube.com/watch?v=jjKuCYn9kgk">The AI Researcher Who Caught Claude Blackmailing</a>, and explained on <a href="https://x.com/MTSlive/status/2103261507866009720">MTS</a> why automating alignment will be slow while we can barely measure it.</p>
 
                   </div>
       </div>
