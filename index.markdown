@@ -258,7 +258,7 @@ layout: home
   .paper-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 17, 8, 0.10); }
   .paper-fig {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 2 / 1;
     background: #ffffff;
     border-bottom: 1px solid #e0dcd5;
   }
@@ -267,7 +267,7 @@ layout: home
     inset: 0;
     width: 100%;
     height: 100%;
-    padding: 0.6rem;
+    padding: 0.3rem;
     box-sizing: border-box;
     object-fit: contain;
     display: block;
