@@ -745,7 +745,7 @@ layout: home
                 <track kind="captions" srclang="en" label="English" src="/assets/parliament-race.vtt" default>
               </video>
             </div>
-            <p class="video-caption">UK Parliament: asked whether Geoffrey Irving overstates the risk, I say no — the risk comes from building AI very, very quickly.</p>
+            <p class="video-caption">UK Parliament: asked whether Geoffrey Irving's coin-flip estimate overstates or understates the risk, I say he's not understating it — the risk comes from building AI very, very quickly.</p>
           </div>
           <div class="video-card">
             <div class="video-frame">
