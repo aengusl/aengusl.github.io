@@ -5,12 +5,12 @@ layout: home
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Aengus Lynch. Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research.">
+    <meta name="description" content="Aengus Lynch. Formally verifying software at Theorem. PhD in Computer Science from UCL; lead author of Anthropic's Agentic Misalignment research.">
     <meta name="author" content="Aengus Lynch">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Aengus Lynch">
-    <meta property="og:description" content="Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research.">
+    <meta property="og:description" content="Formally verifying software at Theorem. PhD in Computer Science from UCL; lead author of Anthropic's Agentic Misalignment research.">
     <meta property="og:url" content="https://aenguslynch.com">
     
     <!-- Twitter -->
@@ -564,7 +564,7 @@ layout: home
         <img src="ef-talk-pic.jpg" alt="Aengus Lynch speaking at Entrepreneur First">
         <h1>Aengus Lynch, Ph.D</h1>
         <div class="bio">          
-          <p>I'm formally verifying software at <a href="https://theorem.dev">Theorem</a> in San Francisco, to prevent mass AI-enabled hacking. I completed my PhD in AI research at University College London on 28 August 2026, with the thesis <a href="https://arxiv.org/abs/2604.00324">The Persistent Vulnerability of Aligned AI Systems</a>. As intelligence becomes abundant, executing research gets cheaper, but deciding what is worth researching does not, so I think more people should do PhDs (<a href="https://x.com/aengus_lynch1">my take</a>).</p>
+          <p>I'm formally verifying software at <a href="https://theorem.dev">Theorem</a> in San Francisco, to prevent mass AI-enabled hacking. I completed my PhD in Computer Science at University College London on 28 August 2026, with the thesis <a href="https://arxiv.org/abs/2604.00324">The Persistent Vulnerability of Aligned AI Systems</a>. As intelligence becomes abundant, executing research gets cheaper, but deciding what is worth researching does not, so I think more people should do PhDs (<a href="https://x.com/aengus_lynch1/status/2117602605983559974">my take</a>).</p>
 
           <p><strong>Essentially all of the misalignments we simulated in the Agentic Misalignment papers (<a href="https://www.anthropic.com/research/agentic-misalignment">2025</a>, <a href="https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026">2026</a>) have now happened in the wild.</strong> We cannot reliably align AIs, our controls cost time and compute that companies racing each other struggle to sustain, and recursive self-improvement will make restraint hardest to afford just when we need it most. The AI safety stack is <a href="/no-more-warning-shots/">buckling under pressure</a>, so we should build safety that scales.</p>
 
@@ -766,6 +766,6 @@ layout: home
     "@type": "Organization",
     "name": "Theorem"
   },
-  "description": "Formally verifying software at Theorem. PhD in AI from UCL; lead author of Anthropic's Agentic Misalignment research."
+  "description": "Formally verifying software at Theorem. PhD in Computer Science from UCL; lead author of Anthropic's Agentic Misalignment research."
 }
 </script>

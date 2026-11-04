@@ -9,7 +9,7 @@ Formally verifying software at Theorem. First author of Anthropic's blackmail st
 
 ## Education
 
-**PhD in Artificial Intelligence** (2021--2026, completed 28 August 2026)  
+**PhD in Computer Science** (2021--2026, completed 28 August 2026)  
 University College London  
 Advisor: Prof. Ricardo Silva
 
