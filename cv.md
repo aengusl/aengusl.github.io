@@ -5,11 +5,11 @@
 [Google Scholar](https://scholar.google.com/citations?user=Pd2002AAAAAJ) |
 [GitHub](https://github.com/aengusl)
 
-Generalist operator and AI safety researcher. First author of Anthropic's blackmail study and its 2026 follow-up.
+Formally verifying software at Theorem. First author of Anthropic's blackmail study and its 2026 follow-up.
 
 ## Education
 
-**PhD in Artificial Intelligence** (2021--2025)  
+**PhD in Artificial Intelligence** (2021--2026, completed 28 August 2026)  
 University College London  
 Advisor: Prof. Ricardo Silva
 
@@ -58,7 +58,7 @@ UK rates trading desk for index-linked gilts
 
 **The Persistent Vulnerability of Aligned AI Systems**  
 **Aengus Lynch**  
-PhD thesis, University College London, 2025. Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.  
+PhD thesis, University College London, 2026. Supervised by Ricardo Silva. Examined by Florian Tramèr and Ilija Bogunovic.  
 [arXiv:2604.00324](https://arxiv.org/abs/2604.00324)
 
 ### 2026
