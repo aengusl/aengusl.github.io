@@ -200,6 +200,35 @@ layout: home
     display: block;
   }
 
+  .video-thumb { display: block; overflow: hidden; }
+  .video-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .video-thumb:hover img { transform: scale(1.03); }
+  .play-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 26px;
+    line-height: 64px;
+    text-align: center;
+    padding-left: 4px;
+    box-sizing: border-box;
+  }
+  .tweet-frame .twitter-tweet { margin: 0 auto !important; }
+
   .video-caption {
     margin: 0.6rem 0 0;
     color: #4a3623;
@@ -612,8 +641,28 @@ layout: home
             </div>
             <p class="video-caption">The Bureau of Investigative Journalism: I walk through the blackmail research — and re-run it live on today's models.</p>
           </div>
+          <div class="video-card">
+            <a class="video-frame video-thumb" href="https://www.youtube.com/watch?v=jjKuCYn9kgk" aria-label="Watch The AI Researcher Who Caught Claude Blackmailing on YouTube">
+              <img src="https://i.ytimg.com/vi/jjKuCYn9kgk/maxresdefault.jpg" alt="The AI Researcher Who Caught Claude Blackmailing" loading="lazy">
+              <span class="play-badge" aria-hidden="true">▶</span>
+            </a>
+            <p class="video-caption">Progress with Scott Phoenix (50Y): The AI Researcher Who Caught Claude Blackmailing.</p>
+          </div>
+          <div class="video-card">
+            <div class="tweet-frame">
+              <blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-align="center"><p lang="en" dir="ltr">AI Researcher @aengus_lynch1 on why AI won&#39;t solve alignment the way it&#39;s solving math.</p>&mdash; MTS (@MTSlive) <a href="https://x.com/MTSlive/status/2103261507866009720">September 24, 2026</a></blockquote>
+            </div>
+            <p class="video-caption">MTS: why automating alignment will be slow while we can barely measure it.</p>
+          </div>
         </div>
       </div>
+      <script>
+        // X embed: match the page theme, then load X's widget script
+        document.querySelectorAll('.twitter-tweet').forEach(function (t) {
+          if (document.body.classList.contains('dark-mode')) t.setAttribute('data-theme', 'dark');
+        });
+      </script>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <div id="research" class="research-section">
         <h2>Research and Blogs</h2>
