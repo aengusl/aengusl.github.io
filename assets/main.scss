@@ -1,0 +1,70 @@
+---
+---
+
+@import "minima";
+
+/* ---------------------------------------------------------------
+   Theme: Monokai Light by day, Monokai (dark) when the system is
+   dark. Every page reads these variables. The homepage toggle sets
+   body.light-mode or body.dark-mode for the current visit only.
+   --------------------------------------------------------------- */
+:root,
+body.light-mode {
+  color-scheme: light;
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --surface-2: #f3f1ea;
+  --fg: #272822;
+  --fg-2: #49483e;
+  --muted: #6e6a58;
+  --border: #e4e2d9;
+  --link: #a65d3a;
+  --link-hover: #c4245f;
+  --accent: #a65d3a;
+  --gold: #c9a227;
+  --scroll-thumb: #dcd9cd;
+  --shadow: rgba(39, 40, 34, 0.10);
+}
+
+@mixin monokai-dark {
+  color-scheme: dark;
+  --bg: #272822;
+  --surface: #2f3029;
+  --surface-2: #3e3d32;
+  --fg: #f8f8f2;
+  --fg-2: #cfcfc2;
+  --muted: #a59f85;
+  --border: #3e3d32;
+  --link: #e9b07a;
+  --link-hover: #f7769f;
+  --accent: #e9b07a;
+  --gold: #e6db74;
+  --scroll-thumb: #49483e;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { @include monokai-dark; }
+}
+body.dark-mode { @include monokai-dark; }
+
+/* Minima pages (CV, 404, posts) */
+body { background-color: var(--bg); color: var(--fg); }
+a, a:visited { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+h1, h2, h3, h4, h5, h6, strong { color: var(--fg); }
+.site-header { border-top-color: var(--fg-2); border-bottom-color: var(--border); }
+.site-title, .site-title:visited { color: var(--fg); }
+.site-nav .page-link { color: var(--fg-2); }
+.site-nav { background-color: var(--bg); border-color: var(--border); }
+.site-nav .menu-icon > svg path { fill: var(--fg-2); }
+.site-footer { border-top-color: var(--border); }
+.footer-col-wrapper, .post-meta, .footer-heading, .contact-list { color: var(--muted); }
+.social-media-list .svg-icon { fill: var(--muted); }
+blockquote { color: var(--muted); border-left-color: var(--border); }
+code, pre { background-color: var(--surface-2); border-color: var(--border); color: var(--fg); }
+hr { border-color: var(--border); }
+table { color: var(--fg); border-color: var(--border); }
+table th { background-color: var(--surface-2); border-color: var(--border); }
+table td { border-color: var(--border); }
+table tr:nth-child(even) { background-color: var(--surface); }
