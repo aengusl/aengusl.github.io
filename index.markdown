@@ -50,8 +50,8 @@ layout: home
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300..600&display=swap');
   
   body {
-    background-color: #faf8f5;
-    color: #1e1108;
+    background-color: var(--bg);
+    color: var(--fg);
     line-height: 1.7;
     font-family: 'Noto Sans Arabic', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
@@ -110,12 +110,12 @@ layout: home
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #e0dcd5 transparent;
+    scrollbar-color: var(--scroll-thumb) transparent;
   }
 
   .right-sidebar::-webkit-scrollbar { width: 4px; }
   .right-sidebar::-webkit-scrollbar-track { background: transparent; }
-  .right-sidebar::-webkit-scrollbar-thumb { background: #e0dcd5; border-radius: 0; }
+  .right-sidebar::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 0; }
   
   .sidebar-section {
     margin-bottom: 2.5rem;
@@ -124,7 +124,7 @@ layout: home
   .sidebar-section h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #1e1108;
+    color: var(--fg);
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -139,12 +139,12 @@ layout: home
   
   .sidebar-section li {
     padding: 0.4rem 0;
-    color: #382718;
+    color: var(--fg-2);
     font-size: 0.95rem;
   }
   
   .sidebar-section a {
-    color: #b04d20;
+    color: var(--link);
     text-decoration: none;
     font-weight: 500;
   }
@@ -166,7 +166,7 @@ layout: home
 
   .video-section h2 {
     margin: 0 0 1rem;
-    color: #1e1108;
+    color: var(--fg);
     font-size: 1.3rem;
     font-weight: 600;
   }
@@ -232,11 +232,10 @@ layout: home
     aspect-ratio: 16 / 9;
     overflow-y: auto;
     overscroll-behavior: contain;
-    border: 1px solid #e0dcd5;
+    border: 1px solid var(--border);
     box-sizing: border-box;
     scrollbar-width: thin;
   }
-  body.dark-mode .tweet-frame { border-color: #35352d; }
   .tweet-frame .twitter-tweet { margin: 0 auto !important; }
 
   /* Paper tiles: a figure on top, the one-line result below */
@@ -249,18 +248,18 @@ layout: home
   .paper-tile {
     display: flex;
     flex-direction: column;
-    border: 1px solid #e0dcd5;
-    background: #fffdf9;
+    border: 1px solid var(--border);
+    background: var(--surface);
     color: inherit !important;
     text-decoration: none !important;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .paper-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 17, 8, 0.10); }
+  .paper-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--shadow); }
   .paper-fig {
     position: relative;
     aspect-ratio: 2 / 1;
     background: #ffffff;
-    border-bottom: 1px solid #e0dcd5;
+    border-bottom: 1px solid var(--border);
   }
   .paper-fig img {
     position: absolute;
@@ -308,10 +307,7 @@ layout: home
     color: #24292f;
   }
   .paper-body { padding: 0.8rem 0.9rem 1rem; font-size: 0.92rem; line-height: 1.55; }
-  .paper-body strong { color: #b04d20; }
-  body.dark-mode .paper-tile { background: #23201b; border-color: #35352d; }
-  body.dark-mode .paper-fig { border-color: #35352d; }
-  body.dark-mode .paper-body strong { color: #e0915e; }
+  .paper-body strong { color: var(--link); }
 
   /* Subtitles on the Parliament clip */
   .video-frame video::cue {
@@ -323,13 +319,11 @@ layout: home
 
   .video-caption {
     margin: 0.6rem 0 0;
-    color: #4a3623;
+    color: var(--muted);
     font-size: 0.9rem;
     line-height: 1.5;
   }
 
-  body.dark-mode .video-section h2 { color: #e8e0d5; }
-  body.dark-mode .video-caption { color: #a89888; }
 
   .culture-live-link {
     display: flex;
@@ -377,18 +371,18 @@ layout: home
   .news-section h2 {
     margin-top: 0;
     margin-bottom: 1rem;
-    color: #1e1108;
+    color: var(--fg);
     font-size: 1.3rem;
     font-weight: 600;
   }
   
   .news-item {
     margin-bottom: 0.8rem;
-    color: #382718;
+    color: var(--fg-2);
   }
   
   .news-item a {
-    color: #1e1108;
+    color: var(--fg);
     font-weight: 500;
   }
   
@@ -439,14 +433,14 @@ layout: home
   h1 {
     font-size: 2.2rem;
     font-weight: 600;
-    color: #1e1108;
+    color: var(--fg);
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.03em;
   }
   
   .subtitle {
     font-size: 1.1rem;
-    color: #4a3623;
+    color: var(--muted);
     margin: 0 0 2rem 0;
     font-weight: 400;
   }
@@ -455,7 +449,7 @@ layout: home
     margin: 2rem 0;
     font-size: 1rem;
     line-height: 1.8;
-    color: #382718;
+    color: var(--fg-2);
   }
   
   .bio p {
@@ -465,7 +459,7 @@ layout: home
   .research-section h2 {
     margin-top: 4rem;
     margin-bottom: 2rem;
-    color: #1e1108;
+    color: var(--fg);
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -473,7 +467,7 @@ layout: home
   .research-item {
     margin-bottom: 2rem;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #d8cbbb;
+    border-bottom: 1px solid var(--border);
   }
   
   .research-item:last-child {
@@ -482,52 +476,53 @@ layout: home
   
   .research-item h3 {
     margin-bottom: 0.5rem;
-    color: #1e1108;
+    color: var(--fg);
     font-size: 1.1rem;
     font-weight: 600;
   }
   
   .research-item h3 a {
-    color: #1e1108;
+    color: var(--fg);
     text-decoration: none;
   }
   
   .research-item h3 a:hover {
-    color: #b04d20;
+    color: var(--link-hover);
   }
   
   .research-item p {
-    color: #4a3623;
+    color: var(--muted);
     margin: 0.3rem 0;
     font-size: 0.95rem;
     line-height: 1.6;
   }
   
   .research-item p strong {
-    color: #382718;
+    color: var(--fg-2);
     font-weight: 500;
   }
   
   .research-item p em {
-    color: #b04d20;
+    color: var(--link);
     font-style: normal;
     font-weight: 500;
   }
   
   .highlight-box {
-    background-color: #fdf6ed;
-    border-left: 4px solid #b04d20;
+    background-color: var(--surface-2);
+    border-left: 4px solid var(--link);
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 0;
   }
   
   a {
-    color: #b04d20;
+    color: var(--link);
     text-decoration: none;
   }
   
   a:hover {
+    color: var(--link-hover);
     text-decoration: underline;
   }
   
@@ -536,23 +531,23 @@ layout: home
   }
   
   ::-webkit-scrollbar-track {
-    background: #f8fafb;
+    background: var(--bg);
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #dfe3e8;
+    background: var(--scroll-thumb);
     border-radius: 0;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #ccd2d9;
+    background: var(--muted);
   }
 
   /* Dark mode toggle button */
   .theme-toggle {
     background: none;
-    border: 1px solid #b04d20;
-    color: #b04d20;
+    border: 1px solid var(--link);
+    color: var(--link);
     padding: 0.4rem 0.8rem;
     border-radius: 0;
     cursor: pointer;
@@ -563,130 +558,20 @@ layout: home
   }
 
   .theme-toggle:hover {
-    background: #b04d20;
-    color: #fff;
+    background: var(--link);
+    color: var(--bg);
   }
 
-  /* Dark mode styles */
-  body.dark-mode {
-    background-color: #1a1612;
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .sidebar-section h3 {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .sidebar-section li {
-    color: #c4b8a8;
-  }
-
-  body.dark-mode .sidebar-section a {
-    color: #d4703a;
-  }
-
-  body.dark-mode .news-section h2 {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .news-item {
-    color: #c4b8a8;
-  }
-
-  body.dark-mode .news-item a {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode h1 {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .subtitle {
-    color: #a89888;
-  }
-
-  body.dark-mode .bio {
-    color: #c4b8a8;
-  }
-
-  body.dark-mode .research-section h2 {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .research-item {
-    border-bottom-color: #2d2419;
-  }
-
-  body.dark-mode .research-item h3,
-  body.dark-mode .research-item h3 a {
-    color: #e8e0d5;
-  }
-
-  body.dark-mode .research-item h3 a:hover {
-    color: #d4703a;
-  }
-
-  body.dark-mode .research-item p {
-    color: #a89888;
-  }
-
-  body.dark-mode .research-item p strong {
-    color: #c4b8a8;
-  }
-
-  body.dark-mode .research-item p em {
-    color: #d4703a;
-  }
-
-  body.dark-mode .highlight-box {
-    background-color: #2d2419;
-    border-left-color: #d4703a;
-  }
-
-  body.dark-mode a {
-    color: #d4703a;
-  }
-
-  body.dark-mode details summary {
-    color: #d4703a;
-  }
-
-  body.dark-mode .profile-section > img {
-    border-color: #2d2419;
-  }
-
-  body.dark-mode .theme-toggle {
-    border-color: #d4703a;
-    color: #d4703a;
-  }
-
-  body.dark-mode .theme-toggle:hover {
-    background: #d4703a;
-    color: #1a1612;
-  }
-
-  body.dark-mode ::-webkit-scrollbar-track {
-    background: #1a1612;
-  }
-
-  body.dark-mode ::-webkit-scrollbar-thumb {
-    background: #3d2c1e;
-  }
-
-  body.dark-mode ::-webkit-scrollbar-thumb:hover {
-    background: #5c4a3d;
-  }
 </style>
 
 <script>
-  // Theme: the visitor's saved choice wins; otherwise follow the system setting.
+  // Theme follows the system light/dark setting. The toggle overrides it
+  // for this visit only, so the site always comes back to the system theme.
   (function () {
-    var saved = null;
-    try { saved = localStorage.getItem('darkMode'); } catch (e) {}
-    var dark = saved === null
-      ? !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      : saved === 'true';
-    document.body.classList.toggle('dark-mode', dark);
+    try { localStorage.removeItem('darkMode'); } catch (e) {}
+    var o = null;
+    try { o = sessionStorage.getItem('theme'); } catch (e) {}
+    if (o === 'dark' || o === 'light') document.body.classList.add(o + '-mode');
   })();
 </script>
 
@@ -776,7 +661,10 @@ layout: home
       <script>
         // X embed: match the page theme, then load X's widget script
         document.querySelectorAll('.twitter-tweet').forEach(function (t) {
-          if (document.body.classList.contains('dark-mode')) t.setAttribute('data-theme', 'dark');
+          var c = document.body.classList;
+          var dark = c.contains('dark-mode') || (!c.contains('light-mode') &&
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) t.setAttribute('data-theme', 'dark');
         });
       </script>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -889,23 +777,32 @@ layout: home
 </div>
 
 <script>
-  // Dark mode toggle
-  function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    try { localStorage.setItem('darkMode', isDark); } catch (e) {}
-    updateToggleButton(isDark);
+  // Theme toggle: system setting by default, override for this visit
+  const systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  function isDarkNow() {
+    const c = document.body.classList;
+    if (c.contains('dark-mode')) return true;
+    if (c.contains('light-mode')) return false;
+    return !!(systemDark && systemDark.matches);
   }
 
-  function updateToggleButton(isDark) {
+  function updateToggleButton() {
     const btn = document.querySelector('.theme-toggle');
-    btn.textContent = isDark ? 'Light mode' : 'Dark mode';
+    if (btn) btn.textContent = isDarkNow() ? 'Light mode' : 'Dark mode';
   }
 
-  // Saved choice wins; otherwise follow the system light/dark setting
-  function applyTheme(isDark) {
-    document.body.classList.toggle('dark-mode', isDark);
-    updateToggleButton(isDark);
+  function toggleDarkMode() {
+    const next = isDarkNow() ? 'light' : 'dark';
+    const systemNext = !!(systemDark && systemDark.matches) ? 'dark' : 'light';
+    document.body.classList.remove('dark-mode', 'light-mode');
+    if (next === systemNext) {
+      try { sessionStorage.removeItem('theme'); } catch (e) {}
+    } else {
+      document.body.classList.add(next + '-mode');
+      try { sessionStorage.setItem('theme', next); } catch (e) {}
+    }
+    updateToggleButton();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -917,18 +814,9 @@ layout: home
       a.rel = 'noopener';
     });
 
-    let savedMode = null;
-    try { savedMode = localStorage.getItem('darkMode'); } catch (e) {}
-    const systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-    applyTheme(savedMode === null ? !!(systemDark && systemDark.matches) : savedMode === 'true');
-
-    // Track system changes live until the visitor picks a theme by hand
+    updateToggleButton();
     if (systemDark && systemDark.addEventListener) {
-      systemDark.addEventListener('change', function (e) {
-        let saved = null;
-        try { saved = localStorage.getItem('darkMode'); } catch (err) {}
-        if (saved === null) applyTheme(e.matches);
-      });
+      systemDark.addEventListener('change', updateToggleButton);
     }
 
     // Simple fade-in animation
